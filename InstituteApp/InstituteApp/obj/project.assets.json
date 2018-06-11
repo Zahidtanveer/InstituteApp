@@ -13607,11 +13607,11 @@
   "project": {
     "version": "2.5.3",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\InstituteApp\\InstituteApp.csproj",
+      "projectUniqueName": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\InstituteApp\\InstituteApp.csproj",
       "projectName": "InstituteApp",
-      "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\InstituteApp\\InstituteApp.csproj",
+      "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\InstituteApp\\InstituteApp.csproj",
       "packagesPath": "C:\\Users\\shoaib.TRIBECH0\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\InstituteApp\\obj\\",
+      "outputPath": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\InstituteApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13630,8 +13630,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj"
+            "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj"
             }
           }
         }

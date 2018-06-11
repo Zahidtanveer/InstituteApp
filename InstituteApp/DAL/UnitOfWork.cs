@@ -20,7 +20,8 @@ namespace DAL
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
-
+        IInstituteRepository _institute;
+        IAcadamicRepository _acadamic;
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -67,7 +68,25 @@ namespace DAL
             }
         }
 
+        public IInstituteRepository Institute
+        {
+            get
+            {
+                if (_institute == null)
+                    _institute = new InstituteRepository(_context);
+                return _institute;
+            }
+        }
 
+        public IAcadamicRepository Acadamics
+        {
+            get
+            {
+                if (_acadamic == null)
+                    _acadamic = new AcadamicRepository(_context);
+                return _acadamic;
+            }
+        }
 
 
         public int SaveChanges()

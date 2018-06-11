@@ -42,8 +42,19 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="DAL\**" />
+    <Compile Remove="InstituteApp\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="DAL\**" />
+    <Content Remove="InstituteApp\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="DAL\**" />
+    <EmbeddedResource Remove="InstituteApp\**" />
+    <None Remove="DAL\**" />
+    <None Remove="InstituteApp\**" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

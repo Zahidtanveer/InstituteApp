@@ -5,10 +5,11 @@
 
 import { NgModule, ErrorHandler } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule, FormControlDirective } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -64,6 +65,9 @@ import { RolesManagementComponent } from "./components/controls/roles-management
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { InstituteService } from "./services/institute.service";
+import { createInstitute } from "./components/Institute/AddInstitute.component";
+import { InstituteComponent } from "./components/Institute/Institute.componet";
 
 
 
@@ -88,7 +92,9 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
         BsDropdownModule.forRoot(),
         CarouselModule.forRoot(),
         ModalModule.forRoot(),
-        ChartsModule
+        ChartsModule,
+        ReactiveFormsModule,
+        HttpModule
     ],
     declarations: [
         AppComponent,
@@ -113,7 +119,11 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
         BootstrapSelectDirective,
         BootstrapDatepickerDirective,
         GroupByPipe,
-        HeaderComponent, SidebarComponent
+        HeaderComponent,
+        SidebarComponent,
+        createInstitute,
+        InstituteComponent
+
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },
@@ -127,7 +137,8 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
         AccountService,
         AccountEndpoint,
         LocalStoreManager,
-        EndpointFactory
+        EndpointFactory,
+        InstituteService
     ],
     bootstrap: [AppComponent]
 })

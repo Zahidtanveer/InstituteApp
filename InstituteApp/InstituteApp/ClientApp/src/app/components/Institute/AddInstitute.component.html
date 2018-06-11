@@ -1,0 +1,137 @@
+<div class="">
+    <div class="container">
+        <h1>Add Institute{{Title}}</h1>
+        <hr />
+        <form [formGroup]="instituteForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Name">Name</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Name" id="Name">
+                        </div>
+
+                        <span class="text-danger" *ngIf="Name.invalid && formDir.submitted">
+                            Name is required.
+                        </span>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Email">Email</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Email" >
+                        </div>
+
+                        <span class="text-danger" *ngIf="Email.invalid && formDir.submitted">
+                            Email is required.
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Admin">Admin Contact Person</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Admin">
+                        </div>
+                        <span class="text-danger" *ngIf="Admin.invalid && formDir.submitted">
+                            Admin is required.
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Languange">Languange</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Languange">
+                        </div>
+                        <span class="text-danger" *ngIf="Languange.invalid && formDir.submitted">
+                            Languange is required.
+                        </span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Code">Code</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Code">
+                        </div>
+                        <span class="text-danger" *ngIf="Code.invalid && formDir.submitted">
+                            Code is required.
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="TimeZone">TimeZone</label>
+                        <div class="col-md-12" [ngClass]="{'has-success': formDir.submitted && TimeZone.valid, 'has-error' : formDir.submitted && !TimeZone.valid}">
+                            <input class="form-control" type="text" formControlName="TimeZone">
+                        </div>
+
+                        <span class="text-danger" *ngIf="TimeZone.invalid && formDir.submitted">
+                            TimeZone is required.
+                        </span>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Address">Address</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Address">
+                        </div>
+                        <span class="text-danger" *ngIf="Address.invalid && formDir.submitted">
+                            Address is required.
+                        </span>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-12" for="Country">Country</label>
+                        <div class="col-md-12">
+                            <select class="form-control" data-val="true" formControlName="Country">
+                                <option value="">-- Select Country --</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </div>
+                        <span class="text-danger" *ngIf="Country.invalid && formDir.submitted">
+                            Country is required
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Phone">Phone</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Phone">
+                        </div>
+                        <span class="text-danger" *ngIf="Phone.invalid && formDir.submitted">
+                            Phone is required.
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Mobile">Mobile</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Mobile">
+                        </div>
+                        <span class="text-danger" *ngIf="Mobile.invalid && formDir.submitted">
+                            Mobile is required.
+                        </span>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" control-label col-md-12" for="Fax">Fax</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" formControlName="Fax">
+                        </div>
+                        <span class="text-danger" *ngIf="Fax.invalid && formDir.submitted">
+                            Fax is required.
+                        </span>
+                    </div>
+                   
+
+                </div>
+
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                    <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+
+</div>

@@ -24,7 +24,8 @@ namespace DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
-
+        public DbSet<Institute> Institutes { get; set; }
+        public DbSet<Acadamic> Acadamics { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -63,6 +64,9 @@ namespace DAL
             builder.Entity<Order>().ToTable($"App{nameof(this.Orders)}");
 
             builder.Entity<OrderDetail>().ToTable($"App{nameof(this.OrderDetails)}");
+
+            builder.Entity<Institute>().ToTable($"App{nameof(this.Institutes)}");
+            builder.Entity<Acadamic>().ToTable($"App{nameof(this.Acadamics)}");
         }
 
 

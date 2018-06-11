@@ -1,0 +1,32 @@
+<div class="container">
+
+    <p>Fetching Data from Server</p>
+
+    <p *ngIf="!dList"><em>Loading...</em></p>
+
+    <p>
+        <a [routerLink]="['/add-institute']">Create New</a>
+    </p>
+    <table class='table' *ngIf="dList">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ins of dList">
+                <td>{{ ins.Id }}</td>
+                <td>{{ ins.Name }}</td>
+                <td>{{ins.Email}}</td>
+                
+                <td>
+                    <a [routerLink]="['/institute/edit/', ins.Id]">Edit</a> |
+                    <a [routerLink]="" (click)="delete(ins.Id)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

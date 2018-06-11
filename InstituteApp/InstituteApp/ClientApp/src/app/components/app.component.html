@@ -17,7 +17,7 @@
                         <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../../assets/assets/images/logo-icon.png" alt="" class="light-logo" />
+                            <img [src]="appLogo" alt="" class="light-logo" />
 
                            
                         </b>
@@ -26,7 +26,7 @@
                         <span class="logo-text">
                             <!-- dark Logo text -->
                         
-                            <img src="../../assets/images/logo-text.png" alt="" class="light-logo" />
+                            <img [src]="appLogoText" alt="" class="light-logo" />
 
                         </span>
                         <!-- Logo icon -->
@@ -83,25 +83,25 @@
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
 
-                    <p class="app-component navbar-text navbar-right notifications-popup">
+                    <!--<p class="app-component navbar-text navbar-right notifications-popup">
                         {{'app.Welcome' | translate}}
                         <a class="app-component navbar-link user-name" [popover]="popTemplate" (onHidden)="markNotificationsAsRead()" placement="bottom" [popoverTitle]="notificationsTitle" href="javascript:;" triggers="focus">
                             {{userName}}
                             <span *ngIf="newNotificationCount > 0" class="badge">{{newNotificationCount}}</span>
                         </a>,
-                    </p>
+                    </p>-->
 
                     <ng-template #popTemplate>
                         <notifications-viewer [isViewOnly]="true"></notifications-viewer>
                     </ng-template>
 
 
-                    <ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
+                    <!--<ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
                         <li routerLinkActive="active" class="nav-item"><a class="nav-link waves-effect waves-dark" routerLink="/settings"><span class="fa fa-cog fa-2x"></span></a></li>
-                    </ul>
-                    <ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
+                    </ul>-->
+                    <!--<ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
                         <li (click)="logout()" class="nav-item"><a href="javascript:;" class="nav-link"><span class="glyphicon glyphicon-log-out"></span> {{'mainMenu.Logout' | translate}}</a></li>
-                    </ul>
+                    </ul>-->
                     <div *ngIf="!isUserLoggedIn && router.isActive('/about', false)" class="app-component collapse navbar-collapse menuItemsContainer">
                         <ul class="app-component nav navbar-nav nav-pills navBarPadding navbar-right">
                             <li routerLinkActive="active"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span></a></li>
@@ -197,13 +197,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                                <a class="dropdown-item" href="javascript:void(0)" ><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="javascript:;" (click)="logout()"><i class="fa fa-power-off m-r-5 m-l-5"></i> {{'mainMenu.Logout' | translate}}</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
                             </div>
@@ -224,15 +224,15 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav app-component">
                     <ul id="sidebarnav app-component" class="p-t-30">
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Institute</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/products']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Products' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewOrders"> <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/orders" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">{{'mainMenu.Orders' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/about']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.About' | translate}}</span></a></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;"  aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic </span></a></li>
                                 <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard </span></a></li>

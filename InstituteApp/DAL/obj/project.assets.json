@@ -6548,11 +6548,11 @@
   "project": {
     "version": "2.0.1",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj",
+      "projectPath": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\shoaib.TRIBECH0\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shoaib.TRIBECH0\\source\\repos\\InstituteApp\\InstituteApp\\DAL\\obj\\",
+      "outputPath": "C:\\Users\\shoaib.TRIBECH0\\source\\InstituteApp\\InstituteApp\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -22,14 +22,7 @@ import { LoginComponent } from "../components/login/login.component";
 
 var alertify: any = require('../assets/scripts/alertify.js');
 
-var popper: any = require('../assets/assets/libs/popper.js/dist/umd/popper.min.js');
-//var boostrap4: any = require('../assets/assets/libs/bootstrap/dist/js/bootstrap.min.js');
-var perfectscroll: any = require('../assets/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js');
-var sparkline: any = require('../assets/assets/extra-libs/sparkline/sparkline.js');
 
-var wave: any = require('../assets/dist/js/waves.js');
-var sidebar: any = require('../assets/dist/js/sidebarmenu.js');
-var custom: any = require('../assets/dist/js/custom.min.js');
 
 
 @Component({
@@ -46,7 +39,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   removePrebootScreen: boolean;
   newNotificationCount = 0;
   appTitle = "InstituteApp";
-  appLogo = require("../assets/images/logo.png");
+    appLogo = require("../assets/images/logo-icon.png");
+    appLogoText = require("../assets/images/logo-text.png");
 
   stickyToasties: number[] = [];
 

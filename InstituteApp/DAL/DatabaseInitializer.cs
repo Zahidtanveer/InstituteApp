@@ -58,7 +58,7 @@ namespace DAL
                 _logger.LogInformation("Inbuilt account generation completed");
             }
 
-
+           
 
             if (!await _context.Customers.AnyAsync() && !await _context.ProductCategories.AnyAsync())
             {
@@ -177,6 +177,46 @@ namespace DAL
                     }
                 };
 
+                Institute ins_1 = new Institute
+                {
+                    Name = "Institute 1",
+                    Address = "test Address 1",
+                    Email = "institute1@test.com",
+                    Mobile = "03001234567",
+                    Phone = "042123456",
+                    Fax = "042123456",
+                    Code = "024",
+                    Country = "Pakistan",
+                    TimeZone = "GMT+5",
+                    Admin = "admin",
+                    Languange = "English",
+                    CreatedBy = "admin",
+                    UpdatedBy = "admin",
+                    CreatedDate =DateTime.UtcNow,
+                    UpdatedDate = DateTime.UtcNow
+          
+
+                };
+                Institute ins_2 = new Institute
+                {
+                    Name = "Institute 2",
+                    Address = "test Address 2",
+                    Email = "institute2@test.com",
+                    Mobile = "03001234567",
+                    Phone = "042123456",
+                    Fax = "042123456",
+                    Code = "029",
+                    Country = "Pakistan",
+                    TimeZone = "GMT+5",
+                    Admin = "admin",
+                    Languange = "English",
+                    CreatedBy = "admin",
+                    UpdatedBy = "admin",
+                    CreatedDate = DateTime.UtcNow,
+                    UpdatedDate = DateTime.UtcNow
+
+
+                };
 
                 _context.Customers.Add(cust_1);
                 _context.Customers.Add(cust_2);
@@ -188,7 +228,8 @@ namespace DAL
 
                 _context.Orders.Add(ordr_1);
                 _context.Orders.Add(ordr_2);
-
+                _context.Institutes.Add(ins_1);
+                _context.Institutes.Add(ins_2);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation("Seeding initial data completed");

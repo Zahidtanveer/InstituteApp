@@ -16,6 +16,9 @@ import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { InstituteComponent } from './components/Institute/Institute.componet';
+import { createInstitute } from './components/Institute/AddInstitute.component';
+import { InstituteService } from './services/institute.service';
 
 
 
@@ -29,6 +32,9 @@ import { AuthGuard } from './services/auth-guard.service';
             { path: "orders", component: OrdersComponent, canActivate: [AuthGuard], data: { title: "Orders" } },
             { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
             { path: "about", component: AboutComponent, data: { title: "About Us" } },
+            { path: "fetch-institute", component: InstituteComponent, data: { title: "Institiute" } },
+            { path: "add-institute", component: createInstitute, data: { title: "Add Institiute" } },
+            { path: "institute/edit/:Id", component: createInstitute, data: { title: "Edit Institiute" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])
