@@ -9,9 +9,9 @@ C:\Users\shoaib.TRIBECH0\source\repos\InstituteApp\InstituteApp\DAL\obj\Debug\ne
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\bin\Debug\netstandard2.0\DAL.deps.json
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\bin\Debug\netstandard2.0\DAL.dll
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\bin\Debug\netstandard2.0\DAL.pdb
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.dll
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.pdb
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache

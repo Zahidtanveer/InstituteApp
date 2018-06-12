@@ -1,6 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Component, Inject } from '@angular/core';
+import { Http, Headers ,Response} from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { InstituteService } from '../../services/institute.service'
@@ -14,47 +14,44 @@ export class InstituteComponent {
 
     public dList: InstituteData[];
     errorMessage: any;
-
-    constructor(public http: Http, private _router: Router, private _instituteService: InstituteService) {
+    constructor(http: Http, @Inject('BASE_URL') baseUrl: string,private _instituteService: InstituteService) {
+        http.get(baseUrl + 'api/Institute/Index').subscribe(result => {
+            this.dList = result.json() as InstituteData[];
+        }, error => console.error(error));
         this.getInstitutes;
     }
-   
+
     getInstitutes() {
         this._instituteService.getInstitute()
-            .catch(this.errorHandler)
-            .subscribe(data => { this.dList = data },
-                error => this.errorMessage = error);
+            .subscribe(data => { this.dList = data});
     }
 
-    //delete(instituteID) {
-    //    var ans = confirm("Do you want to delete customer with Id: " + instituteID);
-    //    if (ans) {
-    //        this._instituteService.deleteInstitute(instituteID).subscribe((data) => {
-    //            this.getInstitutes();
-    //        }, error => console.error(error))
-    //    }
-    //}
-    errorHandler(error: Response) {
-    console.log(error);
-        return Observable.throw(error);
+    delete(instituteID) {
+        var ans = confirm("Do you want to delete Institute with Id: " + instituteID);
+        if (ans) {
+            this._instituteService.deleteInstitute(instituteID).subscribe((data) => {
+                this.getInstitutes();
+            }, error => console.error(error))
+        }
     }
+   
 }
 interface InstituteData {
-    Id: number;
-    Name: string;
-    Address: string;
-    Email: string;
-    Phone: string;
-    Mobile: string;
-    Fax: string;
-    Admin: string;
-    Country: string;
-    Languange: string;
-    Code: string;
-    TimeZone: string;
-    CreatedBy: string;
-    UpdatedBy: string;
-    CreatedDate: string;
-    UpdateDate: string;
+    id: number;
+    name: string;
+    address: string;
+    email: string;
+    phone: string;
+    mobile: string;
+    fax: string;
+    admin: string;
+    country: string;
+    languange: string;
+    code: string;
+    timeZone: string;
+    createdBy: string;
+    updatedBy: string;
+    createdDate: string;
+    updatedDate: string;
 
 }

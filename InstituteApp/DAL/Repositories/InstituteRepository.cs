@@ -2,6 +2,7 @@
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,6 +19,8 @@ namespace DAL.Repositories
         {
             try
             {
+                institute.CreatedDate = DateTime.UtcNow;
+                institute.UpdatedDate = DateTime.UtcNow;
                 _appContext.Institutes.Add(institute);
                 _appContext.SaveChanges();
                 return 1;
@@ -33,7 +36,9 @@ namespace DAL.Repositories
         {
             try
             {
-                return _appContext.Institutes;
+                
+                return _appContext.Institutes.ToList();
+
             }
             catch (Exception ex)
             {

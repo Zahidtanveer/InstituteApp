@@ -68,6 +68,8 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { InstituteService } from "./services/institute.service";
 import { createInstitute } from "./components/Institute/AddInstitute.component";
 import { InstituteComponent } from "./components/Institute/Institute.componet";
+import { editInstitute } from "./components/Institute/EditInstitute.component";
+
 
 
 
@@ -122,7 +124,8 @@ import { InstituteComponent } from "./components/Institute/Institute.componet";
         HeaderComponent,
         SidebarComponent,
         createInstitute,
-        InstituteComponent
+        InstituteComponent,
+        editInstitute
 
     ],
     providers: [

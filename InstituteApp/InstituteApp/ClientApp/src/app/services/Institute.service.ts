@@ -15,7 +15,7 @@ export class InstituteService {
     }
     getInstitute() {
         return this._http.get(this.myAppUrl + 'api/Institute/Index')
-            .map((response: Response) => response.json())
+            .map((response: Response) => response.json())        
             .catch(this.errorHandler);
     }
     getInstituteById(id: number) {

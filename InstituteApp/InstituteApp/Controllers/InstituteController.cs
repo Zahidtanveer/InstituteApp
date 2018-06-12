@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InstituteApp.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/[controller]")]
+  
     public class InstituteController : Controller
     {
         private IUnitOfWork _unitOfWork;
@@ -24,18 +23,21 @@ namespace InstituteApp.Controllers
 
 
         // GET: api/Institute
-        [HttpGet("[action]")]
+        [HttpGet]
         [Route("api/Institute/Index")]
         public IEnumerable<Institute> Index()
         {
             return _unitOfWork.Institute.GetAllInstituteData();
         }
+
         // POST: api/Institute
-        [HttpPost("[action]")]
+        [HttpPost]
+        [Route("api/Institute/Create")]
         public int Create([FromBody]Institute institute)
         {
             return _unitOfWork.Institute.AddInstitute(institute);
         }
+
         [HttpGet]
         [Route("api/Institute/Details/{id}")]
         public Institute Details(int id)

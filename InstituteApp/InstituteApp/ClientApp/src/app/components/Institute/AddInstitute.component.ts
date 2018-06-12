@@ -13,16 +13,17 @@ export class createInstitute implements OnInit {
 
     instituteForm: FormGroup;
     title: string = "Create";
-    Id: number;
+    id: number;
     errorMessage: any;
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _instituteService: InstituteService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
-            this.Id = this._avRoute.snapshot.params["Id"];
+            this.id = this._avRoute.snapshot.params["Id"];
+       
         }
         this.instituteForm = this._fb.group({
-            Id: 0,
+            id: 0,
             Name: ['', [Validators.required]],
             Address: ['', [Validators.required]],
             Email: ['', [Validators.required]],
@@ -34,12 +35,17 @@ export class createInstitute implements OnInit {
             Languange: ['', [Validators.required]],
             Code: ['', [Validators.required]],
             TimeZone: ['', [Validators.required]],
+            CreatedBy:[''],
+            UpdatedBy: [''],
+            CreatedDate: [''],
+            UpdatedDate: ['']
+
         })
     }  
     ngOnInit() {
-        if (this.Id > 0) {
+        if (this.id > 0) {
             this.title = "Edit";
-            this._instituteService.getInstituteById(this.Id)
+            this._instituteService.getInstituteById(this.id)
                 .subscribe(resp => this.instituteForm.setValue(resp)
                     , error => this.errorMessage = error);
         }
@@ -76,6 +82,7 @@ export class createInstitute implements OnInit {
     get Languange() { return this.instituteForm.get('Languange'); }
     get Code() { return this.instituteForm.get('Code'); }
     get TimeZone() { return this.instituteForm.get('TimeZone'); }
+   
     
 
 }

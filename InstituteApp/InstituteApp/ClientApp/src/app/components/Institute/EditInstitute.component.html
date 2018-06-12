@@ -1,0 +1,189 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+
+            <div class="card-body">
+                <div class="card-title">
+
+                    <h1>{{title}} Institute</h1>
+
+                </div>
+
+                <form [formGroup]="instituteForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="name">Institute Name</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && name.valid || name.touched && name.valid || name.dirty && name.valid, 'is-invalid' :formDir.submitted && !name.valid || name.touched && !name.valid || name.dirty  && !name.valid}" type="text" formControlName="name">
+                                    <span class="invalid-feedback" *ngIf="!name.valid && formDir.submitted || name.touched && !name.valid || name.dirty  && !name.valid">
+                                        Name is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="name.valid && formDir.submitted || name.touched && name.valid || name.dirty && name.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="email">Institute Email</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && email.valid || email.touched && email.valid || email.dirty && email.valid, 'is-invalid' :formDir.submitted && !email.valid || email.touched && !email.valid || email.dirty  && !email.valid}" type="text" formControlName="email">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !email.valid || email.touched && !email.valid || email.dirty  && !email.valid">
+                                        Email is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf=" formDir.submitted && email.valid || email.touched && email.valid || email.dirty && email.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="admin">Admin Contact Person</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && admin.valid || admin.touched && admin.valid || admin.dirty && admin.valid, 'is-invalid' :formDir.submitted && !admin.valid || admin.touched && !admin.valid || admin.dirty  && !admin.valid}" type="text" formControlName="admin">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !admin.valid || admin.touched && !admin.valid || admin.dirty  && !admin.valid">
+                                        Admin is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && admin.valid || admin.touched && admin.valid || admin.dirty && admin.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="languange">Languange</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && languange.valid || languange.touched && languange.valid || languange.dirty && languange.valid, 'is-invalid' :formDir.submitted && !languange.valid || languange.touched && !languange.valid || languange.dirty  && !languange.valid}" type="text" formControlName="languange">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !languange.valid || languange.touched && !languange.valid || languange.dirty  && !languange.valid">
+                                        Languange is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && languange.valid || languange.touched && languange.valid || languange.dirty && languange.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="code">Institute Code</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && code.valid || code.touched && code.valid || code.dirty && code.valid, 'is-invalid' :formDir.submitted && !code.valid || code.touched && !code.valid || code.dirty  && !code.valid}" type="text" formControlName="code">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !code.valid || code.touched && !code.valid || code.dirty  && !code.valid">
+                                        Code is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && code.valid || code.touched && code.valid || code.dirty && code.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="timeZone">TimeZone</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && timeZone.valid || timeZone.touched && timeZone.valid || timeZone.dirty && timeZone.valid, 'is-invalid' :formDir.submitted && !timeZone.valid || timeZone.touched && !timeZone.valid || timeZone.dirty  && !timeZone.valid}" type="text" formControlName="timeZone">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !timeZone.valid || timeZone.touched && !timeZone.valid || timeZone.dirty  && !timeZone.valid">
+                                        TimeZone is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && timeZone.valid || timeZone.touched && timeZone.valid || timeZone.dirty && timeZone.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="address">Institute Address</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && address.valid || address.touched && address.valid || address.dirty && address.valid, 'is-invalid' :formDir.submitted && !address.valid || address.touched && !address.valid || address.dirty  && !address.valid}" type="text" formControlName="address">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !address.valid || address.touched && !address.valid || address.dirty  && !address.valid">
+                                        Address is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && address.valid || address.touched && address.valid || address.dirty && address.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label col-md-12" for="country">Country</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && country.valid || country.touched && country.valid || country.dirty && country.valid, 'is-invalid' :formDir.submitted && !country.valid || country.touched && !country.valid || country.dirty  && !country.valid}" data-val="true" formControlName="country">
+                                        <option value="">-- Select Country --</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="USA">USA</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !country.valid || country.touched && !country.valid || country.dirty  && !country.valid">
+                                        Country is required
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && country.valid || country.touched && country.valid || country.dirty && country.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="phone">Institute Phone</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && phone.valid || phone.touched && phone.valid || phone.dirty && phone.valid, 'is-invalid' :formDir.submitted && !phone.valid || phone.touched && !phone.valid || phone.dirty  && !phone.valid}" type="text" formControlName="phone">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !phone.valid || phone.touched && !phone.valid || phone.dirty  && !phone.valid">
+                                        Phone is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && phone.valid || phone.touched && phone.valid || phone.dirty && phone.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="mobile">Institute Mobile</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && mobile.valid || mobile.touched && mobile.valid || mobile.dirty && mobile.valid, 'is-invalid' :formDir.submitted && !mobile.valid || mobile.touched && !mobile.valid || mobile.dirty  && !mobile.valid}" type="text" formControlName="mobile">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !mobile.valid || mobile.touched && !mobile.valid || mobile.dirty  && !mobile.valid">
+                                        Mobile is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && mobile.valid || mobile.touched && mobile.valid || mobile.dirty && mobile.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="fax">Institute Fax</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && fax.valid || fax.touched && fax.valid || fax.dirty && fax.valid, 'is-invalid' :formDir.submitted && !fax.valid || fax.touched && !fax.valid || fax.dirty  && !fax.valid}" type="text" formControlName="fax">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !fax.valid || fax.touched && !fax.valid || fax.dirty  && !fax.valid">
+                                        Fax is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && fax.valid || fax.touched && fax.valid || fax.dirty && fax.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <input class="form-control" type="hidden" formControlName="createdBy">
+                        <input class="form-control" type="hidden" formControlName="updatedBy">
+                        <input class="form-control" type="hidden" formControlName="createdDate">
+                        <input class="form-control" type="hidden" formControlName="updatedDate">
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

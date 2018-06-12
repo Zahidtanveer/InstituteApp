@@ -1,32 +1,48 @@
-<div class="container">
+<div class="row">
 
-    <p>Fetching Data from Server</p>
-
+    
     <p *ngIf="!dList"><em>Loading...</em></p>
+    <div class="col-12">
+        <div class="card">
+          
+            <div class="card-body">
+                <div class="card-title">
+                    
+                    <h1>List of Institutes</h1>
 
-    <p>
-        <a [routerLink]="['/add-institute']">Create New</a>
-    </p>
-    <table class='table' *ngIf="dList">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let ins of dList">
-                <td>{{ ins.Id }}</td>
-                <td>{{ ins.Name }}</td>
-                <td>{{ins.Email}}</td>
-                
-                <td>
-                    <a [routerLink]="['/institute/edit/', ins.Id]">Edit</a> |
-                    <a [routerLink]="" (click)="delete(ins.Id)">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <a [routerLink]="['/add-institute']" class="btn btn-success">Create New</a>
+                </div>
+                <table class='table' *ngIf="dList">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Fax</th>
+                            <th>Admin</th>
+                            <th>Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ins of dList">
+                            <td>{{ins.id}}</td>
+                            <td>{{ins.name}}</td>
+                            <td>{{ins.email}}</td>
+                            <td>{{ins.mobile}}</td>
+                            <td>{{ins.fax}}</td>
+                            <td>{{ins.admin}}</td>
+                            <td>{{ins.code}}</td>
+                            <td>
+
+                                <a [routerLink]="['/institute/edit/', ins.id]" class="btn btn-default">Edit</a>
+                                <a [routerLink]="" (click)="delete(ins.id)" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
