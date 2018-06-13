@@ -15,7 +15,9 @@ export class createInstitute implements OnInit {
     title: string = "Create";
     id: number;
     errorMessage: any;
-
+    mobnumPattern = "^((\\+91-?)|0)?[0-9]{11}$";
+    pnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+    emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _instituteService: InstituteService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
@@ -26,30 +28,21 @@ export class createInstitute implements OnInit {
             id: 0,
             Name: ['', [Validators.required]],
             Address: ['', [Validators.required]],
-            Email: ['', [Validators.required]],
-            Phone: ['', [Validators.required]],
-            Mobile: ['', [Validators.required]],
-            Fax: ['', [Validators.required]],
+            Email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+            Phone: ['', [Validators.required, Validators.pattern(this.pnumPattern)]],
+            Mobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+            Fax: ['', [Validators.required, Validators.pattern(this.pnumPattern)]],
             Admin: ['', [Validators.required]],
             Country: ['', [Validators.required]],
             Languange: ['', [Validators.required]],
             Code: ['', [Validators.required]],
-            TimeZone: ['', [Validators.required]],
-            CreatedBy:[''],
-            UpdatedBy: [''],
-            CreatedDate: [''],
-            UpdatedDate: ['']
+            TimeZone: ['', [Validators.required]]
+       
 
         })
     }  
     ngOnInit() {
-        if (this.id > 0) {
-            this.title = "Edit";
-            this._instituteService.getInstituteById(this.id)
-                .subscribe(resp => this.instituteForm.setValue(resp)
-                    , error => this.errorMessage = error);
-        }
-    }
+   }
     save() {
         if (!this.instituteForm.valid) {
             return;
@@ -60,12 +53,7 @@ export class createInstitute implements OnInit {
                     this._router.navigate(['/fetch-institute']);
                 }, error => this.errorMessage = error)
         }
-        else if (this.title == "Edit") {
-            this._instituteService.updateInstitute(this.instituteForm.value)
-                .subscribe((data) => {
-                    this._router.navigate(['/fetch-institute']);
-                }, error => this.errorMessage = error)
-        }
+       
     }  
     cancel() {
         this._router.navigate(['/fetch-institute']);

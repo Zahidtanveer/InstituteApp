@@ -12,12 +12,6 @@ C:\Users\shoaib.TRIBECH0\source\repos\InstituteApp\InstituteApp\InstituteApp\obj
 C:\Users\shoaib.TRIBECH0\source\repos\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csproj.CopyComplete
 C:\Users\shoaib.TRIBECH0\source\repos\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.dll
 C:\Users\shoaib.TRIBECH0\source\repos\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.pdb
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csprojAssemblyReference.cache
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csproj.CoreCompileInputs.cache
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.AssemblyInfoInputs.cache
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.AssemblyInfo.cs
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.dll
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.pdb
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\InstituteApp.deps.json
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\InstituteApp.runtimeconfig.json
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\InstituteApp.runtimeconfig.dev.json
@@ -25,4 +19,10 @@ C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\InstituteApp.pdb
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\DAL.dll
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\bin\Debug\netcoreapp2.0\DAL.pdb
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csprojAssemblyReference.cache
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csproj.CoreCompileInputs.cache
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.AssemblyInfoInputs.cache
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.AssemblyInfo.cs
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.csproj.CopyComplete
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.dll
+C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\InstituteApp\obj\Debug\netcoreapp2.0\InstituteApp.pdb

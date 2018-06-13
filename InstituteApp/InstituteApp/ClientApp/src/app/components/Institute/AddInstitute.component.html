@@ -29,16 +29,17 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Email">Institute Email</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Email.valid || Email.touched && Email.valid || Email.dirty && Email.valid, 'is-invalid' :formDir.submitted && !Email.valid || Email.touched && !Email.valid || Email.dirty  && !Email.valid}" type="text" formControlName="Email">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Email.valid || Email.touched && Email.valid || Email.dirty && Email.valid, 'is-invalid' :formDir.submitted && !Email.valid || Email.touched && !Email.valid || Email.dirty  && !Email.valid}" formControlName="Email">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !Email.valid || Email.touched && !Email.valid || Email.dirty  && !Email.valid">
-                                        Email is required.
+                                        <span *ngIf="Email.errors.required">  Email is required.</span>
+                                        <span *ngIf="Email.errors.pattern">Email not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf=" formDir.submitted && Email.valid || Email.touched && Email.valid || Email.dirty && Email.valid">
                                         Woohoo!
                                     </span>
                                 </div>
 
-                              
+
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Admin">Admin Contact Person</label>
@@ -55,7 +56,11 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Languange">Languange</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Languange.valid || Languange.touched && Languange.valid || Languange.dirty && Languange.valid, 'is-invalid' :formDir.submitted && !Languange.valid || Languange.touched && !Languange.valid || Languange.dirty  && !Languange.valid}" type="text" formControlName="Languange">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && Languange.valid || Languange.touched && Languange.valid || Languange.dirty && Languange.valid, 'is-invalid' :formDir.submitted && !Languange.valid || Languange.touched && !Languange.valid || Languange.dirty  && !Languange.valid}" data-val="true" formControlName="Languange">
+                                        <option value="">-- Select Language --</option>
+                                        <option value="English">English</option>
+                                        <option value="Urdu">Urdu</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !Languange.valid || Languange.touched && !Languange.valid || Languange.dirty  && !Languange.valid">
                                         Languange is required.
                                     </span>
@@ -63,7 +68,7 @@
                                         Woohoo!
                                     </span>
                                 </div>
-                                
+
                             </div>
 
                             <div class="form-group row">
@@ -77,12 +82,16 @@
                                         Woohoo!
                                     </span>
                                 </div>
-                               
+
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="TimeZone">TimeZone</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && TimeZone.valid || TimeZone.touched && TimeZone.valid || TimeZone.dirty && TimeZone.valid, 'is-invalid' :formDir.submitted && !TimeZone.valid || TimeZone.touched && !TimeZone.valid || TimeZone.dirty  && !TimeZone.valid}" type="text" formControlName="TimeZone">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && TimeZone.valid || TimeZone.touched && TimeZone.valid || TimeZone.dirty && TimeZone.valid, 'is-invalid' :formDir.submitted && !TimeZone.valid || TimeZone.touched && !TimeZone.valid || TimeZone.dirty  && !TimeZone.valid}" data-val="true" formControlName="TimeZone">
+                                        <option value="">-- Select TimeZone --</option>
+                                        <option value="Pakistan (GMT+5)">Pakistan (GMT+5)</option>
+                                        <option value="USA (GMT-4)">USA (GMT-4)</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !TimeZone.valid || TimeZone.touched && !TimeZone.valid || TimeZone.dirty  && !TimeZone.valid">
                                         TimeZone is required.
                                     </span>
@@ -91,7 +100,7 @@
                                     </span>
                                 </div>
 
-                              
+
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6">
@@ -106,7 +115,7 @@
                                         Woohoo!
                                     </span>
                                 </div>
-                               
+
                             </div>
 
                             <div class="form-group row">
@@ -124,51 +133,56 @@
                                         Woohoo!
                                     </span>
                                 </div>
-                                
+
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Phone">Institute Phone</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Phone.valid || Phone.touched && Phone.valid || Phone.dirty && Phone.valid, 'is-invalid' :formDir.submitted && !Phone.valid || Phone.touched && !Phone.valid || Phone.dirty  && !Phone.valid}" type="text" formControlName="Phone">
+                                    <input placeholder="eg: 0401234567" class="form-control" [ngClass]="{'is-valid': formDir.submitted && Phone.valid || Phone.touched && Phone.valid || Phone.dirty && Phone.valid, 'is-invalid' :formDir.submitted && !Phone.valid || Phone.touched && !Phone.valid || Phone.dirty  && !Phone.valid}" formControlName="Phone">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !Phone.valid || Phone.touched && !Phone.valid || Phone.dirty  && !Phone.valid">
-                                        Phone is required.
+                                        <span *ngIf="Phone.errors.required">  Phone is required.</span>
+                                        <span *ngIf="Phone.errors.pattern">Phone not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && Phone.valid || Phone.touched && Phone.valid || Phone.dirty && Phone.valid">
                                         Woohoo!
                                     </span>
                                 </div>
-                              
+
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Mobile">Institute Mobile</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Mobile.valid || Mobile.touched && Mobile.valid || Mobile.dirty && Mobile.valid, 'is-invalid' :formDir.submitted && !Mobile.valid || Mobile.touched && !Mobile.valid || Mobile.dirty  && !Mobile.valid}" type="text" formControlName="Mobile">
+                                    <input placeholder="eg: 03001234567" class="form-control" [ngClass]="{'is-valid': formDir.submitted && Mobile.valid || Mobile.touched && Mobile.valid || Mobile.dirty && Mobile.valid, 'is-invalid' :formDir.submitted && !Mobile.valid || Mobile.touched && !Mobile.valid || Mobile.dirty  && !Mobile.valid}" formControlName="Mobile">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !Mobile.valid || Mobile.touched && !Mobile.valid || Mobile.dirty  && !Mobile.valid">
-                                        Mobile is required.
+                                        <span *ngIf="Mobile.errors.required">  Mobile is required.</span>
+                                        <span *ngIf="Mobile.errors.pattern">Mobile not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && Mobile.valid || Mobile.touched && Mobile.valid || Mobile.dirty && Mobile.valid">
                                         Woohoo!
                                     </span>
                                 </div>
-                                
+
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Fax">Institute Fax</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Fax.valid || Fax.touched && Fax.valid || Fax.dirty && Fax.valid, 'is-invalid' :formDir.submitted && !Fax.valid || Fax.touched && !Fax.valid || Fax.dirty  && !Fax.valid}" type="text" formControlName="Fax">
+                                    <input placeholder="eg: 0401234567"
+                                           class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && Fax.valid || Fax.touched && Fax.valid || Fax.dirty && Fax.valid, 'is-invalid' :formDir.submitted && !Fax.valid || Fax.touched && !Fax.valid || Fax.dirty  && !Fax.valid}" formControlName="Fax">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !Fax.valid || Fax.touched && !Fax.valid || Fax.dirty  && !Fax.valid">
-                                        Fax is required.
+                                        <span *ngIf="Fax.errors.required">  Fax is required.</span>
+                                        <span *ngIf="Fax.errors.pattern">Fax not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && Fax.valid || Fax.touched && Fax.valid || Fax.dirty && Fax.valid">
                                         Woohoo!
                                     </span>
                                 </div>
-                               
+
                             </div>
 
 
                         </div>
-                       
+
                         <div class="form-group col-md-12">
                             <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
                             <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
@@ -184,3 +198,4 @@
 
     </div>
 </div>
+

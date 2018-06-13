@@ -1,0 +1,47 @@
+<div class="row">
+
+
+    <p *ngIf="!dList"><em>Loading...</em></p>
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="card-title">
+
+                    <h1>List of Acadamics</h1>
+
+                    <a [routerLink]="['/add-acadamic']" class="btn btn-success">Create New</a>
+                </div>
+                <table class='table' *ngIf="dList">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Start Year</th>
+                            <th>Start Month</th>
+                            <th>End Year</th>
+                            <th>End Month</th>
+                            <th>IsActive</th>
+                          
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ac of dList">
+                            <td>{{ac.id}}</td>
+                            <td>{{ac.startYear}}</td>
+                            <td>{{ac.startMonth}}</td>
+                            <td>{{ac.endYear}}</td>
+                            <td>{{ac.endMonth}}</td>
+                            <td>{{ac.isActive}}</td>
+                            <td>
+
+                                <a [routerLink]="['/acadamic/edit/', ac.id]" class="btn btn-default">Edit</a>
+                                <a [routerLink]="" (click)="delete(ac.id)" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

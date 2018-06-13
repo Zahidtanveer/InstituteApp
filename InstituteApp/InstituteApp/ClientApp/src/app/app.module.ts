@@ -69,6 +69,10 @@ import { InstituteService } from "./services/institute.service";
 import { createInstitute } from "./components/Institute/AddInstitute.component";
 import { InstituteComponent } from "./components/Institute/Institute.componet";
 import { editInstitute } from "./components/Institute/EditInstitute.component";
+import { AcadamicComponent } from "./components/Acadamic/acadamic.component";
+import { AcadamicService } from "./services/acadamic.service";
+import { createAcadamic } from "./components/Acadamic/AddAcadamic.component";
+import { editAcadamic } from "./components/Acadamic/EditAcadamic.component";
 
 
 
@@ -123,9 +127,8 @@ import { editInstitute } from "./components/Institute/EditInstitute.component";
         GroupByPipe,
         HeaderComponent,
         SidebarComponent,
-        createInstitute,
-        InstituteComponent,
-        editInstitute
+        createInstitute,InstituteComponent,editInstitute,
+        AcadamicComponent, createAcadamic, editAcadamic
 
     ],
     providers: [
@@ -141,7 +144,8 @@ import { editInstitute } from "./components/Institute/EditInstitute.component";
         AccountEndpoint,
         LocalStoreManager,
         EndpointFactory,
-        InstituteService
+        InstituteService,
+        AcadamicService
     ],
     bootstrap: [AppComponent]
 })

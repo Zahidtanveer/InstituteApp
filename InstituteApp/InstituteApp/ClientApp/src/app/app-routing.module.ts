@@ -20,6 +20,9 @@ import { InstituteComponent } from './components/Institute/Institute.componet';
 import { createInstitute } from './components/Institute/AddInstitute.component';
 import { InstituteService } from './services/institute.service';
 import { editInstitute } from './components/Institute/EditInstitute.component';
+import { AcadamicComponent } from './components/Acadamic/acadamic.component';
+import { createAcadamic } from './components/Acadamic/AddAcadamic.component';
+import { editAcadamic } from './components/Acadamic/EditAcadamic.component';
 
 
 
@@ -37,6 +40,9 @@ import { editInstitute } from './components/Institute/EditInstitute.component';
             { path: "fetch-institute", component: InstituteComponent, data: { title: "Institiute" } },
             { path: "add-institute", component: createInstitute, data: { title: "Add Institiute" } },
             { path: "institute/edit/:Id", component: editInstitute, data: { title: "Edit Institiute" } },
+            { path: "fetch-acadamic", component: AcadamicComponent, data: { title: "Acadamic" } },
+            { path: "add-acadamic", component: createAcadamic, data: { title: "Add Acadamic" } },
+            { path: "acadamic/edit/:Id", component: editAcadamic, data: { title: "Edit Acadamic" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

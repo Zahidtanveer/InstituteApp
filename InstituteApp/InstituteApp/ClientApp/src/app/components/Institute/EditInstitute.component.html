@@ -26,12 +26,14 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="email">Institute Email</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && email.valid || email.touched && email.valid || email.dirty && email.valid, 'is-invalid' :formDir.submitted && !email.valid || email.touched && !email.valid || email.dirty  && !email.valid}" type="text" formControlName="email">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && email.valid || email.touched && email.valid || email.dirty && email.valid, 'is-invalid' :formDir.submitted && !email.valid || email.touched && !email.valid || email.dirty  && !email.valid}" formControlName="email">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !email.valid || email.touched && !email.valid || email.dirty  && !email.valid">
-                                        Email is required.
+                                        <span *ngIf="email.errors.required">  Email is required.</span>
+                                        <span *ngIf="email.errors.pattern">Email not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf=" formDir.submitted && email.valid || email.touched && email.valid || email.dirty && email.valid">
                                         Woohoo!
@@ -53,11 +55,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class=" control-label col-md-12" for="languange">Languange</label>
+                                <label class=" control-label col-md-12" for="languange">Language</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && languange.valid || languange.touched && languange.valid || languange.dirty && languange.valid, 'is-invalid' :formDir.submitted && !languange.valid || languange.touched && !languange.valid || languange.dirty  && !languange.valid}" type="text" formControlName="languange">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && languange.valid || languange.touched && languange.valid || languange.dirty && languange.valid, 'is-invalid' :formDir.submitted && !languange.valid || languange.touched && !languange.valid || languange.dirty  && !languange.valid}" data-val="true" formControlName="languange">
+                                        <option value="">-- Select Language --</option>
+                                        <option value="English">English</option>
+                                        <option value="Urdu">Urdu</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !languange.valid || languange.touched && !languange.valid || languange.dirty  && !languange.valid">
-                                        Languange is required.
+                                        Language is required.
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && languange.valid || languange.touched && languange.valid || languange.dirty && languange.valid">
                                         Woohoo!
@@ -65,6 +71,7 @@
                                 </div>
 
                             </div>
+
 
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="code">Institute Code</label>
@@ -82,7 +89,11 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="timeZone">TimeZone</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && timeZone.valid || timeZone.touched && timeZone.valid || timeZone.dirty && timeZone.valid, 'is-invalid' :formDir.submitted && !timeZone.valid || timeZone.touched && !timeZone.valid || timeZone.dirty  && !timeZone.valid}" type="text" formControlName="timeZone">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && timeZone.valid || timeZone.touched && timeZone.valid || timeZone.dirty && timeZone.valid, 'is-invalid' :formDir.submitted && !timeZone.valid || timeZone.touched && !timeZone.valid || timeZone.dirty  && !timeZone.valid}" data-val="true" formControlName="timeZone">
+                                        <option value="">-- Select TimeZone --</option>
+                                        <option value="Pakistan (GMT+5)">Pakistan (GMT+5)</option>
+                                        <option value="USA (GMT-4)">USA (GMT-4)</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !timeZone.valid || timeZone.touched && !timeZone.valid || timeZone.dirty  && !timeZone.valid">
                                         TimeZone is required.
                                     </span>
@@ -129,9 +140,10 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="phone">Institute Phone</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && phone.valid || phone.touched && phone.valid || phone.dirty && phone.valid, 'is-invalid' :formDir.submitted && !phone.valid || phone.touched && !phone.valid || phone.dirty  && !phone.valid}" type="text" formControlName="phone">
+                                    <input placeholder="eg: 0401234567" class="form-control" [ngClass]="{'is-valid': formDir.submitted && phone.valid || phone.touched && phone.valid || phone.dirty && phone.valid, 'is-invalid' :formDir.submitted && !phone.valid || phone.touched && !phone.valid || phone.dirty  && !phone.valid}" formControlName="phone">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !phone.valid || phone.touched && !phone.valid || phone.dirty  && !phone.valid">
-                                        Phone is required.
+                                        <span *ngIf="phone.errors.required">  Phone is required.</span>
+                                        <span *ngIf="phone.errors.pattern">Phone not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && phone.valid || phone.touched && phone.valid || phone.dirty && phone.valid">
                                         Woohoo!
@@ -142,9 +154,10 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="mobile">Institute Mobile</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && mobile.valid || mobile.touched && mobile.valid || mobile.dirty && mobile.valid, 'is-invalid' :formDir.submitted && !mobile.valid || mobile.touched && !mobile.valid || mobile.dirty  && !mobile.valid}" type="text" formControlName="mobile">
+                                    <input placeholder="eg: 03001234567" class="form-control" [ngClass]="{'is-valid': formDir.submitted && mobile.valid || mobile.touched && mobile.valid || mobile.dirty && mobile.valid, 'is-invalid' :formDir.submitted && !mobile.valid || mobile.touched && !mobile.valid || mobile.dirty  && !mobile.valid}" formControlName="mobile">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !mobile.valid || mobile.touched && !mobile.valid || mobile.dirty  && !mobile.valid">
-                                        Mobile is required.
+                                        <span *ngIf="mobile.errors.required">  Mobile is required.</span>
+                                        <span *ngIf="mobile.errors.pattern">Mobile not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && mobile.valid || mobile.touched && mobile.valid || mobile.dirty && mobile.valid">
                                         Woohoo!
@@ -155,9 +168,12 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="fax">Institute Fax</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && fax.valid || fax.touched && fax.valid || fax.dirty && fax.valid, 'is-invalid' :formDir.submitted && !fax.valid || fax.touched && !fax.valid || fax.dirty  && !fax.valid}" type="text" formControlName="fax">
+                                    <input placeholder="eg: 0401234567"
+                                           class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && fax.valid || fax.touched && fax.valid || fax.dirty && fax.valid, 'is-invalid' :formDir.submitted && !fax.valid || fax.touched && !fax.valid || fax.dirty  && !fax.valid}" formControlName="fax">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !fax.valid || fax.touched && !fax.valid || fax.dirty  && !fax.valid">
-                                        Fax is required.
+                                        <span *ngIf="fax.errors.required">  Fax is required.</span>
+                                        <span *ngIf="fax.errors.pattern">Fax not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && fax.valid || fax.touched && fax.valid || fax.dirty && fax.valid">
                                         Woohoo!

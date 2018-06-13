@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+
+            <div class="card-body">
+                <div class="card-title">
+
+                    <h1>{{title}} Acadamics</h1>
+
+                </div>
+
+                <form [formGroup]="acadamicForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="StartYear">Start Year</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && StartYear.valid || StartYear.touched && StartYear.valid || StartYear.dirty && StartYear.valid, 'is-invalid' :formDir.submitted && !StartYear.valid || StartYear.touched && !StartYear.valid || StartYear.dirty  && !StartYear.valid}" data-val="true" formControlName="StartYear">
+                                        <option value="">-- Select Start Year --</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!StartYear.valid && formDir.submitted || StartYear.touched && !StartYear.valid || StartYear.dirty  && !StartYear.valid">
+                                        StartYear is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="StartYear.valid && formDir.submitted || StartYear.touched && StartYear.valid || StartYear.dirty && StartYear.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="StartMonth">Start Month</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && StartMonth.valid || StartMonth.touched && StartMonth.valid || StartMonth.dirty && StartMonth.valid, 'is-invalid' :formDir.submitted && !StartMonth.valid || StartMonth.touched && !StartMonth.valid || StartMonth.dirty  && !StartMonth.valid}" data-val="true" formControlName="StartMonth">
+
+                                        <option value="">-- Select Start Month --</option>
+                                        <option value="Jan">Jan</option>
+                                        <option value="Feb">Feb</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="Aug">Aug</option>
+                                        <option value="Sep">Sep</option>
+                                        <option value="Oct">Oct</option>
+                                        <option value="Nov">Nov</option>
+                                        <option value="Dec">Dec</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !StartMonth.valid || StartMonth.touched && !StartMonth.valid || StartMonth.dirty  && !StartMonth.valid">
+                                        Start Month is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf=" formDir.submitted && StartMonth.valid || StartMonth.touched && StartMonth.valid || StartMonth.dirty && StartMonth.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="EndYear">End Year</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && EndYear.valid || EndYear.touched && EndYear.valid || EndYear.dirty && EndYear.valid, 'is-invalid' :formDir.submitted && !EndYear.valid || EndYear.touched && !EndYear.valid || EndYear.dirty  && !EndYear.valid}" data-val="true" formControlName="EndYear">
+                                        <option value="">-- Select End Year --</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                    </select>
+                                        <span class="invalid-feedback" *ngIf="formDir.submitted && !EndYear.valid || EndYear.touched && !EndYear.valid || EndYear.dirty  && !EndYear.valid">
+                                        End Year is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && EndYear.valid || EndYear.touched && EndYear.valid || EndYear.dirty && EndYear.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="EndMonth">End Month</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && EndMonth.valid || EndMonth.touched && EndMonth.valid || EndMonth.dirty && EndMonth.valid, 'is-invalid' :formDir.submitted && !EndMonth.valid || EndMonth.touched && !EndMonth.valid || EndMonth.dirty  && !EndMonth.valid}" data-val="true" formControlName="EndMonth">
+                                        <option value="">-- Select End Month --</option>
+                                        <option value="Jan">Jan</option>
+                                        <option value="Feb">Feb</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="Aug">Aug</option>
+                                        <option value="Sep">Sep</option>
+                                        <option value="Oct">Oct</option>
+                                        <option value="Nov">Nov</option>
+                                        <option value="Dec">Dec</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !EndMonth.valid || EndMonth.touched && !EndMonth.valid || EndMonth.dirty  && !EndMonth.valid">
+                                        End Month is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && EndMonth.valid || EndMonth.touched && EndMonth.valid || EndMonth.dirty && EndMonth.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="IsActive">IsActive</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && IsActive.valid || IsActive.touched && IsActive.valid || IsActive.dirty && IsActive.valid, 'is-invalid' :formDir.submitted && !IsActive.valid || IsActive.touched && !IsActive.valid || IsActive.dirty  && !IsActive.valid}" data-val="true" formControlName="IsActive">
+                                        <option value="">-- Activate / Deactivate  --</option>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                   </select>
+                                        <span class="invalid-feedback" *ngIf="formDir.submitted && !IsActive.valid || IsActive.touched && !IsActive.valid || IsActive.dirty  && !IsActive.valid">
+                                        IsActive is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && IsActive.valid || IsActive.touched && IsActive.valid || IsActive.dirty && IsActive.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+
+
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

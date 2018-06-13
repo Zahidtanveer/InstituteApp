@@ -225,14 +225,15 @@
                 <nav class="sidebar-nav app-component">
                     <ul id="sidebarnav app-component" class="p-t-30">
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Institute</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Institute</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-acadamic']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Acadamics</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewOrders"> <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/orders" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">{{'mainMenu.Orders' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/about']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.About' | translate}}</span></a></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;"  aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic </span></a></li>
                                 <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard </span></a></li>
@@ -273,7 +274,7 @@
             <!-- End Sidebar scroll-->
         </aside>
     </div>
-    <div id="mainContent" class="page-wrapper app-component">
+    <div id="mainContent" class="app-component" [ngClass]="{'page-wrapper':isUserLoggedIn,'':!isUserLoggedIn}">
         <router-outlet></router-outlet>
     </div>
 </div>

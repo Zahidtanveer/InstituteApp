@@ -1,5 +1,5 @@
 #pre-bootstrap {
-    background-color: #000000;
+    background: linear-gradient(to bottom, #33ccff 0%, #0066ff 100%);
     bottom: 0px;
     left: 0px;
     position: fixed;
@@ -69,7 +69,7 @@
         font-size: 20px;
         opacity: 0;
         display: inline-block;
-        color: gray;
+        color: black;
     }
 
 @keyframes lol {

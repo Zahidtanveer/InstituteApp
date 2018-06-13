@@ -19,8 +19,6 @@ namespace DAL.Repositories
         {
             try
             {
-                institute.CreatedDate = DateTime.UtcNow;
-                institute.UpdatedDate = DateTime.UtcNow;
                 _appContext.Institutes.Add(institute);
                 _appContext.SaveChanges();
                 return 1;

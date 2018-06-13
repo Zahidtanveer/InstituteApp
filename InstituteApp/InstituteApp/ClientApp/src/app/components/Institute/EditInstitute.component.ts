@@ -12,10 +12,12 @@ import { InstituteService } from '../../services/institute.service'
 export class editInstitute implements OnInit {
 
     instituteForm: FormGroup;
-    title: string = "Eidt";
+    title: string = "";
     id: number;
     errorMessage: any;
-
+    mobnumPattern = "^((\\+91-?)|0)?[0-9]{11}$";
+    pnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+    emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _instituteService: InstituteService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
@@ -25,10 +27,10 @@ export class editInstitute implements OnInit {
             id: 0,
             name: ['', [Validators.required]],
             address: ['', [Validators.required]],
-            email: ['', [Validators.required]],
-            phone: ['', [Validators.required]],
-            mobile: ['', [Validators.required]],
-            fax: ['', [Validators.required]],
+            email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+            phone: ['', [Validators.required, Validators.pattern(this.pnumPattern)]],
+            mobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+            fax: ['', [Validators.required, Validators.pattern(this.pnumPattern)]],
             admin: ['', [Validators.required]],
             country: ['', [Validators.required]],
             languange: ['', [Validators.required]],
@@ -50,16 +52,10 @@ export class editInstitute implements OnInit {
         }
     }
     save() {
-        if (!this.instituteForm.valid) {
+       if (!this.instituteForm.valid) {
             return;
         }
-        if (this.title == "Create") {
-            this._instituteService.saveInstitute(this.instituteForm.value)
-                .subscribe((data) => {
-                    this._router.navigate(['/fetch-institute']);
-                }, error => this.errorMessage = error)
-        }
-        else if (this.title == "Edit") {
+       if (this.title == "Edit") {
             this._instituteService.updateInstitute(this.instituteForm.value)
                 .subscribe((data) => {
                     this._router.navigate(['/fetch-institute']);
