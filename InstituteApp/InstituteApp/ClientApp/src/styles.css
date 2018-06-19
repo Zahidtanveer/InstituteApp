@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/dist/css/style.min.css';
 @import 'assets/assets/libs/flot/css/float-chart.css';
+@import url('assets/assets/libs/datatables.net-bs4/css/datatables.bootstrap4.css');
+@import url('../node_modules/ng2-toasty/style-bootstrap.css');
 
 
-/*@import 'app/assets/styles/vertical-tabs.css';
-@import 'app/assets/styles/styles-vendor.css';
+/*@import 'app/assets/styles/styles-vendor.css';
+@import 'app/assets/styles/vertical-tabs.css';
 @import 'app/assets/styles/ngx-datatable.css';
 @import 'app/assets/styles/themes.css';*/
 

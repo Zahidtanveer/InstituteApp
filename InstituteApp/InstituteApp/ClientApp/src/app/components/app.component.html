@@ -1,7 +1,7 @@
 
 
 
-<div id="main-wrapper" class="app-component">
+<div id="main-wrapper" class="">
     <ng2-toasty></ng2-toasty>
     <div *ngIf="isUserLoggedIn">
         <header class="topbar" data-navbarbg="skin5">
@@ -201,7 +201,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <a class="dropdown-item" href="javascript:void(0)" routerLink="/settings"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:;" (click)="logout()"><i class="fa fa-power-off m-r-5 m-l-5"></i> {{'mainMenu.Logout' | translate}}</a>
                                 <div class="dropdown-divider"></div>
@@ -222,12 +222,12 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
-                <nav class="sidebar-nav app-component">
-                    <ul id="sidebarnav app-component" class="p-t-30">
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Institute</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-acadamic']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Acadamics</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav" class="p-t-30">
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']"  aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']"  aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Institute</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-acadamic']"  aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Acadamics</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']"  aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewOrders"> <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/orders" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">{{'mainMenu.Orders' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/about']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.About' | translate}}</span></a></li>
 

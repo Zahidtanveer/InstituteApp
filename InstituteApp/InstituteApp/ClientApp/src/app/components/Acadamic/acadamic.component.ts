@@ -1,10 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectorRef } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
 import { AcadamicService } from '../../services/acadamic.service'
-
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 @Component({
     selector: 'fetch-acadamic',
     templateUrl: './acadamic.component.html'
@@ -12,16 +14,24 @@ import { AcadamicService } from '../../services/acadamic.service'
 
 export class AcadamicComponent {
 
-    public dList:AcadamicData[];
+    public dList: AcadamicData[];
     errorMessage: any;
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _acadamicService: AcadamicService, private alertService: AlertService) {
+    dataTable: any;
+    constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _acadamicService: AcadamicService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
         http.get(baseUrl + 'api/Acadamic/Index').subscribe(result => {
             this.dList = result.json() as AcadamicData[];
+            this.chRef.detectChanges();
+
+            const table: any = $('table');
+            this.dataTable = table.DataTable({
+                "displayLength": 5
+            });
+
         }, error => console.error(error));
-        this.getInstitutes;
+        this.getAcadamics();
     }
 
-    getInstitutes() {
+    getAcadamics() {
         this._acadamicService.getAcadamic()
             .subscribe(data => { this.dList = data });
     }
@@ -32,14 +42,14 @@ export class AcadamicComponent {
         var ans = confirm("Do you want to delete Institute with Id: " + acadamicID);
         if (ans) {
             this._acadamicService.deleteAcadamic(acadamicID).subscribe((data) => {
-                this.getInstitutes();
+                this.getAcadamics();
             }, error => console.error(error))
         }
     }
 
     deletehelper(acadamicID) {
         this._acadamicService.deleteAcadamic(acadamicID).subscribe((data) => {
-            this.getInstitutes();
+            this.getAcadamics();
         }, error => console.error(error))
     }
 

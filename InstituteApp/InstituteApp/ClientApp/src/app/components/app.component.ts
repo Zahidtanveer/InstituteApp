@@ -1,3 +1,4 @@
+
 ///
 // ====================================================
 // More Templates: https://www.ebenmonney.com/templates
@@ -20,8 +21,8 @@ import { ConfigurationService } from '../services/configuration.service';
 import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
 
-var alertify: any = require('../assets/scripts/alertify.js');
 
+var alertify: any = require('../assets/scripts/alertify.js');
 
 
 
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   appTitle = "InstituteApp";
     appLogo = require("../assets/images/logo-icon.png");
     appLogoText = require("../assets/images/logo-text.png");
-
+    
   stickyToasties: number[] = [];
 
   dataLoadingConsecutiveFailurs = 0;
@@ -82,7 +83,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.appTitleService.appName = this.appTitle;
   }
-
+   
 
   ngAfterViewInit() {
 
@@ -174,7 +175,10 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.router.navigateByUrl((<NavigationStart>event).url.toLowerCase());
         }
       }
-    });
+      });
+     
+
+
   }
 
 

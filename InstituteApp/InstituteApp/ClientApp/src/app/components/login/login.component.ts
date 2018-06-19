@@ -10,6 +10,7 @@ import { AuthService } from "../../services/auth.service";
 import { ConfigurationService } from '../../services/configuration.service';
 import { Utilities } from '../../services/utilities';
 import { UserLogin } from '../../models/user-login.model';
+import { window } from "rxjs/operator/window";
 
 @Component({
     selector: "app-login",
@@ -119,6 +120,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     this.isLoading = false;
                 }, 500);
             });
+    
     }
 
 

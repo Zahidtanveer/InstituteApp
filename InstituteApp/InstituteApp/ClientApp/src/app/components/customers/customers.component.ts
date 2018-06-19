@@ -14,5 +14,5 @@ import { fadeInOut } from '../../services/animations';
     animations: [fadeInOut]
 })
 export class CustomersComponent {
-
+   
 }

@@ -1,13 +1,28 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Dashboard</h4>
+            <div class="ml-auto text-right">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="fetch-institute">Institute</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Index</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
 
-    
+
     <p *ngIf="!dList"><em>Loading...</em></p>
     <div class="col-12">
         <div class="card">
-          
+
             <div class="card-body">
                 <div class="card-title">
-                    
+
                     <h1>List of Institutes</h1>
 
                     <a [routerLink]="['/add-institute']" class="btn btn-success">Create New</a>
