@@ -62,14 +62,24 @@
     <None Remove="ClientApp\src\app\components\Acadamic\acadamic.component.ts" />
     <None Remove="ClientApp\src\app\components\Acadamic\AddAcadamic.component.ts" />
     <None Remove="ClientApp\src\app\components\Acadamic\EditAcadamic.component.ts" />
+    <None Remove="ClientApp\src\app\components\caste_religion\caste.component.ts" />
+    <None Remove="ClientApp\src\app\components\caste_religion\index.component.ts" />
+    <None Remove="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
+    <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
+    <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\acadamic.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\AddAcadamic.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\EditAcadamic.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\caste.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\index.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -38,13 +38,13 @@ export class AcadamicComponent {
 
     delete(acadamicID) {
 
-        //this.alertService.showDialog('Are you sure you want to delete this Institute with Id:' + instituteID, DialogType.confirm, () => this.deletehelper(instituteID));
-        var ans = confirm("Do you want to delete Institute with Id: " + acadamicID);
-        if (ans) {
-            this._acadamicService.deleteAcadamic(acadamicID).subscribe((data) => {
-                this.getAcadamics();
-            }, error => console.error(error))
-        }
+        this.alertService.showDialog('Are you sure you want to delete this Institute with Id:' + acadamicID, DialogType.confirm, () => this.deletehelper(acadamicID));
+        //var ans = confirm("Do you want to delete Institute with Id: " + acadamicID);
+        //if (ans) {
+        //    this._acadamicService.deleteAcadamic(acadamicID).subscribe((data) => {
+        //        this.getAcadamics();
+        //    }, error => console.error(error))
+        //}
     }
 
     deletehelper(acadamicID) {

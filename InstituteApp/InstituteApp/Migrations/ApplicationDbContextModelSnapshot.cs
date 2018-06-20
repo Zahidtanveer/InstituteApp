@@ -152,6 +152,28 @@ namespace InstituteApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("DAL.Models.Caste", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("caste");
+                });
+
             modelBuilder.Entity("DAL.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -395,6 +417,28 @@ namespace InstituteApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppProductCategories");
+                });
+
+            modelBuilder.Entity("DAL.Models.Religion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("religion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL.Models
 {
-   public class Caste
+   public class Caste : AuditableEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

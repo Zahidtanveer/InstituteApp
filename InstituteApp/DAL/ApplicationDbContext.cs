@@ -26,6 +26,8 @@ namespace DAL
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Acadamic> Acadamics { get; set; }
+        public DbSet<Caste> Castes { get; set; }
+        public DbSet<Religion> Religions { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -67,6 +69,8 @@ namespace DAL
 
             builder.Entity<Institute>().ToTable($"App{nameof(this.Institutes)}");
             builder.Entity<Acadamic>().ToTable($"App{nameof(this.Acadamics)}");
+            builder.Entity<Caste>().ToTable("caste");
+            builder.Entity<Religion>().ToTable("religion");
         }
 
 

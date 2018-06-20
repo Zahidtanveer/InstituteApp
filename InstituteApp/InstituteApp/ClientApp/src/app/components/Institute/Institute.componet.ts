@@ -28,7 +28,8 @@ export class InstituteComponent {
 
             const table: any = $('table');
             this.dataTable = table.DataTable({
-                "displayLength": 5
+                "displayLength": 5,
+                ordering: false
             });
            
         }, error => console.error(error));
@@ -43,13 +44,13 @@ export class InstituteComponent {
     
     delete(instituteID) {
 
-       //this.alertService.showDialog('Are you sure you want to delete this Institute with Id:' + instituteID, DialogType.confirm, () => this.deletehelper(instituteID));
-        var ans = confirm("Do you want to delete Institute with Id: " + instituteID);
-        if (ans) {
-        this._instituteService.deleteInstitute(instituteID).subscribe((data) => {
-            this.getInstitutes();
-        }, error => console.error(error))
-        }
+       this.alertService.showDialog('Are you sure you want to delete this Institute with Id:' + instituteID, DialogType.confirm, () => this.deletehelper(instituteID));
+        //var ans = confirm("Do you want to delete Institute with Id: " + instituteID);
+        //if (ans) {
+        //this._instituteService.deleteInstitute(instituteID).subscribe((data) => {
+        //    this.getInstitutes();
+        //}, error => console.error(error))
+        //}
     }
     
     deletehelper(instituteID) {

@@ -22,7 +22,8 @@ namespace DAL
         IOrdersRepository _orders;
         IInstituteRepository _institute;
         IAcadamicRepository _acadamic;
-
+        ICasteRepository _caste;
+        IReligionRepository _religion;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -87,7 +88,26 @@ namespace DAL
                 return _acadamic;
             }
         }
+      
 
+        public ICasteRepository Caste {
+            get
+            {
+                if (_caste == null)
+                    _caste = new CasteRepository(_context);
+                return _caste;
+            }
+        }
+
+        public IReligionRepository Religion {
+
+            get
+            {
+                if (_religion == null)
+                    _religion = new ReligionRepository(_context);
+                return _religion;
+            }
+        }
 
         public int SaveChanges()
         {

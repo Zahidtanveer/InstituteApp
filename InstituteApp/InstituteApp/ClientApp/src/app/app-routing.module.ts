@@ -23,6 +23,7 @@ import { editInstitute } from './components/Institute/EditInstitute.component';
 import { AcadamicComponent } from './components/Acadamic/acadamic.component';
 import { createAcadamic } from './components/Acadamic/AddAcadamic.component';
 import { editAcadamic } from './components/Acadamic/EditAcadamic.component';
+import { CRIndexComponent } from './components/caste_religion/index.component';
 
 
 
@@ -43,6 +44,7 @@ import { editAcadamic } from './components/Acadamic/EditAcadamic.component';
             { path: "fetch-acadamic", component: AcadamicComponent, data: { title: "Acadamic" } },
             { path: "add-acadamic", component: createAcadamic, data: { title: "Add Acadamic" } },
             { path: "acadamic/edit/:Id", component: editAcadamic, data: { title: "Edit Acadamic" } },
+            { path: "catse-and-religion", component: CRIndexComponent, data: { title: "Caste and Religion" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

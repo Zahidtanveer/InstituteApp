@@ -73,6 +73,12 @@ import { AcadamicComponent } from "./components/Acadamic/acadamic.component";
 import { AcadamicService } from "./services/acadamic.service";
 import { createAcadamic } from "./components/Acadamic/AddAcadamic.component";
 import { editAcadamic } from "./components/Acadamic/EditAcadamic.component";
+import { ReligionService } from "./services/CasteAndReligion/service.religion";
+import { CasteService } from "./services/CasteAndReligion/service.caste";
+import { CRIndexComponent } from "./components/caste_religion/index.component";
+import { ReligionComponent } from "./components/caste_religion/religion.component";
+import { CasteComponent } from "./components/caste_religion/caste.component";
+
 
 
 
@@ -128,7 +134,8 @@ import { editAcadamic } from "./components/Acadamic/EditAcadamic.component";
         HeaderComponent,
         SidebarComponent,
         createInstitute,InstituteComponent,editInstitute,
-        AcadamicComponent, createAcadamic, editAcadamic
+        AcadamicComponent, createAcadamic, editAcadamic,
+        CRIndexComponent, CasteComponent, ReligionComponent
 
     ],
     providers: [
@@ -145,7 +152,8 @@ import { editAcadamic } from "./components/Acadamic/EditAcadamic.component";
         LocalStoreManager,
         EndpointFactory,
         InstituteService,
-        AcadamicService
+        AcadamicService,
+        ReligionService, CasteService
     ],
     bootstrap: [AppComponent]
 })

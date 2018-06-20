@@ -19,6 +19,8 @@ namespace DAL
         IOrdersRepository Orders { get; }
         IInstituteRepository Institute { get; }
         IAcadamicRepository Acadamics { get; }
+        ICasteRepository Caste { get; }
+        IReligionRepository Religion { get; }
         int SaveChanges();
     }
 }

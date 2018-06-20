@@ -1,0 +1,21 @@
+<p *ngIf="!dList"><em>Loading...</em></p>
+<table class='table' *ngIf="dList">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let religion of dList">
+            <td>{{religion.id}}</td>
+            <td>{{religion.name}}</td>
+            <td>
+
+                <a [routerLink]="['/religion/edit/', religion.id]" class="btn btn-default">Edit</a>
+                <a [routerLink]="" (click)="delete(religion.id)" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

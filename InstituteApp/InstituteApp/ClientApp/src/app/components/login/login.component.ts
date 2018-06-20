@@ -11,7 +11,7 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { Utilities } from '../../services/utilities';
 import { UserLogin } from '../../models/user-login.model';
 import { window } from "rxjs/operator/window";
-
+import * as $ from 'jquery';
 @Component({
     selector: "app-login",
     templateUrl: './login.component.html',
@@ -88,6 +88,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                     if (!this.isModal) {
                         this.alertService.showMessage("Login", `Welcome ${user.userName}!`, MessageSeverity.success);
+                        $(document).ready(function () {
+                         location.reload(true);
+                        });
                     }
                     else {
                         this.alertService.showMessage("Login", `Session for ${user.userName} restored!`, MessageSeverity.success);

@@ -224,10 +224,18 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']"  aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']"  aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Institute</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-acadamic']"  aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Acadamics</span></a></li>
-                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']"  aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/']" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;" aria-expanded="false"><i class="fa fa-cog fa-1x"></i><span class="hide-menu">Settings </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/fetch-institute']"><i class="fa fa-circle-notch"></i><span class="hide-menu"> Institute Details </span></a></li>
+                                <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/fetch-acadamic']"><i class="fa fa-circle-notch"></i><span class="hide-menu"> Acadamics Details </span></a></li>
+                                <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/catse-and-religion']"><i class="fa fa-circle-notch"></i><span class="hide-menu"> Caste And Religion </span></a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-institute']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Institute</span></a></li>
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewCustomers"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/fetch-acadamic']" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Acadamics</span></a></li>-->
+                        <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewProducts"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/customers']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.Customers' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']" *ngIf="canViewOrders"> <a class="sidebar-link waves-effect waves-dark sidebar-link" routerLink="/orders" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">{{'mainMenu.Orders' | translate}}</span></a></li>
                         <li class="sidebar-item" [routerLinkActive]="['link-active']"> <a class="sidebar-link waves-effect waves-dark sidebar-link" [routerLink]="['/about']" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">{{'mainMenu.About' | translate}}</span></a></li>
 

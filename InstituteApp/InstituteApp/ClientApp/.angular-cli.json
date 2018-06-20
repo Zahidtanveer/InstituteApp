@@ -21,10 +21,21 @@
         "styles": [
             "styles.css"   ],
         "scripts": [
+            "assets/assets/libs/jquery/dist/jquery.min.js",
+
             "../node_modules/jquery.maskedinput/src/jquery.maskedinput.js",
             "../node_modules/bootstrap-toggle/js/bootstrap-toggle.js",
             "../node_modules/bootstrap-select/dist/js/bootstrap-select.js",
-            "../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"
+            "../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js",
+
+            "assets/assets/libs/popper.js/dist/umd/popper.min.js",
+            "assets/assets/libs/bootstrap/dist/js/bootstrap.min.js",
+            "assets/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js",
+            "assets/assets/extra-libs/sparkline/sparkline.js",
+
+            "assets/dist/js/waves.js",
+            "assets/dist/js/sidebarmenu.js",
+            "assets/dist/js/custom.js"
         ],
       "environmentSource": "environments/environment.ts",
       "environments": {

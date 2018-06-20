@@ -1,5 +1,3 @@
-
-///
 // ====================================================
 // More Templates: https://www.ebenmonney.com/templates
 // Email: support@ebenmonney.com
@@ -20,8 +18,7 @@ import { AuthService } from '../services/auth.service';
 import { ConfigurationService } from '../services/configuration.service';
 import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
-
-
+import * as $ from 'jquery';
 var alertify: any = require('../assets/scripts/alertify.js');
 
 
@@ -81,18 +78,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.toastyConfig.limit = 100;
     this.toastyConfig.showClose = true;
 
-    this.appTitleService.appName = this.appTitle;
-  }
+      this.appTitleService.appName = this.appTitle;
+    
+    } 
+   
    
 
   ngAfterViewInit() {
-
+    
     this.modalLoginControls.changes.subscribe((controls: QueryList<any>) => {
       controls.forEach(control => {
         if (control) {
           if (control instanceof LoginComponent) {
             this.loginControl = control;
-            this.loginControl.modalClosedCallback = () => this.loginModal.hide();
+              this.loginControl.modalClosedCallback = () => this.loginModal.hide();
+              
           }
           else {
             this.loginModal = control;
@@ -124,17 +124,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngOnInit() {
-    this.isUserLoggedIn = this.authService.isLoggedIn;
-
+    ngOnInit() {
+   
+      this.isUserLoggedIn = this.authService.isLoggedIn;
     // 1 sec to ensure all the effort to get the css animation working is appreciated :|, Preboot screen is removed .5 sec later
-    setTimeout(() => this.isAppLoaded = true, 1000);
+      
+        setTimeout(() => this.isAppLoaded = true, 1000);
     setTimeout(() => this.removePrebootScreen = true, 1500);
 
     setTimeout(() => {
       if (this.isUserLoggedIn) {
         this.alertService.resetStickyMessage();
-
+         
         //if (!this.authService.isSessionExpired)
         this.alertService.showMessage("Login", `Welcome back ${this.userName}!`, MessageSeverity.default);
         //else
