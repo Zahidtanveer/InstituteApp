@@ -132,16 +132,16 @@ export class AppComponent implements OnInit, AfterViewInit {
         setTimeout(() => this.isAppLoaded = true, 1000);
     setTimeout(() => this.removePrebootScreen = true, 1500);
 
-    setTimeout(() => {
-      if (this.isUserLoggedIn) {
-        this.alertService.resetStickyMessage();
+    //setTimeout(() => {
+    //  if (this.isUserLoggedIn) {
+    //    this.alertService.resetStickyMessage();
          
-        //if (!this.authService.isSessionExpired)
-        this.alertService.showMessage("Login", `Welcome back ${this.userName}!`, MessageSeverity.default);
-        //else
-        //    this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
-      }
-    }, 2000);
+    //    //if (!this.authService.isSessionExpired)
+    //   this.alertService.showMessage("Login", `Welcome back ${this.userName}!`, MessageSeverity.default);
+    //    //else
+    //    //    this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
+    //  }
+    //}, 2000);
 
 
     this.alertService.getDialogEvent().subscribe(alert => this.showDialog(alert));

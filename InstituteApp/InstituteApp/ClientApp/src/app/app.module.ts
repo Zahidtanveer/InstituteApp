@@ -78,6 +78,10 @@ import { CasteService } from "./services/CasteAndReligion/service.caste";
 import { CRIndexComponent } from "./components/caste_religion/index.component";
 import { ReligionComponent } from "./components/caste_religion/religion.component";
 import { CasteComponent } from "./components/caste_religion/caste.component";
+import { createCaste } from "./components/caste_religion/AddCaste.component";
+import { createReligion } from "./components/caste_religion/AddReligion.component";
+import { editCaste } from "./components/caste_religion/EditCaste.component";
+import { editReligion } from "./components/caste_religion/EditReligion.component";
 
 
 
@@ -135,7 +139,8 @@ import { CasteComponent } from "./components/caste_religion/caste.component";
         SidebarComponent,
         createInstitute,InstituteComponent,editInstitute,
         AcadamicComponent, createAcadamic, editAcadamic,
-        CRIndexComponent, CasteComponent, ReligionComponent
+        CRIndexComponent, CasteComponent, ReligionComponent,
+        createReligion, createCaste, editCaste, editReligion
 
     ],
     providers: [

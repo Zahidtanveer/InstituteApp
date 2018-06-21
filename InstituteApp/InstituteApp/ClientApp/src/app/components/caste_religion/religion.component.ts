@@ -29,7 +29,11 @@ export class ReligionComponent {
             const table: any = $('table');
             this.dataTable = table.DataTable({
                 "displayLength": 5,
-                ordering: false
+                ordering: false,
+                "pagingType": "full_numbers",
+                
+               
+               
             });
 
         }, error => console.error(error));

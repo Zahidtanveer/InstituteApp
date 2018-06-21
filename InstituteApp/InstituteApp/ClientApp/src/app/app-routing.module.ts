@@ -24,6 +24,10 @@ import { AcadamicComponent } from './components/Acadamic/acadamic.component';
 import { createAcadamic } from './components/Acadamic/AddAcadamic.component';
 import { editAcadamic } from './components/Acadamic/EditAcadamic.component';
 import { CRIndexComponent } from './components/caste_religion/index.component';
+import { ReligionComponent } from './components/caste_religion/religion.component';
+import { CasteComponent } from './components/caste_religion/caste.component';
+import { createReligion } from './components/caste_religion/AddReligion.component';
+
 
 
 
@@ -45,6 +49,10 @@ import { CRIndexComponent } from './components/caste_religion/index.component';
             { path: "add-acadamic", component: createAcadamic, data: { title: "Add Acadamic" } },
             { path: "acadamic/edit/:Id", component: editAcadamic, data: { title: "Edit Acadamic" } },
             { path: "catse-and-religion", component: CRIndexComponent, data: { title: "Caste and Religion" } },
+            { path: "catse-and-religion/religion/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
+            { path: "catse-and-religion/caste/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
+            { path: "fetch-religion", component: ReligionComponent, data: { title: "Religion" } },
+            { path: "fetch-Caste", component: CasteComponent, data: { title: "Caste" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

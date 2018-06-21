@@ -25,12 +25,6 @@ export class CasteComponent {
 
             this.chRef.detectChanges();
 
-            const table: any = $('table');
-            this.dataTable = table.DataTable({
-                "displayLength": 5,
-                ordering: false
-            });
-
         }, error => console.error(error));
         this.getCastes;
 
