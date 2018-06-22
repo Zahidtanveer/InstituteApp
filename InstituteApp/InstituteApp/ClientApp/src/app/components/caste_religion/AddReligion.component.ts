@@ -62,9 +62,9 @@ export class createReligion implements OnInit {
         this._router.navigate(['/catse-and-religion']);
     }
     refresh() {
-        $(document).ready(function () {
-            location.reload(true);
-        });
+        //$(document).ready(function () {
+        //    location.reload(true);
+        //});
     }
 
     get Name() { return this.religionForm.get('Name'); }

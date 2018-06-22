@@ -152,6 +152,28 @@ namespace InstituteApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("DAL.Models.Batch", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<string>("MaxNumberOfStudent");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("SatrtDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("batches");
+                });
+
             modelBuilder.Entity("DAL.Models.Caste", b =>
                 {
                     b.Property<int>("Id")
@@ -172,6 +194,28 @@ namespace InstituteApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("caste");
+                });
+
+            modelBuilder.Entity("DAL.Models.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Dscription");
+
+                    b.Property<string>("MaxAttandencePercentage");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("SyllabusName");
+
+                    b.Property<int>("TotalWorkingDays");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("courses");
                 });
 
             modelBuilder.Entity("DAL.Models.Customer", b =>
@@ -659,6 +703,14 @@ namespace InstituteApp.Migrations
                         .HasFilter("[ReferenceId] IS NOT NULL");
 
                     b.ToTable("OpenIddictTokens");
+                });
+
+            modelBuilder.Entity("DAL.Models.Batch", b =>
+                {
+                    b.HasOne("DAL.Models.Course", "course")
+                        .WithMany("batches")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DAL.Models.Order", b =>

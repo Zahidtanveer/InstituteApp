@@ -1,0 +1,39 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <h2 class="card-title">List of Courses</h2>
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Code</th>
+                    <th>Max Attendance</th>
+                    <th>Total Working Days</th>
+                    <th>Syllabus Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of dList">
+                    <td>{{course.id}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.dscription}}</td>
+                    <td>{{course.code}}</td>
+                    <td>{{course.maxAttandencePercentage}}</td>
+                    <td>{{course.totalWorkingDays}}</td>
+                    <td>{{course.syllabusName}}</td>
+
+                    <td>
+
+                        <a [routerLink]="['/course/',course.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(course.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

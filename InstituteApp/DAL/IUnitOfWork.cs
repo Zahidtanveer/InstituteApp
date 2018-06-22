@@ -21,6 +21,8 @@ namespace DAL
         IAcadamicRepository Acadamics { get; }
         ICasteRepository Caste { get; }
         IReligionRepository Religion { get; }
+        ICourseRepository Course { get; }
+        IBatchRepository Batch { get; }
         int SaveChanges();
     }
 }

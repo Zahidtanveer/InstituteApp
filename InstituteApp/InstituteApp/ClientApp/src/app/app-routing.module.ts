@@ -27,6 +27,8 @@ import { CRIndexComponent } from './components/caste_religion/index.component';
 import { ReligionComponent } from './components/caste_religion/religion.component';
 import { CasteComponent } from './components/caste_religion/caste.component';
 import { createReligion } from './components/caste_religion/AddReligion.component';
+import { BatchComponent } from './components/course_batch/batch.component';
+import { CourseComponent } from './components/course_batch/course.component';
 
 
 
@@ -52,7 +54,9 @@ import { createReligion } from './components/caste_religion/AddReligion.componen
             { path: "catse-and-religion/religion/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
             { path: "catse-and-religion/caste/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
             { path: "fetch-religion", component: ReligionComponent, data: { title: "Religion" } },
-            { path: "fetch-Caste", component: CasteComponent, data: { title: "Caste" } },
+            { path: "fetch-caste", component: CasteComponent, data: { title: "Caste" } },
+            { path: "fetch-batch", component: BatchComponent, data: { title: "Batch" } },
+            { path: "fetch-course", component: CourseComponent, data: { title: "Course" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

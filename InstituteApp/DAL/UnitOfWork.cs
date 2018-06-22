@@ -24,6 +24,8 @@ namespace DAL
         IAcadamicRepository _acadamic;
         ICasteRepository _caste;
         IReligionRepository _religion;
+        ICourseRepository _course;
+        IBatchRepository _batch;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -107,6 +109,27 @@ namespace DAL
                     _religion = new ReligionRepository(_context);
                 return _religion;
             }
+        }
+
+        public ICourseRepository Course
+        {
+            get
+            {
+                if (_course == null)
+                    _course = new CourseRepository(_context);
+                return _course;
+            }
+        }
+
+        public IBatchRepository Batch
+        {
+            get
+            {
+                if (_batch == null)
+                    _batch = new BatchRepository(_context);
+                return _batch;
+            }
+
         }
 
         public int SaveChanges()

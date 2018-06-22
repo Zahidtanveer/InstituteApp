@@ -6,7 +6,7 @@ namespace DAL.Models
 {
     public class Course
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Dscription { get; set; }
         public string Code { get; set; }

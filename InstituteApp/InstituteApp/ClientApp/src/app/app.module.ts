@@ -82,6 +82,10 @@ import { createCaste } from "./components/caste_religion/AddCaste.component";
 import { createReligion } from "./components/caste_religion/AddReligion.component";
 import { editCaste } from "./components/caste_religion/EditCaste.component";
 import { editReligion } from "./components/caste_religion/EditReligion.component";
+import { BatchService } from "./services/CourseAndBatch/batch.service";
+import { CourseService } from "./services/CourseAndBatch/course.service";
+import { CourseComponent } from "./components/course_batch/course.component";
+import { BatchComponent } from "./components/course_batch/batch.component";
 
 
 
@@ -140,7 +144,9 @@ import { editReligion } from "./components/caste_religion/EditReligion.component
         createInstitute,InstituteComponent,editInstitute,
         AcadamicComponent, createAcadamic, editAcadamic,
         CRIndexComponent, CasteComponent, ReligionComponent,
-        createReligion, createCaste, editCaste, editReligion
+        createReligion, createCaste, editCaste, editReligion,
+        CourseComponent, BatchComponent
+        
 
     ],
     providers: [
@@ -158,7 +164,8 @@ import { editReligion } from "./components/caste_religion/EditReligion.component
         EndpointFactory,
         InstituteService,
         AcadamicService,
-        ReligionService, CasteService
+        ReligionService, CasteService,
+        BatchService, CourseService
     ],
     bootstrap: [AppComponent]
 })

@@ -14,24 +14,23 @@
 
                 </div>
                 <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-caste-tab" data-toggle="tab" href="#nav-caste" role="tab" aria-controls="nav-caste" aria-selected="true">Student Caste</a>
-                        <a class="nav-item nav-link" id="nav-religion-tab" data-toggle="tab" href="#nav-religion" role="tab" aria-controls="nav-religion" aria-selected="false">Student Religion</a>
+                    <div  bootstrapTab #tab="bootstrap-tab" class="nav nav-tabs" id="nav-tab" role="tablist" (showBSTab)="onShowTab($event)">
+                        <a class="nav-item nav-link active" id="casteTab" fragment="nav-caste" data-toggle="tab" href="#nav-caste" role="tab" aria-controls="nav-caste" aria-selected="true">Student Caste</a>
+                        <a class="nav-item nav-link"  id="religionTab" fragment="nav-religion" data-toggle="tab" href="#nav-religion" role="tab" aria-controls="nav-religion" aria-selected="false">Student Religion</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-caste" role="tabpanel" aria-labelledby="nav-caste-tab">
+                    <div class="tab-pane fade show active" id="nav-caste" role="tabpanel" aria-labelledby="casteTab">
                         <div class="card">
                            
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row" *ngIf="isCasteActivated">
 
                                     <div class="col-md-6">
-
-                                        <createCaste></createCaste>
+                                        <createCaste #addCaste></createCaste>
                                     </div>
                                     <div class="col-md-6">
-                                        <fetch-caste></fetch-caste>
+                                        <fetch-caste #indexCaste></fetch-caste>
                                     </div>
 
                                 </div>
@@ -39,13 +38,18 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="nav-religion" role="tabpanel" aria-labelledby="nav-religion-tab">
-                        <div class="row">
+                    <div class="tab-pane fade" id="nav-religion" role="tabpanel" aria-labelledby="religionTab">
+                        <!--<div class="row">
+                            <br />
+                            <a href="#" class="btn btn-success">Create New</a>
+                        </div>-->
+                        <div class="row" *ngIf="isReligionActivated">
                             <div class="col-md-6">
-                                <createReligion></createReligion>
+                                <createReligion #addReligion></createReligion>
                             </div>
                             <div class="col-md-6">
-                                <fetch-religion></fetch-religion>
+                              
+                                <fetch-religion #indexReligion></fetch-religion>
                             </div>
                         </div>
                     </div>

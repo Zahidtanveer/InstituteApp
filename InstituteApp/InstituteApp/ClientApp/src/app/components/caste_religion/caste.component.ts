@@ -24,7 +24,15 @@ export class CasteComponent {
             this.dList = result.json() as CasteData[];
 
             this.chRef.detectChanges();
+            const table: any = $('#dttable');
+            this.dataTable = table.DataTable({
+                "displayLength": 5,
+                ordering: false,
+                "pagingType": "full_numbers",
 
+
+
+            });
         }, error => console.error(error));
         this.getCastes;
 

@@ -69,15 +69,9 @@
     <None Remove="ClientApp\src\app\components\caste_religion\EditReligion.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\index.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\religion.component.ts" />
-    <None Remove="ClientApp\src\app\components\course_batch\Addbatch.component.ts" />
-    <None Remove="ClientApp\src\app\components\course_batch\AddCourse.component.ts" />
-    <None Remove="ClientApp\src\app\components\course_batch\batch.component.ts" />
-    <None Remove="ClientApp\src\app\components\course_batch\course.component.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
-    <None Remove="ClientApp\src\app\services\CourseAndBatch\batch.service.ts" />
-    <None Remove="ClientApp\src\app\services\CourseAndBatch\course.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -91,15 +85,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\EditReligion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\index.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\religion.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\Addbatch.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\AddCourse.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\batch.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\course.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\CourseAndBatch\batch.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\services\CourseAndBatch\course.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

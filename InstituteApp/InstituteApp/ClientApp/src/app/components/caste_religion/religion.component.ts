@@ -26,7 +26,7 @@ export class ReligionComponent {
 
             this.chRef.detectChanges();
 
-            const table: any = $('table');
+            const table: any = $('#dttable1');
             this.dataTable = table.DataTable({
                 "displayLength": 5,
                 ordering: false,

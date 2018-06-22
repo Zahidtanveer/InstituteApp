@@ -7,7 +7,7 @@ namespace DAL.Models
 {
     public class Batch
     {
-        public int id { get; set; }
+        public int Id { get; set; }
        
         public int CourseId { get; set; }
         public string Name { get; set; }

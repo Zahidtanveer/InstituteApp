@@ -28,6 +28,10 @@ namespace DAL
         public DbSet<Acadamic> Acadamics { get; set; }
         public DbSet<Caste> Castes { get; set; }
         public DbSet<Religion> Religions { get; set; }
+        public DbSet<Course> courses { get; set; }
+        public DbSet<Batch> batches { get; set; }
+
+
 
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -71,6 +75,14 @@ namespace DAL
             builder.Entity<Acadamic>().ToTable($"App{nameof(this.Acadamics)}");
             builder.Entity<Caste>().ToTable("caste");
             builder.Entity<Religion>().ToTable("religion");
+            builder.Entity<Batch>()
+                .HasOne<Course>(c => c.course)
+                .WithMany(b => b.batches)
+                .HasForeignKey(c => c.CourseId);
+          
+
+
+
         }
 
 

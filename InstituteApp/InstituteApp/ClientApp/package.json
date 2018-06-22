@@ -10,15 +10,16 @@
   "license": "MIT",
   "homepage": "https://www.ebenmonney.com/quickapp",
   "repository": "https://github.com/emonney/quickapp.git",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "postinstall": "webpack --config webpack.config.vendor.js"
+    },
     "dependencies": {
         "@angular/animations": "^5.2.5",
         "@angular/common": "^5.2.5",
