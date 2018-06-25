@@ -69,6 +69,8 @@
     <None Remove="ClientApp\src\app\components\caste_religion\EditReligion.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\index.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\religion.component.ts" />
+    <None Remove="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
+    <None Remove="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
@@ -85,6 +87,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\EditReligion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\index.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\religion.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />

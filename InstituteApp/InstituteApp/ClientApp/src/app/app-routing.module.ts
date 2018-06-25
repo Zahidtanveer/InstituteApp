@@ -29,6 +29,12 @@ import { CasteComponent } from './components/caste_religion/caste.component';
 import { createReligion } from './components/caste_religion/AddReligion.component';
 import { BatchComponent } from './components/course_batch/batch.component';
 import { CourseComponent } from './components/course_batch/course.component';
+import { editReligion } from './components/caste_religion/EditReligion.component';
+import { editCaste } from './components/caste_religion/EditCaste.component';
+import { createCaste } from './components/caste_religion/AddCaste.component';
+import { createCourse } from './components/course_batch/AddCourse.component';
+import { editCourse } from './components/course_batch/EidtCourse.component';
+import { createBatch } from './components/course_batch/Addbatch.component';
 
 
 
@@ -51,12 +57,18 @@ import { CourseComponent } from './components/course_batch/course.component';
             { path: "add-acadamic", component: createAcadamic, data: { title: "Add Acadamic" } },
             { path: "acadamic/edit/:Id", component: editAcadamic, data: { title: "Edit Acadamic" } },
             { path: "catse-and-religion", component: CRIndexComponent, data: { title: "Caste and Religion" } },
-            { path: "catse-and-religion/religion/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
-            { path: "catse-and-religion/caste/:id", component: CRIndexComponent, data: { title: "Caste and Religion" } },
+            { path: "religion/edit/:Id", component: editReligion, data: { title: "Edit Religion" } },
+            { path: "caste/edit/:Id", component: editCaste, data: { title: "Edit Caste" } },
             { path: "fetch-religion", component: ReligionComponent, data: { title: "Religion" } },
             { path: "fetch-caste", component: CasteComponent, data: { title: "Caste" } },
+            { path: "add-religion", component: createReligion, data: { title: "Add Religion" } },
+            { path: "add-caste", component: createCaste, data: { title: "Add Caste" } },
             { path: "fetch-batch", component: BatchComponent, data: { title: "Batch" } },
+            { path: "add-batch", component: createBatch, data: { title: "Batch" } },
+            { path: "batch/edit/:Id", component: BatchComponent, data: { title: "Batch" } },
             { path: "fetch-course", component: CourseComponent, data: { title: "Course" } },
+            { path: "add-course", component: createCourse, data: { title: "Add Course" } },
+            { path: "course/edit/:Id", component: editCourse, data: { title: "Edit Course" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

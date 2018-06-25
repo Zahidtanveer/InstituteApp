@@ -3,7 +3,10 @@
     <div class="card-body">
         
         <p *ngIf="!dList"><em>Loading...</em></p>
-        <h2 class="card-title">List of Batches</h2>
+        <div class="card-title">
+            <h2> List of Batches</h2>
+            <a [routerLink]="['/add-batch']" class="btn btn-success">Create New</a>
+        </div>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
                 <tr>
@@ -26,7 +29,7 @@
                     <td>{{batch.maxNumberOfStudent}}</td>
                     <td>
 
-                        <a [routerLink]="['/batch/',batch.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="['/batch/edit/',batch.id]" class="btn btn-default">Edit</a>
                         <a [routerLink]="" (click)="delete(batch.id)" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

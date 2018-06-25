@@ -40,23 +40,18 @@ export class createCaste implements OnInit {
                 .subscribe((data) => {
                    
                     setTimeout(() => {
-                        this._alertService.showMessage("New Entry", `Caste Addedd Successfully !`, MessageSeverity.success)
+                        this._alertService.showMessage("New Entry", `Addedd Successfully !`, MessageSeverity.success)
                     }, 500);
-                    this.clearForm();
-                    //this._router.navigate(['/catse-and-religion']);
+                
+                    this._router.navigate(['/catse-and-religion']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
-        setTimeout(() => { this._alertService.showMessage("Cancel", `Form Entry Cancelled !`, MessageSeverity.warn) },500);
-        //this._router.navigate(['/catse-and-religion']);
+       
+        this._router.navigate(['/catse-and-religion']);
     }
-    clearForm() {
-
-        this.casteForm.reset({
-            'Name':''
-        });
-    }
+   
     get Name() { return this.casteForm.get('Name'); }
 }

@@ -86,6 +86,9 @@ import { BatchService } from "./services/CourseAndBatch/batch.service";
 import { CourseService } from "./services/CourseAndBatch/course.service";
 import { CourseComponent } from "./components/course_batch/course.component";
 import { BatchComponent } from "./components/course_batch/batch.component";
+import { createCourse } from "./components/course_batch/AddCourse.component";
+import { editCourse } from "./components/course_batch/EidtCourse.component";
+import { createBatch } from "./components/course_batch/Addbatch.component";
 
 
 
@@ -145,7 +148,8 @@ import { BatchComponent } from "./components/course_batch/batch.component";
         AcadamicComponent, createAcadamic, editAcadamic,
         CRIndexComponent, CasteComponent, ReligionComponent,
         createReligion, createCaste, editCaste, editReligion,
-        CourseComponent, BatchComponent
+        CourseComponent, BatchComponent, createCourse, editCourse,
+        createBatch
         
 
     ],

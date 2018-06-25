@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DAL;
 using DAL.Models;
+using InstituteApp.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +25,8 @@ namespace InstituteApp.Controllers
         [Route("api/Course/Index")]
         public IEnumerable<Course> Index()
         {
-            return _unitOfWork.Course.GetAllCourseData();
+          return _unitOfWork.Course.GetAllCourseData();
+           
         }
         //GET: api/Course/Details/1
         [HttpGet()]

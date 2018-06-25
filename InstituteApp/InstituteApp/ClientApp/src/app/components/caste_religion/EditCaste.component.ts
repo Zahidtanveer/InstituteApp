@@ -24,7 +24,7 @@ export class editCaste implements OnInit {
         this.casteForm = this._fb.group({
             id: 0,
             name: ['', [Validators.required]],
-             createdBy: [''],
+            createdBy: [''],
             updatedBy: [''],
             createdDate: [''],
             updatedDate: ['']
@@ -48,21 +48,17 @@ export class editCaste implements OnInit {
         if (this.title == "Edit") {
             this._casteService.updateCaste(this.casteForm.value)
                 .subscribe((data) => {
-                    this.refresh();
+                  
                     this._router.navigate(['/catse-and-religion']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
-        this.refresh();
+      
         this._router.navigate(['/catse-and-religion']);
     }
-    refresh() {
-        $(document).ready(function () {
-            location.reload(true);
-        });
-    }
+  
     get name() { return this.casteForm.get('name'); }
     get createdBy() { return this.casteForm.get('createdBy'); }
     get updatedBy() { return this.casteForm.get('updatedBy'); }

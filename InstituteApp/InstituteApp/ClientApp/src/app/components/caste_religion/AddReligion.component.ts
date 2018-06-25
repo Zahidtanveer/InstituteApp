@@ -4,6 +4,7 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } fr
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReligionService } from '../../services/CasteAndReligion/service.religion'
 import { ReligionComponent } from '../caste_religion/religion.component'
+import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
 import * as $ from 'jquery';
 import { window } from 'rxjs/operators';
 @Component({
@@ -18,7 +19,7 @@ export class createReligion implements OnInit {
     errorMessage: any;
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _religionService: ReligionService, private _router: Router) {
+        private _religionService: ReligionService, private _router: Router,, private _alertService: AlertService) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 
@@ -46,8 +47,10 @@ export class createReligion implements OnInit {
         if (this.title == "Create") {
             this._religionService.saveReligion(this.religionForm.value)
                 .subscribe((data) => {
-
-                    this.refresh();
+                    setTimeout(() => {
+                        this._alertService.showMessage("New Entry", `Addedd Successfully !`, MessageSeverity.success)
+                    }, 500);
+                    this._router.navigate(['/catse-and-religion']);
                 }, error => this.errorMessage = error)
         }
         else if (this.title == "Edit") {
@@ -58,14 +61,10 @@ export class createReligion implements OnInit {
         }
     }
     cancel() {
-        this.refresh();
+      
         this._router.navigate(['/catse-and-religion']);
     }
-    refresh() {
-        //$(document).ready(function () {
-        //    location.reload(true);
-        //});
-    }
+   
 
     get Name() { return this.religionForm.get('Name'); }
 }

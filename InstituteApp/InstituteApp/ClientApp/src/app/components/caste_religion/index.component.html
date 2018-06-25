@@ -26,10 +26,12 @@
                             <div class="card-body">
                                 <div class="row" *ngIf="isCasteActivated">
 
-                                    <div class="col-md-6">
+                                    <!--<div class="col-md-6">
                                         <createCaste #addCaste></createCaste>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-6">
+                                        <div class="card-title"><a [routerLink]="['/add-caste']" class="btn btn-success">Create New</a></div>
+
                                         <fetch-caste #indexCaste></fetch-caste>
                                     </div>
 
@@ -39,17 +41,17 @@
 
                     </div>
                     <div class="tab-pane fade" id="nav-religion" role="tabpanel" aria-labelledby="religionTab">
-                        <!--<div class="row">
-                            <br />
-                            <a href="#" class="btn btn-success">Create New</a>
-                        </div>-->
-                        <div class="row" *ngIf="isReligionActivated">
-                            <div class="col-md-6">
-                                <createReligion #addReligion></createReligion>
-                            </div>
-                            <div class="col-md-6">
-                              
-                                <fetch-religion #indexReligion></fetch-religion>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row" *ngIf="isReligionActivated">
+                                <!--<div class="col-md-6">
+            <createReligion #addReligion></createReligion>
+        </div>-->
+                                <div class="col-md-6">
+                                    <div class="card-title"><a [routerLink]="['/add-religion']" class="btn btn-success">Create New</a></div>
+
+                                    <fetch-religion #indexReligion></fetch-religion>
+                                </div>
                             </div>
                         </div>
                     </div>

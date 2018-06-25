@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Course</h1>
+                </div>
+
+                <form [formGroup]="courseForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Name">Name</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Name.valid || Name.touched && Name.valid || Name.dirty && Name.valid, 'is-invalid' :formDir.submitted && !Name.valid || Name.touched && !Name.valid || Name.dirty  && !Name.valid}" type="text" formControlName="Name">
+                                    <span class="invalid-feedback" *ngIf="!Name.valid && formDir.submitted || Name.touched && !Name.valid || Name.dirty  && !Name.valid">
+                                        Name is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="Name.valid && formDir.submitted || Name.touched && Name.valid || Name.dirty && Name.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Dscription">Description</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Dscription.valid || Dscription.touched && Dscription.valid || Dscription.dirty && Dscription.valid, 'is-invalid' :formDir.submitted && !Dscription.valid || Dscription.touched && !Dscription.valid || Dscription.dirty  && !Dscription.valid}" type="text" formControlName="Dscription">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !Dscription.valid || Dscription.touched && !Dscription.valid || Dscription.dirty  && !Dscription.valid">
+                                        Description is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && Dscription.valid || Dscription.touched && Dscription.valid || Dscription.dirty && Dscription.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Code">Code</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Code.valid || Code.touched && Code.valid || Code.dirty && Code.valid, 'is-invalid' :formDir.submitted && !Code.valid || Code.touched && !Code.valid || Code.dirty  && !Code.valid}" type="text" formControlName="Code">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !Code.valid || Code.touched && !Code.valid || Code.dirty  && !Code.valid">
+                                        Code is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && Code.valid || Code.touched && Code.valid || Code.dirty && Code.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="MaxAttandencePercentage">MaxAttandencePercentage</label>
+                                <div class="col-md-12">
+                                    <input  class="form-control" [ngClass]="{'is-valid': formDir.submitted && MaxAttandencePercentage.valid || MaxAttandencePercentage.touched && MaxAttandencePercentage.valid || MaxAttandencePercentage.dirty && MaxAttandencePercentage.valid, 'is-invalid' :formDir.submitted && !MaxAttandencePercentage.valid || MaxAttandencePercentage.touched && !MaxAttandencePercentage.valid || MaxAttandencePercentage.dirty  && !MaxAttandencePercentage.valid}" formControlName="MaxAttandencePercentage">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !MaxAttandencePercentage.valid || MaxAttandencePercentage.touched && !MaxAttandencePercentage.valid || MaxAttandencePercentage.dirty  && !MaxAttandencePercentage.valid">
+                                        <span *ngIf="MaxAttandencePercentage.errors.required">  MaxAttandencePercentage is required.</span>
+                                        <span *ngIf="MaxAttandencePercentage.errors.pattern">MaxAttandencePercentage not valid.</span>
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && MaxAttandencePercentage.valid || MaxAttandencePercentage.touched && MaxAttandencePercentage.valid || MaxAttandencePercentage.dirty && MaxAttandencePercentage.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="TotalWorkingDays">Total Working Days</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && TotalWorkingDays.valid || TotalWorkingDays.touched && TotalWorkingDays.valid || TotalWorkingDays.dirty && TotalWorkingDays.valid, 'is-invalid' :formDir.submitted && !TotalWorkingDays.valid || TotalWorkingDays.touched && !TotalWorkingDays.valid || TotalWorkingDays.dirty  && !TotalWorkingDays.valid}" formControlName="TotalWorkingDays">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !TotalWorkingDays.valid || TotalWorkingDays.touched && !TotalWorkingDays.valid || TotalWorkingDays.dirty  && !TotalWorkingDays.valid">
+                                        <span *ngIf="TotalWorkingDays.errors.required">  Total Working Days is required.</span>
+                                        <span *ngIf="TotalWorkingDays.errors.pattern">Total Working Days not valid.</span>
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && TotalWorkingDays.valid || TotalWorkingDays.touched && TotalWorkingDays.valid || TotalWorkingDays.dirty && TotalWorkingDays.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="SyllabusName">SyllabusName</label>
+                                <div class="col-md-12">
+                                    <input
+                                           class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && SyllabusName.valid || SyllabusName.touched && SyllabusName.valid || SyllabusName.dirty && SyllabusName.valid, 'is-invalid' :formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid}" formControlName="SyllabusName">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid">
+                                        <span *ngIf="SyllabusName.errors.required">  Syllabus Name is required.</span>
+                                        <span *ngIf="SyllabusName.errors.pattern">Syllabus Name not valid.</span>
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && SyllabusName.valid || SyllabusName.touched && SyllabusName.valid || SyllabusName.dirty && SyllabusName.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

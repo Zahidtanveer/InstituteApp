@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DAL.Models
@@ -13,7 +14,7 @@ namespace DAL.Models
         public string MaxAttandencePercentage { get; set; }
         public int TotalWorkingDays { get; set; }
         public string SyllabusName { get; set; }
-
+     
         public ICollection<Batch> batches { get; set; }
     }
 }

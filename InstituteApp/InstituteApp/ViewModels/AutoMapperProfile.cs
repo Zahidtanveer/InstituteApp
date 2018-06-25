@@ -57,6 +57,8 @@ namespace InstituteApp.ViewModels
 
             CreateMap<Order, OrderViewModel>()
                 .ReverseMap();
+            CreateMap<Course, CourseViewModel>()
+                .ReverseMap();
         }
     }
 }
