@@ -63,5 +63,6 @@ interface CourseData {
     code: string;
     maxAttandencePercentage: string
     totalWorkingDays: number
-    syllabusName: string;
+    syllabusName: number;
+    attendanceType: string;
 }

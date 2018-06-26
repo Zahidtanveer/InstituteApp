@@ -38,11 +38,11 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class=" control-label col-md-12" for="SatrtDate">Satrt Date</label>
+                                <label class=" control-label col-md-12" for="SatrtDate">Start Date</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}" type="text" formControlName="SatrtDate">
+                                    <input bootstrapDatepicker #datepicker="bootstrap-datepicker"  formControlName="SatrtDate"   class="form-control" placeholder="Choose a date"  [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}" >
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid">
-                                        Satrt Date is required.
+                                        Start Date is required.
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid">
                                         Woohoo!
@@ -51,11 +51,10 @@
                             </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="EndDate">EndDate</label>
-                                <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}" formControlName="EndDate">
+                                <div class="col-md-12" >
+                                    <input  bootstrapDatepicker #datepicker="bootstrap-datepicker"   formControlName="EndDate"  class="form-control" placeholder="Choose a date" [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}" >
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid">
-                                        <span *ngIf="EndDate.errors.required">  End Date is required.</span>
-                                        <span *ngIf="EndDate.errors.pattern">End Date not valid.</span>
+                                         End Date is required.
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid">
                                         Woohoo!
@@ -64,12 +63,12 @@
 
                             </div>
                             <div class="form-group row">
-                                <label class=" control-label col-md-12" for="MaxNumberOfStudent">Total Working Days</label>
+                                <label class=" control-label col-md-12" for="MaxNumberOfStudent">MaxNumberOfStudent</label>
                                 <div class="col-md-12">
                                     <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && MaxNumberOfStudent.valid || MaxNumberOfStudent.touched && MaxNumberOfStudent.valid || MaxNumberOfStudent.dirty && MaxNumberOfStudent.valid, 'is-invalid' :formDir.submitted && !MaxNumberOfStudent.valid || MaxNumberOfStudent.touched && !MaxNumberOfStudent.valid || MaxNumberOfStudent.dirty  && !MaxNumberOfStudent.valid}" formControlName="MaxNumberOfStudent">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !MaxNumberOfStudent.valid || MaxNumberOfStudent.touched && !MaxNumberOfStudent.valid || MaxNumberOfStudent.dirty  && !MaxNumberOfStudent.valid">
-                                        <span *ngIf="MaxNumberOfStudent.errors.required">  Total Working Days is required.</span>
-                                        <span *ngIf="MaxNumberOfStudent.errors.pattern">Total Working Days not valid.</span>
+                                        <span *ngIf="MaxNumberOfStudent.errors.required">  MaxNumberOfStudent is required.</span>
+                                        <span *ngIf="MaxNumberOfStudent.errors.pattern">MaxNumberOfStudent not valid.</span>
                                     </span>
                                     <span class="valid-feedback" *ngIf="formDir.submitted && MaxNumberOfStudent.valid || MaxNumberOfStudent.touched && MaxNumberOfStudent.valid || MaxNumberOfStudent.dirty && MaxNumberOfStudent.valid">
                                         Woohoo!

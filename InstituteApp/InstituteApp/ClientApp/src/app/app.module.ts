@@ -89,6 +89,15 @@ import { BatchComponent } from "./components/course_batch/batch.component";
 import { createCourse } from "./components/course_batch/AddCourse.component";
 import { editCourse } from "./components/course_batch/EidtCourse.component";
 import { createBatch } from "./components/course_batch/Addbatch.component";
+import { editBatch } from "./components/course_batch/EditBatch.component";
+import { AllocateBatchTeacherService } from "./services/AllocatedBatchTeacher.service";
+import { SyllabusService } from "./services/Syllabus.service";
+import { SyllabusComponent } from "./components/Syllabus/Syllabus.component";
+import { AllocatedBatchTeacherComponent } from "./components/AllocateBatchTeacher/AllocateBatchTeacher.component";
+import { editSyllabus } from "./components/Syllabus/EditSyllabus.Component";
+import { createSyllabus } from "./components/Syllabus/AddSyllabus.component";
+import { editAllocateBatchTeacher } from "./components/AllocateBatchTeacher/EditAllocateBatchTeacher.component";
+import { createAllocateBatchTeacher } from "./components/AllocateBatchTeacher/AddAllocateBatchTeacher.component";
 
 
 
@@ -149,7 +158,8 @@ import { createBatch } from "./components/course_batch/Addbatch.component";
         CRIndexComponent, CasteComponent, ReligionComponent,
         createReligion, createCaste, editCaste, editReligion,
         CourseComponent, BatchComponent, createCourse, editCourse,
-        createBatch
+        createBatch, editBatch, SyllabusComponent, AllocatedBatchTeacherComponent,
+        editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher
         
 
     ],
@@ -169,7 +179,7 @@ import { createBatch } from "./components/course_batch/Addbatch.component";
         InstituteService,
         AcadamicService,
         ReligionService, CasteService,
-        BatchService, CourseService
+        BatchService, CourseService, AllocateBatchTeacherService, SyllabusService
     ],
     bootstrap: [AppComponent]
 })

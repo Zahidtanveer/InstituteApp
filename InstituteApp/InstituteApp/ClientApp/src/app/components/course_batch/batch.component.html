@@ -12,7 +12,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>CourseId</th>
+                    <th>Course</th>
                     <th>StartDate</th>
                     <th>EndDate</th>
                     <th>MaxNumberOfStudent</th>
@@ -24,8 +24,8 @@
                     <td>{{batch.id}}</td>
                     <td>{{batch.name}}</td>
                     <td>{{batch.courseId}}</td>
-                    <td>{{batch.startDate}}</td>
-                    <td>{{batch.endDate}}</td>
+                    <td>{{batch.satrtDate |  date:'dd/MM//yyyy'}}</td>
+                    <td>{{batch.endDate |  date:'dd/MM/yyyy'}}</td>
                     <td>{{batch.maxNumberOfStudent}}</td>
                     <td>
 

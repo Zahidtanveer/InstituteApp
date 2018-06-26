@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Batch</h1>
+                </div>
+
+                <form [formGroup]="batchForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="name">Name</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && name.valid || name.touched && name.valid || name.dirty && name.valid, 'is-invalid' :formDir.submitted && !name.valid || name.touched && !name.valid || name.dirty  && !name.valid}" type="text" formControlName="name">
+                                    <span class="invalid-feedback" *ngIf="!name.valid && formDir.submitted || name.touched && !name.valid || name.dirty  && !name.valid">
+                                        Name is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="name.valid && formDir.submitted || name.touched && name.valid || name.dirty && name.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="courseId">Course</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && courseId.valid || courseId.touched && courseId.valid || courseId.dirty && courseId.valid, 'is-invalid' :formDir.submitted && !courseId.valid || courseId.touched && !courseId.valid || courseId.dirty  && !courseId.valid}" data-val="true" formControlName="courseId">
+                                        <option value="">--Select Course--</option>
+                                        <option *ngFor="let c of courseList" value="{{c.id}}">{{c.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !courseId.valid || courseId.touched && !courseId.valid || courseId.dirty  && !courseId.valid">
+                                        Course is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && courseId.valid || courseId.touched && courseId.valid || courseId.dirty && courseId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="satrtDate">Start Date</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && satrtDate.valid || satrtDate.touched && satrtDate.valid || satrtDate.dirty && satrtDate.valid, 'is-invalid' :formDir.submitted && !satrtDate.valid || satrtDate.touched && !satrtDate.valid || satrtDate.dirty  && !satrtDate.valid}" type="text" formControlName="satrtDate">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !satrtDate.valid || satrtDate.touched && !satrtDate.valid || satrtDate.dirty  && !satrtDate.valid">
+                                        Start Date is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && satrtDate.valid || satrtDate.touched && satrtDate.valid || satrtDate.dirty && satrtDate.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="endDate">endDate</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && endDate.valid || endDate.touched && endDate.valid || endDate.dirty && endDate.valid, 'is-invalid' :formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid}" formControlName="endDate">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid">
+                                        <span *ngIf="endDate.errors.required">  End Date is required.</span>
+                                        <span *ngIf="endDate.errors.pattern">End Date not valid.</span>
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && endDate.valid || endDate.touched && endDate.valid || endDate.dirty && endDate.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="maxNumberOfStudent">MaxNumberOfStudent</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && maxNumberOfStudent.valid || maxNumberOfStudent.touched && maxNumberOfStudent.valid || maxNumberOfStudent.dirty && maxNumberOfStudent.valid, 'is-invalid' :formDir.submitted && !maxNumberOfStudent.valid || maxNumberOfStudent.touched && !maxNumberOfStudent.valid || maxNumberOfStudent.dirty  && !maxNumberOfStudent.valid}" formControlName="maxNumberOfStudent">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !maxNumberOfStudent.valid || maxNumberOfStudent.touched && !maxNumberOfStudent.valid || maxNumberOfStudent.dirty  && !maxNumberOfStudent.valid">
+                                        <span *ngIf="maxNumberOfStudent.errors.required">  MaxNumberOfStudent is required.</span>
+                                        <span *ngIf="maxNumberOfStudent.errors.pattern">MaxNumberOfStudent not valid.</span>
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && maxNumberOfStudent.valid || maxNumberOfStudent.touched && maxNumberOfStudent.valid || maxNumberOfStudent.dirty && maxNumberOfStudent.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <input type="hidden" formControlName="course" />
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

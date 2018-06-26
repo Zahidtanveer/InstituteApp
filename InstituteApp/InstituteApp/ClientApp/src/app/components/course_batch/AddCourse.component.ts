@@ -28,6 +28,7 @@ export class createCourse implements OnInit {
             MaxAttandencePercentage: ['', [Validators.required]],
             TotalWorkingDays: ['', [Validators.required]],
             SyllabusName: ['', [Validators.required]],
+            AttendanceType: ['', [Validators.required]]
         })
     }
     ngOnInit() {
@@ -56,5 +57,6 @@ export class createCourse implements OnInit {
     get MaxAttandencePercentage() { return this.courseForm.get('MaxAttandencePercentage'); }
     get TotalWorkingDays() { return this.courseForm.get('TotalWorkingDays'); }
     get SyllabusName() { return this.courseForm.get('SyllabusName'); }
+    get AttendanceType() { return this.courseForm.get('AttendanceType'); }
 
 }

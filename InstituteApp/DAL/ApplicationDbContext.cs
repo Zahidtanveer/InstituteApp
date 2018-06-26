@@ -1,9 +1,4 @@
-﻿// ====================================================
-// More Templates: https://www.ebenmonney.com/templates
-// Email: support@ebenmonney.com
-// ====================================================
-
-using DAL.Models;
+﻿using DAL.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,8 +26,8 @@ namespace DAL
         public DbSet<Course> courses { get; set; }
         public DbSet<Batch> batches { get; set; }
 
-
-
+        public DbSet<Syllabus> syllabus { get; set; }
+        public DbSet<AllocatedBatchTeacher> allocatedBatchTeachers {get; set;}
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
@@ -79,9 +74,21 @@ namespace DAL
                 .HasOne<Course>(c => c.course)
                 .WithMany(b => b.batches)
                 .HasForeignKey(c => c.CourseId);
-          
 
+            builder.Entity<Course>()
+             .HasOne(c => c.syllabus)
+             .WithMany(b => b.courses)
+             .HasForeignKey(c => c.SyllabusName);
 
+            //builder.Entity<AllocatedBatchTeacher>()
+            // .HasOne(c => c.course)
+            // .WithMany(b => b.teachers)
+            // .HasForeignKey(c => c.CourseId);
+
+            //builder.Entity<AllocatedBatchTeacher>()
+            // .HasOne(c => c.batches)
+            // .WithMany(b => b.teachers)
+            // .HasForeignKey(c => c.BatchId);
 
         }
 

@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Syllabus</h1>
+                </div>
+
+                <form [formGroup]="syllabusForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Name">Name</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Name.valid || Name.touched && Name.valid || Name.dirty && Name.valid, 'is-invalid' :formDir.submitted && !Name.valid || Name.touched && !Name.valid || Name.dirty  && !Name.valid}" type="text" formControlName="Name">
+                                    <span class="invalid-feedback" *ngIf="!Name.valid && formDir.submitted || Name.touched && !Name.valid || Name.dirty  && !Name.valid">
+                                        Name is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="Name.valid && formDir.submitted || Name.touched && Name.valid || Name.dirty && Name.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Description">Description</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Description.valid || Description.touched && Description.valid || Description.dirty && Description.valid, 'is-invalid' :formDir.submitted && !Description.valid || Description.touched && !Description.valid || Description.dirty  && !Description.valid}" type="text" formControlName="Description">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !Description.valid || Description.touched && !Description.valid || Description.dirty  && !Description.valid">
+                                        Description is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && Description.valid || Description.touched && Description.valid || Description.dirty && Description.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Code">Code</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && Code.valid || Code.touched && Code.valid || Code.dirty && Code.valid, 'is-invalid' :formDir.submitted && !Code.valid || Code.touched && !Code.valid || Code.dirty  && !Code.valid}" type="text" formControlName="Code">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !Code.valid || Code.touched && !Code.valid || Code.dirty  && !Code.valid">
+                                        Code is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && Code.valid || Code.touched && Code.valid || Code.dirty && Code.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                      
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

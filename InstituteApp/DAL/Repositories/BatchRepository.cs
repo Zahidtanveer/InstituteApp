@@ -35,7 +35,9 @@ namespace DAL.Repositories
         {
             try
             {
-                return _appContext.batches.ToList();
+
+                var batches = _appContext.batches.ToList();
+                return batches;
             }
             catch (Exception ex)
             {

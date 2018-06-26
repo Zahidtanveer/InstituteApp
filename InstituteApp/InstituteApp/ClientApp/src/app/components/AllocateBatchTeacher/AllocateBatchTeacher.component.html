@@ -1,0 +1,38 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>List of Allocated Batch Teacher</h2>
+            <a [routerLink]="['/add-batchteacherallocation']" class="btn btn-success">Create New</a>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Course</th>
+                    <th>Batch</th>
+                    <th>Teacher</th>
+
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of dList">
+                    <td>{{t.id}}</td>
+                    <td>{{t.name}}</td>
+                    <td>{{t.code}}</td>
+                    <td>{{t.description}}</td>
+
+                    <td>
+
+                        <a [routerLink]="['/batchteacherallocation/edit/',t.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(t.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -13,8 +13,12 @@ namespace DAL.Models
         public string Code { get; set; }
         public string MaxAttandencePercentage { get; set; }
         public int TotalWorkingDays { get; set; }
-        public string SyllabusName { get; set; }
+        public string AttendanceType { get; set; }
+        public int SyllabusName { get; set; }
      
+        public Syllabus syllabus { get; set; } 
         public ICollection<Batch> batches { get; set; }
+  
+
     }
 }

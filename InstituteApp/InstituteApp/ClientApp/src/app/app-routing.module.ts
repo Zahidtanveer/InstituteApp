@@ -35,6 +35,14 @@ import { createCaste } from './components/caste_religion/AddCaste.component';
 import { createCourse } from './components/course_batch/AddCourse.component';
 import { editCourse } from './components/course_batch/EidtCourse.component';
 import { createBatch } from './components/course_batch/Addbatch.component';
+import { editBatch } from './components/course_batch/EditBatch.component';
+import { SyllabusComponent } from './components/Syllabus/Syllabus.component';
+import { AllocateBatchTeacherService } from './services/AllocatedBatchTeacher.service';
+import { AllocatedBatchTeacherComponent } from './components/AllocateBatchTeacher/AllocateBatchTeacher.component';
+import { createSyllabus } from './components/Syllabus/AddSyllabus.component';
+import { editSyllabus } from './components/Syllabus/EditSyllabus.Component';
+import { editAllocateBatchTeacher } from './components/AllocateBatchTeacher/EditAllocateBatchTeacher.component';
+import { createAllocateBatchTeacher } from './components/AllocateBatchTeacher/AddAllocateBatchTeacher.component';
 
 
 
@@ -50,25 +58,32 @@ import { createBatch } from './components/course_batch/Addbatch.component';
             { path: "orders", component: OrdersComponent, canActivate: [AuthGuard], data: { title: "Orders" } },
             { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
             { path: "about", component: AboutComponent, data: { title: "About Us" } },
-            { path: "fetch-institute", component: InstituteComponent, data: { title: "Institiute" } },
-            { path: "add-institute", component: createInstitute, data: { title: "Add Institiute" } },
-            { path: "institute/edit/:Id", component: editInstitute, data: { title: "Edit Institiute" } },
-            { path: "fetch-acadamic", component: AcadamicComponent, data: { title: "Acadamic" } },
-            { path: "add-acadamic", component: createAcadamic, data: { title: "Add Acadamic" } },
-            { path: "acadamic/edit/:Id", component: editAcadamic, data: { title: "Edit Acadamic" } },
-            { path: "catse-and-religion", component: CRIndexComponent, data: { title: "Caste and Religion" } },
-            { path: "religion/edit/:Id", component: editReligion, data: { title: "Edit Religion" } },
-            { path: "caste/edit/:Id", component: editCaste, data: { title: "Edit Caste" } },
-            { path: "fetch-religion", component: ReligionComponent, data: { title: "Religion" } },
-            { path: "fetch-caste", component: CasteComponent, data: { title: "Caste" } },
-            { path: "add-religion", component: createReligion, data: { title: "Add Religion" } },
-            { path: "add-caste", component: createCaste, data: { title: "Add Caste" } },
-            { path: "fetch-batch", component: BatchComponent, data: { title: "Batch" } },
-            { path: "add-batch", component: createBatch, data: { title: "Batch" } },
-            { path: "batch/edit/:Id", component: BatchComponent, data: { title: "Batch" } },
-            { path: "fetch-course", component: CourseComponent, data: { title: "Course" } },
-            { path: "add-course", component: createCourse, data: { title: "Add Course" } },
-            { path: "course/edit/:Id", component: editCourse, data: { title: "Edit Course" } },
+            { path: "fetch-institute", component: InstituteComponent, canActivate: [AuthGuard], data: { title: "Institiute" } },
+            { path: "add-institute", component: createInstitute, canActivate: [AuthGuard], data: { title: "Add Institiute" } },
+            { path: "institute/edit/:Id", component: editInstitute, canActivate: [AuthGuard], data: { title: "Edit Institiute" } },
+            { path: "fetch-acadamic", component: AcadamicComponent, canActivate: [AuthGuard], data: { title: "Acadamic" } },
+            { path: "add-acadamic", component: createAcadamic, canActivate: [AuthGuard],data: { title: "Add Acadamic" } },
+            { path: "acadamic/edit/:Id", component: editAcadamic, canActivate: [AuthGuard], data: { title: "Edit Acadamic" } },
+            { path: "catse-and-religion", component: CRIndexComponent, canActivate: [AuthGuard], data: { title: "Caste and Religion" } },
+            { path: "religion/edit/:Id", component: editReligion, canActivate: [AuthGuard], data: { title: "Edit Religion" } },
+            { path: "caste/edit/:Id", component: editCaste, canActivate: [AuthGuard], data: { title: "Edit Caste" } },
+            { path: "fetch-religion", component: ReligionComponent, canActivate: [AuthGuard], data: { title: "Religion" } },
+            { path: "fetch-caste", component: CasteComponent, canActivate: [AuthGuard], data: { title: "Caste" } },
+            { path: "add-religion", component: createReligion, canActivate: [AuthGuard], data: { title: "Add Religion" } },
+            { path: "add-caste", component: createCaste, canActivate: [AuthGuard], data: { title: "Add Caste" } },
+            { path: "fetch-batch", component: BatchComponent, canActivate: [AuthGuard], data: { title: "Batch" } },
+            { path: "add-batch", component: createBatch, canActivate: [AuthGuard], data: { title: "Batch" } },
+            { path: "batch/edit/:Id", component: editBatch, canActivate: [AuthGuard], data: { title: "Edit Batch" } },
+            { path: "fetch-course", component: CourseComponent, canActivate: [AuthGuard], data: { title: "Course" } },
+            { path: "add-course", component: createCourse, canActivate: [AuthGuard], data: { title: "Add Course" } },
+            { path: "course/edit/:Id", component: editCourse, canActivate: [AuthGuard], data: { title: "Edit Course" } },
+            { path: "fetch-syllabus", component: SyllabusComponent, canActivate: [AuthGuard], data: { title: "Syllabus" } },
+            { path: "add-syllabus", component: createSyllabus, canActivate: [AuthGuard], data: { title: "Add Syllabus" } },
+            { path: "syllabus/edit/:id", component: editSyllabus, canActivate: [AuthGuard], data: { title: "Edit Syllabus" } },
+            { path: "fetch-batchteacherallocation", component: AllocatedBatchTeacherComponent, canActivate: [AuthGuard], data: { title: "Allocate Batch Teacher" } },
+            { path: "add-batchteacherallocation", component: createAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Add Allocate Batch Teacher" } },
+            { path: "batchteacherallocation/edit/:id", component: editAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Edit Allocate Batch Teacher" } },
+
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

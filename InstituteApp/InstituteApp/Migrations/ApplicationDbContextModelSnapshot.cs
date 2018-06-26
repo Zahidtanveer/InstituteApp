@@ -51,6 +51,22 @@ namespace InstituteApp.Migrations
                     b.ToTable("AppAcadamics");
                 });
 
+            modelBuilder.Entity("DAL.Models.AllocatedBatchTeacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BatchId");
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("TeacherId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("allocatedBatchTeachers");
+                });
+
             modelBuilder.Entity("DAL.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -201,6 +217,8 @@ namespace InstituteApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("AttendanceType");
+
                     b.Property<string>("Code");
 
                     b.Property<string>("Dscription");
@@ -209,11 +227,13 @@ namespace InstituteApp.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("SyllabusName");
+                    b.Property<int>("SyllabusName");
 
                     b.Property<int>("TotalWorkingDays");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SyllabusName");
 
                     b.ToTable("courses");
                 });
@@ -485,6 +505,22 @@ namespace InstituteApp.Migrations
                     b.ToTable("religion");
                 });
 
+            modelBuilder.Entity("DAL.Models.Syllabus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("syllabus");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -710,6 +746,14 @@ namespace InstituteApp.Migrations
                     b.HasOne("DAL.Models.Course", "course")
                         .WithMany("batches")
                         .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DAL.Models.Course", b =>
+                {
+                    b.HasOne("DAL.Models.Syllabus", "syllabus")
+                        .WithMany("courses")
+                        .HasForeignKey("SyllabusName")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

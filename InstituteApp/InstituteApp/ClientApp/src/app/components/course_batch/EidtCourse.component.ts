@@ -29,6 +29,7 @@ export class editCourse implements OnInit {
             maxAttandencePercentage: ['', [Validators.required]],
             totalWorkingDays: ['', [Validators.required]],
             syllabusName: ['', [Validators.required]],
+            attendanceType: ['', [Validators.required]],
             batches:['']
         })
     }
@@ -65,5 +66,6 @@ export class editCourse implements OnInit {
     get maxAttandencePercentage() { return this.courseForm.get('maxAttandencePercentage'); }
     get totalWorkingDays() { return this.courseForm.get('totalWorkingDays'); }
     get syllabusName() { return this.courseForm.get('syllabusName'); }
+    get attendanceType() { return this.courseForm.get('attendanceType'); }
     get batches() { return this.courseForm.get('batches');}
 }

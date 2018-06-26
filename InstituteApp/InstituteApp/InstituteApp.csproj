@@ -62,6 +62,9 @@
     <None Remove="ClientApp\src\app\components\Acadamic\acadamic.component.ts" />
     <None Remove="ClientApp\src\app\components\Acadamic\AddAcadamic.component.ts" />
     <None Remove="ClientApp\src\app\components\Acadamic\EditAcadamic.component.ts" />
+    <None Remove="ClientApp\src\app\components\AllocateBatchTeacher\AddAllocateBatchTeacher.component.ts" />
+    <None Remove="ClientApp\src\app\components\AllocateBatchTeacher\AllocateBatchTeacher.component.ts" />
+    <None Remove="ClientApp\src\app\components\AllocateBatchTeacher\EditAllocateBatchTeacher.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\AddCaste.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\AddReligion.component.ts" />
     <None Remove="ClientApp\src\app\components\caste_religion\caste.component.ts" />
@@ -71,15 +74,23 @@
     <None Remove="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <None Remove="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <None Remove="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
+    <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
+    <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
+    <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
+    <None Remove="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <None Remove="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\acadamic.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\AddAcadamic.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Acadamic\EditAcadamic.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\AllocateBatchTeacher\AddAllocateBatchTeacher.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\AllocateBatchTeacher\AllocateBatchTeacher.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\AllocateBatchTeacher\EditAllocateBatchTeacher.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\AddCaste.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\AddReligion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\caste.component.ts" />
@@ -89,9 +100,14 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

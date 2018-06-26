@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DAL.Repositories
 {
-    public class InstituteRepository : Repository<Institute>, IInstituteRepository
+    public class InstituteRepository : Repository<Institute>,IInstituteRepository
     {
         public InstituteRepository(ApplicationDbContext context) : base(context) { }
 

@@ -16,7 +16,7 @@ namespace DAL.Models
         public string MaxNumberOfStudent { get; set; }
         [ForeignKey("CourseId")]
         public Course course { get; set; }
-        
+      
 
     }
 }

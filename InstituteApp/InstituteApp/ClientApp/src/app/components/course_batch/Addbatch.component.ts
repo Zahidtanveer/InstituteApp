@@ -1,11 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
 import { CourseService } from '../../services/CourseAndBatch/course.service'
+import { BootstrapDatepickerDirective } from "../../directives/bootstrap-datepicker.directive";
 import * as $ from 'jquery';
+import { start } from 'repl';
+
+
 @Component({
     selector: 'createBatch',
     templateUrl: './AddBatch.component.html'
@@ -16,6 +20,9 @@ export class createBatch implements OnInit {
     title: string = "Create";
     id: number;
     errorMessage: any;
+    numPattern = "^-?(0|[1-9]\d*)?$/";
+    @ViewChild("datepicker")
+    datepicker: BootstrapDatepickerDirective;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _router: Router, private _courseService: CourseService, private _alertService: AlertService) {
@@ -30,11 +37,12 @@ export class createBatch implements OnInit {
             CourseId: ['', [Validators.required]],
             SatrtDate: ['', [Validators.required]],
             EndDate: ['', [Validators.required]],
-            MaxNumberOfStudent: ['', [Validators.required]]
+            MaxNumberOfStudent: ['', [Validators.required, Validators.pattern(this.numPattern)]]
 
 
         })
         this.getCourses();
+
     }
     ngOnInit() {
        
@@ -52,7 +60,7 @@ export class createBatch implements OnInit {
                 .subscribe((data) => {
 
                     setTimeout(() => {
-                        this._alertService.showMessage("New Entry", `Batch Addedd Successfully !`, MessageSeverity.success)
+                        this._alertService.showMessage("Success", `New Entry Addedd Successfully !`, MessageSeverity.success)
                     }, 500);
 
                     this._router.navigate(['/fetch-batch']);
@@ -63,6 +71,8 @@ export class createBatch implements OnInit {
     cancel() {
         this._router.navigate(['/fetch-batch']);
     }
+
+  
     get CourseId() { return this.batchForm.get('CourseId'); }
     get Name() { return this.batchForm.get('Name'); }
     get SatrtDate() { return this.batchForm.get('SatrtDate'); }
@@ -79,4 +89,5 @@ interface CourseData {
     maxAttandencePercentage: string
     totalWorkingDays: number
     syllabusName: string;
+    attendanceType: string;
 }

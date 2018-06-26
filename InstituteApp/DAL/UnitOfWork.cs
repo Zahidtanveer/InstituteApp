@@ -1,9 +1,4 @@
-﻿// ====================================================
-// More Templates: https://www.ebenmonney.com/templates
-// Email: support@ebenmonney.com
-// ====================================================
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +21,8 @@ namespace DAL
         IReligionRepository _religion;
         ICourseRepository _course;
         IBatchRepository _batch;
+        ISyllabusRepository _syllabus;
+        IAllocatedBatchTeacherRepository _allocatedBatchTeacherRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -130,6 +127,24 @@ namespace DAL
                 return _batch;
             }
 
+        }
+
+        public ISyllabusRepository Syllabus {
+
+            get
+            {
+                if (_syllabus == null)
+                    _syllabus = new SyllabusRepository(_context);
+                return _syllabus;
+            }
+        }
+        public IAllocatedBatchTeacherRepository AllocatedBatchTeacher {
+            get
+            {
+                if (_allocatedBatchTeacherRepository == null)
+                    _allocatedBatchTeacherRepository= new AllocatedBatchTeacherRepository(_context);
+                return _allocatedBatchTeacherRepository;
+            }
         }
 
         public int SaveChanges()

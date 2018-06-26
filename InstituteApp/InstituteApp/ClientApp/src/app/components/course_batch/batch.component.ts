@@ -7,6 +7,7 @@ import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
+import { CourseComponent } from './course.component';
 
 @Component({
     selector: 'fetch-Batch',
@@ -62,8 +63,9 @@ interface BatchData {
     courseId:number;
     startDate: string;
     endDate: string;
-    maxNumberOfStudent: string
-    
+    maxNumberOfStudent: string;
+   
  
 
 }
+

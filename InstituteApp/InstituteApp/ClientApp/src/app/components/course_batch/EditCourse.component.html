@@ -33,7 +33,18 @@
                                     </span>
                                 </div>
                             </div>
-
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="attendanceType">AttendanceType</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && attendanceType.valid || attendanceType.touched && attendanceType.valid || attendanceType.dirty && attendanceType.valid, 'is-invalid' :formDir.submitted && !attendanceType.valid || attendanceType.touched && !attendanceType.valid || attendanceType.dirty  && !attendanceType.valid}" type="text" formControlName="attendanceType">
+                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !attendanceType.valid || attendanceType.touched && !attendanceType.valid || attendanceType.dirty  && !attendanceType.valid">
+                                        AttendanceType is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="formDir.submitted && attendanceType.valid || attendanceType.touched && attendanceType.valid || attendanceType.dirty && attendanceType.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="code">Code</label>
                                 <div class="col-md-12">
