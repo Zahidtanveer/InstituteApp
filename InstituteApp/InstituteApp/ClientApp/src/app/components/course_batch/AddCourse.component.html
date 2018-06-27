@@ -36,7 +36,11 @@
                              <div class="form-group row">
                                 <label class=" control-label col-md-12" for="AttendanceType">AttendanceType</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && AttendanceType.valid || AttendanceType.touched && AttendanceType.valid || AttendanceType.dirty && AttendanceType.valid, 'is-invalid' :formDir.submitted && !AttendanceType.valid || AttendanceType.touched && !AttendanceType.valid || AttendanceType.dirty  && !AttendanceType.valid}" type="text" formControlName="AttendanceType">
+                                    <select class="form-control" data-val="true" [ngClass]="{'is-valid': formDir.submitted && AttendanceType.valid || AttendanceType.touched && AttendanceType.valid || AttendanceType.dirty && AttendanceType.valid, 'is-invalid' :formDir.submitted && !AttendanceType.valid || AttendanceType.touched && !AttendanceType.valid || AttendanceType.dirty  && !AttendanceType.valid}" formControlName="AttendanceType">
+                                        <option value="">--Select AttendanceType--</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Subject Wise">Subject Wise</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !AttendanceType.valid || AttendanceType.touched && !AttendanceType.valid || AttendanceType.dirty  && !AttendanceType.valid">
                                         AttendanceType is required.
                                     </span>
@@ -88,10 +92,12 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="SyllabusName">SyllabusName</label>
                                 <div class="col-md-12">
-                                    <input
-                                           class="form-control"
-                                           [ngClass]="{'is-valid': formDir.submitted && SyllabusName.valid || SyllabusName.touched && SyllabusName.valid || SyllabusName.dirty && SyllabusName.valid, 'is-invalid' :formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid}" formControlName="SyllabusName">
-                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid">
+                                    <select class="form-control" data-val="true"
+                                            [ngClass]="{'is-valid': formDir.submitted && SyllabusName.valid || SyllabusName.touched && SyllabusName.valid || SyllabusName.dirty && SyllabusName.valid, 'is-invalid' :formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid}" formControlName="SyllabusName">
+                                        <option value="">--Select Syllabus--</option>
+                                        <option *ngFor="let s of syllabusList" value="{{s.id}}">{{s.name}}</option>
+                                    </select>
+                                        <span class="invalid-feedback" *ngIf="formDir.submitted && !SyllabusName.valid || SyllabusName.touched && !SyllabusName.valid || SyllabusName.dirty  && !SyllabusName.valid">
                                         <span *ngIf="SyllabusName.errors.required">  Syllabus Name is required.</span>
                                         <span *ngIf="SyllabusName.errors.pattern">Syllabus Name not valid.</span>
                                     </span>

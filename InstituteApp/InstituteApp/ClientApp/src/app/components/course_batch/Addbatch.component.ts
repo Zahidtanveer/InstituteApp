@@ -14,13 +14,13 @@ import { start } from 'repl';
     selector: 'createBatch',
     templateUrl: './AddBatch.component.html'
 })
-export class createBatch implements OnInit {
+export class createBatch {
     public courseList: CourseData[];
     batchForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;
-    numPattern = "^-?(0|[1-9]\d*)?$/";
+    numPattern = /^\d+$/;
     @ViewChild("datepicker")
     datepicker: BootstrapDatepickerDirective;
 
@@ -44,9 +44,7 @@ export class createBatch implements OnInit {
         this.getCourses();
 
     }
-    ngOnInit() {
-       
-    }
+ 
     getCourses() {
         this._courseService.getCourse()
             .subscribe(data => { this.courseList = data });

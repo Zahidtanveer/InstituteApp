@@ -4,18 +4,19 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } fr
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../services/CourseAndBatch/course.service'
 import * as $ from 'jquery';
+import { SyllabusService } from '../../services/Syllabus.service';
 @Component({
     selector: 'editCourse',
     templateUrl: './EditCourse.component.html'
 })
 export class editCourse implements OnInit {
-
+    public syllabusList: SyllabusData[]
     courseForm: FormGroup;
     title: string = "Edit";
     id: number;
     errorMessage: any;
 
-    constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
+    constructor(private _fb: FormBuilder, private _syllabusService: SyllabusService, private _avRoute: ActivatedRoute,
         private _courseService: CourseService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
@@ -30,8 +31,10 @@ export class editCourse implements OnInit {
             totalWorkingDays: ['', [Validators.required]],
             syllabusName: ['', [Validators.required]],
             attendanceType: ['', [Validators.required]],
-            batches:['']
+            batches: [''],
+            syllabus:['']
         })
+        this.getSyllabuss();
     }
     ngOnInit() {
 
@@ -41,6 +44,10 @@ export class editCourse implements OnInit {
                 .subscribe(resp => this.courseForm.setValue(resp)
                     , error => this.errorMessage = error);
         }
+    }
+    getSyllabuss() {
+        this._syllabusService.getSyllabus()
+            .subscribe(data => { this.syllabusList = data });
     }
     save() {
         if (!this.courseForm.valid) {
@@ -67,5 +74,13 @@ export class editCourse implements OnInit {
     get totalWorkingDays() { return this.courseForm.get('totalWorkingDays'); }
     get syllabusName() { return this.courseForm.get('syllabusName'); }
     get attendanceType() { return this.courseForm.get('attendanceType'); }
-    get batches() { return this.courseForm.get('batches');}
+    get batches() { return this.courseForm.get('batches'); }
+    get syllabus() { return this.courseForm.get('syllabus'); }
+}
+interface SyllabusData {
+    id: number;
+    name: string;
+    code: string;
+    description: string;
+
 }

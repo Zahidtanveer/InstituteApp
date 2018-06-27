@@ -9,7 +9,7 @@ import * as $ from 'jquery';
     selector: 'createSyllabus',
     templateUrl: './AddSyllabus.component.html'
 })
-export class createSyllabus implements OnInit {
+export class createSyllabus{
 
     syllabusForm: FormGroup;
     title: string = "Create";
@@ -30,10 +30,7 @@ export class createSyllabus implements OnInit {
 
         })
     }
-    ngOnInit() {
-
-     
-    }
+    
     save() {
         if (!this.syllabusForm.valid) {
             return;

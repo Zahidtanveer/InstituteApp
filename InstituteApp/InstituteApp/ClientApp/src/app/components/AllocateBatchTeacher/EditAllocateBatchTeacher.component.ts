@@ -28,8 +28,8 @@ export class editAllocateBatchTeacher implements OnInit {
             id: 0,
             batchId: ['', [Validators.required]],
             courseId: ['', [Validators.required]],
-            teacherId: ['', [Validators.required]],
-            course: ['']
+            teacherId: ['', [Validators.required]]
+            
         })
         this.getCourses();
         this.getBatchs();
@@ -59,14 +59,14 @@ export class editAllocateBatchTeacher implements OnInit {
             this._allocateBatchTeacherService.updateAllocateBatchTeacher(this.allocateBatchTeacherForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-AllocateBatchTeacher']);
+                    this._router.navigate(['/fetch-batchteacherallocation']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-AllocateBatchTeacher']);
+        this._router.navigate(['/fetch-batchteacherallocation']);
     }
     get courseId() { return this.allocateBatchTeacherForm.get('courseId'); }
     get batchId() { return this.allocateBatchTeacherForm.get('batchId'); }
@@ -90,7 +90,4 @@ interface BatchData {
     startDate: string;
     endDate: string;
     maxNumberOfStudent: string;
-
-
-
 }

@@ -6,12 +6,12 @@ import { AllocateBatchTeacherService } from '../../services/AllocatedBatchTeache
 import { CourseService } from '../../services/CourseAndBatch/course.service'
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import * as $ from 'jquery';
-import { AlertService } from '../../services/alert.service';
+import { AlertService, MessageSeverity } from '../../services/alert.service';
 @Component({
     selector: 'createAllocateBatchTeacher',
     templateUrl: './AddAllocateBatchTeacher.component.html'
 })
-export class createAllocateBatchTeacher implements OnInit {
+export class createAllocateBatchTeacher {
     public courseList: CourseData[];
     public batchList: BatchData[];
     allocateBatchTeacherForm: FormGroup;
@@ -28,18 +28,15 @@ export class createAllocateBatchTeacher implements OnInit {
         }
         this.allocateBatchTeacherForm = this._fb.group({
             id: 0,
-            batchId: ['', [Validators.required]],
-            courseId: ['', [Validators.required]],
-            teacherId: ['', [Validators.required]],
-            course: ['']
+            BatchId: ['', [Validators.required]],
+            CourseId: ['', [Validators.required]],
+            TeacherId: ['', [Validators.required]],
+            
         })
         this.getCourses();
         this.getBatchs();
     }
-    ngOnInit() {
-
-      
-    }
+   
     getCourses() {
         this._courseService.getCourse()
             .subscribe(data => { this.courseList = data });
@@ -52,25 +49,25 @@ export class createAllocateBatchTeacher implements OnInit {
         if (!this.allocateBatchTeacherForm.valid) {
             return;
         }
-        if (this.title == "create") {
+        if (this.title == "Create") {
             this._allocateBatchTeacherService.saveAllocateBatchTeacher(this.allocateBatchTeacherForm.value)
                 .subscribe((data) => {
                     setTimeout(() => {
                         this._alertService.showMessage("Success", `New Entry Addedd Successfully !`, MessageSeverity.success)
                     }, 500);
 
-                    this._router.navigate(['/fetch-AllocateBatchTeacher']);
+                    this._router.navigate(['/fetch-batchteacherallocation']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-AllocateBatchTeacher']);
+        this._router.navigate(['/fetch-batchteacherallocation']);
     }
-    get courseId() { return this.allocateBatchTeacherForm.get('courseId'); }
-    get batchId() { return this.allocateBatchTeacherForm.get('batchId'); }
-    get teacherId() { return this.allocateBatchTeacherForm.get('teacherId'); }
+    get CourseId() { return this.allocateBatchTeacherForm.get('CourseId'); }
+    get BatchId() { return this.allocateBatchTeacherForm.get('BatchId'); }
+    get TeacherId() { return this.allocateBatchTeacherForm.get('TeacherId'); }
 
 }
 interface CourseData {

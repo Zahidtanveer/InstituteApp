@@ -4,23 +4,15 @@ import 'rxjs/add/operator/switchMap';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { BootstrapTabDirective } from "../../directives/bootstrap-tab.directive";
-
-import { CasteComponent } from './caste.component';
-import { ReligionComponent } from './religion.component';
-import { createReligion } from './AddReligion.component';
-import { createCaste } from './AddCaste.component';
-import { editCaste } from './EditCaste.component';
-import { editReligion } from './EditReligion.component';
-
 @Component({
 
     selector: 'cr-Index',
     templateUrl: './index.component.html',
     styleUrls: ['./index.component.html'],
-}
+})
 
 
-export class CRIndexComponent implements OnInit, OnDestroy {
+  export class CRIndexComponent implements OnInit, OnDestroy {
 
     isCasteActivated = true;
     isReligionActivated = false;
@@ -29,31 +21,11 @@ export class CRIndexComponent implements OnInit, OnDestroy {
     readonly casteTab = "nav-caste";
     readonly religionTab = "nav-religion";
 
-    @ViewChild("tab")
+@ViewChild("tab")
     tab: BootstrapTabDirective;
 
-    @ViewChild("indexCaste")
-    indexCaste: CasteComponent;
-
-    @ViewChild("indexReligion")
-    indexReligion: ReligionComponent;
-
-    @ViewChild("addCaste")
-    addcaste: createCaste;
-
-    @ViewChild("addReligion")
-    addreligion: createReligion;
-
-    @ViewChild("editCaste")
-    editcaste: editCaste;
-
-    @ViewChild("editReligion")
-    editreligion: editReligion;
-
-    @ViewChild('editorModal')
-    editorModal: ModalDirective;
-
-    constructor(private route: ActivatedRoute) {
+   
+  constructor(private route: ActivatedRoute) {
     }
     ngOnInit() {
         this.fragmentSubscription = this.route.fragment.subscribe(anchor => this.showContent(anchor));
@@ -87,11 +59,5 @@ export class CRIndexComponent implements OnInit, OnDestroy {
         this.isReligionActivated = activeTab == this.religionTab;
 
     }
-    onEditorModalHidden() {
-        this.addcaste.casteForm.reset(true);
-        this.addreligion.religionForm.reset(true);
-    }
-    AddNew() {
-    this.editorModal.show();
-    }
+
 }

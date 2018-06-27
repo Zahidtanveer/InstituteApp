@@ -36,7 +36,11 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="attendanceType">AttendanceType</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && attendanceType.valid || attendanceType.touched && attendanceType.valid || attendanceType.dirty && attendanceType.valid, 'is-invalid' :formDir.submitted && !attendanceType.valid || attendanceType.touched && !attendanceType.valid || attendanceType.dirty  && !attendanceType.valid}" type="text" formControlName="attendanceType">
+                                    <select class="form-control" data-val="true" [ngClass]="{'is-valid': formDir.submitted && attendanceType.valid || attendanceType.touched && attendanceType.valid || attendanceType.dirty && attendanceType.valid, 'is-invalid' :formDir.submitted && !attendanceType.valid || attendanceType.touched && !attendanceType.valid || attendanceType.dirty  && !attendanceType.valid}" formControlName="attendanceType">
+                                        <option value="">--Select AttendanceType--</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Subject Wise">Subject Wise</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !attendanceType.valid || attendanceType.touched && !attendanceType.valid || attendanceType.dirty  && !attendanceType.valid">
                                         AttendanceType is required.
                                     </span>
@@ -86,10 +90,13 @@
 
                             </div>
                             <div class="form-group row">
-                                <label class=" control-label col-md-12" for="syllabusName">Syllabus Name</label>
+                                <label class=" control-label col-md-12" for="syllabusName">SyllabusName</label>
                                 <div class="col-md-12">
-                                    <input class="form-control"
-                                           [ngClass]="{'is-valid': formDir.submitted && syllabusName.valid || syllabusName.touched && syllabusName.valid || syllabusName.dirty && syllabusName.valid, 'is-invalid' :formDir.submitted && !syllabusName.valid || syllabusName.touched && !syllabusName.valid || syllabusName.dirty  && !syllabusName.valid}" formControlName="syllabusName">
+                                    <select class="form-control" data-val="true"
+                                            [ngClass]="{'is-valid': formDir.submitted && syllabusName.valid || syllabusName.touched && syllabusName.valid || syllabusName.dirty && syllabusName.valid, 'is-invalid' :formDir.submitted && !syllabusName.valid || syllabusName.touched && !syllabusName.valid || syllabusName.dirty  && !syllabusName.valid}" formControlName="syllabusName">
+                                        <option value="">--Select Syllabus--</option>
+                                        <option *ngFor="let s of syllabusList" value="{{s.id}}">{{s.name}}</option>
+                                    </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !syllabusName.valid || syllabusName.touched && !syllabusName.valid || syllabusName.dirty  && !syllabusName.valid">
                                         <span *ngIf="syllabusName.errors.required">  Syllabus Name is required.</span>
                                         <span *ngIf="syllabusName.errors.pattern">Syllabus Name not valid.</span>
@@ -103,6 +110,7 @@
                         <div class="col-md-6 col-lg-6">
                         </div>
                         <input formControlName="batches" type="hidden" />
+                        <input formControlName="syllabus" type="hidden" />
                         <div class="form-group col-md-12">
                             <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
                             <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>

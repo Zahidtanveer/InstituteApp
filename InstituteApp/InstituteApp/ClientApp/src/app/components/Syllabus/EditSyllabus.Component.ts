@@ -27,6 +27,7 @@ export class editSyllabus implements OnInit {
             name: ['', [Validators.required]],
             description: ['', [Validators.required]],
             code: ['', [Validators.required]],
+            courses: ['']
            
         })
     }
@@ -60,4 +61,5 @@ export class editSyllabus implements OnInit {
     get name() { return this.syllabusForm.get('name'); }
     get description() { return this.syllabusForm.get('description'); }
     get code() { return this.syllabusForm.get('code'); }
+    get courses() { return this.syllabusForm.get('courses'); }
 }

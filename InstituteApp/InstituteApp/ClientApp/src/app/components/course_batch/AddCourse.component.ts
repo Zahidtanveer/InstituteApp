@@ -4,17 +4,18 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } fr
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseComponent } from '../course_batch/course.component';
 import { CourseService } from '../../services/CourseAndBatch/course.service'
+import { SyllabusService } from '../../services/Syllabus.service';
 @Component({
     selector: 'createCourse',
     templateUrl: './AddCourse.component.html'
 })
-export class createCourse implements OnInit {
-
+export class createCourse  {
+    public syllabusList: SyllabusData[]
     courseForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;
-    constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
+    constructor(private _fb: FormBuilder, private _syllabusService: SyllabusService, private _avRoute: ActivatedRoute,
         private _courseService: CourseService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
@@ -30,10 +31,12 @@ export class createCourse implements OnInit {
             SyllabusName: ['', [Validators.required]],
             AttendanceType: ['', [Validators.required]]
         })
+        this.getSyllabuss();
     }
-    ngOnInit() {
-
-      
+    
+    getSyllabuss() {
+        this._syllabusService.getSyllabus()
+            .subscribe(data => { this.syllabusList = data });
     }
     save() {
         if (!this.courseForm.valid) {
@@ -59,4 +62,11 @@ export class createCourse implements OnInit {
     get SyllabusName() { return this.courseForm.get('SyllabusName'); }
     get AttendanceType() { return this.courseForm.get('AttendanceType'); }
 
+}
+interface SyllabusData {
+    id: number;
+    name: string;
+    code: string;
+    description: string;
+ 
 }

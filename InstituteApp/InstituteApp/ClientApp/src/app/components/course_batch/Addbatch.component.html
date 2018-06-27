@@ -40,7 +40,7 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="SatrtDate">Start Date</label>
                                 <div class="col-md-12">
-                                    <input bootstrapDatepicker #datepicker="bootstrap-datepicker"  formControlName="SatrtDate"   class="form-control" placeholder="Choose a date"  [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}" >
+                                    <input   formControlName="SatrtDate"   class="form-control" placeholder="Choose a date"  [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}" >
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid">
                                         Start Date is required.
                                     </span>
@@ -52,7 +52,7 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="EndDate">EndDate</label>
                                 <div class="col-md-12" >
-                                    <input  bootstrapDatepicker #datepicker="bootstrap-datepicker"   formControlName="EndDate"  class="form-control" placeholder="Choose a date" [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}" >
+                                    <input    formControlName="EndDate"  class="form-control" placeholder="Choose a date" [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}" >
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid">
                                          End Date is required.
                                     </span>

@@ -19,7 +19,7 @@ export class createReligion implements OnInit {
     errorMessage: any;
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _religionService: ReligionService, private _router: Router,, private _alertService: AlertService) {
+        private _religionService: ReligionService, private _router: Router, private _alertService: AlertService) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 

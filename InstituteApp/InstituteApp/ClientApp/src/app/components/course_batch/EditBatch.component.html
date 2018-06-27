@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class=" control-label col-md-12" for="endDate">endDate</label>
+                                <label class=" control-label col-md-12" for="endDate">EndDate</label>
                                 <div class="col-md-12">
                                     <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && endDate.valid || endDate.touched && endDate.valid || endDate.dirty && endDate.valid, 'is-invalid' :formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid}" formControlName="endDate">
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid">

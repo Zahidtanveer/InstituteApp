@@ -20,7 +20,7 @@ export class AllocatedBatchTeacherComponent {
     dataTable: any;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _allocatedBatchTeacherService: AllocateBatchTeacherService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
-        http.get(baseUrl + 'api/AllocatedBatchTeacher/Index').subscribe(result => {
+        http.get(baseUrl + 'api/AllocateBatchTeacher/Index').subscribe(result => {
             this.dList = result.json() as AllocatedBatchTeacherData[];
 
             this.chRef.detectChanges();

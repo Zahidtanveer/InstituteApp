@@ -79,10 +79,10 @@ import { createAllocateBatchTeacher } from './components/AllocateBatchTeacher/Ad
             { path: "course/edit/:Id", component: editCourse, canActivate: [AuthGuard], data: { title: "Edit Course" } },
             { path: "fetch-syllabus", component: SyllabusComponent, canActivate: [AuthGuard], data: { title: "Syllabus" } },
             { path: "add-syllabus", component: createSyllabus, canActivate: [AuthGuard], data: { title: "Add Syllabus" } },
-            { path: "syllabus/edit/:id", component: editSyllabus, canActivate: [AuthGuard], data: { title: "Edit Syllabus" } },
+            { path: "syllabus/edit/:Id", component: editSyllabus, canActivate: [AuthGuard], data: { title: "Edit Syllabus" } },
             { path: "fetch-batchteacherallocation", component: AllocatedBatchTeacherComponent, canActivate: [AuthGuard], data: { title: "Allocate Batch Teacher" } },
             { path: "add-batchteacherallocation", component: createAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Add Allocate Batch Teacher" } },
-            { path: "batchteacherallocation/edit/:id", component: editAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Edit Allocate Batch Teacher" } },
+            { path: "batchteacherallocation/edit/:Id", component: editAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Edit Allocate Batch Teacher" } },
 
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
