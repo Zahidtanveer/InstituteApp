@@ -64,6 +64,10 @@ namespace InstituteApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("CourseId");
+
                     b.ToTable("allocatedBatchTeachers");
                 });
 
@@ -739,6 +743,19 @@ namespace InstituteApp.Migrations
                         .HasFilter("[ReferenceId] IS NOT NULL");
 
                     b.ToTable("OpenIddictTokens");
+                });
+
+            modelBuilder.Entity("DAL.Models.AllocatedBatchTeacher", b =>
+                {
+                    b.HasOne("DAL.Models.Batch", "batches")
+                        .WithMany("batchTeachers")
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Course", "course")
+                        .WithMany("batchTeacher")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DAL.Models.Batch", b =>

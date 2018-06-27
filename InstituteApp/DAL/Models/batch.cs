@@ -16,6 +16,7 @@ namespace DAL.Models
         public string MaxNumberOfStudent { get; set; }
         [ForeignKey("CourseId")]
         public virtual Course course { get; set; }
+        public virtual ICollection<AllocatedBatchTeacher> batchTeachers { get; set; }
       
 
     }

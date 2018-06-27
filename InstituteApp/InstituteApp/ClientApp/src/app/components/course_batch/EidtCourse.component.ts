@@ -32,7 +32,8 @@ export class editCourse implements OnInit {
             syllabusName: ['', [Validators.required]],
             attendanceType: ['', [Validators.required]],
             batches: [''],
-            syllabus:['']
+            syllabus: [''],
+            batchTeacher:['']
         })
         this.getSyllabuss();
     }
@@ -76,6 +77,7 @@ export class editCourse implements OnInit {
     get attendanceType() { return this.courseForm.get('attendanceType'); }
     get batches() { return this.courseForm.get('batches'); }
     get syllabus() { return this.courseForm.get('syllabus'); }
+    get batchTeacher() { return this.courseForm.get('batchTeacher'); }
 }
 interface SyllabusData {
     id: number;

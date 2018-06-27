@@ -21,8 +21,10 @@ export class createBatch {
     id: number;
     errorMessage: any;
     numPattern = /^\d+$/;
-    @ViewChild("datepicker")
-    datepicker: BootstrapDatepickerDirective;
+    @ViewChild("date1")
+    date1: BootstrapDatepickerDirective;
+    @ViewChild("date2")
+    date2: BootstrapDatepickerDirective;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _router: Router, private _courseService: CourseService, private _alertService: AlertService) {
@@ -37,10 +39,11 @@ export class createBatch {
             CourseId: ['', [Validators.required]],
             SatrtDate: ['', [Validators.required]],
             EndDate: ['', [Validators.required]],
-            MaxNumberOfStudent: ['', [Validators.required, Validators.pattern(this.numPattern)]]
-
-
+            MaxNumberOfStudent: ['', [Validators.required, Validators.pattern(this.numPattern)]],
+            
+            
         })
+      
         this.getCourses();
 
     }

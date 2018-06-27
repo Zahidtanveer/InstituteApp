@@ -29,7 +29,8 @@ export class editBatch implements OnInit {
             satrtDate: ['', [Validators.required]],
             endDate: ['', [Validators.required]],
             maxNumberOfStudent: ['', [Validators.required]],
-            course:['']
+            course: [''],
+            batchTeachers:['']
         })
         this.getCourses();
     }
@@ -69,6 +70,7 @@ export class editBatch implements OnInit {
     get endDate() { return this.batchForm.get('endDate'); }
     get maxNumberOfStudent() { return this.batchForm.get('maxNumberOfStudent'); }
     get course() { return this.batchForm.get('course'); }
+    get batchTeachers() { return this.batchForm.get('batchTeachers'); }
 }
 interface CourseData {
     id: number;

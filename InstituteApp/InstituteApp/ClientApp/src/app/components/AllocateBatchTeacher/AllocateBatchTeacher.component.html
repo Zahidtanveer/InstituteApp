@@ -21,9 +21,9 @@
             <tbody>
                 <tr *ngFor="let t of dList">
                     <td>{{t.id}}</td>
-                    <td>{{t.courseId}}</td>
-                    <td>{{t.batchId}}</td>
-                    <td>{{t.teacherId}}</td>
+                    <td>{{t.course.name}}</td>
+                    <td>{{t.batches.name}}</td>
+                    <td>Teacher {{t.teacherId}}</td>
 
                     <td>
 

@@ -35,7 +35,9 @@ namespace DAL.Repositories
             try
             {
 
-                return _appContext.allocatedBatchTeachers.ToList();
+                return _appContext.allocatedBatchTeachers
+                       .Include(x=>x.course)
+                       .Include(x=>x.batches).ToList();
 
             }
             catch (Exception ex)

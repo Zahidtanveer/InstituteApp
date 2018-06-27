@@ -80,15 +80,15 @@ namespace DAL
              .WithMany(b => b.courses)
              .HasForeignKey(c => c.SyllabusName);
 
-            //builder.Entity<AllocatedBatchTeacher>()
-            // .HasOne(c => c.course)
-            // .WithMany(b => b.teachers)
-            // .HasForeignKey(c => c.CourseId);
+            builder.Entity<AllocatedBatchTeacher>()
+             .HasOne(c => c.course)
+             .WithMany(b => b.batchTeacher)
+             .HasForeignKey(c => c.CourseId);
 
-            //builder.Entity<AllocatedBatchTeacher>()
-            // .HasOne(c => c.batches)
-            // .WithMany(b => b.teachers)
-            // .HasForeignKey(c => c.BatchId);
+            builder.Entity<AllocatedBatchTeacher>()
+             .HasOne(c => c.batches)
+             .WithMany(b => b.batchTeachers)
+             .HasForeignKey(c => c.BatchId);
 
         }
 

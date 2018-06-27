@@ -35,7 +35,7 @@ namespace DAL.Repositories
         {
             try
             {
-                return _appContext.courses.ToList();
+                return _appContext.courses.Include(x=>x.syllabus).ToList();
             }
             catch (Exception ex)
             {

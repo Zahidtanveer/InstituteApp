@@ -13,7 +13,10 @@ namespace DAL.Models
         public int CourseId { get; set; }
         public int BatchId { get; set; }
         public int TeacherId { get; set; }
-      
+        [ForeignKey("CourseId")]
+        public virtual Course course { get; set; }
+        [ForeignKey("BatchId")]
+        public virtual Batch batches { get; set; }
         
 
     }

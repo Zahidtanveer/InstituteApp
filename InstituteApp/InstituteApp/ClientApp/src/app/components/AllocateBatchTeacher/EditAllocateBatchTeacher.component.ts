@@ -28,8 +28,9 @@ export class editAllocateBatchTeacher implements OnInit {
             id: 0,
             batchId: ['', [Validators.required]],
             courseId: ['', [Validators.required]],
-            teacherId: ['', [Validators.required]]
-            
+            teacherId: ['', [Validators.required]],
+            course:[''],
+            batches:['']
         })
         this.getCourses();
         this.getBatchs();
@@ -71,6 +72,9 @@ export class editAllocateBatchTeacher implements OnInit {
     get courseId() { return this.allocateBatchTeacherForm.get('courseId'); }
     get batchId() { return this.allocateBatchTeacherForm.get('batchId'); }
     get teacherId() { return this.allocateBatchTeacherForm.get('teacherId'); }
+    get course() { return this.allocateBatchTeacherForm.get('course'); }
+    get batches() { return this.allocateBatchTeacherForm.get('batches'); }
+
    
 }
 interface CourseData {

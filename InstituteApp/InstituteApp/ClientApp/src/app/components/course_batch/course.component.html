@@ -3,7 +3,7 @@
     <div class="card-body">
         <p *ngIf="!dList"><em>Loading...</em></p>
         <div class="card-title">
-            <h2>List of Courses</h2>
+            <h2>List of Program/Classes</h2>
             <a [routerLink]="['/add-course']" class="btn btn-success">Create New</a>    
         </div>
 
@@ -28,8 +28,7 @@
                     <td>{{course.code}}</td>
                     <td>{{course.maxAttandencePercentage}}</td>
                     <td>{{course.totalWorkingDays}}</td>
-                    <td>{{course.syllabusName}}</td>
-
+                    <td>{{course.syllabus.name}}</td>
                     <td>
 
                         <a [routerLink]="['/course/edit/',course.id]" class="btn btn-default">Edit</a>
