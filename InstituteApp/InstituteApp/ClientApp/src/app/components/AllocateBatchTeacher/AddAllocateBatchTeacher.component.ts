@@ -56,14 +56,14 @@ export class createAllocateBatchTeacher {
                         this._alertService.showMessage("Success", `New Entry Addedd Successfully !`, MessageSeverity.success)
                     }, 500);
 
-                    this._router.navigate(['/fetch-batchteacherallocation']);
+                    this._router.navigate(['/batchteacherallocation']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-batchteacherallocation']);
+        this._router.navigate(['/batchteacherallocation']);
     }
     get CourseId() { return this.allocateBatchTeacherForm.get('CourseId'); }
     get BatchId() { return this.allocateBatchTeacherForm.get('BatchId'); }

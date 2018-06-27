@@ -50,13 +50,13 @@ export class createInstitute implements OnInit {
         if (this.title == "Create") {
             this._instituteService.saveInstitute(this.instituteForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-institute']);
+                    this._router.navigate(['/institute']);
                 }, error => this.errorMessage = error)
         }
        
     }  
     cancel() {
-        this._router.navigate(['/fetch-institute']);
+        this._router.navigate(['/institute']);
     }
     
     get Name() { return this.instituteForm.get('Name'); }

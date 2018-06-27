@@ -45,13 +45,13 @@ export class createCourse  {
         if (this.title == "Create") {
             this._courseService.saveCourse(this.courseForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-Course']);
+                    this._router.navigate(['/Course']);
                 }, error => this.errorMessage = error)
         }
      
     }
     cancel() {
-        this._router.navigate(['/fetch-Course']);
+        this._router.navigate(['/Course']);
     }
     get Id() { return this.courseForm.get('Id'); }
     get Name() { return this.courseForm.get('Name'); }

@@ -50,12 +50,12 @@ export class editAcadamic implements OnInit {
         if (this.title == "Edit") {
             this._acadamicService.updateAcadamic(this.acadamicForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-acadamic']);
+                    this._router.navigate(['/acadamic']);
                 }, error => this.errorMessage = error)
         }
     }
     cancel() {
-        this._router.navigate(['/fetch-acadamic']);
+        this._router.navigate(['/acadamic']);
     }
 
     get startYear() { return this.acadamicForm.get('startYear'); }

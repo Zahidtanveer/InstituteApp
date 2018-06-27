@@ -48,14 +48,14 @@ export class editSyllabus implements OnInit {
             this._syllabusService.updateSyllabus(this.syllabusForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-Syllabus']);
+                    this._router.navigate(['/Syllabus']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-Syllabus']);
+        this._router.navigate(['/Syllabus']);
     }
 
     get name() { return this.syllabusForm.get('name'); }

@@ -41,13 +41,13 @@ export class createAcadamic implements OnInit {
         if (this.title == "Create") {
             this._acadamicService.saveAcadamic(this.acadamicForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-acadamic']);
+                    this._router.navigate(['/acadamic']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
-        this._router.navigate(['/fetch-acadamic']);
+        this._router.navigate(['/acadamic']);
     }
 
     get StartYear() { return this.acadamicForm.get('StartYear'); }

@@ -59,14 +59,14 @@ export class editAllocateBatchTeacher implements OnInit {
             this._allocateBatchTeacherService.updateAllocateBatchTeacher(this.allocateBatchTeacherForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-batchteacherallocation']);
+                    this._router.navigate(['/batchteacherallocation']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-batchteacherallocation']);
+        this._router.navigate(['/batchteacherallocation']);
     }
     get courseId() { return this.allocateBatchTeacherForm.get('courseId'); }
     get batchId() { return this.allocateBatchTeacherForm.get('batchId'); }

@@ -15,7 +15,7 @@ namespace DAL.Models
         public DateTime EndDate { get; set; }
         public string MaxNumberOfStudent { get; set; }
         [ForeignKey("CourseId")]
-        public Course course { get; set; }
+        public virtual Course course { get; set; }
       
 
     }

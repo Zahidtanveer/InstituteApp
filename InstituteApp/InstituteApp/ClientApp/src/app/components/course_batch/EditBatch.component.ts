@@ -54,14 +54,14 @@ export class editBatch implements OnInit {
             this._batchService.updateBatch(this.batchForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-Batch']);
+                    this._router.navigate(['/Batch']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-Batch']);
+        this._router.navigate(['/Batch']);
     }
     get courseId() { return this.batchForm.get('courseId'); }
     get name() { return this.batchForm.get('name'); }

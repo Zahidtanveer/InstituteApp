@@ -57,14 +57,14 @@ export class editCourse implements OnInit {
             this._courseService.updateCourse(this.courseForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-course']);
+                    this._router.navigate(['/course']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-course']);
+        this._router.navigate(['/course']);
     }
 
     get name() { return this.courseForm.get('name'); }

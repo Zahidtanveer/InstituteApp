@@ -39,14 +39,14 @@ export class createSyllabus{
             this._syllabusService.saveSyllabus(this.syllabusForm.value)
                 .subscribe((data) => {
 
-                    this._router.navigate(['/fetch-Syllabus']);
+                    this._router.navigate(['/Syllabus']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
 
-        this._router.navigate(['/fetch-Syllabus']);
+        this._router.navigate(['/Syllabus']);
     }
 
     get Name() { return this.syllabusForm.get('Name'); }

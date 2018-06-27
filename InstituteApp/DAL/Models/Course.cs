@@ -16,8 +16,8 @@ namespace DAL.Models
         public string AttendanceType { get; set; }
         public int SyllabusName { get; set; }
      
-        public Syllabus syllabus { get; set; } 
-        public ICollection<Batch> batches { get; set; }
+        public virtual Syllabus syllabus { get; set; } 
+        public virtual ICollection<Batch> batches { get; set; }
   
 
     }

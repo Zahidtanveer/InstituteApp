@@ -58,12 +58,12 @@ export class editInstitute implements OnInit {
        if (this.title == "Edit") {
             this._instituteService.updateInstitute(this.instituteForm.value)
                 .subscribe((data) => {
-                    this._router.navigate(['/fetch-institute']);
+                    this._router.navigate(['/institute']);
                 }, error => this.errorMessage = error)
         }
     }
     cancel() {
-        this._router.navigate(['/fetch-institute']);
+        this._router.navigate(['/institute']);
     }
 
     get name() { return this.instituteForm.get('name'); }

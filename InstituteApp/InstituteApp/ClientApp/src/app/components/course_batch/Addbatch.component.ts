@@ -61,13 +61,13 @@ export class createBatch {
                         this._alertService.showMessage("Success", `New Entry Addedd Successfully !`, MessageSeverity.success)
                     }, 500);
 
-                    this._router.navigate(['/fetch-batch']);
+                    this._router.navigate(['/batch']);
                 }, error => this.errorMessage = error)
         }
 
     }
     cancel() {
-        this._router.navigate(['/fetch-batch']);
+        this._router.navigate(['/batch']);
     }
 
   
