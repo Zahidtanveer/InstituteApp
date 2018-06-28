@@ -9,9 +9,7 @@ namespace DAL
 {
     public interface IUnitOfWork
     {
-        ICustomerRepository Customers { get; }
-        IProductRepository Products { get; }
-        IOrdersRepository Orders { get; }
+       
         IInstituteRepository Institute { get; }
         IAcadamicRepository Acadamics { get; }
         ICasteRepository Caste { get; }

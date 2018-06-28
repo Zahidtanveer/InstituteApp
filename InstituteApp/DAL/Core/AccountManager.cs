@@ -216,15 +216,7 @@ namespace DAL.Core
         }
 
 
-        public async Task<bool> TestCanDeleteUserAsync(string userId)
-        {
-            if (await _context.Orders.Where(o => o.CashierId == userId).AnyAsync())
-                return false;
-
-            //canDelete = !await ; //Do other tests...
-
-            return true;
-        }
+      
 
 
         public async Task<Tuple<bool, string[]>> DeleteUserAsync(string userId)
@@ -393,5 +385,19 @@ namespace DAL.Core
             var result = await _roleManager.DeleteAsync(role);
             return Tuple.Create(result.Succeeded, result.Errors.Select(e => e.Description).ToArray());
         }
+
+        public Task<bool> TestCanDeleteUserAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
+        //public async Task<bool> TestCanDeleteUserAsync(string userId)
+        //{
+        //    if (await _context.Orders.Where(o => o.CashierId == userId).AnyAsync())
+        //        return false;
+
+        //    //canDelete = !await ; //Do other tests...
+
+        //    return true;
+        //}
     }
 }

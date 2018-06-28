@@ -1,4 +1,6 @@
-
+.fa-small {
+    font-size: 18px !important;
+}
 #mainContent.app-component {
     position: relative;
     padding-top: 50px;

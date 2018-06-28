@@ -1,9 +1,4 @@
-﻿// ====================================================
-// More Templates: https://www.ebenmonney.com/templates
-// Email: support@ebenmonney.com
-// ====================================================
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,12 +31,12 @@ namespace InstituteApp.Controllers
 
 
         // GET: api/values
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var allCustomers = _unitOfWork.Customers.GetAllCustomersData();
-            return Ok(Mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
-        }
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    var allCustomers = _unitOfWork.Customers.GetAllCustomersData();
+        //    return Ok(Mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
+        //}
 
 
 
