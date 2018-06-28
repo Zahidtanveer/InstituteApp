@@ -38,33 +38,46 @@
                             </div>
 
                             <div class="form-group row">
-                                <label    class=" control-label col-md-12" for="SatrtDate">Start Date</label>
+                                <label class="control-label col-md-12">Start Date</label>
                                 <div class="col-md-12">
-                                    <!--bootstrapDatepicker  #date1="bootstrap-datepicker"-->
-                                    <input  type="date" formControlName="SatrtDate" class="form-control" placeholder="mm/dd/yyyy" [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}">
-                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid">
-                                        Start Date is required.
-                                    </span>
-                                    <span class="valid-feedback" *ngIf="formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid">
-                                        Woohoo!
-                                    </span>
+                                    <div class="input-group">
+                                        <input type="text" bootstrapDatepicker data-provide="date1"  #date1="bootstrap-datepicker" formControlName="SatrtDate"  class="form-control" placeholder="mm/dd/yyyy"
+                                               [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}">
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <span class="invalid-feedback" *ngIf="formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid">
+                                            Start Date is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid">
+                                            Woohoo!
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+        
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="EndDate">EndDate</label>
                                 <div class="col-md-12">
-                                    <!--bootstrapDatepicker  #date2="bootstrap-datepicker"-->
-                                    <input type="date" formControlName="EndDate" class="form-control" placeholder="mm/dd/yyyy" 
-                                           [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}">
-                                    <span class="invalid-feedback" *ngIf="formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid">
-                                        End Date is required.
-                                    </span>
-                                    <span class="valid-feedback" *ngIf="formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid">
-                                        Woohoo!
-                                    </span>
+                                    <div class="input-group">
+                                        <!--bootstrapDatepicker  #date2="bootstrap-datepicker"-->
+                                        <input type="text" bootstrapDatepicker  #date2="bootstrap-datepicker" formControlName="EndDate" class="form-control" placeholder="mm/dd/yyyy"
+                                               [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <span class="invalid-feedback" *ngIf="formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid">
+                                            End Date is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid">
+                                            Woohoo!
+                                        </span>
+                                    </div>
+                                 </div>
                                 </div>
 
-                            </div>
+
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="MaxNumberOfStudent">MaxNumberOfStudent</label>
                                 <div class="col-md-12">
@@ -79,7 +92,7 @@
                                 </div>
 
                             </div>
-                        
+
                         </div>
                         <div class="col-md-6 col-lg-6">
                         </div>

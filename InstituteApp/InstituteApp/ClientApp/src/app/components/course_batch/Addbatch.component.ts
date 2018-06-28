@@ -5,10 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
 import { CourseService } from '../../services/CourseAndBatch/course.service'
-import { BootstrapDatepickerDirective } from "../../directives/bootstrap-datepicker.directive";
-import * as $ from 'jquery';
-import { start } from 'repl';
-
 
 @Component({
     selector: 'createBatch',
@@ -20,11 +16,9 @@ export class createBatch {
     title: string = "Create";
     id: number;
     errorMessage: any;
+   
     numPattern = /^\d+$/;
-    @ViewChild("date1")
-    date1: BootstrapDatepickerDirective;
-    @ViewChild("date2")
-    date2: BootstrapDatepickerDirective;
+   
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _router: Router, private _courseService: CourseService, private _alertService: AlertService) {
