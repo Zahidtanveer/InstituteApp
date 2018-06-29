@@ -18,6 +18,9 @@ namespace DAL
         IBatchRepository Batch { get; }
         ISyllabusRepository Syllabus { get; }
         IAllocatedBatchTeacherRepository AllocatedBatchTeacher { get;  }
+        IUserTypesRepository UserTypes { get; }
+        IDepartmentRepository Department { get; }
+        IDesignationRepository Designation { get; }
         int SaveChanges();
     }
 }

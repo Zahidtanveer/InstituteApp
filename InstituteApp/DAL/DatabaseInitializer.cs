@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Core;
 using DAL.Core.Interfaces;
+using DAL.Helpers;
 
 namespace DAL
 {
@@ -16,9 +17,6 @@ namespace DAL
     {
         Task SeedAsync();
     }
-
-
-
 
     public class DatabaseInitializer : IDatabaseInitializer
     {
@@ -35,7 +33,9 @@ namespace DAL
 
         public async Task SeedAsync()
         {
+
             await _context.Database.MigrateAsync().ConfigureAwait(false);
+
 
             if (!await _context.Users.AnyAsync())
             {
@@ -47,19 +47,53 @@ namespace DAL
                 await EnsureRoleAsync(adminRoleName, "Default administrator", ApplicationPermissions.GetAllPermissionValues());
                 await EnsureRoleAsync(userRoleName, "Default user", new string[] { });
 
-                await CreateUserAsync("admin", "tempP@ss123", "Inbuilt Administrator", "admin@ebenmonney.com", "+1 (123) 000-0000", new string[] { adminRoleName });
-                await CreateUserAsync("user", "tempP@ss123", "Inbuilt Standard User", "user@ebenmonney.com", "+1 (123) 000-0001", new string[] { userRoleName });
+                await CreateUserAsync("admin", "tempP@ss123", "Inbuilt Administrator", "admin@smartschool.com", "+1 (123) 000-0000", new string[] { adminRoleName });
+                await CreateUserAsync("user", "tempP@ss123", "Inbuilt Standard User", "user@smartschool.com", "+1 (123) 000-0001", new string[] { userRoleName });
 
                 _logger.LogInformation("Inbuilt account generation completed");
             }
 
-           
 
-            if (!await _context.Institutes.AnyAsync())
+
+            if (!await _context.Institutes.AnyAsync() && !await _context.countries.AnyAsync() && !await _context.userTypes.AnyAsync())
             {
                 _logger.LogInformation("Seeding initial data");
 
-                
+
+                List<Country> countries = new List<Country>();
+                List<State> states = new List<State>();
+                GetCountriesData.Get(countries, states);
+                foreach (var c in countries)
+                {
+                    Country country = new Country
+                    {
+                        Name = c.Name
+                    };
+                    _context.countries.Add(country);
+
+                }
+                foreach (var s in states)
+                {
+                    State state = new State
+                    {
+                        Name = s.Name,
+                        CountryId = s.CountryId,
+                    };
+                    _context.States.Add(state);
+
+                }
+
+                var userTypes = GetUserTypes.Get();
+                foreach (var type in userTypes)
+                {
+                    UserType userType = new UserType
+                    {
+                        Name = type
+                    };
+                    _context.userTypes.Add(userType);
+
+
+                }
 
                 Institute ins_1 = new Institute
                 {
@@ -67,8 +101,8 @@ namespace DAL
                     Address = "test Address 1",
                     Email = "institute1@test.com",
                     Mobile = "03001234567",
-                    Phone = "042123456",
-                    Fax = "042123456",
+                    Phone = "0421234567",
+                    Fax = "0421234567",
                     Code = "024",
                     Country = "Pakistan",
                     TimeZone = "GMT+5",
@@ -76,9 +110,9 @@ namespace DAL
                     Languange = "English",
                     CreatedBy = "admin",
                     UpdatedBy = "admin",
-                    CreatedDate =DateTime.UtcNow,
+                    CreatedDate = DateTime.UtcNow,
                     UpdatedDate = DateTime.UtcNow
-          
+
 
                 };
                 Institute ins_2 = new Institute
@@ -87,8 +121,8 @@ namespace DAL
                     Address = "test Address 2",
                     Email = "institute2@test.com",
                     Mobile = "03001234567",
-                    Phone = "042123456",
-                    Fax = "042123456",
+                    Phone = "0421234567",
+                    Fax = "0421234567",
                     Code = "029",
                     Country = "Pakistan",
                     TimeZone = "GMT+5",
@@ -101,8 +135,6 @@ namespace DAL
 
 
                 };
-
-               
                 _context.Institutes.Add(ins_1);
                 _context.Institutes.Add(ins_2);
                 await _context.SaveChangesAsync();

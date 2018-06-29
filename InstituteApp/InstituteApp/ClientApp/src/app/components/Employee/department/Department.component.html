@@ -1,0 +1,35 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>List of Departments</h2>
+            <a [routerLink]="['/add-department']" class="btn btn-success">Create New</a>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dep of dList">
+                    <td>{{dep.id}}</td>
+                    <td>{{dep.name}}</td>
+                    <td>{{dep.code}}</td>
+                
+                    <td>
+
+                        <a [routerLink]="['/department/edit/',dep.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(dep.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

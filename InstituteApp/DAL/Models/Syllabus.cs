@@ -10,6 +10,6 @@ namespace DAL.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-        public ICollection<Course> courses { get; set; }
+        public virtual ICollection<Course> courses { get; set; }
     }
 }

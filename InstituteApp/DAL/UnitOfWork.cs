@@ -21,6 +21,9 @@ namespace DAL
         IBatchRepository _batch;
         ISyllabusRepository _syllabus;
         IAllocatedBatchTeacherRepository _allocatedBatchTeacherRepository;
+        IUserTypesRepository _userTypesRepository;
+        IDepartmentRepository _departmentRepository;
+        IDesignationRepository _designationRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -103,6 +106,36 @@ namespace DAL
                 if (_allocatedBatchTeacherRepository == null)
                     _allocatedBatchTeacherRepository= new AllocatedBatchTeacherRepository(_context);
                 return _allocatedBatchTeacherRepository;
+            }
+        }
+
+        public IUserTypesRepository UserTypes
+        {
+            get
+            {
+                if (_userTypesRepository == null)
+                    _userTypesRepository = new UserTypeRepository(_context);
+                return _userTypesRepository;
+            }
+        }
+
+        public IDepartmentRepository Department
+        {
+            get
+            {
+                if (_departmentRepository == null)
+                    _departmentRepository = new DepartmentRepository(_context);
+                return _departmentRepository;
+            }
+        }
+
+        public IDesignationRepository Designation
+        {
+            get
+            {
+                if (_designationRepository == null)
+                   _designationRepository = new DesignationRepository(_context);
+                return _designationRepository;
             }
         }
 

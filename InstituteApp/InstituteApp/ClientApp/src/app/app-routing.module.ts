@@ -43,6 +43,10 @@ import { createSyllabus } from './components/Syllabus/AddSyllabus.component';
 import { editSyllabus } from './components/Syllabus/EditSyllabus.Component';
 import { editAllocateBatchTeacher } from './components/AllocateBatchTeacher/EditAllocateBatchTeacher.component';
 import { createAllocateBatchTeacher } from './components/AllocateBatchTeacher/AddAllocateBatchTeacher.component';
+import { UserTypeComponent } from './components/UserTypes/userType.component';
+import { createDepartment } from './components/Employee/department/AddDepartment.component';
+import { DepartmentComponent } from './components/Employee/department/departmant.component';
+import { editDepartment } from './components/Employee/department/EditDepartment.component';
 
 
 
@@ -83,7 +87,10 @@ import { createAllocateBatchTeacher } from './components/AllocateBatchTeacher/Ad
             { path: "batchteacherallocation", component: AllocatedBatchTeacherComponent, canActivate: [AuthGuard], data: { title: "Allocate Batch Teacher" } },
             { path: "add-batchteacherallocation", component: createAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Add Allocate Batch Teacher" } },
             { path: "batchteacherallocation/edit/:Id", component: editAllocateBatchTeacher, canActivate: [AuthGuard], data: { title: "Edit Allocate Batch Teacher" } },
-
+            { path: "usertype", component: UserTypeComponent, canActivate: [AuthGuard], data: { title: "User Types" } },
+            { path: "add-department", component: createDepartment, canActivate: [AuthGuard], data: { title: "Add Department" } },
+            { path: "department", component: DepartmentComponent, canActivate: [AuthGuard], data: { title: "Department" } },
+            { path: "department/edit/:Id", component: editDepartment, canActivate: [AuthGuard], data: { title: "Department" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

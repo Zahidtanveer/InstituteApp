@@ -21,8 +21,24 @@ namespace DAL
         public DbSet<Religion> Religions { get; set; }
         public DbSet<Course> courses { get; set; }
         public DbSet<Batch> batches { get; set; }
-
         public DbSet<Syllabus> syllabus { get; set; }
+
+        public DbSet<Department> departments { get; set; }
+        public DbSet<Designation> designations { get; set; }
+        public DbSet<Country> countries { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<UserType> userTypes { get; set; }
+
+        public DbSet<Guardian> guardians { get; set; }
+        public DbSet<StudentCategory> studentCategories { get; set; }
+        public DbSet<Student> students { get; set; }
+        public DbSet<StudentAttendance> studentAttendances { get; set; }
+        public DbSet<Employee> employees { get; set; }
+        public DbSet<EmployeeAttendance> employeeAttendances { get; set; }
+        public DbSet<Leave> leaves { get; set; }
+        public DbSet<LeaveCategory> leaveCategories { get; set; }
+        public DbSet<ContactDetails> contactDetails { get; set; }
+        public DbSet<PersonalDetails> personalDetails { get; set; }
         public DbSet<AllocatedBatchTeacher> allocatedBatchTeachers {get; set;}
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
@@ -64,6 +80,11 @@ namespace DAL
              .WithMany(b => b.batchTeachers)
              .HasForeignKey(c => c.BatchId);
 
+            builder.Entity<State>()
+                .HasOne(s => s.country)
+                .WithMany(c => c.states)
+                .HasForeignKey(s=>s.CountryId);
+            
         }
 
 

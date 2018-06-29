@@ -129,8 +129,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.isUserLoggedIn = this.authService.isLoggedIn;
     // 1 sec to ensure all the effort to get the css animation working is appreciated :|, Preboot screen is removed .5 sec later
       
-        setTimeout(() => this.isAppLoaded = true, 1000);
-    setTimeout(() => this.removePrebootScreen = true, 1500);
+        //setTimeout(() => this.isAppLoaded = true, 1000);
+    //setTimeout(() => this.removePrebootScreen = true, 1500);
 
     //setTimeout(() => {
     //  if (this.isUserLoggedIn) {

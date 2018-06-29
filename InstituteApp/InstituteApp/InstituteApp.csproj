@@ -74,13 +74,22 @@
     <None Remove="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <None Remove="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <None Remove="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\department\AddDepartment.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\department\departmant.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\department\EditDepartment.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\designation\AddDesignation.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\designation\designation.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\designation\EditDesignation.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
+    <None Remove="ClientApp\src\app\components\UserTypes\userType.component.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
     <None Remove="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <None Remove="ClientApp\src\app\services\employee\service.department.ts" />
+    <None Remove="ClientApp\src\app\services\employee\service.designation.ts" />
     <None Remove="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
@@ -100,13 +109,22 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\caste_religion\religion.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\AddDepartment.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\Departmant.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\EditDepartment.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\designation\AddDesignation.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\designation\Designation.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\designation\EditDesignation.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\UserTypes\userType.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.department.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.designation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 

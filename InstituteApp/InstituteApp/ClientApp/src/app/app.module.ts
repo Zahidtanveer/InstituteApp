@@ -98,6 +98,12 @@ import { editSyllabus } from "./components/Syllabus/EditSyllabus.Component";
 import { createSyllabus } from "./components/Syllabus/AddSyllabus.component";
 import { editAllocateBatchTeacher } from "./components/AllocateBatchTeacher/EditAllocateBatchTeacher.component";
 import { createAllocateBatchTeacher } from "./components/AllocateBatchTeacher/AddAllocateBatchTeacher.component";
+import { UserTypeComponent } from "./components/UserTypes/userType.component";
+import { DepartmentService } from "./services/employee/service.department";
+import { DesignationService } from "./services/employee/service.designation";
+import { createDepartment } from "./components/Employee/department/AddDepartment.component";
+import { editDepartment } from "./components/Employee/department/EditDepartment.component";
+import { DepartmentComponent } from "./components/Employee/department/departmant.component";
 
 
 
@@ -159,7 +165,8 @@ import { createAllocateBatchTeacher } from "./components/AllocateBatchTeacher/Ad
         createReligion, createCaste, editCaste, editReligion,
         CourseComponent, BatchComponent, createCourse, editCourse,
         createBatch, editBatch, SyllabusComponent, AllocatedBatchTeacherComponent,
-        editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher
+        editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher,
+        UserTypeComponent, createDepartment, editDepartment, DepartmentComponent
         
 
     ],
@@ -179,7 +186,8 @@ import { createAllocateBatchTeacher } from "./components/AllocateBatchTeacher/Ad
         InstituteService,
         AcadamicService,
         ReligionService, CasteService,
-        BatchService, CourseService, AllocateBatchTeacherService, SyllabusService
+        BatchService, CourseService, AllocateBatchTeacherService,
+        SyllabusService, DepartmentService, DesignationService
     ],
     bootstrap: [AppComponent]
 })

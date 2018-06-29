@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DAL.Models
@@ -13,6 +14,12 @@ namespace DAL.Models
         public string Department { get; set; }
         public string Designation { get; set; }
         public string TotalExperience { get; set; }
-        public string UserType { get; set; }
+
+        //public string UserType { get; set; }
+
+        public virtual PersonalDetails personalDetails { get; set; }
+        public virtual ContactDetails contactDetails { get; set; }
+
+        public virtual ICollection<EmployeeAttendance> employeeAttendances { get; set; }
     }
 }
