@@ -4,7 +4,7 @@
         <p *ngIf="!dList"><em>Loading...</em></p>
         <div class="card-title">
             <h2>List of Designation</h2>
-            <a [routerLink]="['/add-department']" class="btn btn-success">Create New</a>
+            <a [routerLink]="['/add-designation']" class="btn btn-success">Create New</a>
         </div>
 
         <table class='table table-bordered' *ngIf="dList" id="dttable">
@@ -12,7 +12,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                  
+
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,11 +20,8 @@
                 <tr *ngFor="let des of dList">
                     <td>{{des.id}}</td>
                     <td>{{des.name}}</td>
-                  
-
                     <td>
-
-                        <a [routerLink]="['/department/edit/',des.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="['/designation/edit/',des.id]" class="btn btn-default">Edit</a>
                         <a [routerLink]="" (click)="delete(des.id)" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

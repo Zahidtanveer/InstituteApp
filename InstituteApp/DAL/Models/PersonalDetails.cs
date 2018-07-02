@@ -21,13 +21,17 @@ namespace DAL.Models
         public string BloodGroup { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }
-        public int StudentId { get; set; }
 
+
+        public int? EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual Employee employee { get; set; }
+
+
+        public int? StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Student student { get; set; }
 
-        public int EmployeeId { get; set; }
-        [ForeignKey("EmployeeId")]
-        public virtual Employee employee { get; set; }
+        
     }
 }

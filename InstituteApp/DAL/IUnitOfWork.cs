@@ -21,6 +21,7 @@ namespace DAL
         IUserTypesRepository UserTypes { get; }
         IDepartmentRepository Department { get; }
         IDesignationRepository Designation { get; }
+        IEmployeeRepository Employee { get; }
         int SaveChanges();
     }
 }

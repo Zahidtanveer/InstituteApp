@@ -18,18 +18,19 @@ namespace DAL.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
 
-        public int GuardianId { get; set; }
+        public int? EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual Employee employee { get; set; }
+
+        public int? GuardianId { get; set; }
         [ForeignKey("GuardianId")]
         public virtual Guardian guardian { get; set; }
 
-
-        public int StudentId { get; set; }
+        public int? StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Student student { get; set; }
 
-        public int EmployeeId { get; set; }
-        [ForeignKey("EmployeeId")]
-        public virtual Employee employee { get; set; }
+       
 
 
     }

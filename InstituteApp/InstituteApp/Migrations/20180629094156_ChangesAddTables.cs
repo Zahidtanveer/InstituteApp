@@ -267,15 +267,15 @@ namespace InstituteApp.Migrations
                     City = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    EmployeeId = table.Column<int>(nullable: false),
-                    GuardianId = table.Column<int>(nullable: false),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    GuardianId = table.Column<int>(nullable: true),
                     Mobile = table.Column<string>(nullable: true),
                     PermanentAddress = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     PresentAddress = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
-                    StudentId = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -312,14 +312,14 @@ namespace InstituteApp.Migrations
                     Caste = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: false),
+                    EmployeeId = table.Column<int>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     MiddleName = table.Column<string>(nullable: true),
                     Nationality = table.Column<string>(nullable: true),
                     Religion = table.Column<string>(nullable: true),
-                    StudentId = table.Column<int>(nullable: false)
+                    StudentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

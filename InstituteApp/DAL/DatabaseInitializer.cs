@@ -70,7 +70,7 @@ namespace DAL
                         Name = c.Name
                     };
                     _context.countries.Add(country);
-
+                    await _context.SaveChangesAsync();
                 }
                 foreach (var s in states)
                 {
@@ -80,7 +80,7 @@ namespace DAL
                         CountryId = s.CountryId,
                     };
                     _context.States.Add(state);
-
+                    await _context.SaveChangesAsync();
                 }
 
                 var userTypes = GetUserTypes.Get();
@@ -91,7 +91,7 @@ namespace DAL
                         Name = type
                     };
                     _context.userTypes.Add(userType);
-
+                    await _context.SaveChangesAsync();
 
                 }
 

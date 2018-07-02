@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService, MessageSeverity, DialogType } from '../../../services/alert.service';
-import { DesignationService } from '../../../services/employee/service.Designation'
+import { DesignationService } from '../../../services/employee/service.designation'
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
@@ -22,16 +22,12 @@ export class DesignationComponent {
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _DesignationService: DesignationService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
         http.get(baseUrl + 'api/Designation/Index').subscribe(result => {
             this.dList = result.json() as DesignationData[];
-
             this.chRef.detectChanges();
             const table: any = $('#dttable');
             this.dataTable = table.DataTable({
                 "displayLength": 5,
                 ordering: false,
                 "pagingType": "full_numbers",
-
-
-
             });
         }, error => console.error(error));
         this.getDesignations;
@@ -44,11 +40,8 @@ export class DesignationComponent {
     }
 
     delete(designationID) {
-
         this.alertService.showDialog('Are you sure you want to delete this Designation with Id:' + designationID, DialogType.confirm, () => this.deletehelper(designationID));
-
-    }
-
+       }
     deletehelper(designationID) {
         this._DesignationService.deleteDesignation(designationID).subscribe((data) => {
             this.getDesignations();

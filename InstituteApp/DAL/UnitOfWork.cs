@@ -24,6 +24,7 @@ namespace DAL
         IUserTypesRepository _userTypesRepository;
         IDepartmentRepository _departmentRepository;
         IDesignationRepository _designationRepository;
+        IEmployeeRepository _employeeRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -136,6 +137,16 @@ namespace DAL
                 if (_designationRepository == null)
                    _designationRepository = new DesignationRepository(_context);
                 return _designationRepository;
+            }
+        }
+
+        public IEmployeeRepository Employee
+        {
+            get
+            {
+                if (_employeeRepository == null)
+                    _employeeRepository = new EmployeeRepository(_context);
+                return _employeeRepository;
             }
         }
 

@@ -47,6 +47,11 @@ import { UserTypeComponent } from './components/UserTypes/userType.component';
 import { createDepartment } from './components/Employee/department/AddDepartment.component';
 import { DepartmentComponent } from './components/Employee/department/departmant.component';
 import { editDepartment } from './components/Employee/department/EditDepartment.component';
+import { createDesignation } from './components/Employee/designation/AddDesignation.component';
+import { DesignationComponent } from './components/Employee/designation/Designation.component';
+import { editDesignation } from './components/Employee/designation/EditDesignation.component';
+import { createEmployee } from './components/Employee/AddEmployee.component';
+import { EmployeeComponent } from './components/Employee/employee.component';
 
 
 
@@ -91,6 +96,11 @@ import { editDepartment } from './components/Employee/department/EditDepartment.
             { path: "add-department", component: createDepartment, canActivate: [AuthGuard], data: { title: "Add Department" } },
             { path: "department", component: DepartmentComponent, canActivate: [AuthGuard], data: { title: "Department" } },
             { path: "department/edit/:Id", component: editDepartment, canActivate: [AuthGuard], data: { title: "Department" } },
+            { path: "add-designation", component: createDesignation, canActivate: [AuthGuard], data: { title: "Add Designation" } },
+            { path: "designation", component: DesignationComponent, canActivate: [AuthGuard], data: { title: "Designation" } },
+            { path: "designation/edit/:Id", component: editDesignation, canActivate: [AuthGuard], data: { title: "Edit Designation" } },
+            { path: "add-employee", component: createEmployee, canActivate: [AuthGuard], data: { title: "Add Employee" } },
+            { path: "employee", component: EmployeeComponent, canActivate: [AuthGuard], data: { title: "Employee" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

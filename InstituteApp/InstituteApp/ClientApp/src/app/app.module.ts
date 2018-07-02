@@ -104,6 +104,12 @@ import { DesignationService } from "./services/employee/service.designation";
 import { createDepartment } from "./components/Employee/department/AddDepartment.component";
 import { editDepartment } from "./components/Employee/department/EditDepartment.component";
 import { DepartmentComponent } from "./components/Employee/department/departmant.component";
+import { editDesignation } from "./components/Employee/designation/EditDesignation.component";
+import { DesignationComponent } from "./components/Employee/designation/Designation.component";
+import { createDesignation } from "./components/Employee/designation/AddDesignation.component";
+import { EmployeeService } from "./services/employee/service.employee";
+import { createEmployee } from "./components/Employee/AddEmployee.component";
+import { EmployeeComponent } from "./components/Employee/employee.component";
 
 
 
@@ -159,15 +165,17 @@ import { DepartmentComponent } from "./components/Employee/department/departmant
         GroupByPipe,
         HeaderComponent,
         SidebarComponent,
-        createInstitute,InstituteComponent,editInstitute,
+        createInstitute, InstituteComponent, editInstitute,
         AcadamicComponent, createAcadamic, editAcadamic,
         CRIndexComponent, CasteComponent, ReligionComponent,
         createReligion, createCaste, editCaste, editReligion,
         CourseComponent, BatchComponent, createCourse, editCourse,
         createBatch, editBatch, SyllabusComponent, AllocatedBatchTeacherComponent,
         editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher,
-        UserTypeComponent, createDepartment, editDepartment, DepartmentComponent
-        
+        UserTypeComponent, createDepartment, editDepartment, DepartmentComponent,
+        createDesignation, editDesignation, DesignationComponent, createEmployee,
+        EmployeeComponent
+
 
     ],
     providers: [
@@ -187,14 +195,13 @@ import { DepartmentComponent } from "./components/Employee/department/departmant
         AcadamicService,
         ReligionService, CasteService,
         BatchService, CourseService, AllocateBatchTeacherService,
-        SyllabusService, DepartmentService, DesignationService
+        SyllabusService, DepartmentService, DesignationService,
+        EmployeeService
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
-
-
 
 
 export function getBaseUrl() {

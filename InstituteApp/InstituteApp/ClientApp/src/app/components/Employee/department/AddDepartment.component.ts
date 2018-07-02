@@ -23,8 +23,7 @@ export class createDepartment {
         this.departmentForm = this._fb.group({
             id: 0,
             Name: ['', [Validators.required]],
-            Code: ['', [Validators.required]],
-           
+            Code: ['', [Validators.required]]
         })
       
     }

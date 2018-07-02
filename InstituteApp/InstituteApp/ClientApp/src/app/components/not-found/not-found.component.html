@@ -5,9 +5,18 @@
 
     <div [@fadeInOut] class="vertical-center-flex">
         <div class="center-block">
-            <div class="icon-container"><i class='fa fa-exclamation-circle'></i> {{'notFound.404' | translate}}</div>
+            <div class="icon-container error-title text-danger"><i class='fa fa-exclamation-circle'></i> {{'notFound.404' | translate}}</div>
             <div class="text-muted error-description">{{'notFound.pageNotFound' | translate}}</div>
-            <div><a class="btn btn-primary" routerLink="/"><i class='fa fa-home'></i> {{'notFound.backToHome' | translate}}</a></div>
+            <p class="text-muted m-t-30 m-b-30">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
+            <div><a class="btn btn-danger btn-rounded waves-effect waves-light m-b-40" routerLink="/"><i class='fa fa-home'></i> {{'notFound.backToHome' | translate}}</a></div>
         </div>
     </div>
+    <!--<div [@fadeInOut] class="error-box">
+        <div class="error-body text-center">
+            <h1 class="error-title text-danger"><i class='fa fa-exclamation-circle'></i> {{'notFound.404' | translate}}</h1>
+            <h3 class="text-uppercase error-subtitle">{{'notFound.pageNotFound' | translate}} !</h3>
+            <p class="text-muted m-t-30 m-b-30">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
+            <a routerLink="/" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">{{'notFound.backToHome' | translate}}</a>
+        </div>
+    </div>-->
 </div>
