@@ -52,6 +52,7 @@ import { DesignationComponent } from './components/Employee/designation/Designat
 import { editDesignation } from './components/Employee/designation/EditDesignation.component';
 import { createEmployee } from './components/Employee/AddEmployee.component';
 import { EmployeeComponent } from './components/Employee/employee.component';
+import { editEmployee } from './components/Employee/EditEmployee.component';
 
 
 
@@ -101,6 +102,7 @@ import { EmployeeComponent } from './components/Employee/employee.component';
             { path: "designation/edit/:Id", component: editDesignation, canActivate: [AuthGuard], data: { title: "Edit Designation" } },
             { path: "add-employee", component: createEmployee, canActivate: [AuthGuard], data: { title: "Add Employee" } },
             { path: "employee", component: EmployeeComponent, canActivate: [AuthGuard], data: { title: "Employee" } },
+            { path: "employee/edit/:Id", component: editEmployee, canActivate: [AuthGuard], data: { title: "Edit Employee" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

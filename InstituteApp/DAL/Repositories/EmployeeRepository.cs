@@ -30,7 +30,7 @@ namespace DAL.Repositories
                     Designation = employee.Designation,
                     TotalExperience = employee.TotalExperience
                 };
-                
+
                 _appContext.employees.Add(dEmployee);
                 _appContext.SaveChanges();
 
@@ -44,8 +44,8 @@ namespace DAL.Repositories
                     Gender = employee.personalDetails.Gender,
                     CNIC = employee.personalDetails.CNIC,
                     EmployeeId = EmployeeID,
-                   
-                    
+
+
 
                 };
                 _appContext.personalDetails.Add(dpersonalDetail);
@@ -62,8 +62,8 @@ namespace DAL.Repositories
                     Phone = employee.contactDetails.Phone,
                     Mobile = employee.contactDetails.Mobile,
                     Email = employee.contactDetails.Email,
-                    EmployeeId=EmployeeID,
-                                      
+                    EmployeeId = EmployeeID,
+
 
                 };
                 _appContext.contactDetails.Add(dcontactDetail);
@@ -81,11 +81,11 @@ namespace DAL.Repositories
             try
             {
 
-                var Employeees = _appContext.employees
+                var employees = _appContext.employees
                     .Include(c => c.contactDetails)
-                    .Include(p=>p.personalDetails)
-                    .Include(ea=>ea.employeeAttendances).ToList();
-                return Employeees;
+                    .Include(p => p.personalDetails)
+                    .Include(ea => ea.employeeAttendances).ToList();
+                return employees;
             }
             catch (Exception ex)
             {
@@ -97,8 +97,12 @@ namespace DAL.Repositories
         {
             try
             {
-                Employee Employee = _appContext.employees.Find(id);
-                return Employee;
+                Employee employee = _appContext.employees
+                       .Where(e => e.Id == id)
+                       .Include(x => x.personalDetails)
+                       .Include(c => c.contactDetails).FirstOrDefault();
+
+                return employee;
             }
             catch (Exception ex)
             {
@@ -110,6 +114,46 @@ namespace DAL.Repositories
         {
             try
             {
+                int EmployeeID = employee.Id;
+                var dbcontactDetail = _appContext.contactDetails.SingleOrDefault(x => x.EmployeeId == EmployeeID);
+                var dbpersonalDetail = _appContext.personalDetails.SingleOrDefault(x => x.EmployeeId == EmployeeID);
+                var dEmployee = new Employee
+                {
+                    EmployeeCode = employee.EmployeeCode,
+                    Qualification = employee.Qualification,
+                    JoiningDate = employee.JoiningDate,
+                    Department = employee.Department,
+                    Designation = employee.Designation,
+                    TotalExperience = employee.TotalExperience,
+                    contactDetails = new ContactDetails
+                    {
+                        Id = dbcontactDetail.Id,
+                        PresentAddress = employee.contactDetails.PresentAddress,
+                        PermanentAddress = employee.contactDetails.PermanentAddress,
+                        City = employee.contactDetails.City,
+                        PostalCode = employee.contactDetails.PostalCode,
+                        Country = employee.contactDetails.Country,
+                        State = employee.contactDetails.State,
+                        Phone = employee.contactDetails.Phone,
+                        Mobile = employee.contactDetails.Mobile,
+                        Email = employee.contactDetails.Email,
+                        EmployeeId = EmployeeID
+
+                    }
+                   ,
+                    personalDetails = new PersonalDetails
+                    {
+                        Id = dbpersonalDetail.Id,
+                        FirstName = employee.personalDetails.FirstName,
+                        MiddleName = employee.personalDetails.MiddleName,
+                        LastName = employee.personalDetails.LastName,
+                        DateOfBirth = employee.personalDetails.DateOfBirth,
+                        Gender = employee.personalDetails.Gender,
+                        CNIC = employee.personalDetails.CNIC,
+                        EmployeeId = EmployeeID
+                    }
+                };
+
                 _appContext.Entry(employee).State = EntityState.Modified;
                 _appContext.SaveChanges();
                 return 1;

@@ -20,8 +20,8 @@
                             <div class="form-group col-md-4">
                                 <label for="Department">Department</label>
                                 <select formControlName="Department" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let dep of departmentList" [value]="dep.name">{{dep.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -29,8 +29,8 @@
                             <div class="form-group col-md-6">
                                 <label for="Designation">Designation</label>
                                 <select formControlName="Designation" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let des of designationList" [value]="des.name">{{des.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                                 <label for="UserType">User Type</label>
                                 <select id="UserType" class="form-control">
                                     <option selected>Choose...</option>
-                                    <option>...</option>
+                                    <option *ngFor="let u of userTypes" [value]="u.id">{{u.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -117,18 +117,17 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="contactDetails_LastName">Country</label>
-                                        <select class="form-control" formControlName="contactDetails_Country">
+                                        <label for="contactDetails_Country">Country</label>
+                                        <select class="form-control" (change)="OnCountrySelection($event)" formControlName="contactDetails_Country">
                                             <option value="">Choose...</option>
-                                            <option value="Male">Pakistan</option>
-                                            <option value="Female">Canada</option>
+                                            <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="contactDetails_State">State</label>
                                         <select class="form-control" formControlName="contactDetails_State">
                                             <option value="">Choose...</option>
-                                            <option value="...">...</option>
+                                            <option *ngFor="let s of subStateList" [value]="s.id">{{s.name}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -155,11 +154,11 @@
                 <div class="border-top">
                     <div class="card-body float-right">
                         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
-                        <button type="button" class="btn btn-primary"  (click)="save()">Submit</button>
+                        <button type="button" class="btn btn-primary" (click)="save()">Submit</button>
                     </div>
                 </div>
             </div>
 
         </div>
-        </div>
+    </div>
 </form>

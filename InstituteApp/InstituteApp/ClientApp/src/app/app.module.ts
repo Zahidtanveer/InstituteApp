@@ -110,6 +110,8 @@ import { createDesignation } from "./components/Employee/designation/AddDesignat
 import { EmployeeService } from "./services/employee/service.employee";
 import { createEmployee } from "./components/Employee/AddEmployee.component";
 import { EmployeeComponent } from "./components/Employee/employee.component";
+import { DataService } from "./services/data.service";
+import { editEmployee } from "./components/Employee/EditEmployee.component";
 
 
 
@@ -174,7 +176,7 @@ import { EmployeeComponent } from "./components/Employee/employee.component";
         editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher,
         UserTypeComponent, createDepartment, editDepartment, DepartmentComponent,
         createDesignation, editDesignation, DesignationComponent, createEmployee,
-        EmployeeComponent
+        EmployeeComponent, editEmployee
 
 
     ],
@@ -196,7 +198,7 @@ import { EmployeeComponent } from "./components/Employee/employee.component";
         ReligionService, CasteService,
         BatchService, CourseService, AllocateBatchTeacherService,
         SyllabusService, DepartmentService, DesignationService,
-        EmployeeService
+        EmployeeService, DataService
     ],
     bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee/service.employee'
+import { DataService, CountryData, StateData, UserTypeData, DepartmentData, DesignationData } from '../../services/data.service'
 
 @Component({
     selector: 'createEmployee',
@@ -10,13 +11,19 @@ import { EmployeeService } from '../../services/employee/service.employee'
 })
 export class createEmployee implements OnInit {
 
+    public countryList: CountryData[];
+    public stateList: StateData[];
+    public subStateList: StateData[];
+    public userTypes: UserTypeData[];
+    public departmentList: DepartmentData[];
+    public designationList: DesignationData[];
     employeeForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _employeeService: EmployeeService, private _router: Router) {
+        private _employeeService: EmployeeService, private _dataService: DataService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 
@@ -52,9 +59,46 @@ export class createEmployee implements OnInit {
 
 
         })
+        this.getDepartment();
+        this.getDesignation();
+        this.getUserTypes();
+        this.getState();
+        this.getCountry();
+ 
+
     }
     ngOnInit() {
     }
+
+    getCountry() {
+        this._dataService.getCountries()
+            .subscribe(data => { this.countryList = data });
+    }
+
+    getState() {
+        this._dataService.getStates()
+            .subscribe(data => { this.stateList = data });
+    }
+
+    getUserTypes() {
+        this._dataService.getUserTypes()
+            .subscribe(data => { this.userTypes = data });
+    }
+    getDepartment() {
+        this._dataService.getDepartment()
+            .subscribe(data => { this.departmentList = data });
+    }
+    getDesignation() {
+        this._dataService.getDesignation()
+            .subscribe(data => { this.designationList = data });
+    }
+    OnCountrySelection($event: any) {
+        var countryID = this.employeeForm.controls["contactDetails_Country"].value;
+        console.log(countryID);
+        this.subStateList = this.stateList.filter(x => x.countryId == countryID && x !== null);
+        console.log(this.subStateList);
+    }
+
     save() {
         if (!this.employeeForm.valid) {
             return;

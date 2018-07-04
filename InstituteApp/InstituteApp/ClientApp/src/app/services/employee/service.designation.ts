@@ -18,6 +18,7 @@ export class DesignationService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
+
     getDesignationById(id: number) {
         return this._http.get(this.myAppUrl + "api/Designation/Details/" + id)
             .map((response: Response) => response.json())

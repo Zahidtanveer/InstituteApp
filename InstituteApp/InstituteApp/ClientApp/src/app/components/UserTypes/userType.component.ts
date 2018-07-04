@@ -20,13 +20,6 @@ export class UserTypeComponent {
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string,private chRef: ChangeDetectorRef) {
         http.get(baseUrl + 'api/Home/GetUserTypes').subscribe(result => {
             this.dList = result.json() as UserTypeData[];
-            this.chRef.detectChanges();
-            const table: any = $('#dttable');
-            this.dataTable = table.DataTable({
-                "displayLength": 5,
-                ordering: false,
-                "pagingType": "full_numbers",
-               });
         }, error => console.error(error));
      }
 

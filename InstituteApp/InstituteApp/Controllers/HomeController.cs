@@ -49,5 +49,17 @@ namespace InstituteApp.Controllers
         {
             return _unitOfWork.UserTypes.GetAllUserTypesData();
         }
+        // GET api/values
+        [Route("api/Home/GetCountries")]
+        public IEnumerable<Country> GetCountries()
+        {
+            return _unitOfWork.Countries.GetAllCountriesData();
+        }
+        // GET api/values
+        [Route("api/Home/GetStates")]
+        public IEnumerable<State> GetStates()
+        {
+            return _unitOfWork.Countries.GetAllStatesData();
+        }
     }
 }

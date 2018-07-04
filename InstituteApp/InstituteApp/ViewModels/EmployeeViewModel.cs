@@ -7,7 +7,7 @@ namespace InstituteApp.ViewModels
 {
     public class EmployeeViewModel
     {
-
+        public int Id { get; set; }
         public string EmployeeCode { get; set; }
         public DateTime JoiningDate { get; set; }
         public string Qualification { get; set; }
@@ -15,6 +15,7 @@ namespace InstituteApp.ViewModels
         public string Designation { get; set; }
         public string TotalExperience { get; set; }
 
+        public int? personalDetails_EmployeeId { get; set; }
         public string personalDetails_FirstName { get; set; }
         public string personalDetails_MiddleName { get; set; }
         public string personalDetails_LastName { get; set; }

@@ -91,6 +91,7 @@
     <None Remove="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <None Remove="ClientApp\src\app\services\data.service.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.department.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.designation.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.employee.ts" />
@@ -130,6 +131,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\data.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.department.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.designation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.employee.ts" />

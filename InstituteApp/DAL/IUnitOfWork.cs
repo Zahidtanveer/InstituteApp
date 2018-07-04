@@ -22,6 +22,7 @@ namespace DAL
         IDepartmentRepository Department { get; }
         IDesignationRepository Designation { get; }
         IEmployeeRepository Employee { get; }
+        ICountryRepository Countries { get; }
         int SaveChanges();
     }
 }

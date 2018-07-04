@@ -32,7 +32,6 @@ export class editDepartment implements OnInit {
     ngOnInit() {
 
         if (this.id > 0) {
-            this.title = "Edit";
             this._departmentService.getDepartmentById(this.id)
                 .subscribe(resp => this.departmentForm.setValue(resp)
                     , error => this.errorMessage = error);

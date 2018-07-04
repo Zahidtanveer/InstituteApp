@@ -25,6 +25,7 @@ namespace DAL
         IDepartmentRepository _departmentRepository;
         IDesignationRepository _designationRepository;
         IEmployeeRepository _employeeRepository;
+        ICountryRepository _countryRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -147,6 +148,16 @@ namespace DAL
                 if (_employeeRepository == null)
                     _employeeRepository = new EmployeeRepository(_context);
                 return _employeeRepository;
+            }
+        }
+
+        public ICountryRepository Countries
+        {
+            get
+            {
+                if (_countryRepository == null)
+                    _countryRepository = new CountryRepository(_context);
+                return _countryRepository;
             }
         }
 
