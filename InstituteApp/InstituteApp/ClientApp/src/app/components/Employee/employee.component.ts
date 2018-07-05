@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
-import { EmployeeService } from '../../services/employee/service.employee'
+import { EmployeeService, EmployeeData } from '../../services/employee/service.employee'
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
@@ -56,14 +56,4 @@ export class EmployeeComponent {
     }
 
 }
-interface EmployeeData {
-    id: number;
-    employeeCode: string;
-    joiningDate: string;
-    qualification: string;
-    department: string;
-    designation: string;
-    totalExperience: string;
 
-    
-}

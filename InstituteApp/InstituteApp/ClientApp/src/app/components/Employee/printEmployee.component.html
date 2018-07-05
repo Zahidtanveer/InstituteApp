@@ -1,0 +1,65 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <!--<p *ngIf="!dList"><em>Loading...</em></p>-->
+        <div class="card-title">
+            <h2>Print List Employees</h2>
+        </div>
+        <div class="container-fluid">
+            <form [formGroup]="employeeForm" (ngsubmit)="print()" #f="ngForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group col-md-3" >
+                        <label for="IsDepOrDes">Select </label>
+                        <select formControlName="IsDepOrDes" (change)="OnSelectValue($event)" class="form-control">
+                            <option value="">Choose...</option>
+                            <option value="DepartmentWise">Department Wise</option>
+                            <option value="DesignationWise">Designation Wise</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3" *ngIf="IsDepartmentWise">
+                        <label for="Department">Department</label>
+                        <select formControlName="Department" class="form-control" (change)="OnDepartmentSelection($event)">
+                            <option value="">Choose...</option>
+                            <option *ngFor="let dep of departmentList" [value]="dep.name">{{dep.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3" *ngIf="IsDesignationWise">
+                        <label for="Designation">Designation</label>
+                        <select formControlName="Designation" class="form-control" (change)="OnDesignationSelection($event)">
+                            <option value="">Choose...</option>
+                            <option *ngFor="let des of designationList" [value]="des.name">{{des.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>EmployeeCode</th>
+                    <th>JoiningDate</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Qualification</th>
+                    <th>TotalExperience</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of dList">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.employeeCode}}</td>
+                    <td>{{emp.joiningDate| date:'dd/MM//yyyy'}}</td>
+                    <td>{{emp.qualification}}</td>
+                    <td>{{emp.department}}</td>
+                    <td>{{emp.designation}}</td>
+                    <td>{{emp.totalExperience}}</td>
+                  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

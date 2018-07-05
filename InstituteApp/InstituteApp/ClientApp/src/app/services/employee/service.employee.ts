@@ -38,9 +38,22 @@ export class EmployeeService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
-
+    filterEmployee(department, designation, id) {
+        return this._http.get(this.myAppUrl + "api/Employee/FilterEmployees" + "?dep=" + department + "&&des=" + designation + "&&id=" + id)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
     errorHandler(error: Response) {
         console.log(error);
         return Observable.throw(error);
     }
+}
+export interface EmployeeData {
+    id: number;
+    employeeCode: string;
+    joiningDate: string;
+    qualification: string;
+    department: string;
+    designation: string;
+    totalExperience: string;
 }

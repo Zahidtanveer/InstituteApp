@@ -226,9 +226,9 @@ namespace InstituteApp.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<int>("EmployeeId");
+                    b.Property<int?>("EmployeeId");
 
-                    b.Property<int>("GuardianId");
+                    b.Property<int?>("GuardianId");
 
                     b.Property<string>("Mobile");
 
@@ -242,18 +242,21 @@ namespace InstituteApp.Migrations
 
                     b.Property<string>("State");
 
-                    b.Property<int>("StudentId");
+                    b.Property<int?>("StudentId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[EmployeeId] IS NOT NULL");
 
                     b.HasIndex("GuardianId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[GuardianId] IS NOT NULL");
 
                     b.HasIndex("StudentId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[StudentId] IS NOT NULL");
 
                     b.ToTable("contactDetails");
                 });
@@ -491,7 +494,7 @@ namespace InstituteApp.Migrations
 
                     b.Property<DateTime>("DateOfBirth");
 
-                    b.Property<int>("EmployeeId");
+                    b.Property<int?>("EmployeeId");
 
                     b.Property<string>("FirstName");
 
@@ -505,15 +508,17 @@ namespace InstituteApp.Migrations
 
                     b.Property<string>("Religion");
 
-                    b.Property<int>("StudentId");
+                    b.Property<int?>("StudentId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[EmployeeId] IS NOT NULL");
 
                     b.HasIndex("StudentId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[StudentId] IS NOT NULL");
 
                     b.ToTable("personalDetails");
                 });
@@ -933,18 +938,15 @@ namespace InstituteApp.Migrations
                 {
                     b.HasOne("DAL.Models.Employee", "employee")
                         .WithOne("contactDetails")
-                        .HasForeignKey("DAL.Models.ContactDetails", "EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DAL.Models.ContactDetails", "EmployeeId");
 
                     b.HasOne("DAL.Models.Guardian", "guardian")
                         .WithOne("ContactDetails")
-                        .HasForeignKey("DAL.Models.ContactDetails", "GuardianId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DAL.Models.ContactDetails", "GuardianId");
 
                     b.HasOne("DAL.Models.Student", "student")
                         .WithOne("contactDetails")
-                        .HasForeignKey("DAL.Models.ContactDetails", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DAL.Models.ContactDetails", "StudentId");
                 });
 
             modelBuilder.Entity("DAL.Models.Course", b =>
@@ -980,13 +982,11 @@ namespace InstituteApp.Migrations
                 {
                     b.HasOne("DAL.Models.Employee", "employee")
                         .WithOne("personalDetails")
-                        .HasForeignKey("DAL.Models.PersonalDetails", "EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DAL.Models.PersonalDetails", "EmployeeId");
 
                     b.HasOne("DAL.Models.Student", "student")
                         .WithOne("personalDetails")
-                        .HasForeignKey("DAL.Models.PersonalDetails", "StudentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DAL.Models.PersonalDetails", "StudentId");
                 });
 
             modelBuilder.Entity("DAL.Models.State", b =>

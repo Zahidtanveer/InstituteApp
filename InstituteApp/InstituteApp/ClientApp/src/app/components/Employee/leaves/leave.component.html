@@ -1,0 +1,35 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>List of Leave</h2>
+            <a [routerLink]="['/add-leave']" class="btn btn-success">Create New</a>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Designation Name</th>
+                    <th>Leave Type</th>
+                    <th>Leave Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let l of dList">
+                    <td>{{l.id}}</td>
+                    <td>{{l.designationName}}</td>
+                    <td>{{l.leaveType}}</td>
+                    <td>{{leaveCount}}</td>
+                    <td>
+                        <a [routerLink]="['/leave/edit/',l.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(l.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

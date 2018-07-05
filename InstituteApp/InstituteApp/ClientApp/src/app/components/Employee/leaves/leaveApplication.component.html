@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Leave Application</h1>
+                </div>
+
+                <form [formGroup]="leaveApplicationForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="LeaveCategoryId">Leave Category</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && LeaveCategoryId.valid || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid, 'is-invalid' :formDir.submitted && !LeaveCategoryId.valid || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid}" formControlName="LeaveCategoryId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let lc of leaveCategoryList" [value]="lc.name">{{lc.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid">
+                                        LeaveCategoryId is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="FromDate">From Date</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && FromDate.valid || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid, 'is-invalid' :formDir.submitted && !FromDate.valid || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid}" type="date" formControlName="FromDate">
+                                    <span class="invalid-feedback" *ngIf="!FromDate.valid && formDir.submitted || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid">
+                                        FromDate is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="FromDate.valid && formDir.submitted || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="ToDate">To Date</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && ToDate.valid || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid, 'is-invalid' :formDir.submitted && !ToDate.valid || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid}" type="date" formControlName="ToDate">
+                                    <span class="invalid-feedback" *ngIf="!ToDate.valid && formDir.submitted || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid">
+                                        ToDate is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="ToDate.valid && formDir.submitted || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="Reason">Reason</label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control"   formControlReason="Reason" required>
+                                     </textarea>
+                                    <!--<span class="invalid-feedback" *ngIf="!Reason.valid && formDir.submitted || Reason.touched && !Reason.valid || Reason.dirty  && !Reason.valid">
+                                        Reason is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="Reason.valid && formDir.submitted || Reason.touched && Reason.valid || Reason.dirty && Reason.valid">
+                                        Woohoo!
+                                    </span>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

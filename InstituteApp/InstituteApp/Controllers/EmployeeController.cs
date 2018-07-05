@@ -160,6 +160,13 @@ namespace InstituteApp.Controllers
         {
             return _unitOfWork.Employee.DeleteEmployee(id);
         }
+        [HttpGet]
+        [Route("api/Employee/FilterEmployees")]
+        public IEnumerable<Employee> FilterEmployees(string dep,string des,int id)
+
+        {
+            return _unitOfWork.Employee.FilterEmployee(dep,des,id);
+        }
 
 
     }

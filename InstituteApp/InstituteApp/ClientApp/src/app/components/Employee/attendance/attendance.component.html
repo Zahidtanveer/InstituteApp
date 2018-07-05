@@ -1,0 +1,34 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>Employee Attendance</h2>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>AttendanceDate</th>
+                    <th>EmployeeCode</th>
+                    <th>IsPresent</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let attendance of dList">
+                    <td>{{attendance.id}}</td>
+                    <td>{{attendance.attendanceDate | date:'dd-MM-yyyy'}}</td>
+                    <td>{{attendance.employee.employeeCode}}</td>
+                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.isPresent}}"></td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+      
+    </div>
+
+</div>

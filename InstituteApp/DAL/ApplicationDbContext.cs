@@ -84,7 +84,29 @@ namespace DAL
                 .HasOne(s => s.country)
                 .WithMany(c => c.states)
                 .HasForeignKey(s=>s.CountryId);
-            
+
+            builder.Entity<PersonalDetails>()
+                .HasOne(e => e.employee)
+                .WithOne(p => p.personalDetails)
+                .IsRequired(false);
+            builder.Entity<PersonalDetails>()
+              .HasOne(e => e.student)
+              .WithOne(p => p.personalDetails)
+              .IsRequired(false);
+            builder.Entity<ContactDetails>()
+             .HasOne(e => e.student)
+             .WithOne(c => c.contactDetails)
+             .IsRequired(false);
+            builder.Entity<ContactDetails>()
+             .HasOne(e => e.employee)
+             .WithOne(c => c.contactDetails)
+             .IsRequired(false);
+            builder.Entity<ContactDetails>()
+             .HasOne(e => e.guardian)
+             .WithOne(c => c.ContactDetails)
+             .IsRequired(false);
+          
+
         }
 
 

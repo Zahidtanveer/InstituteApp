@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Leave Category</h1>
+                </div>
+
+                <form [formGroup]="leaveCategoryForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="name">Name</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && name.valid || name.touched && name.valid || name.dirty && name.valid, 'is-invalid' :formDir.submitted && !name.valid || name.touched && !name.valid || name.dirty  && !name.valid}" type="text" formControlName="name">
+                                    <span class="invalid-feedback" *ngIf="!name.valid && formDir.submitted || name.touched && !name.valid || name.dirty  && !name.valid">
+                                        name is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="name.valid && formDir.submitted || name.touched && name.valid || name.dirty && name.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <input type="hidden" formControlName="leave" />
+                         <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

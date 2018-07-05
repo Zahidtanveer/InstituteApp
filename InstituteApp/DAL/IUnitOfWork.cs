@@ -23,6 +23,9 @@ namespace DAL
         IDesignationRepository Designation { get; }
         IEmployeeRepository Employee { get; }
         ICountryRepository Countries { get; }
+        ILeaveRepository Leave { get; }
+
+
         int SaveChanges();
     }
 }

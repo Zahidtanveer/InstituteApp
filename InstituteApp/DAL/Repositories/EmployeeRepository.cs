@@ -16,7 +16,7 @@ namespace DAL.Repositories
 
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
 
-
+        #region Employee
         public int AddEmployee(Employee employee)
         {
             try
@@ -75,7 +75,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
         public IEnumerable<Employee> GetAllEmployeeData()
         {
             try
@@ -92,7 +91,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
         public Employee GetEmployeeData(int id)
         {
             try
@@ -109,7 +107,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
         public int UpdateEmployee(Employee employee)
         {
             try
@@ -177,5 +174,147 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
+        public IEnumerable<Employee> FilterEmployee(string department, string designation, int id)
+        {
+            var employees = _appContext.employees
+                   .Include(c => c.contactDetails)
+                   .Include(p => p.personalDetails)
+                   .Include(ea => ea.employeeAttendances).ToList();
+            
+            if (department !=null && designation !=null && id > 0)
+            {
+                employees=employees.Where(x => (x.Department == department) && (x.Designation == designation) && (x.Id == id)).ToList();
+                return employees;
+            }
+            else if (designation != null && department != null && id <= 0)
+            {
+                employees = employees.Where(x => (x.Designation == designation) && (x.Department == department)).ToList();
+                return employees;
+            }
+            else if(department != null  && id <=0 )
+            {
+                employees = employees.Where(x => x.Department == department).ToList();
+                return employees;
+            }
+            else if(designation!=null && id <= 0)
+            {
+                employees = employees.Where(x => x.Designation== designation).ToList();
+                return employees;
+            }
+            else if(department != null && id > 0)
+            {
+                employees = employees.Where(x => x.Department == department && (x.Id == id)).ToList();
+                return employees;
+            }
+            else if (designation != null && id > 0)
+            {
+                employees = employees.Where(x => (x.Designation == designation)&&(x.Id==id)).ToList();
+                return employees;
+            }
+          
+            return null;
+        }
+        #endregion
+
+
+
+        #region Employee Attendance
+        public int AddEmployeeAttendance(EmployeeAttendance EmployeeAttendance)
+        {
+            try
+            {
+                _appContext.employeeAttendances.Add(EmployeeAttendance);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public IEnumerable<EmployeeAttendance> GetAllEmployeeAttendanceData()
+        {
+            try
+            {
+
+                var employeeAttendances = _appContext.employeeAttendances.ToList();
+                return employeeAttendances;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public EmployeeAttendance GetEmployeeAttendanceData(int id)
+        {
+            try
+            {
+                EmployeeAttendance EmployeeAttendance = _appContext.employeeAttendances.Find(id);
+                return EmployeeAttendance;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int UpdateEmployeeAttendance(EmployeeAttendance EmployeeAttendance)
+        {
+            try
+            {
+                _appContext.Entry(EmployeeAttendance).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int DeleteEmployeeAttendance(int id)
+        {
+            try
+            {
+                EmployeeAttendance EmployeeAttendance = _appContext.employeeAttendances.Find(id);
+                _appContext.employeeAttendances.Remove(EmployeeAttendance);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public IEnumerable<EmployeeAttendance> DailyEmployeeAttedance()
+        {
+            var employee = _appContext.employees.ToList();
+
+            foreach (var emp in employee)
+            {
+                var attendanceEmployee = new EmployeeAttendance
+                {
+                    Year = DateTime.Now.Year.ToString(),
+                    Day = DateTime.Now.Day.ToString(),
+                    Month = DateTime.Now.Month.ToString(),
+                    AttendanceDate = DateTime.Today,
+                    IsPresent = false,
+                    EmployeeId = emp.Id
+                };
+                var dbEmployeeAttendance = _appContext.employeeAttendances.Where(x => (x.AttendanceDate == DateTime.Today) && (x.EmployeeId == emp.Id));
+                if (dbEmployeeAttendance.Count() == 0)
+                {
+                    _appContext.employeeAttendances.Add(attendanceEmployee);
+                    _appContext.SaveChanges();
+                }
+            }
+
+            var employeeAttendace = _appContext.employeeAttendances
+                .Include(e => e.employee).ToList();
+            return employeeAttendace;
+        }
+        #endregion
+
+
+
+
     }
 }

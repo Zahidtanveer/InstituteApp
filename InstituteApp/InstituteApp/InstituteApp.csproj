@@ -75,6 +75,8 @@
     <None Remove="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <None Remove="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\AddEmployee.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\attendance\attendance.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\attendance\EditAttendance.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\department\AddDepartment.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\department\departmant.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\department\EditDepartment.component.ts" />
@@ -83,6 +85,13 @@
     <None Remove="ClientApp\src\app\components\Employee\designation\EditDesignation.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\EditEmployee.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\employee.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\Addleave.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\AddLeaveCategory.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\EditLeaveCategory.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\leave.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\leaveApplication.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\leaves\leaveCategory.component.ts" />
+    <None Remove="ClientApp\src\app\components\Employee\printEmployee.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
@@ -92,9 +101,12 @@
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
     <None Remove="ClientApp\src\app\services\data.service.ts" />
+    <None Remove="ClientApp\src\app\services\employee\service.attendance.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.department.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.designation.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.employee.ts" />
+    <None Remove="ClientApp\src\app\services\employee\service.leave.ts" />
+    <None Remove="ClientApp\src\app\services\employee\service.leaveCategory.ts" />
     <None Remove="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
@@ -115,6 +127,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EditBatch.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\course_batch\EidtCourse.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\AddEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\attendance\attendance.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\attendance\EditAttendance.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\AddDepartment.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\Departmant.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\department\EditDepartment.component.ts" />
@@ -123,6 +137,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\designation\EditDesignation.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\EditEmployee.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\employee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\AddLeave.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\AddLeaveCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\EditLeaveCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\leave.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\leaveApplication.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\leaveCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Employee\printEmployee.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
@@ -132,10 +153,19 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.religion.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.attendance.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.department.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.designation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.employee.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.leave.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.leaveCategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\Students\Attandence\" />
+    <Folder Include="ClientApp\src\app\components\Students\Guardians\" />
+    <Folder Include="ClientApp\src\app\components\Students\StudentIDCard\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

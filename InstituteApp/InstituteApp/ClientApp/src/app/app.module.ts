@@ -112,6 +112,17 @@ import { createEmployee } from "./components/Employee/AddEmployee.component";
 import { EmployeeComponent } from "./components/Employee/employee.component";
 import { DataService } from "./services/data.service";
 import { editEmployee } from "./components/Employee/EditEmployee.component";
+import { PrintEmployeeComponent } from "./components/Employee/printEmployee.component";
+import { EmployeeAttendanceComponent } from "./components/Employee/attendance/attendance.component";
+import { EmployeeAttendanceService } from "./services/employee/service.attendance";
+import { createLeaveCategory } from "./components/Employee/leaves/AddLeaveCategory.component";
+import { LeaveCategoryComponent } from "./components/Employee/leaves/leaveCategory.component";
+import { LeaveCategoryService } from "./services/employee/service.leaveCategory";
+import { LeaveService } from "./services/employee/service.leave";
+import { createLeave } from "./components/Employee/leaves/Addleave.component";
+import { LeaveComponent } from "./components/Employee/leaves/leave.component";
+import { editLeaveCategory } from "./components/Employee/leaves/EditLeaveCategory.component";
+import { createLeaveApplication } from "./components/Employee/leaves/leaveApplication.component";
 
 
 
@@ -176,8 +187,9 @@ import { editEmployee } from "./components/Employee/EditEmployee.component";
         editSyllabus, createSyllabus, editAllocateBatchTeacher, createAllocateBatchTeacher,
         UserTypeComponent, createDepartment, editDepartment, DepartmentComponent,
         createDesignation, editDesignation, DesignationComponent, createEmployee,
-        EmployeeComponent, editEmployee
-
+        EmployeeComponent, editEmployee, PrintEmployeeComponent, EmployeeAttendanceComponent,
+        createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
+        createLeaveApplication
 
     ],
     providers: [
@@ -198,7 +210,8 @@ import { editEmployee } from "./components/Employee/EditEmployee.component";
         ReligionService, CasteService,
         BatchService, CourseService, AllocateBatchTeacherService,
         SyllabusService, DepartmentService, DesignationService,
-        EmployeeService, DataService
+        EmployeeService, DataService, EmployeeAttendanceService
+        , LeaveCategoryService, LeaveService
     ],
     bootstrap: [AppComponent]
 })

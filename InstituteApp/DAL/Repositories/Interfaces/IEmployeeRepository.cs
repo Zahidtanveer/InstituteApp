@@ -11,7 +11,16 @@ namespace DAL.Repositories.Interfaces
         int AddEmployee(Employee employee);
         int UpdateEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployeeData();
-       Employee GetEmployeeData(int id);
+        Employee GetEmployeeData(int id);
         int DeleteEmployee(int id);
+        IEnumerable<Employee> FilterEmployee(string department,string designation,int id);
+
+
+        IEnumerable<EmployeeAttendance> DailyEmployeeAttedance();
+        int AddEmployeeAttendance(EmployeeAttendance employee);
+        int UpdateEmployeeAttendance(EmployeeAttendance employee);
+        IEnumerable<EmployeeAttendance> GetAllEmployeeAttendanceData();
+        EmployeeAttendance GetEmployeeAttendanceData(int id);
+        int DeleteEmployeeAttendance(int id);
     }
 }
