@@ -18,6 +18,7 @@ export class CourseService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
+
     getCourseById(id: number) {
         return this._http.get(this.myAppUrl + "api/Course/Details/" + id)
             .map((response: Response) => response.json())

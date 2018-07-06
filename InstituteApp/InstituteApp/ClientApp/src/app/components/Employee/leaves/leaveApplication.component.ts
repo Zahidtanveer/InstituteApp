@@ -5,44 +5,54 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } fr
 import { Router, ActivatedRoute } from '@angular/router';
 import { LeaveService } from '../../../services/employee/service.leave'
 import { LeaveCategoryService, LeaveCategoryData } from '../../../services/employee/service.leaveCategory';
+import { EmployeeService, EmployeeData } from '../../../services/employee/service.employee';
 
 @Component({
     selector: 'createLeave',
     templateUrl: './leaveApplication.component.html'
 })
 export class createLeaveApplication {
+
     public leaveCategoryList: LeaveCategoryData[];
-    leaveApplicationForm: FormGroup;
+    public employeeList: EmployeeData[];
+    leaveAppForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _leaveService: LeaveService, private _router: Router, private _leaveCategoryService: LeaveCategoryService) {
+        private _leaveService: LeaveService, private _router: Router, private _employeeService: EmployeeService, private _leaveCategoryService: LeaveCategoryService) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 
         }
-        this.leaveApplicationForm = this._fb.group({
+        this.leaveAppForm = this._fb.group({
             id: 0,
             LeaveCategoryId: ['', [Validators.required]],
+            EmployeeId: ['', [Validators.required]],
             FromDate: ['', [Validators.required]],
             ToDate: ['', [Validators.required]],
             Reason: ['']
 
         })
         this.getLeaveCategory();
+        this.getEmployees();
     }
     getLeaveCategory() {
         this._leaveCategoryService.getLeaveCategory()
             .subscribe(data => { this.leaveCategoryList = data });
     }
+    getEmployees() {
+        this._employeeService.getEmployee()
+            .subscribe(data => { this.employeeList = data });
+    }
 
     save() {
-        if (!this.leaveApplicationForm.valid) {
+        if (!this.leaveAppForm.valid) {
             return;
         }
         if (this.title == "Create") {
-            this._leaveService.saveLeave(this.leaveApplicationForm.value)
+            console.log(this.EmployeeId +"/"+ this.LeaveCategoryId+"/"+  this.FromDate +"/"+ this.ToDate +"/"+ this.Reason);
+            this._leaveService.saveLeave(this.leaveAppForm.value)
                 .subscribe((data) => {
                     this._router.navigate(['/leave']);
                 }, error => this.errorMessage = error)
@@ -52,9 +62,9 @@ export class createLeaveApplication {
     cancel() {
         this._router.navigate(['/leave']);
     }
-
-    get LeaveCategoryId() { return this.leaveApplicationForm.get('LeaveCategoryId'); }
-    get FromDate() { return this.leaveApplicationForm.get('FromDate'); }
-    get ToDate() { return this.leaveApplicationForm.get('ToDate'); }
-    get Reason() { return this.leaveApplicationForm.get('Reason'); }
+    get EmployeeId() { return this.leaveAppForm.get('EmployeeId'); }
+    get LeaveCategoryId() { return this.leaveAppForm.get('LeaveCategoryId'); }
+    get FromDate() { return this.leaveAppForm.get('FromDate'); }
+    get ToDate() { return this.leaveAppForm.get('ToDate'); }
+    get Reason() { return this.leaveAppForm.get('Reason'); }
 }

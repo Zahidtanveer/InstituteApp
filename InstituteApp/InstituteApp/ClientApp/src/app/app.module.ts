@@ -123,6 +123,13 @@ import { createLeave } from "./components/Employee/leaves/Addleave.component";
 import { LeaveComponent } from "./components/Employee/leaves/leave.component";
 import { editLeaveCategory } from "./components/Employee/leaves/EditLeaveCategory.component";
 import { createLeaveApplication } from "./components/Employee/leaves/leaveApplication.component";
+import { StudentCategoryService } from "./services/student/service.studentCategory";
+import { StudentService } from "./services/student/service.student";
+import { createStudentCategory } from "./components/Students/AddStudentCategory.component";
+import { editStudentCategory } from "./components/Students/EditStudentCategory.component";
+import { StudentCategoryComponent } from "./components/Students/studentCategory.component";
+import { StudentComponent } from "./components/Students/student.component";
+import { createStudent } from "./components/Students/AddStudent.component";
 
 
 
@@ -189,7 +196,8 @@ import { createLeaveApplication } from "./components/Employee/leaves/leaveApplic
         createDesignation, editDesignation, DesignationComponent, createEmployee,
         EmployeeComponent, editEmployee, PrintEmployeeComponent, EmployeeAttendanceComponent,
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
-        createLeaveApplication
+        createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
+        StudentComponent, createStudent
 
     ],
     providers: [
@@ -211,7 +219,8 @@ import { createLeaveApplication } from "./components/Employee/leaves/leaveApplic
         BatchService, CourseService, AllocateBatchTeacherService,
         SyllabusService, DepartmentService, DesignationService,
         EmployeeService, DataService, EmployeeAttendanceService
-        , LeaveCategoryService, LeaveService
+        , LeaveCategoryService, LeaveService,
+        StudentCategoryService, StudentService
     ],
     bootstrap: [AppComponent]
 })

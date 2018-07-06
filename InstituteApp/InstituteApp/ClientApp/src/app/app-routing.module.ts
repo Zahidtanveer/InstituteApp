@@ -61,6 +61,11 @@ import { createLeave } from './components/Employee/leaves/Addleave.component';
 import { LeaveComponent } from './components/Employee/leaves/leave.component';
 import { editLeaveCategory } from './components/Employee/leaves/EditLeaveCategory.component';
 import { createLeaveApplication } from './components/Employee/leaves/leaveApplication.component';
+import { editStudentCategory } from './components/Students/EditStudentCategory.component';
+import { StudentCategoryComponent } from './components/Students/studentCategory.component';
+import { createStudentCategory } from './components/Students/AddStudentCategory.component';
+import { StudentComponent } from './components/Students/student.component';
+import { createStudent } from './components/Students/AddStudent.component';
 
 
 
@@ -116,6 +121,11 @@ import { createLeaveApplication } from './components/Employee/leaves/leaveApplic
             { path: "add-leavecategory", component: createLeaveCategory, canActivate: [AuthGuard], data: { title: "Add Leave Category" } },
             { path: "leavecategory", component: LeaveCategoryComponent, canActivate: [AuthGuard], data: { title: "Leave Category" } },
             { path: "leavecategory/edit/:Id", component: editLeaveCategory, canActivate: [AuthGuard], data: { title: "Edit Leave Category" } },
+            { path: "add-studentcategory", component: createStudentCategory, canActivate: [AuthGuard], data: { title: "Add Student Category" } },
+            { path: "studentcategory", component: StudentCategoryComponent, canActivate: [AuthGuard], data: { title: "Student Category" } },
+            { path: "studentcategory/edit/:Id", component: editStudentCategory, canActivate: [AuthGuard], data: { title: "Edit Student Category" } },
+            { path: "add-student", component: createStudent, canActivate: [AuthGuard], data: { title: "Add Student" } },
+            { path: "students", component: StudentComponent, canActivate: [AuthGuard], data: { title: "Student" } },
             { path: "add-leave", component: createLeave, canActivate: [AuthGuard], data: { title: "Add Leave" } },
             { path: "leave", component: LeaveComponent, canActivate: [AuthGuard], data: { title: "Leave" } },
             { path: "leaveapplication", component: createLeaveApplication, canActivate: [AuthGuard], data: { title: "Leave Application" } },

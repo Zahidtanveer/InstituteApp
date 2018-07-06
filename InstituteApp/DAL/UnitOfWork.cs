@@ -27,7 +27,7 @@ namespace DAL
         IEmployeeRepository _employeeRepository;
         ICountryRepository _countryRepository;
         ILeaveRepository _leaveRepository;
-
+        IStudentRepository _studentRepository;
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -169,6 +169,16 @@ namespace DAL
                 if (_leaveRepository == null)
                     _leaveRepository = new LeaveRepository(_context);
                 return _leaveRepository;
+            }
+        }
+
+        public IStudentRepository Student
+        {
+            get
+            {
+                if (_studentRepository == null)
+                    _studentRepository = new StudentRepository(_context);
+                return _studentRepository;
             }
         }
 

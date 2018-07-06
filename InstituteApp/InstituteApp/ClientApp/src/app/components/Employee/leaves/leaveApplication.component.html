@@ -3,12 +3,27 @@
         <div class="container-fluid">
             <div class="card-body">
                 <div class="card-title">
-                    <h1>{{title}} Leave Application</h1>
+                    <h1>Leave Application</h1>
                 </div>
 
-                <form [formGroup]="leaveApplicationForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                <form [formGroup]="leaveAppForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="EmployeeId">Employee</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && EmployeeId.valid || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid, 'is-invalid' :formDir.submitted && !EmployeeId.valid || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid}" formControlName="EmployeeId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let e of employeeList" [value]="e.id">{{e.personalDetails.firstName}} {{e.personalDetails.lastName}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!EmployeeId.valid && formDir.submitted || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid">
+                                        EmployeeId is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="EmployeeId.valid && formDir.submitted || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="LeaveCategoryId">Leave Category</label>
                                 <div class="col-md-12">
@@ -24,6 +39,7 @@
                                     </span>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="FromDate">From Date</label>
                                 <div class="col-md-12">
@@ -52,14 +68,13 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Reason">Reason</label>
                                 <div class="col-md-12">
-                                    <textarea class="form-control"   formControlReason="Reason" required>
-                                     </textarea>
+                                    <textarea class="form-control" formControlReason="Reason" rows="8"></textarea>
                                     <!--<span class="invalid-feedback" *ngIf="!Reason.valid && formDir.submitted || Reason.touched && !Reason.valid || Reason.dirty  && !Reason.valid">
-                                        Reason is required.
-                                    </span>
-                                    <span class="valid-feedback" *ngIf="Reason.valid && formDir.submitted || Reason.touched && Reason.valid || Reason.dirty && Reason.valid">
-                                        Woohoo!
-                                    </span>-->
+                Reason is required.
+            </span>
+            <span class="valid-feedback" *ngIf="Reason.valid && formDir.submitted || Reason.touched && Reason.valid || Reason.dirty && Reason.valid">
+                Woohoo!
+            </span>-->
                                 </div>
                             </div>
                         </div>

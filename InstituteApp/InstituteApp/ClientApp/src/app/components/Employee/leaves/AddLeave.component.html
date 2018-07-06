@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>{{title}} Leave Application</h1>
+                </div>
+
+                <form [formGroup]="leaveForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="LeaveCategoryId">Leave Category</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && LeaveCategoryId.valid || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid, 'is-invalid' :formDir.submitted && !LeaveCategoryId.valid || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid}" formControlName="LeaveCategoryId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let lc of leaveCategoryList" [value]="lc.name">{{lc.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid">
+                                        LeaveCategoryId is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="DesignationName">Designation</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && DesignationName.valid || DesignationName.touched && DesignationName.valid || DesignationName.dirty && DesignationName.valid, 'is-invalid' :formDir.submitted && !DesignationName.valid || DesignationName.touched && !DesignationName.valid || DesignationName.dirty  && !DesignationName.valid}" formControlName="DesignationName">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let des of designationList" [value]="des.name">{{des.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!DesignationName.valid && formDir.submitted || DesignationName.touched && !DesignationName.valid || DesignationName.dirty  && !DesignationName.valid">
+                                        DesignationName is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="DesignationName.valid && formDir.submitted || DesignationName.touched && DesignationName.valid || DesignationName.dirty && DesignationName.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="LeaveCount">Leave Count</label>
+                                <div class="col-md-12">
+                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && LeaveCount.valid || LeaveCount.touched && LeaveCount.valid || LeaveCount.dirty && LeaveCount.valid, 'is-invalid' :formDir.submitted && !LeaveCount.valid || LeaveCount.touched && !LeaveCount.valid || LeaveCount.dirty  && !LeaveCount.valid}" formControlName="LeaveCount" type="number">
+                                    <span class="invalid-feedback" *ngIf="!LeaveCount.valid && formDir.submitted || LeaveCount.touched && !LeaveCount.valid || LeaveCount.dirty  && !LeaveCount.valid">
+                                        LeaveCount is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="LeaveCount.valid && formDir.submitted || LeaveCount.touched && LeaveCount.valid || LeaveCount.dirty && LeaveCount.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

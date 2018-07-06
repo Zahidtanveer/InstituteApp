@@ -14,11 +14,11 @@ namespace DAL.Repositories
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
        
         #region Leave
-        public int AddLeave(Leave Leave)
+        public int AddLeave(Leave leave)
         {
             try
             {
-                _appContext.leaves.Add(Leave);
+                _appContext.leaves.Add(leave);
                 _appContext.SaveChanges();
                 return 1;
             }
@@ -44,19 +44,19 @@ namespace DAL.Repositories
         {
             try
             {
-                Leave Leave = _appContext.leaves.Find(id);
-                return Leave;
+                Leave leave = _appContext.leaves.Find(id);
+                return leave;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public int UpdateLeave(Leave Leave)
+        public int UpdateLeave(Leave leave)
         {
             try
             {
-                _appContext.Entry(Leave).State = EntityState.Modified;
+                _appContext.Entry(leave).State = EntityState.Modified;
                 _appContext.SaveChanges();
                 return 1;
             }

@@ -1,0 +1,43 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>List of Students</h2>
+            <!--<a [routerLink]="['/add-student']" class="btn btn-success">Create New</a>-->
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>AcadamicYear</th>
+                    <th>JoiningDate</th>
+                    <th>RegisterNumber</th>
+                    <th>Course</th>
+                    <th>Batch </th>
+                    <th>RollNo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stu of dList">
+                    <td>{{stu.id}}</td>
+                    <td>{{stu.acadamicYear}}</td>
+                    <td>{{stu.joiningDate| date:'dd/MM//yyyy'}}</td>
+                    <td>{{stu.registerNumber}}</td>
+                    <td>{{stu.course}}</td>
+                    <td>{{stu.batch}}</td>
+                    <td>{{stu.rollNo}}</td>
+                    <td>
+
+                        <a [routerLink]="['/student/edit/',stu.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(stu.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

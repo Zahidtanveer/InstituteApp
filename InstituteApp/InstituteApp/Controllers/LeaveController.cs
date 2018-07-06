@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL;
 using DAL.Models;
+using InstituteApp.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,9 +37,12 @@ namespace InstituteApp.Controllers
         //POST: api/Leave/Create
         [HttpPost]
         [Route("api/Leave/Create")]
-        public int Create([FromBody]Leave Leave)
+        public int Create([FromBody]LeaveApplicationViewModel leaveVM)
         {
-            return _unitOfWork.Leave.AddLeave(Leave);
+            var leave = new Leave
+            {
+            };
+            return _unitOfWork.Leave.AddLeave(leave);
         }
         //PUT: api/Leave/Edit
         [HttpPut()]

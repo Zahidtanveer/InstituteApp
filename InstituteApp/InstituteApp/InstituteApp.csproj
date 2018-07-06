@@ -92,6 +92,11 @@
     <None Remove="ClientApp\src\app\components\Employee\leaves\leaveApplication.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\leaves\leaveCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Employee\printEmployee.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\AddStudent.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\AddStudentCategory.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\EditStudentCategory.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\student.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
@@ -107,6 +112,8 @@
     <None Remove="ClientApp\src\app\services\employee\service.employee.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.leave.ts" />
     <None Remove="ClientApp\src\app\services\employee\service.leaveCategory.ts" />
+    <None Remove="ClientApp\src\app\services\student\service.student.ts" />
+    <None Remove="ClientApp\src\app\services\student\service.studentCategory.ts" />
     <None Remove="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
@@ -144,6 +151,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\leaveApplication.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\leaves\leaveCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Employee\printEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\AddStudent.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\AddStudentCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\EditStudentCategory.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\student.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
@@ -159,6 +171,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.employee.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.leave.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\employee\service.leaveCategory.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\student\service.student.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\student\service.studentCategory.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
   </ItemGroup>
 
