@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { CountryData, StateData, DataService, ReligionData, CasteData, BatchData, CourseData } from '../../services/data.service';
 import { StudentService } from '../../services/student/service.student';
 
@@ -11,6 +12,7 @@ import { StudentService } from '../../services/student/service.student';
     templateUrl: './AddStudent.component.html'
 })
 export class createStudent {
+
     public countryList: CountryData[];
     public stateList: StateData[];
     public csubStateList: StateData[];
@@ -26,14 +28,14 @@ export class createStudent {
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _router: Router, private _studentService: StudentService, private _dataService: DataService) {
-        //if (this._avRoute.snapshot.params["Id"]) {
-        //    this.id = this._avRoute.snapshot.params["Id"];
+        if (this._avRoute.snapshot.params["Id"]) {
+            this.id = this._avRoute.snapshot.params["Id"];
 
-        //}
+        }
         this.studentForm = this._fb.group({
             id: 0,
             //Official Detail
-            AcadamicYear:[''],
+            AcadamicYear: ['', [Validators.required]],
             RegisterNumber: [''],
             JoiningDate: [''],
             Course: [''],
@@ -75,10 +77,10 @@ export class createStudent {
             MotherMobile: [''],
             MotherCNIC: [''],
         
-            g_Name: [''],
+            g_Name: ['',[Validators.required]],
             g_Relation:[''],
             g_Education: [''],
-            g_Occuption: [''],
+            g_Occuption: ['',[Validators.required]],
             g_Income: [''],
             g_contactDetails_Address: [''],
             g_contactDetails_City: [''],
@@ -134,22 +136,24 @@ export class createStudent {
     }
     OnCountrySelectiong($event: any) {
         var countryID = this.studentForm.controls["g_contactDetails_Country"].value;
+        console.log(countryID);
         this.gsubStateList = this.stateList.filter(x => x.countryId == countryID && x !== null);
     }
 
 
 
     save() {
+        
         if (!this.studentForm.valid) {
-            console.log("Invalid");
             return;
         }
         if (this.title == "Create") {
-            this._studentService.saveStudent(this.studentForm.value)
-                .subscribe((data) => {
-                    this._router.navigate(['/students']);
-                }, error => this.errorMessage = error)
         }
+        this._studentService.saveStudent(this.studentForm.value)
+            .subscribe((data) => {
+                this._router.navigate(['/students']);
+            }, error => this.errorMessage = error)
+       
 
     }
     cancel() {
@@ -207,9 +211,10 @@ export class createStudent {
     get g_Relation() { return this.studentForm.get('g_Relation'); }
     get g_Education(){ return this.studentForm.get('g_Education'); }
     get g_Income(){ return this.studentForm.get('g_Income'); }
-    get g_contactDetails_Address(){ return this.studentForm.get('g_contactDetails_Address'); }
+    get g_Occuption() { return this.studentForm.get('g_Occuption'); }
+    get g_contactDetails_Address() { return this.studentForm.get('g_contactDetails_Address'); }
     get g_contactDetails_City(){ return this.studentForm.get('g_contactDetails_City'); }
-     get g_contactDetails_PostalCode(){ return this.studentForm.get('g_contactDetails_PostalCode'); }
+    get g_contactDetails_PostalCode(){ return this.studentForm.get('g_contactDetails_PostalCode'); }
     get g_contactDetails_Country(){ return this.studentForm.get('g_contactDetails_Country'); }
     get g_contactDetails_State(){ return this.studentForm.get('g_contactDetails_State'); }
     get g_contactDetails_Phone(){ return this.studentForm.get('g_contactDetails_Phone'); }

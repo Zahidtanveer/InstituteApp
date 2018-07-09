@@ -1,0 +1,45 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>Student Attendance</h2>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+
+                    <th>Registration Number</th>
+                    <th>Course</th>
+                    <th>Batch</th>
+                    
+                    <th>IsPresent</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let attendance of dList">
+                    <td>{{attendance.id}}</td>
+                    <td>{{attendance.registerNumber}}</td>
+                    <td>{{attendance.course}}</td>
+                    <td>{{attendance.batch}}</td>
+                 
+
+               
+                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.studentAttendances.isPresent}}"></td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="border-top" *ngIf="dList">
+            <div class="card-body float-left">
+                <button type="submit" class="btn btn-primary" (click)="SaveData()">Save</button>
+            </div>
+        </div>
+    </div>
+
+</div>

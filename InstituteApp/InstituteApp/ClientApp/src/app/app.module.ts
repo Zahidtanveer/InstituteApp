@@ -130,6 +130,10 @@ import { editStudentCategory } from "./components/Students/EditStudentCategory.c
 import { StudentCategoryComponent } from "./components/Students/studentCategory.component";
 import { StudentComponent } from "./components/Students/student.component";
 import { createStudent } from "./components/Students/AddStudent.component";
+import { StudentAttendanceComponent } from "./components/Students/Attendance/StudentAttendance.component";
+import { StudentAttendanceService } from "./services/student/service.attendance";
+import { PrintStudentComponent } from "./components/Students/Print/print.component";
+import { GuardianComponent } from "./components/Students/Guardians/guardian.component";
 
 
 
@@ -197,7 +201,7 @@ import { createStudent } from "./components/Students/AddStudent.component";
         EmployeeComponent, editEmployee, PrintEmployeeComponent, EmployeeAttendanceComponent,
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
         createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
-        StudentComponent, createStudent
+        StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent
 
     ],
     providers: [
@@ -220,7 +224,7 @@ import { createStudent } from "./components/Students/AddStudent.component";
         SyllabusService, DepartmentService, DesignationService,
         EmployeeService, DataService, EmployeeAttendanceService
         , LeaveCategoryService, LeaveService,
-        StudentCategoryService, StudentService
+        StudentCategoryService, StudentService, StudentAttendanceService
     ],
     bootstrap: [AppComponent]
 })

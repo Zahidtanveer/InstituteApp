@@ -19,5 +19,7 @@ namespace DAL.Repositories.Interfaces
         IEnumerable<StudentCategory> GetAllStudentCategoryData();
         StudentCategory GetStudentCategoryData(int id);
         int DeleteStudentCategory(int id);
+        int MarkDailyStudentAttedance(IEnumerable<Student> students);
+        IEnumerable<Student> DailyStudentAttedance();
     }
 }

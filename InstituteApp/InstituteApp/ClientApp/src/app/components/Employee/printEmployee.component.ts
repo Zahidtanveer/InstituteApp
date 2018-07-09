@@ -29,19 +29,6 @@ export class PrintEmployeeComponent {
     public IsDesignationWise: boolean;
 
     constructor(private _fb: FormBuilder,http: Http, @Inject('BASE_URL') baseUrl: string, private _dataService: DataService, private _employeeService: EmployeeService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
-        //http.get(baseUrl + 'api/Employee/Index').subscribe(result => {
-        //    this.dList = result.json() as EmployeeData[];
-     
-        //this.chRef.detectChanges();
-        //const table: any = $('#dttable');
-        //this.dataTable = table.DataTable({
-        //    dom: 'Bfrtip',
-        //    buttons: [
-        //        'print'
-        //    ]
-        //});
-        //}, error => console.error(error));
-      
         this.employeeForm = this._fb.group({
             IsDepOrDes: [''],
             Department: [''],
@@ -87,11 +74,19 @@ export class PrintEmployeeComponent {
         var desSelectedValue = this.employeeForm.controls["Designation"].value;
         this._employeeService.filterEmployee('', desSelectedValue, 0).subscribe((data) => {
             this.dList = data;
-        
+            
         }, error => console.error(error))
     }
     print() {
-     
+             this.chRef.detectChanges();
+        const table: any = $('#dttable');
+        this.dataTable = table.DataTable({
+            paging: false,
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ]
+        });
     }
     get IsDepOrDes() { return this.employeeForm.get('IsDepOrDes'); }
     get Department() { return this.employeeForm.get('Department'); }

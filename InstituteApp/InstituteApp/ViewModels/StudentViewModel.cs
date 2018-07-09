@@ -24,6 +24,7 @@ namespace InstituteApp.ViewModels
         public string personalDetails_CNIC { get; set; }
         public string personalDetails_Category { get; set; }
         public string personalDetails_BirthPlace { get; set; }
+        public string personalDetails_MotherTongue { get; set; }
         public string personalDetails_Nationality { get; set; }
         public string personalDetails_BloodGroup { get; set; }
         public string personalDetails_Religion { get; set; }
@@ -50,6 +51,7 @@ namespace InstituteApp.ViewModels
         public string MotherCNIC { get; set; }
         //Guardian Detail
         public string g_Name { get; set; }
+        public string g_Relation { get; set; }
         public string g_Education { get; set; }
         public string g_Occuption { get; set; }
         public string g_Income { get; set; }

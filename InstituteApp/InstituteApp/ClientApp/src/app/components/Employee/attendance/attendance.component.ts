@@ -26,7 +26,7 @@ export class EmployeeAttendanceComponent {
             this.chRef.detectChanges();
             const table: any = $('#dttable');
             this.dataTable = table.DataTable({
-                "displayLength": 5,
+                "displayLength": 10,
                 ordering: false,
                 "pagingType": "full_numbers",
               });
@@ -40,16 +40,8 @@ export class EmployeeAttendanceComponent {
             .subscribe(data => { this.dList = data });
     }
 
-    delete(EmployeeAttendanceID) {
+    SaveData() {
 
-        this.alertService.showDialog('Are you sure you want to delete this EmployeeAttendance with Id:' + EmployeeAttendanceID, DialogType.confirm, () => this.deletehelper(EmployeeAttendanceID));
-
-    }
-
-    deletehelper(EmployeeAttendanceID) {
-        this._employeeAttendanceService.deleteEmployeeAttendance(EmployeeAttendanceID).subscribe((data) => {
-            this.getEmployeeAttendances();
-        }, error => console.error(error))
     }
 
 }

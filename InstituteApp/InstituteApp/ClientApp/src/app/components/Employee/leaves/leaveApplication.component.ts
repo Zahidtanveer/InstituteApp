@@ -51,7 +51,6 @@ export class createLeaveApplication {
             return;
         }
         if (this.title == "Create") {
-            console.log(this.EmployeeId +"/"+ this.LeaveCategoryId+"/"+  this.FromDate +"/"+ this.ToDate +"/"+ this.Reason);
             this._leaveService.saveLeave(this.leaveAppForm.value)
                 .subscribe((data) => {
                     this._router.navigate(['/leave']);

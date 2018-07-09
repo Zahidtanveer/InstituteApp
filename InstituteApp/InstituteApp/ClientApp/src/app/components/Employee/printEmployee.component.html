@@ -3,13 +3,13 @@
     <div class="card-body">
         <!--<p *ngIf="!dList"><em>Loading...</em></p>-->
         <div class="card-title">
-            <h2>Print List Employees</h2>
+            <h2>Print Employees</h2>
         </div>
         <div class="container-fluid">
             <form [formGroup]="employeeForm" (ngsubmit)="print()" #f="ngForm" novalidate>
                 <div class="form-row">
-                    <div class="form-group col-md-3" >
-                        <label for="IsDepOrDes">Select </label>
+                    <div class="form-group col-md-3">
+                        <label for="IsDepOrDes">Report Type </label>
                         <select formControlName="IsDepOrDes" (change)="OnSelectValue($event)" class="form-control">
                             <option value="">Choose...</option>
                             <option value="DepartmentWise">Department Wise</option>
@@ -31,6 +31,9 @@
                         </select>
                     </div>
 
+                </div>
+                <div *ngIf="IsDesignationWise || IsDepartmentWise " class="pull-right">
+                    <button type="submit" class="btn btn-primary" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp; Print</button>
                 </div>
             </form>
         </div>

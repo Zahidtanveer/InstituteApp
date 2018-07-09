@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { LeaveService } from '../../../services/employee/service.leave'
 import { LeaveCategoryService, LeaveCategoryData } from '../../../services/employee/service.leaveCategory';
 import { DataService, DesignationData } from '../../../services/data.service';
@@ -47,7 +48,7 @@ export class createLeave {
             return;
         }
         if (this.title == "Create") {
-            this._leaveService.saveLeave(this.leaveForm.value)
+            this._leaveService.saveLeaveDetail(this.leaveForm.value)
                 .subscribe((data) => {
                     this._router.navigate(['/leave']);
                 }, error => this.errorMessage = error)

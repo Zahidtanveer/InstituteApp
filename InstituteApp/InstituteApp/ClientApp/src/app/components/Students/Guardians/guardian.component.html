@@ -1,0 +1,35 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>Student Guardians</h2>
+            <!--<a [routerLink]="['/add-student']" class="btn btn-success">Create New</a>-->
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Guardian Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Student Id</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stu of dList">
+                    <td>{{stu.id}}</td>
+                    <td>{{stu.guardian.name}}</td>
+                    <td>{{stu.guardian.contactDetails.email}}</td>
+                    <td>{{stu.guardian.contactDetails.mobile}}</td>
+                    <td>{{stu.registerNumber}}</td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

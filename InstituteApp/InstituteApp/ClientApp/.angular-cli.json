@@ -31,6 +31,7 @@
             "assets/assets/extra-libs/sparkline/sparkline.js",
             "assets/dist/js/waves.js",
             "assets/dist/js/sidebarmenu.js",
+
             "assets/dist/js/custom.js"
         ],
       "environmentSource": "environments/environment.ts",

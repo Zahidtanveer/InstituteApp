@@ -66,6 +66,9 @@ import { StudentCategoryComponent } from './components/Students/studentCategory.
 import { createStudentCategory } from './components/Students/AddStudentCategory.component';
 import { StudentComponent } from './components/Students/student.component';
 import { createStudent } from './components/Students/AddStudent.component';
+import { StudentAttendanceComponent } from './components/Students/Attendance/StudentAttendance.component';
+import { PrintStudentComponent } from './components/Students/Print/print.component';
+import { GuardianComponent } from './components/Students/Guardians/guardian.component';
 
 
 
@@ -129,6 +132,9 @@ import { createStudent } from './components/Students/AddStudent.component';
             { path: "add-leave", component: createLeave, canActivate: [AuthGuard], data: { title: "Add Leave" } },
             { path: "leave", component: LeaveComponent, canActivate: [AuthGuard], data: { title: "Leave" } },
             { path: "leaveapplication", component: createLeaveApplication, canActivate: [AuthGuard], data: { title: "Leave Application" } },
+            { path: "studentattendance", component: StudentAttendanceComponent, canActivate: [AuthGuard], data: { title: "Student Attendance" } },
+            { path: "printstudent", component: PrintStudentComponent, canActivate: [AuthGuard], data: { title: "Print Student" } },
+            { path: "guardians", component: GuardianComponent, canActivate: [AuthGuard], data: { title: "List of Guardians" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])
