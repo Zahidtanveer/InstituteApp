@@ -148,7 +148,14 @@ namespace DAL.Repositories
         {
             try
             {
-                Student Student = _appContext.students.Find(id);
+                Student Student = _appContext.students
+                    .Where(s=>s.Id==id)
+                    .Include(p=>p.personalDetails)
+                    .Include(c=>c.contactDetails)
+                    .Include(g=>g.guardian)
+                     .ThenInclude(x=>x.ContactDetails)
+                    .FirstOrDefault();
+
                 return Student;
             }
             catch (Exception ex)

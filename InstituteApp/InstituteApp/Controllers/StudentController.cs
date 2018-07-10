@@ -29,9 +29,71 @@ namespace InstituteApp.Controllers
         //GET: api/Student/Details/1
         [HttpGet()]
         [Route("api/Student/Details/{id}")]
-        public Student Details(int id)
+        public StudentViewModel Details(int id)
         {
-            return _unitOfWork.Student.GetStudentData(id);
+            var student=_unitOfWork.Student.GetStudentData(id);
+            var StudentVm = new StudentViewModel
+            {
+                AcadamicYear = student.AcadamicYear,
+                RegisterNumber = student.RegisterNumber,
+                JoiningDate = student.JoiningDate,
+                Course = student.Course,
+                Batch = student.Batch,
+                RollNo = student.RollNo,
+
+                personalDetails_FirstName = student.personalDetails.FirstName,
+                personalDetails_MiddleName= student.personalDetails.MiddleName,
+                personalDetails_LastName= student.personalDetails.LastName,
+                personalDetails_BloodGroup= student.personalDetails.BloodGroup,
+                personalDetails_BirthPlace= student.personalDetails.BirthPlace,
+                personalDetails_Caste= student.personalDetails.Caste,
+                personalDetails_Category= student.personalDetails.Category,
+                personalDetails_DateOfBirth= student.personalDetails.DateOfBirth,
+                personalDetails_CNIC= student.personalDetails.CNIC,
+                personalDetails_Gender= student.personalDetails.Gender,
+                personalDetails_Nationality= student.personalDetails.Nationality,
+                personalDetails_Religion= student.personalDetails.Religion,
+               
+                contactDetails_PermanentAddress=student.contactDetails.PermanentAddress,
+                contactDetails_PresentAddress= student.contactDetails.PresentAddress,
+                contactDetails_City= student.contactDetails.City,
+                contactDetails_PostalCode= student.contactDetails.PostalCode,
+                contactDetails_Country= student.contactDetails.Country,
+                contactDetails_State = student.contactDetails.State,
+                contactDetails_Mobile = student.contactDetails.Mobile,
+                contactDetails_Phone= student.contactDetails.Phone,
+                contactDetails_Email = student.contactDetails.Email,
+
+                FatherName = student.FatherName,
+                FatherCNIC = student.FatherCNIC,
+                FatherJob = student.FatherJob,
+                FatherMobile = student.FatherMobile,
+
+                MotherName = student.MotherName,
+                MotherCNIC = student.MotherCNIC,
+                MotherJob = student.MotherJob,
+                MotherMobile = student.MotherMobile,
+
+                g_Name=student.guardian.Name,
+                g_Income=student.guardian.Income,
+                g_Education=student.guardian.Education,
+                g_Occuption=student.guardian.Occuption,
+                g_contactDetails_Address=student.guardian.ContactDetails.PermanentAddress,
+                g_contactDetails_City= student.guardian.ContactDetails.City,
+                g_contactDetails_PostalCode= student.guardian.ContactDetails.PostalCode,
+                g_contactDetails_Country= student.guardian.ContactDetails.Country,
+                g_contactDetails_State= student.guardian.ContactDetails.State,
+                g_contactDetails_Mobile= student.guardian.ContactDetails.Mobile,
+                g_contactDetails_Email= student.guardian.ContactDetails.Email,
+                g_contactDetails_Phone= student.guardian.ContactDetails.Phone,
+
+                SchoolName = student.SchoolName,
+                SchoolAddress = student.schoolAddress,
+                Qualification = student.Qualification
+
+
+            };
+            return StudentVm;
         }
 
         //POST: api/Student/Create

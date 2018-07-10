@@ -9,14 +9,14 @@
 
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
-              
+
                 <tr>
                     <th>ID</th>
                     <th>EmployeeCode</th>
                     <th>JoiningDate</th>
+                    <th>Qualification</th>
                     <th>Department</th>
                     <th>Designation</th>
-                    <th>Qualification</th>
                     <th>TotalExperience</th>
                     <th>Actions</th>
                 </tr>
@@ -25,7 +25,7 @@
                 <tr *ngFor="let emp of dList">
                     <td>{{emp.id}}</td>
                     <td>{{emp.employeeCode}}</td>
-                    <td>{{emp.joiningDate| date:'dd/MM//yyyy'}}</td>
+                    <td>{{emp.joiningDate| date:'dd/MM/yyyy'}}</td>
                     <td>{{emp.qualification}}</td>
                     <td>{{emp.department}}</td>
                     <td>{{emp.designation}}</td>

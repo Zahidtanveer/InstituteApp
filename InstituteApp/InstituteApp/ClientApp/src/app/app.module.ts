@@ -134,6 +134,7 @@ import { StudentAttendanceComponent } from "./components/Students/Attendance/Stu
 import { StudentAttendanceService } from "./services/student/service.attendance";
 import { PrintStudentComponent } from "./components/Students/Print/print.component";
 import { GuardianComponent } from "./components/Students/Guardians/guardian.component";
+import { editStudent } from "./components/Students/EditStudent.component";
 
 
 
@@ -201,7 +202,8 @@ import { GuardianComponent } from "./components/Students/Guardians/guardian.comp
         EmployeeComponent, editEmployee, PrintEmployeeComponent, EmployeeAttendanceComponent,
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
         createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
-        StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent
+        StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent,
+        editStudent
 
     ],
     providers: [

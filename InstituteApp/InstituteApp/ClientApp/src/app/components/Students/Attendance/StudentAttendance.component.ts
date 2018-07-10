@@ -40,8 +40,8 @@ export class StudentAttendanceComponent {
             .subscribe(data => { this.dList = data });
     }
     SaveData() {
-          
-        alert(this.dataTable.rows().data().length + ' row(s) selected');
+        var RowData = this.dataTable.rows().data().length;
+        alert(RowData);
     }
     
 

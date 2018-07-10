@@ -1,0 +1,408 @@
+<!-- Student Admission Form Start-->
+<form [formGroup]="studentForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+    <div class="container-fluid">
+        <div class="card">
+            <h1 class="card-header">{{title}}Student</h1>
+            <div class="card-body">
+
+                <!--Official Details Start-->
+                <div class="card">
+                    <h5 class="card-header">Official Details</h5>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="acadamicYear">Academic Year</label>
+                                <input type="text" class="form-control" [ngClass]="{'is-valid': formDir.submitted && acadamicYear.valid || acadamicYear.touched && acadamicYear.valid || acadamicYear.dirty && acadamicYear.valid, 'is-invalid' :formDir.submitted && !acadamicYear.valid || acadamicYear.touched && !acadamicYear.valid || acadamicYear.dirty  && !acadamicYear.valid}" formControlName="acadamicYear">
+                                <span class="invalid-feedback" *ngIf="!acadamicYear.valid && formDir.submitted || acadamicYear.touched && !acadamicYear.valid || acadamicYear.dirty  && !acadamicYear.valid">
+                                    Academic Year is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="acadamicYear.valid && formDir.submitted || acadamicYear.touched && acadamicYear.valid || acadamicYear.dirty && acadamicYear.valid">
+                                    Woohoo!
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="registerNumber">Register Number</label>
+                                <input type="text" class="form-control" formControlName="registerNumber">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="joiningDate">Joining Date</label>
+                                <input type="date" class="form-control" formControlName="joiningDate">
+                            </div>
+
+
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="course">Course</label>
+                                <select id="course" class="form-control" formControlName="course">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let c of courseList" [value]="c.name">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="batch">Batch</label>
+                                <select id="batch" class="form-control" formControlName="batch">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let b of batchList" [value]="b.name">{{b.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="rollNo">Roll Number</label>
+                                <input type="text" class="form-control" formControlName="rollNo">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--Official Details End-->
+                <!--Personel Details Start-->
+                <div class="card">
+                    <h5 class="card-header">Personel Details</h5>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="FirstName">First Name</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_FirstName">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="MiddleName">Middle Name</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_MiddleName">
+                            </div>
+                            <div class="form-group col-md-4">
+
+                                <label for="LastName">Last Name</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_LastName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="DateOfBirth">Date of Birth</label>
+                                <input type="date" class="form-control" formControlName="personalDetails_DateOfBirth">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="personalDetails_Gender">Gender</label>
+                                <select class="form-control" formControlName="personalDetails_Gender">
+                                    <option value="">Choose...</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="personalDetails_BloodGroup">Blood Group</label>
+                                <select class="form-control" formControlName="personalDetails_BloodGroup">
+                                    <option value="">Choose...</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="BirthPlace">Birth Place</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_BirthPlace">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="Gender">Nationality</label>
+                                <select class="form-control" formControlName="personalDetails_Gender">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="personalDetails_motherTongue">mother Tongue</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_MotherTongue">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="Category">Category</label>
+                                <select class="form-control" formControlName="personalDetails_Category">
+                                    <option value="">Choose...</option>
+                                    <option value="1">C1</option>
+                                    <option value="2">C2</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="Caste">Caste</label>
+                                <select class="form-control" formControlName="personalDetails_Caste">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let c of casteList" [value]="c.id">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="Religion">Religion</label>
+                                <select class="form-control" formControlName="personalDetails_Religion">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let r of religionList" [value]="r.id">{{r.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="CNIC">CNIC Number</label>
+                                <input type="text" class="form-control" formControlName="personalDetails_CNIC">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Personel Details End-->
+                <!--Contact Details Start-->
+                <div class="card">
+                    <h5 class="card-header">Contact Details</h5>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="contactDetails_PresentAddress">Present Address</label>
+                                <textarea type="text" class="form-control" formControlName="contactDetails_PresentAddress"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="contactDetails_PermanentAddress">Permanent Address</label>
+                                <textarea type="text" class="form-control" formControlName="contactDetails_PermanentAddress"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_City">City</label>
+                                <input type="text" class="form-control" formControlName="contactDetails_City">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_PostalCode">Postal Code</label>
+                                <input type="text" class="form-control" formControlName="contactDetails_PostalCode">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_Country">Country</label>
+                                <select class="form-control" formControlName="contactDetails_Country" (change)="OnCountrySelectionc($event)">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_State">State</label>
+                                <select class="form-control" formControlName="contactDetails_State">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let s of csubStateList" [value]="s.id">{{s.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_Phone">Phone</label>
+                                <input type="text" class="form-control" formControlName="contactDetails_Phone">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="contactDetails_Mobile">Mobile</label>
+                                <input type="text" class="form-control" formControlName="contactDetails_Mobile">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="contactDetails_Email">Email</label>
+                                <input type="Email" class="form-control" formControlName="contactDetails_Email">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Contact Details End-->
+                <!--Father's And Mother's Detail Section Start-->
+                <div class="row">
+                    <!--Father's Details Start-->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <h5 class="card-header">Father's Details</h5>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="fatherName">Name</label>
+                                        <input type="text" class="form-control" formControlName="fatherName">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fatherMobile">Mobile</label>
+                                        <input type="text" class="form-control" formControlName="fatherMobile">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="fatherJob">Job</label>
+                                        <input type="text" class="form-control" formControlName="fatherJob">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fatherCNIC">CNIC Number</label>
+                                        <input type="text" class="form-control" formControlName="fatherCNIC">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--father's Details End-->
+                    <!--Mother's Details Start-->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <h5 class="card-header">Mother's Details</h5>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="motherName">Name</label>
+                                        <input type="text" class="form-control" formControlName="motherName">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="motherMobile">Mobile</label>
+                                        <input type="text" class="form-control" formControlName="motherMobile">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="motherJob">Job</label>
+                                        <input type="text" class="form-control" formControlName="motherJob">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="motherCNIC">CNIC Number</label>
+                                        <input type="text" class="form-control" formControlName="motherCNIC">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--mother's Details End-->
+                </div>
+                <!--father's And mother's Detail Section End-->
+                <!--Guardian's Details Start-->
+                <div class="card">
+                    <h5 class="card-header">Guardian's Details</h5>
+                    <div class="card-body">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="g_Name">Name</label>
+                                <input type="text" class="form-control" [ngClass]="{'is-valid': formDir.submitted && g_Name.valid || g_Name.touched && g_Name.valid || g_Name.dirty && g_Name.valid, 'is-invalid' :formDir.submitted && !g_Name.valid || g_Name.touched && !g_Name.valid || g_Name.dirty  && !g_Name.valid}" formControlName="g_Name">
+
+                                <span class="invalid-feedback" *ngIf="!g_Name.valid && formDir.submitted || g_Name.touched && !g_Name.valid || g_Name.dirty  && !g_Name.valid">
+                                    Guardian Name is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="g_Name.valid && formDir.submitted || g_Name.touched && g_Name.valid || g_Name.dirty && g_Name.valid">
+                                    Woohoo!
+                                </span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="g_Relation">Relation</label>
+                                <input type="text" class="form-control" formControlName="g_Relation">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="g_Education">Education</label>
+                                <input type="text" class="form-control" formControlName="g_Education">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="g_Occuption">Occupation</label>
+                                <input type="text" class="form-control" [ngClass]="{'is-valid': formDir.submitted && g_Occuption.valid || g_Occuption.touched && g_Occuption.valid || g_Occuption.dirty && g_Occuption.valid, 'is-invalid' :formDir.submitted && !g_Occuption.valid || g_Occuption.touched && !g_Occuption.valid || g_Occuption.dirty  && !g_Occuption.valid}" formControlName="g_Occuption">
+                                <span class="invalid-feedback" *ngIf="!g_Occuption.valid && formDir.submitted || g_Occuption.touched && !g_Occuption.valid || g_Occuption.dirty  && !g_Occuption.valid">
+                                    Occupation is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="g_Occuption.valid && formDir.submitted || g_Occuption.touched && g_Occuption.valid || g_Occuption.dirty && g_Occuption.valid">
+                                    Woohoo!
+                                </span>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="g_Income">Income</label>
+                                <input type="text" class="form-control" formControlName="g_Income">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="g_contactDetails_Address">Address</label>
+                                <textarea type="text" class="form-control" formControlName="g_contactDetails_Address"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="g_contactDetails_City">City</label>
+                                <input type="text" class="form-control" formControlName="g_contactDetails_City">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="g_contactDetails_City">Country</label>
+                                <select class="form-control" formControlName="g_contactDetails_Country" (change)="OnCountrySelectiong($event)">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="g_contactDetails_State">State</label>
+                                <select class="form-control" formControlName="g_contactDetails_State">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let s of gsubStateList" [value]="s.id">{{s.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="g_contactDetails_Phone">Phone</label>
+                                <input type="text" class="form-control" formControlName="g_contactDetails_Phone">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="g_contactDetails_Mobile">Mobile</label>
+                                <input type="text" class="form-control" formControlName="g_contactDetails_Mobile">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="g_contactDetails_Email">Email</label>
+                                <input type="Email" class="form-control" formControlName="g_contactDetails_Email">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Guardian's Details End-->
+                <!--Previous qualification Details Start-->
+                <div class="card">
+                    <h5 class="card-header">Previous Qualification Details</h5>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="schoolName">School Name</label>
+                                <input type="text" class="form-control" formControlName="schoolName">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="schoolAddress">School Address</label>
+                                <textarea type="text" class="form-control" formControlName="schoolAddress"></textarea>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="qualification">Qualification</label>
+                                <input type="text" class="form-control" formControlName="qualification">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <!--Previous qualification Details End-->
+
+
+                <div class="border-top">
+                    <div class="card-body float-right">
+                        <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<!-- Student Admission Form End-->

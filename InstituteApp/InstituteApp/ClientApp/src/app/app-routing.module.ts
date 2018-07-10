@@ -69,6 +69,7 @@ import { createStudent } from './components/Students/AddStudent.component';
 import { StudentAttendanceComponent } from './components/Students/Attendance/StudentAttendance.component';
 import { PrintStudentComponent } from './components/Students/Print/print.component';
 import { GuardianComponent } from './components/Students/Guardians/guardian.component';
+import { editStudent } from './components/Students/EditStudent.component';
 
 
 
@@ -135,6 +136,8 @@ import { GuardianComponent } from './components/Students/Guardians/guardian.comp
             { path: "studentattendance", component: StudentAttendanceComponent, canActivate: [AuthGuard], data: { title: "Student Attendance" } },
             { path: "printstudent", component: PrintStudentComponent, canActivate: [AuthGuard], data: { title: "Print Student" } },
             { path: "guardians", component: GuardianComponent, canActivate: [AuthGuard], data: { title: "List of Guardians" } },
+            { path: "student/edit/:Id", component: editStudent, canActivate: [AuthGuard], data: { title: "Edit Student" } },
+
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

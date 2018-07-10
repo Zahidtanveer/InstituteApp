@@ -114,6 +114,7 @@ namespace DAL.Repositories
                 int EmployeeID = employee.Id;
                 var dbcontactDetail = _appContext.contactDetails.SingleOrDefault(x => x.EmployeeId == EmployeeID);
                 var dbpersonalDetail = _appContext.personalDetails.SingleOrDefault(x => x.EmployeeId == EmployeeID);
+
                 var dEmployee = new Employee
                 {
                     EmployeeCode = employee.EmployeeCode,
@@ -122,37 +123,33 @@ namespace DAL.Repositories
                     Department = employee.Department,
                     Designation = employee.Designation,
                     TotalExperience = employee.TotalExperience,
-                    contactDetails = new ContactDetails
-                    {
-                        Id = dbcontactDetail.Id,
-                        PresentAddress = employee.contactDetails.PresentAddress,
-                        PermanentAddress = employee.contactDetails.PermanentAddress,
-                        City = employee.contactDetails.City,
-                        PostalCode = employee.contactDetails.PostalCode,
-                        Country = employee.contactDetails.Country,
-                        State = employee.contactDetails.State,
-                        Phone = employee.contactDetails.Phone,
-                        Mobile = employee.contactDetails.Mobile,
-                        Email = employee.contactDetails.Email,
-                        EmployeeId = EmployeeID
-
-                    }
-                   ,
-                    personalDetails = new PersonalDetails
-                    {
-                        Id = dbpersonalDetail.Id,
-                        FirstName = employee.personalDetails.FirstName,
-                        MiddleName = employee.personalDetails.MiddleName,
-                        LastName = employee.personalDetails.LastName,
-                        DateOfBirth = employee.personalDetails.DateOfBirth,
-                        Gender = employee.personalDetails.Gender,
-                        CNIC = employee.personalDetails.CNIC,
-                        EmployeeId = EmployeeID
-                    }
                 };
+                dbcontactDetail.PresentAddress = employee.contactDetails.PresentAddress;
+                dbcontactDetail.PermanentAddress = employee.contactDetails.PermanentAddress;
+                dbcontactDetail.City = employee.contactDetails.City;
+                dbcontactDetail.PostalCode = employee.contactDetails.PostalCode;
+                dbcontactDetail.Country = employee.contactDetails.Country;
+                dbcontactDetail.State = employee.contactDetails.State;
+                dbcontactDetail.Phone = employee.contactDetails.Phone;
+                dbcontactDetail.Mobile = employee.contactDetails.Mobile;
+                dbcontactDetail.Email = employee.contactDetails.Email;
+                dbcontactDetail.EmployeeId = EmployeeID;
+                dbpersonalDetail.FirstName = employee.personalDetails.FirstName;
+                dbpersonalDetail.MiddleName = employee.personalDetails.MiddleName;
+                dbpersonalDetail.LastName = employee.personalDetails.LastName;
+                dbpersonalDetail.DateOfBirth = employee.personalDetails.DateOfBirth;
+                dbpersonalDetail.Gender = employee.personalDetails.Gender;
+                dbpersonalDetail.CNIC = employee.personalDetails.CNIC;
+                dbpersonalDetail.EmployeeId = EmployeeID;
 
                 _appContext.Entry(employee).State = EntityState.Modified;
                 _appContext.SaveChanges();
+                _appContext.Entry(dbcontactDetail).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                _appContext.Entry(dbpersonalDetail).State = EntityState.Modified;
+                _appContext.SaveChanges();
+
+
                 return 1;
             }
             catch (Exception ex)

@@ -95,6 +95,7 @@
     <None Remove="ClientApp\src\app\components\Students\AddStudent.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\AddStudentCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\Attendance\StudentAttendance.component.ts" />
+    <None Remove="ClientApp\src\app\components\Students\EditStudent.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\EditStudentCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\Guardians\guardian.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\Print\print.component.ts" />
@@ -159,6 +160,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\AddStudent.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\AddStudentCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\Attendance\StudentAttendance.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Students\EditStudent.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\EditStudentCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\Guardians\guardian.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\Print\print.component.ts" />
