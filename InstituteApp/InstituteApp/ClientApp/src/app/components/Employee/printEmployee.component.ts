@@ -101,6 +101,8 @@ export class PrintEmployeeComponent {
         this.chRef.detectChanges();
         const table: any = $('#dttable');
         this.dataTable = table.DataTable({
+            paging: false,
+            "lengthChange": false,
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',

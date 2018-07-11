@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="JoiningDate">Joining Date</label>
-                                <input type="date" class="form-control" formControlName="JoiningDate">
+                                <input type="date" class="form-control"  formControlName="JoiningDate">
                             </div>
 
 
@@ -111,7 +111,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="Gender">Nationality</label>
-                                <select class="form-control" formControlName="personalDetails_Gender" >
+                                <select class="form-control" formControlName="personalDetails_Nationality" >
                                     <option value="">Choose...</option>
                                     <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
                                 </select>
@@ -162,11 +162,24 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="contactDetails_PresentAddress">Present Address</label>
-                                <textarea type="text" class="form-control" formControlName="contactDetails_PresentAddress"></textarea>
+                                <textarea type="text" class="form-control" [ngClass]="{'is-valid': formDir.submitted && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.touched && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty && contactDetails_PresentAddress.valid, 'is-invalid' :formDir.submitted && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.touched && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty  && !contactDetails_PresentAddress.valid}" formControlName="contactDetails_PresentAddress"></textarea>
+                                <span class="invalid-feedback" *ngIf="!contactDetails_PresentAddress.valid && formDir.submitted || contactDetails_PresentAddress.touched && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty  && !contactDetails_PresentAddress.valid">
+                                   Present Address is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="contactDetails_PresentAddress.valid && formDir.submitted || contactDetails_PresentAddress.touched && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty && contactDetails_PresentAddress.valid">
+                                    Woohoo!
+                                </span>
+
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="contactDetails_PermanentAddress">Permanent Address</label>
-                                <textarea type="text" class="form-control" formControlName="contactDetails_PermanentAddress"></textarea>
+                                <textarea type="text" class="form-control" [ngClass]="{'is-valid': formDir.submitted && contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.touched && contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.dirty && contactDetails_PermanentAddress.valid, 'is-invalid' :formDir.submitted && !contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.touched && !contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.dirty  && !contactDetails_PermanentAddress.valid}" formControlName="contactDetails_PermanentAddress"></textarea>
+                                <span class="invalid-feedback" *ngIf="!contactDetails_PermanentAddress.valid && formDir.submitted || contactDetails_PermanentAddress.touched && !contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.dirty  && !contactDetails_PermanentAddress.valid">
+                                    Permanent Address is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="contactDetails_PermanentAddress.valid && formDir.submitted || contactDetails_PermanentAddress.touched && contactDetails_PermanentAddress.valid || contactDetails_PermanentAddress.dirty && contactDetails_PermanentAddress.valid">
+                                    Woohoo!
+                                </span>
                             </div>
 
                         </div>

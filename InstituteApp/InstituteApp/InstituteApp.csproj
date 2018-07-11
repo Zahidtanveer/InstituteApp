@@ -106,6 +106,7 @@
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\UserTypes\userType.component.ts" />
+    <None Remove="ClientApp\src\app\directives\dt-datepicker.directive.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
     <None Remove="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <None Remove="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />
@@ -171,6 +172,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\UserTypes\userType.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\directives\dt-datepicker.directive.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\AllocatedBatchTeacher.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\CasteAndReligion\service.caste.ts" />

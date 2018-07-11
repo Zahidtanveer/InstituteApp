@@ -50,6 +50,7 @@ namespace InstituteApp.ViewModels
         public string MotherMobile { get; set; }
         public string MotherCNIC { get; set; }
         //Guardian Detail
+        public int guardianID { get; set; }
         public string g_Name { get; set; }
         public string g_Relation { get; set; }
         public string g_Education { get; set; }

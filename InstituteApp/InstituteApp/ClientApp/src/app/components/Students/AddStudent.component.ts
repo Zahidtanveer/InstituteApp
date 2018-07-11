@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -26,6 +26,7 @@ export class createStudent {
     id: number;
     errorMessage: any;
 
+   
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _router: Router, private _studentService: StudentService, private _dataService: DataService) {
         if (this._avRoute.snapshot.params["Id"]) {
@@ -57,8 +58,8 @@ export class createStudent {
             personalDetails_Caste:[''],
 
        
-            contactDetails_PresentAddress: [''],
-            contactDetails_PermanentAddress: [''],
+            contactDetails_PresentAddress: [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)])],
+            contactDetails_PermanentAddress: [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)])],
             contactDetails_City: [''],
             contactDetails_PostalCode: [''],
             contactDetails_Country: [''],

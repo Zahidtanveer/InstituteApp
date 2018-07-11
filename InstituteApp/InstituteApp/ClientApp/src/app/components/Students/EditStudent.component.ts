@@ -21,7 +21,7 @@ export class editStudent {
     public religionList: ReligionData[];
     public batchList: BatchData[];
     public courseList: CourseData[];
-    title: "Edit"
+    title: string = "";
     studentForm: FormGroup;
     id: number;
     errorMessage: any;
@@ -77,6 +77,7 @@ export class editStudent {
             motherMobile: [''],
             motherCNIC: [''],
 
+            guardianID: [''],
             g_Name: ['', [Validators.required]],
             g_Relation: [''],
             g_Education: [''],
@@ -109,6 +110,7 @@ export class editStudent {
     ngOnInit() {
 
         if (this.id > 0) {
+            this.title = "Edit";
             this._studentService.getStudentById(this.id)
                 .subscribe(resp => this.studentForm.setValue(resp)
                     , error => this.errorMessage = error);
@@ -215,6 +217,7 @@ export class editStudent {
     get motherMobile() { return this.studentForm.get('motherMobile'); }
     get motherCNIC() { return this.studentForm.get('motherCNIC'); }
 
+    get guardianID() { return this.studentForm.get('guardianID'); }
     get g_Name() { return this.studentForm.get('g_Name'); }
     get g_Relation() { return this.studentForm.get('g_Relation'); }
     get g_Education() { return this.studentForm.get('g_Education'); }

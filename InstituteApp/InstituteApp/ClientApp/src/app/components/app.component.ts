@@ -30,7 +30,7 @@ var alertify: any = require('../assets/scripts/alertify.js');
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit {
-
+    
   isAppLoaded: boolean;
   isUserLoggedIn: boolean;
   shouldShowLoginModal: boolean;

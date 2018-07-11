@@ -135,7 +135,7 @@ import { StudentAttendanceService } from "./services/student/service.attendance"
 import { PrintStudentComponent } from "./components/Students/Print/print.component";
 import { GuardianComponent } from "./components/Students/Guardians/guardian.component";
 import { editStudent } from "./components/Students/EditStudent.component";
-
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 
@@ -163,7 +163,10 @@ import { editStudent } from "./components/Students/EditStudent.component";
         ModalModule.forRoot(),
         ChartsModule,
         ReactiveFormsModule,
-        HttpModule
+        HttpModule,
+        NgDatepickerModule
+     
+     
     ],
     declarations: [
         AppComponent,

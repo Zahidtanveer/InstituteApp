@@ -17,17 +17,17 @@ namespace DAL.Repositories
 
 
         #region Student
-        public int AddStudent(Student StudentVM)
+        public int AddStudent(Student student)
         {
             try
             {
 
                 var guardian = new Guardian
                 {
-                    Name = StudentVM.guardian.Name,
-                    Income = StudentVM.guardian.Income,
-                    Education = StudentVM.guardian.Education,
-                    Occuption = StudentVM.guardian.Occuption,
+                    Name = student.guardian.Name,
+                    Income = student.guardian.Income,
+                    Education = student.guardian.Education,
+                    Occuption = student.guardian.Occuption,
                 };
                 if (guardian != null)
                 {
@@ -35,34 +35,34 @@ namespace DAL.Repositories
                     _appContext.SaveChanges();
                 }
                 var GuardianID = guardian.Id;
-                var student = new Student
+                var dstudent = new Student
                 {
-                    AcadamicYear = StudentVM.AcadamicYear,
-                    RegisterNumber = StudentVM.RegisterNumber,
-                    JoiningDate = StudentVM.JoiningDate,
-                    Course = StudentVM.Course,
-                    Batch = StudentVM.Batch,
-                    RollNo = StudentVM.RollNo,
+                    AcadamicYear = student.AcadamicYear,
+                    RegisterNumber = student.RegisterNumber,
+                    JoiningDate = student.JoiningDate,
+                    Course = student.Course,
+                    Batch = student.Batch,
+                    RollNo = student.RollNo,
 
 
-                    FatherName = StudentVM.FatherName,
-                    FatherCNIC = StudentVM.FatherCNIC,
-                    FatherJob = StudentVM.FatherJob,
-                    FatherMobile = StudentVM.FatherMobile,
-                    MotherName = StudentVM.MotherName,
-                    MotherCNIC = StudentVM.MotherCNIC,
-                    MotherJob = StudentVM.MotherJob,
-                    MotherMobile = StudentVM.MotherMobile,
+                    FatherName = student.FatherName,
+                    FatherCNIC = student.FatherCNIC,
+                    FatherJob = student.FatherJob,
+                    FatherMobile = student.FatherMobile,
+                    MotherName = student.MotherName,
+                    MotherCNIC = student.MotherCNIC,
+                    MotherJob = student.MotherJob,
+                    MotherMobile = student.MotherMobile,
 
-                    SchoolName = StudentVM.SchoolName,
-                    schoolAddress = StudentVM.schoolAddress,
-                    Qualification = StudentVM.Qualification,
+                    SchoolName = student.SchoolName,
+                    schoolAddress = student.schoolAddress,
+                    Qualification = student.Qualification,
                     GuardianId = GuardianID,
-                    CategoryId = Convert.ToInt32(StudentVM.personalDetails.Category)
+                    CategoryId = Convert.ToInt32(student.personalDetails.Category)
 
 
                 };
-                if (student != null)
+                if (dstudent != null)
                 {
                     _appContext.students.Add(student);
                     _appContext.SaveChanges();
@@ -71,18 +71,18 @@ namespace DAL.Repositories
                 var personalDetails = new PersonalDetails
                 {
                     StudentId = StudentID,
-                    FirstName = StudentVM.personalDetails.FirstName,
-                    MiddleName = StudentVM.personalDetails.MiddleName,
-                    LastName = StudentVM.personalDetails.LastName,
-                    DateOfBirth = StudentVM.personalDetails.DateOfBirth,
-                    Gender = StudentVM.personalDetails.Gender,
-                    CNIC = StudentVM.personalDetails.CNIC,
-                    Category = StudentVM.personalDetails.Category,
-                    BirthPlace = StudentVM.personalDetails.BirthPlace,
-                    Nationality = StudentVM.personalDetails.Nationality,
-                    BloodGroup = StudentVM.personalDetails.BloodGroup,
-                    Religion = StudentVM.personalDetails.Religion,
-                    Caste = StudentVM.personalDetails.Caste
+                    FirstName = student.personalDetails.FirstName,
+                    MiddleName = student.personalDetails.MiddleName,
+                    LastName = student.personalDetails.LastName,
+                    DateOfBirth = student.personalDetails.DateOfBirth,
+                    Gender = student.personalDetails.Gender,
+                    CNIC = student.personalDetails.CNIC,
+                    Category = student.personalDetails.Category,
+                    BirthPlace = student.personalDetails.BirthPlace,
+                    Nationality = student.personalDetails.Nationality,
+                    BloodGroup = student.personalDetails.BloodGroup,
+                    Religion = student.personalDetails.Religion,
+                    Caste = student.personalDetails.Caste
                 };
                 if (personalDetails != null)
                 {
@@ -92,15 +92,15 @@ namespace DAL.Repositories
                 var contactDetails = new ContactDetails
                 {
                     StudentId = StudentID,
-                    PermanentAddress = StudentVM.contactDetails.PermanentAddress,
-                    PresentAddress = StudentVM.contactDetails.PresentAddress,
-                    City = StudentVM.contactDetails.City,
-                    PostalCode = StudentVM.contactDetails.PostalCode,
-                    Country = StudentVM.contactDetails.Country,
-                    State = StudentVM.contactDetails.State,
-                    Phone = StudentVM.contactDetails.Phone,
-                    Mobile = StudentVM.contactDetails.Mobile,
-                    Email = StudentVM.contactDetails.Email
+                    PermanentAddress = student.contactDetails.PermanentAddress,
+                    PresentAddress = student.contactDetails.PresentAddress,
+                    City = student.contactDetails.City,
+                    PostalCode = student.contactDetails.PostalCode,
+                    Country = student.contactDetails.Country,
+                    State = student.contactDetails.State,
+                    Phone = student.contactDetails.Phone,
+                    Mobile = student.contactDetails.Mobile,
+                    Email = student.contactDetails.Email
                 };
                 if (contactDetails != null)
                 {
@@ -110,14 +110,14 @@ namespace DAL.Repositories
                  var g_contactDetails = new ContactDetails
                  {
                      GuardianId=GuardianID,
-                     PermanentAddress = StudentVM.guardian.ContactDetails.PresentAddress,
-                     City = StudentVM.guardian.ContactDetails.City,
-                     PostalCode = StudentVM.guardian.ContactDetails.PostalCode,
-                     Country = StudentVM.guardian.ContactDetails.Country,
-                     State = StudentVM.guardian.ContactDetails.State,
-                     Phone = StudentVM.guardian.ContactDetails.Phone,
-                     Mobile = StudentVM.guardian.ContactDetails.Mobile,
-                     Email = StudentVM.guardian.ContactDetails.Email
+                     PermanentAddress = student.guardian.ContactDetails.PresentAddress,
+                     City = student.guardian.ContactDetails.City,
+                     PostalCode = student.guardian.ContactDetails.PostalCode,
+                     Country = student.guardian.ContactDetails.Country,
+                     State = student.guardian.ContactDetails.State,
+                     Phone = student.guardian.ContactDetails.Phone,
+                     Mobile = student.guardian.ContactDetails.Mobile,
+                     Email = student.guardian.ContactDetails.Email
                  };
                 if (g_contactDetails != null)
                 {
@@ -148,27 +148,108 @@ namespace DAL.Repositories
         {
             try
             {
-                Student Student = _appContext.students
+                Student student = _appContext.students
                     .Where(s=>s.Id==id)
                     .Include(p=>p.personalDetails)
                     .Include(c=>c.contactDetails)
                     .Include(g=>g.guardian)
-                     .ThenInclude(x=>x.ContactDetails)
+                    .ThenInclude(x=>x.ContactDetails)
                     .FirstOrDefault();
 
-                return Student;
+                return student;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public int UpdateStudent(Student Student)
+        public int UpdateStudent(Student student)
         {
             try
             {
-                _appContext.Entry(Student).State = EntityState.Modified;
+                int StudentID = student.Id;
+                var dbcontactDetail = _appContext.contactDetails.SingleOrDefault(x => x.StudentId == StudentID);
+                var dbpersonalDetail = _appContext.personalDetails.SingleOrDefault(x => x.StudentId == StudentID);
+                var dbguardian = _appContext.guardians.SingleOrDefault(x => x.Id == student.guardian.Id);
+                var g_dbcontactDetail= _appContext.contactDetails.SingleOrDefault(x => x.GuardianId == student.guardian.Id);
+
+                var dstudent = new Student
+                {
+                    Id = StudentID,
+                    AcadamicYear = student.AcadamicYear,
+                    RegisterNumber = student.RegisterNumber,
+                    JoiningDate = student.JoiningDate,
+                    Course = student.Course,
+                    Batch = student.Batch,
+                    RollNo = student.RollNo,
+
+
+                    FatherName = student.FatherName,
+                    FatherCNIC = student.FatherCNIC,
+                    FatherJob = student.FatherJob,
+                    FatherMobile = student.FatherMobile,
+                    MotherName = student.MotherName,
+                    MotherCNIC = student.MotherCNIC,
+                    MotherJob = student.MotherJob,
+                    MotherMobile = student.MotherMobile,
+
+                    SchoolName = student.SchoolName,
+                    schoolAddress = student.schoolAddress,
+                    Qualification = student.Qualification,
+                    GuardianId = student.guardian.Id,
+                    CategoryId = Convert.ToInt32(student.personalDetails.Category)
+
+
+                };
+            
+                dbcontactDetail.PresentAddress = student.contactDetails.PresentAddress;
+                dbcontactDetail.PermanentAddress = student.contactDetails.PermanentAddress;
+                dbcontactDetail.City = student.contactDetails.City;
+                dbcontactDetail.PostalCode = student.contactDetails.PostalCode;
+                dbcontactDetail.Country = student.contactDetails.Country;
+                dbcontactDetail.State = student.contactDetails.State;
+                dbcontactDetail.Phone = student.contactDetails.Phone;
+                dbcontactDetail.Mobile = student.contactDetails.Mobile;
+                dbcontactDetail.Email = student.contactDetails.Email;
+                dbcontactDetail.StudentId = StudentID;
+               
+                dbpersonalDetail.FirstName = student.personalDetails.FirstName;
+                dbpersonalDetail.MiddleName = student.personalDetails.MiddleName;
+                dbpersonalDetail.LastName = student.personalDetails.LastName;
+                dbpersonalDetail.DateOfBirth = student.personalDetails.DateOfBirth;
+                dbpersonalDetail.Gender = student.personalDetails.Gender;
+                dbpersonalDetail.CNIC = student.personalDetails.CNIC;
+                dbpersonalDetail.StudentId = StudentID;
+   
+                dbguardian.Income = student.guardian.Income;
+                dbguardian.Name = student.guardian.Name;
+                dbguardian.Education = student.guardian.Education;
+                dbguardian.Occuption = student.guardian.Occuption;
+           
+                g_dbcontactDetail.PresentAddress = student.guardian.ContactDetails.PresentAddress;
+                g_dbcontactDetail.PermanentAddress = student.guardian.ContactDetails.PermanentAddress;
+                g_dbcontactDetail.City = student.guardian.ContactDetails.City;
+                g_dbcontactDetail.PostalCode = student.guardian.ContactDetails.PostalCode;
+                g_dbcontactDetail.Country = student.guardian.ContactDetails.Country;
+                g_dbcontactDetail.State = student.guardian.ContactDetails.State;
+                g_dbcontactDetail.Phone = student.guardian.ContactDetails.Phone;
+                g_dbcontactDetail.Mobile = student.guardian.ContactDetails.Mobile;
+                g_dbcontactDetail.Email = student.guardian.ContactDetails.Email;
+                g_dbcontactDetail.GuardianId =student.guardian.Id;
+             
+
+                _appContext.Entry(dbguardian).State = EntityState.Modified;
                 _appContext.SaveChanges();
+                _appContext.Entry(dstudent).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                _appContext.Entry(dbcontactDetail).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                _appContext.Entry(dbpersonalDetail).State = EntityState.Modified;
+                _appContext.SaveChanges();
+               
+                _appContext.Entry(g_dbcontactDetail).State = EntityState.Modified;
+                _appContext.SaveChanges();
+
                 return 1;
             }
             catch (Exception ex)

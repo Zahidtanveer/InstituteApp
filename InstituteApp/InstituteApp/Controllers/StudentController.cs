@@ -34,6 +34,7 @@ namespace InstituteApp.Controllers
             var student=_unitOfWork.Student.GetStudentData(id);
             var StudentVm = new StudentViewModel
             {
+                Id = id,
                 AcadamicYear = student.AcadamicYear,
                 RegisterNumber = student.RegisterNumber,
                 JoiningDate = student.JoiningDate,
@@ -73,7 +74,7 @@ namespace InstituteApp.Controllers
                 MotherCNIC = student.MotherCNIC,
                 MotherJob = student.MotherJob,
                 MotherMobile = student.MotherMobile,
-
+                guardianID=student.guardian.Id,
                 g_Name=student.guardian.Name,
                 g_Income=student.guardian.Income,
                 g_Education=student.guardian.Education,
@@ -109,6 +110,7 @@ namespace InstituteApp.Controllers
                 Course = StudentVM.Course,
                 Batch = StudentVM.Batch,
                 RollNo = StudentVM.RollNo,
+               
                 personalDetails=new PersonalDetails
                 {
                     FirstName=StudentVM.personalDetails_FirstName,
@@ -173,9 +175,79 @@ namespace InstituteApp.Controllers
         //PUT: api/Student/Edit
         [HttpPut()]
         [Route("api/Student/Edit")]
-        public int Edit([FromBody]Student Student)
+        public int Edit([FromBody]StudentViewModel StudentVM)
         {
-            return _unitOfWork.Student.UpdateStudent(Student);
+            var student = new Student
+            {
+                Id=StudentVM.Id,
+                AcadamicYear = StudentVM.AcadamicYear,
+                RegisterNumber = StudentVM.RegisterNumber,
+                JoiningDate = StudentVM.JoiningDate,
+                Course = StudentVM.Course,
+                Batch = StudentVM.Batch,
+                RollNo = StudentVM.RollNo,
+                personalDetails = new PersonalDetails
+                {
+                    FirstName = StudentVM.personalDetails_FirstName,
+                    MiddleName = StudentVM.personalDetails_MiddleName,
+                    LastName = StudentVM.personalDetails_LastName,
+                    DateOfBirth = StudentVM.personalDetails_DateOfBirth,
+                    Gender = StudentVM.personalDetails_Gender,
+                    CNIC = StudentVM.personalDetails_CNIC,
+                    Category = StudentVM.personalDetails_Category,
+                    BirthPlace = StudentVM.personalDetails_BirthPlace,
+                    Nationality = StudentVM.personalDetails_Nationality,
+                    BloodGroup = StudentVM.personalDetails_BloodGroup,
+                    Religion = StudentVM.personalDetails_Religion,
+                    Caste = StudentVM.personalDetails_Caste
+                },
+                contactDetails = new ContactDetails
+                {
+                    PermanentAddress = StudentVM.contactDetails_PermanentAddress,
+                    PresentAddress = StudentVM.contactDetails_PresentAddress,
+                    City = StudentVM.contactDetails_City,
+                    PostalCode = StudentVM.contactDetails_PostalCode,
+                    Country = StudentVM.contactDetails_Country,
+                    State = StudentVM.contactDetails_State,
+                    Phone = StudentVM.contactDetails_Phone,
+                    Mobile = StudentVM.contactDetails_Mobile,
+                    Email = StudentVM.contactDetails_Email
+                },
+                FatherName = StudentVM.FatherName,
+                FatherCNIC = StudentVM.FatherCNIC,
+                FatherJob = StudentVM.FatherJob,
+                FatherMobile = StudentVM.FatherMobile,
+                MotherName = StudentVM.MotherName,
+                MotherCNIC = StudentVM.MotherCNIC,
+                MotherJob = StudentVM.MotherJob,
+                MotherMobile = StudentVM.MotherMobile,
+                guardian = new Guardian
+                {
+                    Id=StudentVM.guardianID,
+                    Name = StudentVM.g_Name,
+                    Income = StudentVM.g_Income,
+                    Education = StudentVM.g_Education,
+                    Occuption = StudentVM.g_Occuption,
+                    ContactDetails = new ContactDetails
+                    {
+                        PermanentAddress = StudentVM.g_contactDetails_Address,
+                        City = StudentVM.g_contactDetails_City,
+                        PostalCode = StudentVM.g_contactDetails_PostalCode,
+                        Country = StudentVM.g_contactDetails_Country,
+                        State = StudentVM.g_contactDetails_State,
+                        Phone = StudentVM.g_contactDetails_Phone,
+                        Mobile = StudentVM.g_contactDetails_Mobile,
+                        Email = StudentVM.g_contactDetails_Email
+                    }
+                }
+               ,
+                SchoolName = StudentVM.SchoolName,
+                schoolAddress = StudentVM.SchoolAddress,
+                Qualification = StudentVM.Qualification
+
+
+            };
+            return _unitOfWork.Student.UpdateStudent(student);
         }
         //DELETE: api/Student/Delete/1
         [HttpDelete()]

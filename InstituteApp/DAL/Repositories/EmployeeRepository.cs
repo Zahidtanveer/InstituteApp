@@ -117,6 +117,7 @@ namespace DAL.Repositories
 
                 var dEmployee = new Employee
                 {
+                    Id=EmployeeID,
                     EmployeeCode = employee.EmployeeCode,
                     Qualification = employee.Qualification,
                     JoiningDate = employee.JoiningDate,
@@ -142,7 +143,7 @@ namespace DAL.Repositories
                 dbpersonalDetail.CNIC = employee.personalDetails.CNIC;
                 dbpersonalDetail.EmployeeId = EmployeeID;
 
-                _appContext.Entry(employee).State = EntityState.Modified;
+                _appContext.Entry(dEmployee).State = EntityState.Modified;
                 _appContext.SaveChanges();
                 _appContext.Entry(dbcontactDetail).State = EntityState.Modified;
                 _appContext.SaveChanges();

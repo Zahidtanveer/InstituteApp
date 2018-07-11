@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
 import { CourseService } from '../../services/CourseAndBatch/course.service'
+import { DatepickerOptions } from 'ng2-datepicker';
 
 @Component({
     selector: 'createBatch',
@@ -18,10 +19,11 @@ export class createBatch {
     errorMessage: any;
    
     numPattern = /^\d+$/;
-   
-
+    date: any;
+    options: any;
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _router: Router, private _courseService: CourseService, private _alertService: AlertService) {
+       
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
          
@@ -37,9 +39,9 @@ export class createBatch {
             
             
         })
-      
+        
         this.getCourses();
-
+      
     }
  
     getCourses() {
