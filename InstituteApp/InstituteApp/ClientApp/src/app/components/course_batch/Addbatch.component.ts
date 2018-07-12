@@ -1,11 +1,14 @@
+/// "../../../../node_modules/pickadate/lib/picker.date.js"
+/// "../../../../node_modules/pickadate/lib/picker.time.js"
+/// "../../../../node_modules/pickadate/lib/picker.js"
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import { AlertService, MessageSeverity, DialogType } from '../../services/alert.service';
-import { CourseService } from '../../services/CourseAndBatch/course.service'
-import { DatepickerOptions } from 'ng2-datepicker';
+import { CourseService } from '../../services/CourseAndBatch/course.service';
+
 
 @Component({
     selector: 'createBatch',
@@ -19,8 +22,7 @@ export class createBatch {
     errorMessage: any;
    
     numPattern = /^\d+$/;
-    date: any;
-    options: any;
+    datepick: any;
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _router: Router, private _courseService: CourseService, private _alertService: AlertService) {
        
@@ -39,7 +41,15 @@ export class createBatch {
             
             
         })
-        
+        //const date:any =$('.datepicker');
+        //this.datepick = date.pickadate({
+        //    labelMonthNext: 'Go to the next month',
+        //    labelMonthPrev: 'Go to the previous month',
+        //    labelMonthSelect: 'Pick a month from the dropdown',
+        //    labelYearSelect: 'Pick a year from the dropdown',
+        //    selectMonths: true,
+        //    selectYears: true
+        //})
         this.getCourses();
       
     }

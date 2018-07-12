@@ -256,5 +256,15 @@ namespace InstituteApp.Controllers
         {
             return _unitOfWork.Student.DeleteStudent(id);
         }
+        
+        //GET:api/Student/FilterStudent
+        [HttpGet]
+        [Route("api/Student/FilterStudent")]
+        public IEnumerable<Student> FilterStudent(string course, string batch, string date)
+        {
+            return _unitOfWork.Student.FilterStudent(course, batch, date);
+        }
+
+
     }
 }

@@ -20,7 +20,11 @@ import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
 import * as $ from 'jquery';
 var alertify: any = require('../assets/scripts/alertify.js');
-
+require("../../../node_modules/datatables.net-buttons/js/datatables.buttons.min.js");
+require("../../../node_modules/datatables.net-buttons/js/buttons.flash.min.js");
+require("../../../node_modules/datatables.net-buttons/js/buttons.colvis.min.js");
+require("../../../node_modules/datatables.net-buttons/js/buttons.print.min.js");
+require("../../../node_modules/datatables.net-buttons/js/buttons.html5.min.js");
 
 
 @Component({

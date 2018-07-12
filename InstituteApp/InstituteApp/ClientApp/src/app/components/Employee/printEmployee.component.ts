@@ -9,11 +9,7 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } fr
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
-require("../../../../node_modules/datatables.net-buttons/js/datatables.buttons.min.js")
-require("../../../../node_modules/datatables.net-buttons/js/buttons.flash.min.js")
-require("../../../../node_modules/datatables.net-buttons/js/buttons.colvis.min.js")
-require("../../../../node_modules/datatables.net-buttons/js/buttons.print.min.js")
-require("../../../../node_modules/datatables.net-buttons/js/buttons.html5.min.js")
+
 
 
 
@@ -34,7 +30,7 @@ export class PrintEmployeeComponent {
     public IsDesignationWise: boolean;
     IsInitialized: boolean = false;
     
-    constructor(private _fb: FormBuilder,http: Http, @Inject('BASE_URL') baseUrl: string, private _dataService: DataService, private _employeeService: EmployeeService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
+    constructor(private _fb: FormBuilder,http: Http, private _dataService: DataService, private _employeeService: EmployeeService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
         this.employeeForm = this._fb.group({
             IsDepOrDes: [''],
             Department: [''],
@@ -102,7 +98,6 @@ export class PrintEmployeeComponent {
         const table: any = $('#dttable');
         this.dataTable = table.DataTable({
             paging: false,
-            "lengthChange": false,
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',

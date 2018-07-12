@@ -136,8 +136,13 @@ namespace DAL.Repositories
             try
             {
 
-                var Students = _appContext.students.Include(x=>x.guardian).ThenInclude(x=>x.ContactDetails).ToList();
-                return Students;
+                var students = _appContext.students
+               .Include(c => c.contactDetails)
+               .Include(p => p.personalDetails)
+               .Include(x => x.guardian)
+                      .ThenInclude(gc => gc.ContactDetails)
+               .Include(a => a.studentAttendances).ToList();
+                return students;
             }
             catch (Exception ex)
             {
@@ -271,6 +276,28 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
+
+        public IEnumerable<Student> FilterStudent(string course, string batch, string date)
+        {
+            var students = _appContext.students
+                .Include(c => c.contactDetails)
+                .Include(p => p.personalDetails)
+                .Include(x => x.guardian)
+                       .ThenInclude(gc => gc.ContactDetails)
+                .Include(a => a.studentAttendances).ToList();
+
+            if(course!=null && batch != null && date==null)
+            {
+                students = students.Where(x => (x.Course == course) && (x.Batch == batch)).ToList();
+                return students;
+            }
+            else if(date!=null)
+            {
+                students = students.Where(x => (x.Course == course) && (x.Batch == batch)).ToList();
+                return students;
+            }
+            return null;
+        }
         #endregion
 
 
@@ -369,6 +396,8 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
+
+       
         #endregion
     }
 }

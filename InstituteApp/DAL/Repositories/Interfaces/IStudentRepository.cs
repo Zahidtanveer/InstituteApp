@@ -14,6 +14,9 @@ namespace DAL.Repositories.Interfaces
         Student GetStudentData(int id);
         int DeleteStudent(int id);
 
+        IEnumerable<Student> FilterStudent(string course, string batch,string date);
+
+
         int AddStudentCategory(StudentCategory StudentCategory);
         int UpdateStudentCategory(StudentCategory StudentCategory);
         IEnumerable<StudentCategory> GetAllStudentCategoryData();

@@ -30,10 +30,7 @@ export class BatchComponent {
                 "displayLength": 5,
                 ordering: false,
                 "pagingType": "full_numbers",
-
-
-
-            });
+          });
         }, error => console.error(error));
         this.getBatchs;
 

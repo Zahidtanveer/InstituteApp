@@ -38,7 +38,11 @@ export class StudentService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
-
+    filterStudent(course, batch, date) {
+        return this._http.get(this.myAppUrl + "api/Student/FilterStudent" + "?course=" + course + "&&batch=" + batch + "&&date=" + date)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
     errorHandler(error: Response) {
         console.log(error);
         return Observable.throw(error);

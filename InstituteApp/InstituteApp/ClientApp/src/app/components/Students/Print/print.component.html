@@ -1,12 +1,30 @@
 <br />
 <div class="card">
     <div class="card-body">
-        <p *ngIf="!dList"><em>Loading...</em></p>
         <div class="card-title">
             <h2>Print Students</h2>
             <!--<a [routerLink]="['/add-student']" class="btn btn-success">Create New</a>-->
         </div>
+        <form [formGroup]="studentForm" (ngsubmit)="print()" #f="ngForm" novalidate>
 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Course">Course</label>
+                    <select formControlName="Course" class="form-control" (change)="OnCourseSelection($event)">
+                        <option value="">Choose...</option>
+                        <option *ngFor="let c of courseList" [value]="c.name">{{c.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4" *ngIf="IsCourseSelected">
+                    <label for="Batch">Batch</label>
+                    <select formControlName="Batch" class="form-control" (change)="OnBatchChange($event)">
+                        <option value="">Choose...</option>
+                        <option *ngFor="let b of subBatchList" [value]="b.name">{{b.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+        </form>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
 

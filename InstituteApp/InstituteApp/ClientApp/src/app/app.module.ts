@@ -135,8 +135,8 @@ import { StudentAttendanceService } from "./services/student/service.attendance"
 import { PrintStudentComponent } from "./components/Students/Print/print.component";
 import { GuardianComponent } from "./components/Students/Guardians/guardian.component";
 import { editStudent } from "./components/Students/EditStudent.component";
-import { NgDatepickerModule } from 'ng2-datepicker';
-
+import { StudentIDCardComponent } from "./components/Students/StudentIDCard/studentIDCard.component";
+import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/UpdateRollNo.component";
 
 
 
@@ -163,9 +163,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
         ModalModule.forRoot(),
         ChartsModule,
         ReactiveFormsModule,
-        HttpModule,
-        NgDatepickerModule
-     
+        HttpModule
+       
      
     ],
     declarations: [
@@ -206,7 +205,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
         createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
         StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent,
-        editStudent
+        editStudent, StudentIDCardComponent, UpdateRollNoComponent
 
     ],
     providers: [
