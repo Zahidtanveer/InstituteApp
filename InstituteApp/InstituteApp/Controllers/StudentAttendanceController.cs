@@ -23,9 +23,9 @@ namespace InstituteApp.Controllers
         //GET: api/StudentAttendance/Index
         [HttpGet]
         [Route("api/StudentAttendance/Index")]
-        public IEnumerable<Student> Index()
+        public IEnumerable<StudentAttendance> Index(string batch,string course,DateTime date)
         {
-            return _unitOfWork.Student.DailyStudentAttedance();
+            return _unitOfWork.Student.FilterStudentAttendance(batch,course,date);
         }
 
         //POST: api/StudentAttendance/Create

@@ -1,40 +1,40 @@
-<div class="container">
-    <div class="card">
-        <div class="container-fluid">
-            <div class="card-body">
-                <div class="card-title">
-                    <h1>Leave Application</h1>
-                </div>
-
-                <form [formGroup]="leaveAppForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+<form [formGroup]="leaveAppForm" (ngsubmit)="save()" #f="ngForm" novalidate>
+    <div class="container">
+        <div class="card">
+            <div class="container-fluid">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1>Leave Application</h1>
+                    </div>
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="EmployeeId">Employee</label>
                                 <div class="col-md-12">
-                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && EmployeeId.valid || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid, 'is-invalid' :formDir.submitted && !EmployeeId.valid || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid}" formControlName="EmployeeId">
+                                    <select class="form-control" formControlName="EmployeeId" [ngClass]="{'is-valid': f.submitted && EmployeeId.valid || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid, 'is-invalid' :f.submitted && !EmployeeId.valid || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid}" >
                                         <option value="">Choose...</option>
                                         <option *ngFor="let e of employeeList" [value]="e.id">{{e.personalDetails.firstName}} {{e.personalDetails.lastName}}</option>
                                     </select>
-                                    <span class="invalid-feedback" *ngIf="!EmployeeId.valid && formDir.submitted || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid">
+                                    <span class="invalid-feedback" *ngIf="!EmployeeId.valid && f.submitted || EmployeeId.touched && !EmployeeId.valid || EmployeeId.dirty  && !EmployeeId.valid">
                                         EmployeeId is required.
                                     </span>
-                                    <span class="valid-feedback" *ngIf="EmployeeId.valid && formDir.submitted || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid">
+                                    <span class="valid-feedback" *ngIf="EmployeeId.valid && f.submitted || EmployeeId.touched && EmployeeId.valid || EmployeeId.dirty && EmployeeId.valid">
                                         Woohoo!
                                     </span>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="LeaveCategoryId">Leave Category</label>
                                 <div class="col-md-12">
-                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && LeaveCategoryId.valid || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid, 'is-invalid' :formDir.submitted && !LeaveCategoryId.valid || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid}" formControlName="LeaveCategoryId">
+                                    <select class="form-control" formControlName="LeaveCategoryId" [ngClass]="{'is-valid': f.submitted && LeaveCategoryId.valid || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid, 'is-invalid' :f.submitted && !LeaveCategoryId.valid || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid}" >
                                         <option value="">Choose...</option>
-                                        <option *ngFor="let lc of leaveCategoryList" [value]="lc.name">{{lc.name}}</option>
+                                        <option *ngFor="let lc of leaveCategoryList" [value]="lc.id">{{lc.name}}</option>
                                     </select>
-                                    <span class="invalid-feedback" *ngIf="!LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid">
+                                    <span class="invalid-feedback" *ngIf="!LeaveCategoryId.valid && f.submitted || LeaveCategoryId.touched && !LeaveCategoryId.valid || LeaveCategoryId.dirty  && !LeaveCategoryId.valid">
                                         LeaveCategoryId is required.
                                     </span>
-                                    <span class="valid-feedback" *ngIf="LeaveCategoryId.valid && formDir.submitted || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid">
+                                    <span class="valid-feedback" *ngIf="LeaveCategoryId.valid && f.submitted || LeaveCategoryId.touched && LeaveCategoryId.valid || LeaveCategoryId.dirty && LeaveCategoryId.valid">
                                         Woohoo!
                                     </span>
                                 </div>
@@ -43,23 +43,24 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="FromDate">From Date</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && FromDate.valid || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid, 'is-invalid' :formDir.submitted && !FromDate.valid || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid}" type="date" formControlName="FromDate">
-                                    <span class="invalid-feedback" *ngIf="!FromDate.valid && formDir.submitted || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid">
+                                    <input class="form-control" formControlName="FromDate" [ngClass]="{'is-valid': f.submitted && FromDate.valid || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid, 'is-invalid' :f.submitted && !FromDate.valid || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid}" type="date" >
+                                    <span class="invalid-feedback" *ngIf="!FromDate.valid && f.submitted || FromDate.touched && !FromDate.valid || FromDate.dirty  && !FromDate.valid">
                                         FromDate is required.
                                     </span>
-                                    <span class="valid-feedback" *ngIf="FromDate.valid && formDir.submitted || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid">
+                                    <span class="valid-feedback" *ngIf="FromDate.valid && f.submitted || FromDate.touched && FromDate.valid || FromDate.dirty && FromDate.valid">
                                         Woohoo!
                                     </span>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="ToDate">To Date</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && ToDate.valid || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid, 'is-invalid' :formDir.submitted && !ToDate.valid || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid}" type="date" formControlName="ToDate">
-                                    <span class="invalid-feedback" *ngIf="!ToDate.valid && formDir.submitted || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid">
+                                    <input class="form-control" formControlName="ToDate" [ngClass]="{'is-valid': f.submitted && ToDate.valid || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid, 'is-invalid' :f.submitted && !ToDate.valid || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid}" type="date" >
+                                    <span class="invalid-feedback" *ngIf="!ToDate.valid && f.submitted || ToDate.touched && !ToDate.valid || ToDate.dirty  && !ToDate.valid">
                                         ToDate is required.
                                     </span>
-                                    <span class="valid-feedback" *ngIf="ToDate.valid && formDir.submitted || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid">
+                                    <span class="valid-feedback" *ngIf="ToDate.valid && f.submitted || ToDate.touched && ToDate.valid || ToDate.dirty && ToDate.valid">
                                         Woohoo!
                                     </span>
                                 </div>
@@ -68,13 +69,13 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="Reason">Reason</label>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" formControlReason="Reason" rows="8"></textarea>
-                                    <!--<span class="invalid-feedback" *ngIf="!Reason.valid && formDir.submitted || Reason.touched && !Reason.valid || Reason.dirty  && !Reason.valid">
-                Reason is required.
-            </span>
-            <span class="valid-feedback" *ngIf="Reason.valid && formDir.submitted || Reason.touched && Reason.valid || Reason.dirty && Reason.valid">
-                Woohoo!
-            </span>-->
+                                    <textarea class="form-control" formControlName="Reason"  [ngClass]="{'is-valid': f.submitted && Reason.valid || Reason.touched && Reason.valid || Reason.dirty && Reason.valid, 'is-invalid' :f.submitted && !Reason.valid || Reason.touched && !Reason.valid || Reason.dirty  && !Reason.valid}" rows="8"></textarea>
+                                    <span class="invalid-feedback" *ngIf="!Reason.valid && f.submitted || Reason.touched && !Reason.valid || Reason.dirty  && !Reason.valid">
+                                        Reason is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="Reason.valid && f.submitted || Reason.touched && Reason.valid || Reason.dirty && Reason.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -82,11 +83,12 @@
                         </div>
                         <div class="form-group col-md-12">
                             <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                            <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+

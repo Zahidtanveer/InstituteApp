@@ -14,8 +14,8 @@ export class StudentAttendanceService {
     constructor(private _http: Http, @Inject('BASE_URL') baseUrl: string) {
         this.myAppUrl = baseUrl;
     }
-    getStudentAttendance() {
-        return this._http.get(this.myAppUrl + 'api/StudentAttendance/Index')
+    getStudentAttendance(batch, course,  date) {
+        return this._http.get(this.myAppUrl + 'api/StudentAttendance/Index' + "?batch=" + batch +"&&course=" + course + "&&date=" + date)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }

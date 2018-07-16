@@ -18,7 +18,21 @@ namespace DAL.Repositories
         {
             try
             {
-                _appContext.leaves.Add(leave);
+                var Employee = _appContext.employees.SingleOrDefault(x => x.Id == leave.EmployeeId);
+                var category = _appContext.leaveCategories.SingleOrDefault(x => x.Id == leave.LeaveCategoryId);
+
+                var dleave = new Leave()
+                {
+                    EmployeeId=leave.EmployeeId,
+                    LeaveCategoryId=leave.LeaveCategoryId,
+                    DesignationName =Employee.Designation,
+                    LeaveType=category.Name,
+                    FromDate=leave.FromDate,
+                    ToDate=leave.ToDate,
+                    Reason=leave.Reason,
+                    Status="Waiting Approval"
+                };
+                _appContext.leaves.Add(dleave);
                 _appContext.SaveChanges();
                 return 1;
             }

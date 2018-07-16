@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+	<TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+	<TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
@@ -10,10 +12,10 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <Description>ASPNET Core - Angular4 startup template for Quick Application development</Description>
-    <Copyright>Copyright © 2018 www.ebenmonney.com</Copyright>
-    <PackageProjectUrl>https://github.com/emonney/QuickApp</PackageProjectUrl>
-    <Company>EBENMONNEY</Company>
+    <Description>ASPNET Core - Angular 5</Description>
+    <Copyright>Copyright © 2018 www.YourDomain.com</Copyright>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Company>Company Name</Company>
     <Version>2.5.3</Version>
   </PropertyGroup>
 

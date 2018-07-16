@@ -1,11 +1,36 @@
 <br />
 <div class="card">
     <div class="card-body">
-        <p *ngIf="!dList"><em>Loading...</em></p>
+
         <div class="card-title">
             <h2>Student Attendance</h2>
         </div>
+        <form [formGroup]="studentForm" (ngsubmit)="filter()" #f="ngForm" novalidate>
 
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Course">Course</label>
+                    <select formControlName="Course" class="form-control" (change)="OnCourseSelection($event)">
+                        <option value="">Choose...</option>
+                        <option *ngFor="let c of courseList" [value]="c.id">{{c.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4" *ngIf="IsCourseSelected">
+                    <label for="Batch">Batch</label>
+                    <select formControlName="Batch" class="form-control" (change)="OnBatchChange($event)">
+                        <option value="">Choose...</option>
+                        <option *ngFor="let b of subBatchList" [value]="b.id">{{b.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4" *ngIf="IsBatchSelected">
+                    <label for="Date">Date</label>
+                    <input formControlName="Date" type="date" (change)="OnDateChange($event)" class="form-control">
+                </div>
+            </div>
+
+        </form>
+
+        <p *ngIf="!dList"><em>No Record found...</em></p>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
                 <tr>
@@ -14,7 +39,6 @@
                     <th>Registration Number</th>
                     <th>Course</th>
                     <th>Batch</th>
-                    
                     <th>IsPresent</th>
 
                 </tr>
@@ -22,15 +46,10 @@
             <tbody>
                 <tr *ngFor="let attendance of dList">
                     <td>{{attendance.id}}</td>
-                    <td>{{attendance.registerNumber}}</td>
-                    <td>{{attendance.course}}</td>
-                    <td>{{attendance.batch}}</td>
-                 
-
-               
-                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.studentAttendances.isPresent}}"></td>
-
-
+                    <td>{{attendance.student.registerNumber}}</td>
+                    <td>{{attendance.course.name}}</td>
+                    <td>{{attendance.batch.name}}</td>
+                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.isPresent}}"></td>
                 </tr>
 
             </tbody>

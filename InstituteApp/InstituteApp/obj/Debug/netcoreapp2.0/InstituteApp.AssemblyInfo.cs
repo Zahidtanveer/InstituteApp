@@ -11,10 +11,10 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("EBENMONNEY")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Company Name")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © 2018 www.ebenmonney.com")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("ASPNET Core - Angular4 startup template for Quick Application development")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © 2018 www.YourDomain.com")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("ASPNET Core - Angular 5")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.5.3.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.5.3")]
 [assembly: System.Reflection.AssemblyProductAttribute("InstituteApp")]

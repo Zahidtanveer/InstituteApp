@@ -383,21 +383,66 @@ namespace DAL.Repositories
             }
         }
 
-        public IEnumerable<Student> DailyStudentAttedance()
+        public IEnumerable<StudentAttendance> DailyStudentAttedance()
         {
             try
             {
                 var students = _appContext.students.Include(x=>x.studentAttendances).ToList();
+                foreach (var stu in students)
+                {
+                   
+                    var batches = _appContext.batches.Where(x => x.Name == stu.Batch).ToList();
+                    if (batches!=null){
+                         foreach (var batch in batches)
+                        {
+                            var batchTeacher = _appContext.allocatedBatchTeachers.SingleOrDefault(x => (x.BatchId == batch.Id));
+                            var dstudentAttendance = new StudentAttendance
+                            {
+                                AttendanceDate = DateTime.Today,
+                                Year = DateTime.Now.Year.ToString(),
+                                Day = DateTime.Now.Day.ToString(),
+                                Month = DateTime.Now.Month.ToString(),
+                                CourseId = batchTeacher.CourseId,
+                                BatchId = batch.Id,
+                                BatchTeacherId = batchTeacher.Id,
+                                StudentId = stu.Id
+                            };
+                            var dbStudentAttendance = _appContext.studentAttendances.Where(x => (x.AttendanceDate == DateTime.Today) && (x.StudentId == stu.Id));
+                            if (dbStudentAttendance.Count() == 0)
+                            {
+                                _appContext.studentAttendances.Add(dstudentAttendance);
+                                _appContext.SaveChanges();
 
-                return students;
+                            }
+                        }
+                    }
+
+                }
+                var studentAttendace = _appContext.studentAttendances
+                .Include(s =>s.student)
+                .Include(c=>c.course)
+                .Include(b=>b.batch)
+                .Include(bt=>bt.allocatedBatchTeacher).ToList();
+                return studentAttendace;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+        public IEnumerable<StudentAttendance> FilterStudentAttendance(string course, string batch, DateTime date)
+        {
+            DailyStudentAttedance();
+            var studentAttendace = _appContext.studentAttendances
+               .Include(s => s.student)
+               .Include(c => c.course)
+               .Include(b => b.batch)
+               .Include(bt => bt.allocatedBatchTeacher).ToList();
+            studentAttendace =studentAttendace.Where(x => (x.BatchId ==Convert.ToInt32(batch)) && (x.CourseId== Convert.ToInt32(course)) && (x.AttendanceDate == date)).ToList();
+            return studentAttendace;
+        }
 
-       
+
         #endregion
     }
 }

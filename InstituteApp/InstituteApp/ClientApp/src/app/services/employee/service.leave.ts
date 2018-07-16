@@ -23,8 +23,8 @@ export class LeaveService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
-    saveLeave(leave) {
-        return this._http.post(this.myAppUrl + 'api/Leave/Create', leave)
+    saveLeave(leaveApp) {
+        return this._http.post(this.myAppUrl + 'api/Leave/Create', leaveApp)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }

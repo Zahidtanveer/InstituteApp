@@ -23,6 +23,7 @@ namespace DAL.Repositories.Interfaces
         StudentCategory GetStudentCategoryData(int id);
         int DeleteStudentCategory(int id);
         int MarkDailyStudentAttedance(IEnumerable<Student> students);
-        IEnumerable<Student> DailyStudentAttedance();
+        IEnumerable<StudentAttendance> DailyStudentAttedance();
+        IEnumerable<StudentAttendance> FilterStudentAttendance(string course, string batch, DateTime date);
     }
 }

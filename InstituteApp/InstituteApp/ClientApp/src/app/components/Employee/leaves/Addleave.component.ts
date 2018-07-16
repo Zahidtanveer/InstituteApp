@@ -13,9 +13,9 @@ import { DataService, DesignationData } from '../../../services/data.service';
     templateUrl: './AddLeave.component.html'
 })
 export class createLeave {
+    leaveForm: FormGroup;
     public leaveCategoryList: LeaveCategoryData[];
     public designationList: DesignationData[];
-    leaveForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;

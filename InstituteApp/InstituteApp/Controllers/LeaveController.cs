@@ -41,19 +41,23 @@ namespace InstituteApp.Controllers
         {
             var leave = new Leave
             {
+                EmployeeId=leaveVM.EmployeeId,
+                LeaveCategoryId= leaveVM.LeaveCategoryId,
+                FromDate = leaveVM.FromDate,
+                ToDate = leaveVM.ToDate,
+                Reason = leaveVM.Reason
             };
             return _unitOfWork.Leave.AddLeave(leave);
         }
         [HttpPost]
         [Route("api/Leave/AddDetails")]
-        public int AddDetails([FromBody]LeaveViewModel leaveVM)
+        public int AddDetails([FromBody]LeaveViewModel leaveVm)
         {
             var leave = new Leave
             {
-                DesignationName = leaveVM.DesignationName,
-                LeaveCategoryId = leaveVM.LeaveCategoryId,
-                LeaveCount=leaveVM.LeaveCount
-            
+                DesignationName = leaveVm.DesignationName,
+                LeaveCategoryId = leaveVm.LeaveCategoryId,
+                LeaveCount=leaveVm.LeaveCount
             };
             return _unitOfWork.Leave.AddLeave(leave);
         }
