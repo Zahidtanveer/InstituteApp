@@ -31,7 +31,7 @@ var StudentAttendanceService = /** @class */ (function () {
             .catch(this.errorHandler);
     };
     StudentAttendanceService.prototype.saveStudentAttendance = function (studentAttendance) {
-        return this._http.post(this.myAppUrl + 'api/StudentAttendance/Create', studentAttendance)
+        return this._http.post(this.myAppUrl + 'api/StudentAttendance/MarkAttendance', studentAttendance)
             .map(function (response) { return response.json(); })
             .catch(this.errorHandler);
     };

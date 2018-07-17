@@ -152,7 +152,8 @@ export class createStudent {
         }
         this._studentService.saveStudent(this.studentForm.value)
             .subscribe((data) => {
-                this._router.navigate(['/students']);
+                this._router.navigate(['/students']
+                );
             }, error => this.errorMessage = error)
        
 

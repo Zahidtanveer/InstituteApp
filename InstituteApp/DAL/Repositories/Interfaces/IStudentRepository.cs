@@ -13,7 +13,7 @@ namespace DAL.Repositories.Interfaces
         IEnumerable<Student> GetAllStudentData();
         Student GetStudentData(int id);
         int DeleteStudent(int id);
-
+        int UpdateStudentRollNo(Dictionary<int, string> studentDict);
         IEnumerable<Student> FilterStudent(string course, string batch,string date);
 
 
@@ -22,7 +22,7 @@ namespace DAL.Repositories.Interfaces
         IEnumerable<StudentCategory> GetAllStudentCategoryData();
         StudentCategory GetStudentCategoryData(int id);
         int DeleteStudentCategory(int id);
-        int MarkDailyStudentAttedance(IEnumerable<Student> students);
+        int MarkDailyStudentAttedance(Dictionary<int, bool> studentDict);
         IEnumerable<StudentAttendance> DailyStudentAttedance();
         IEnumerable<StudentAttendance> FilterStudentAttendance(string course, string batch, DateTime date);
     }

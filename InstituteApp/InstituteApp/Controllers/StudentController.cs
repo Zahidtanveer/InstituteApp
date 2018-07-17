@@ -265,6 +265,17 @@ namespace InstituteApp.Controllers
             return _unitOfWork.Student.FilterStudent(course, batch, date);
         }
 
+        [HttpPost]
+        [Route("api/Student/UpdateRollNo")]
+        public int UpdateRollNo([FromBody]IEnumerable<RollNoViewModel> rollVM)
+        {
+            Dictionary<int, string> studentDict = new Dictionary<int, string>();
+           foreach (var item in rollVM)
+            {
+                studentDict.Add(item.Id, item.RollNo);
+            }
+            return _unitOfWork.Student.UpdateStudentRollNo(studentDict); ;
+        }
 
     }
 }

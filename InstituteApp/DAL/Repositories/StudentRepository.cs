@@ -369,11 +369,18 @@ namespace DAL.Repositories
             }
         }
 
-        public int MarkDailyStudentAttedance(IEnumerable<Student> students)
+        public int MarkDailyStudentAttedance(Dictionary<int, bool> studentDict)
         {
             try
             {
-                var student = students.ToList();
+                foreach (var item in studentDict)
+                {
+                    var dbStudentAttendance = _appContext.studentAttendances.SingleOrDefault(x => x.Id == item.Key);
+                    dbStudentAttendance.IsPresent = item.Value;
+                    _appContext.Entry(dbStudentAttendance).State = EntityState.Modified;
+                    _appContext.SaveChanges();
+                    
+                }
 
                 return 1;
             }
@@ -440,6 +447,26 @@ namespace DAL.Repositories
                .Include(bt => bt.allocatedBatchTeacher).ToList();
             studentAttendace =studentAttendace.Where(x => (x.BatchId ==Convert.ToInt32(batch)) && (x.CourseId== Convert.ToInt32(course)) && (x.AttendanceDate == date)).ToList();
             return studentAttendace;
+        }
+
+        public int UpdateStudentRollNo(Dictionary<int, string> studentDict)
+        {
+            try
+            {
+                foreach (var item in studentDict)
+                {
+                    var dbstudents = _appContext.students.SingleOrDefault(x => x.Id == item.Key);
+                     dbstudents.RollNo = item.Value;
+                    _appContext.Entry(dbstudents).State = EntityState.Modified;
+                    _appContext.SaveChanges();
+                }
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

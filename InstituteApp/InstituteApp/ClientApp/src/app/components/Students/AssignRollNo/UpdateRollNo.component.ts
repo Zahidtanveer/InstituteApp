@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService, MessageSeverity, DialogType } from '../../../services/alert.service';
-import { StudentService, StudentData } from '../../../services/student/service.student'
+import { StudentService, StudentData, UpdateRollNo } from '../../../services/student/service.student'
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
@@ -14,12 +14,12 @@ import 'datatables.net-bs4';
 })
 
 export class UpdateRollNoComponent {
-
+    public updateList: UpdateRollNo[];
     public dList: StudentData[];
     errorMessage: any;
     dataTable: any;
 
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private _studentService: StudentService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
+    constructor(private _router: Router,http: Http, @Inject('BASE_URL') baseUrl: string, private _studentService: StudentService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
         http.get(baseUrl + 'api/Student/Index').subscribe(result => {
             this.dList = result.json() as StudentData[];
 
@@ -38,12 +38,36 @@ export class UpdateRollNoComponent {
 
     }
 
+
+
     getStudents() {
         this._studentService.getStudent()
             .subscribe(data => { this.dList = data });
     }
     SaveData() {
+        
+        var dictRollNo = [];
+        $('table tr input[type=text]').each(function () {
+            var str = $(this).val();
+            var tRowId = this.closest('tr').children.item(0).innerHTML;
+            dictRollNo.push({
+                id: tRowId,
+                rollNo: str
+            });
+            
+        });
+        this.updateList = dictRollNo;
+        console.log(this.updateList);
+        this.UpdateRollNo(this.updateList);
 
+    }
+    UpdateRollNo(studentData) {
+
+        this._studentService.UpdateStudentRollNo(studentData)
+                .subscribe(data => {
+                    this._router.navigate(['/student-rollno']
+                    );
+                });
     }
 
 }

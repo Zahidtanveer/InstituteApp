@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AlertService, MessageSeverity, DialogType } from '../../../services/alert.service';
-import { StudentAttendanceService, StudentAttendanceData } from '../../../services/student/service.attendance'
+import { StudentAttendanceService, StudentAttendanceData, UpdateAttendance } from '../../../services/student/service.attendance'
 import { DataService, BatchData, CourseData } from '../../../services/data.service';
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -21,14 +21,15 @@ export class StudentAttendanceComponent {
     public batchList: BatchData[];
     public courseList: CourseData[];
     public subBatchList: BatchData[];
+    public updateList: UpdateAttendance[];
     studentForm: FormGroup;
     errorMessage: any;
     dataTable: any;
     
     public IsInitialized: boolean = false;
     public IsCourseSelected: boolean;
-    public IsBatchSelected: boolean = false;
-    constructor(private _fb: FormBuilder,http: Http, @Inject('BASE_URL') baseUrl: string, private _studentAttendanceService: StudentAttendanceService, private alertService: AlertService,
+    public IsBatchSelected: boolean;
+    constructor(private _fb: FormBuilder, private _router: Router,http: Http, @Inject('BASE_URL') baseUrl: string, private _studentAttendanceService: StudentAttendanceService, private alertService: AlertService,
         private chRef: ChangeDetectorRef, private _dataService: DataService) {
         this.studentForm = this._fb.group({
             Course: [''],
@@ -40,12 +41,13 @@ export class StudentAttendanceComponent {
         this.getCourse();
         this.getBatch();
        
-
+      
     }
     getBatch() {
         this._dataService.getBatch()
             .subscribe(data => { this.batchList = data });
     }
+
     getCourse() {
         this._dataService.getCourse()
             .subscribe(data => { this.courseList = data });
@@ -55,9 +57,10 @@ export class StudentAttendanceComponent {
         this._studentAttendanceService.getStudentAttendance(batch,course,date)
             .subscribe(data => { this.dList = data });
     }
+
     OnCourseSelection($event: any) {
-        var courseID = this.studentForm.controls["Course"].value;
         this.IsCourseSelected = false;
+        var courseID = this.studentForm.controls["Course"].value;
         if (courseID) {
             this.subBatchList = this.batchList.filter(x => x.courseId == courseID && x !== null);
            this.IsCourseSelected = true;
@@ -65,37 +68,99 @@ export class StudentAttendanceComponent {
         }
      
     }
+
     OnBatchChange($event: any) {
+        this.IsBatchSelected = false;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
+    
         if (batchSelectedValue) {
             this.IsBatchSelected = true;
         }
+        this.Data();
+        $('.checkAll').prop('checked', false);
     }
+
     OnDateChange($event: any) {
+
+        this.Data();
+        $('.checkAll').prop('checked', false);
+    }
+
+    Data() {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
         var DateSelectedValue = this.studentForm.controls["Date"].value;
-        this.getStudentAttendances( batchSelectedValue,CourseSelectedValue, DateSelectedValue);
-        if (this.IsInitialized == false) {
-            this.filter();
-            this.IsInitialized = true;
-        }
-     }
-    filter() {
+        this.getStudentAttendances(batchSelectedValue, CourseSelectedValue, DateSelectedValue);
+
+    }
+
+    
+    ApplyDataTable() {
 
       this.chRef.detectChanges();
             const table: any = $('#dttable');
             this.dataTable = table.DataTable({
-                "displayLength": 5,
-                ordering: false,
-                "pagingType": "full_numbers",
+                "paging": false,
+                "ordering": false,
+                "searching": false,
+                "bInfo": false
+             });
+    }
+    //Save Data of Attendance to Database
+    SaveData() {
+        if (this.IsInitialized == false) {
+            this.ApplyDataTable();
+            this.IsInitialized = true;
+        }
+        var dictAttendance = [];
+
+        // General/modular function for status logging
+            var checkboxChecker = function () {
+                $('table tr').each(function (i) {
+                    // Only check rows that contain a checkbox
+                    var $chkbox = $(this).find('.isPresent');
+                    if ($chkbox.length) {
+                        var status = $chkbox.prop('checked');
+                        console.log('Table row ' + i + ' contains a checkbox with a checked status of: ' + status);
+                        var tRowId = this.closest('tr').children.item(0).innerHTML;
+                        dictAttendance.push({
+                            key: tRowId,
+                            value: status
+                        });
+                       
+                    }
+                });
+            };
+           
+        // Check checkboxes status on DOMready
+        checkboxChecker();
+
+        console.log(dictAttendance);
+        this.updateList = dictAttendance;
+        console.log("Assign....");
+        console.log(this.updateList);
+        //Post Data
+        if (this.updateList) {
+            this.MarkStudentAttendances(this.updateList);
+            $('.checkAll').prop('checked', false);
+        }
+    }
+    //Check or Uncheck all row
+    CheckAll() {
+    
+        $(".checkAll").change(function () {
+            $("input:checkbox").prop('checked', $(this).prop("checked"));
+        });
+        
+    }
+    //Mark Attendance Method
+    MarkStudentAttendances(studentData) {
+        this._studentAttendanceService.saveStudentAttendance(studentData)
+            .subscribe(data => {
+                this._router.navigate(['/studentattendance']
+                );
             });
     }
-    SaveData() {
-        var RowData = this.dataTable.rows().data().length;
-        alert(RowData);
-    }
-    
     get Course() { return this.studentForm.get('Course'); }
     get Batch() { return this.studentForm.get('Batch'); }
     get Date() { return this.studentForm.get('Date'); }

@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL;
 using DAL.Models;
+using InstituteApp.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace InstituteApp.Controllers
 {
@@ -31,9 +34,16 @@ namespace InstituteApp.Controllers
         //POST: api/StudentAttendance/Create
         [HttpPost]
         [Route("api/StudentAttendance/MarkAttendance")]
-        public int MarkAttendance([FromBody]IEnumerable<Student> students)
+        public int MarkAttendance([FromBody]IEnumerable<AttendaceViewModel> stuVM)
         {
-            return _unitOfWork.Student.MarkDailyStudentAttedance(students);
+            Dictionary<int, bool> studentDict = new Dictionary<int, bool>();
+
+            foreach (var item in stuVM)
+            {
+                studentDict.Add(item.key,item.value);
+            }
+            
+            return _unitOfWork.Student.MarkDailyStudentAttedance(studentDict);
         }
 
     }

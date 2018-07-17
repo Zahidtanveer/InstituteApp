@@ -39,17 +39,18 @@
                     <th>Registration Number</th>
                     <th>Course</th>
                     <th>Batch</th>
-                    <th>IsPresent</th>
+                    <th>Check All &nbsp;<input type="checkbox" (click)="CheckAll()" class="checkAll"></th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let attendance of dList">
-                    <td>{{attendance.id}}</td>
+                    <td class="StudentId">{{attendance.id}}</td>
                     <td>{{attendance.student.registerNumber}}</td>
                     <td>{{attendance.course.name}}</td>
                     <td>{{attendance.batch.name}}</td>
-                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.isPresent}}"></td>
+                    <td *ngIf="attendance.isPresent"><input type="checkbox" class="isPresent" id="isPresent_{{attendance.id}}" checked></td>
+                    <td *ngIf="!attendance.isPresent"><input type="checkbox" class="isPresent" id="isPresent_{{attendance.id}}"></td>
                 </tr>
 
             </tbody>

@@ -24,8 +24,8 @@ export class StudentAttendanceService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
-    saveStudentAttendance(studentAttendance) {
-        return this._http.post(this.myAppUrl + 'api/StudentAttendance/Create', studentAttendance)
+    saveStudentAttendance(studentAttendance:any) {
+        return this._http.post(this.myAppUrl + 'api/StudentAttendance/MarkAttendance', studentAttendance)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
@@ -44,6 +44,10 @@ export class StudentAttendanceService {
         console.log(error);
         return Observable.throw(error);
     }
+}
+export interface UpdateAttendance {
+    key: number;
+    value: boolean;
 }
 export interface StudentAttendanceData {
     Id: number;

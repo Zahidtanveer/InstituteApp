@@ -35,6 +35,11 @@ var StudentService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(this.errorHandler);
     };
+    StudentService.prototype.UpdateStudentRollNo = function (student) {
+        return this._http.post(this.myAppUrl + 'api/Student/UpdateRollNo', student)
+            .map(function (response) { return response.json(); })
+            .catch(this.errorHandler);
+    };
     StudentService.prototype.updateStudent = function (student) {
         return this._http.put(this.myAppUrl + 'api/Student/Edit', student)
             .map(function (response) { return response.json(); })

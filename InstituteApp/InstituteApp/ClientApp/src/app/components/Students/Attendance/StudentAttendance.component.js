@@ -14,14 +14,14 @@ var $ = require("jquery");
 require("datatables.net");
 require("datatables.net-bs4");
 var StudentAttendanceComponent = /** @class */ (function () {
-    function StudentAttendanceComponent(_fb, http, baseUrl, _studentAttendanceService, alertService, chRef, _dataService) {
+    function StudentAttendanceComponent(_fb, _router, http, baseUrl, _studentAttendanceService, alertService, chRef, _dataService) {
         this._fb = _fb;
+        this._router = _router;
         this._studentAttendanceService = _studentAttendanceService;
         this.alertService = alertService;
         this.chRef = chRef;
         this._dataService = _dataService;
         this.IsInitialized = false;
-        this.IsBatchSelected = false;
         this.studentForm = this._fb.group({
             Course: [''],
             Batch: [''],
@@ -46,41 +46,90 @@ var StudentAttendanceComponent = /** @class */ (function () {
             .subscribe(function (data) { _this.dList = data; });
     };
     StudentAttendanceComponent.prototype.OnCourseSelection = function ($event) {
-        var courseID = this.studentForm.controls["Course"].value;
         this.IsCourseSelected = false;
+        var courseID = this.studentForm.controls["Course"].value;
         if (courseID) {
             this.subBatchList = this.batchList.filter(function (x) { return x.courseId == courseID && x !== null; });
             this.IsCourseSelected = true;
         }
     };
     StudentAttendanceComponent.prototype.OnBatchChange = function ($event) {
+        this.IsBatchSelected = false;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
         if (batchSelectedValue) {
             this.IsBatchSelected = true;
         }
+        this.Data();
+        $('.checkAll').prop('checked', false);
     };
     StudentAttendanceComponent.prototype.OnDateChange = function ($event) {
+        this.Data();
+        $('.checkAll').prop('checked', false);
+    };
+    StudentAttendanceComponent.prototype.Data = function () {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
         var DateSelectedValue = this.studentForm.controls["Date"].value;
         this.getStudentAttendances(batchSelectedValue, CourseSelectedValue, DateSelectedValue);
-        if (this.IsInitialized == false) {
-            this.filter();
-            this.IsInitialized = true;
-        }
     };
-    StudentAttendanceComponent.prototype.filter = function () {
+    StudentAttendanceComponent.prototype.ApplyDataTable = function () {
         this.chRef.detectChanges();
         var table = $('#dttable');
         this.dataTable = table.DataTable({
-            "displayLength": 5,
-            ordering: false,
-            "pagingType": "full_numbers",
+            "paging": false,
+            "ordering": false,
+            "searching": false,
+            "bInfo": false
         });
     };
+    //Save Data of Attendance to Database
     StudentAttendanceComponent.prototype.SaveData = function () {
-        var RowData = this.dataTable.rows().data().length;
-        alert(RowData);
+        if (this.IsInitialized == false) {
+            this.ApplyDataTable();
+            this.IsInitialized = true;
+        }
+        var dictAttendance = [];
+        // General/modular function for status logging
+        var checkboxChecker = function () {
+            $('table tr').each(function (i) {
+                // Only check rows that contain a checkbox
+                var $chkbox = $(this).find('.isPresent');
+                if ($chkbox.length) {
+                    var status = $chkbox.prop('checked');
+                    console.log('Table row ' + i + ' contains a checkbox with a checked status of: ' + status);
+                    var tRowId = this.closest('tr').children.item(0).innerHTML;
+                    dictAttendance.push({
+                        key: tRowId,
+                        value: status
+                    });
+                }
+            });
+        };
+        // Check checkboxes status on DOMready
+        checkboxChecker();
+        console.log(dictAttendance);
+        this.updateList = dictAttendance;
+        console.log("Assign....");
+        console.log(this.updateList);
+        //Post Data
+        if (this.updateList) {
+            this.MarkStudentAttendances(this.updateList);
+            $('.checkAll').prop('checked', false);
+        }
+    };
+    //Check or Uncheck all row
+    StudentAttendanceComponent.prototype.CheckAll = function () {
+        $(".checkAll").change(function () {
+            $("input:checkbox").prop('checked', $(this).prop("checked"));
+        });
+    };
+    //Mark Attendance Method
+    StudentAttendanceComponent.prototype.MarkStudentAttendances = function (studentData) {
+        var _this = this;
+        this._studentAttendanceService.saveStudentAttendance(studentData)
+            .subscribe(function (data) {
+            _this._router.navigate(['/studentattendance']);
+        });
     };
     Object.defineProperty(StudentAttendanceComponent.prototype, "Course", {
         get: function () { return this.studentForm.get('Course'); },
@@ -102,7 +151,7 @@ var StudentAttendanceComponent = /** @class */ (function () {
             selector: 'fetch-StudentAttendance',
             templateUrl: './StudentAttendance.component.html'
         }),
-        __param(2, core_1.Inject('BASE_URL'))
+        __param(3, core_1.Inject('BASE_URL'))
     ], StudentAttendanceComponent);
     return StudentAttendanceComponent;
 }());

@@ -28,6 +28,11 @@ export class StudentService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
+    UpdateStudentRollNo(student) {
+        return this._http.post(this.myAppUrl + 'api/Student/UpdateRollNo', student)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler)
+    }
     updateStudent(student) {
         return this._http.put(this.myAppUrl + 'api/Student/Edit', student)
             .map((response: Response) => response.json())
@@ -55,5 +60,9 @@ export interface StudentData {
     joiningDate: string;
     course: string;
     batch: string;
+    rollNo: string;
+}
+export interface UpdateRollNo {
+    id: number;
     rollNo: string;
 }

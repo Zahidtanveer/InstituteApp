@@ -14,8 +14,9 @@ var $ = require("jquery");
 require("datatables.net");
 require("datatables.net-bs4");
 var UpdateRollNoComponent = /** @class */ (function () {
-    function UpdateRollNoComponent(http, baseUrl, _studentService, alertService, chRef) {
+    function UpdateRollNoComponent(_router, http, baseUrl, _studentService, alertService, chRef) {
         var _this = this;
+        this._router = _router;
         this._studentService = _studentService;
         this.alertService = alertService;
         this.chRef = chRef;
@@ -37,13 +38,32 @@ var UpdateRollNoComponent = /** @class */ (function () {
             .subscribe(function (data) { _this.dList = data; });
     };
     UpdateRollNoComponent.prototype.SaveData = function () {
+        var dictRollNo = [];
+        $('table tr input[type=text]').each(function () {
+            var str = $(this).val();
+            var tRowId = this.closest('tr').children.item(0).innerHTML;
+            dictRollNo.push({
+                id: tRowId,
+                rollNo: str
+            });
+        });
+        this.updateList = dictRollNo;
+        console.log(this.updateList);
+        this.UpdateRollNo(this.updateList);
+    };
+    UpdateRollNoComponent.prototype.UpdateRollNo = function (studentData) {
+        var _this = this;
+        this._studentService.UpdateStudentRollNo(studentData)
+            .subscribe(function (data) {
+            _this._router.navigate(['/student-rollno']);
+        });
     };
     UpdateRollNoComponent = __decorate([
         core_1.Component({
             selector: 'Student-UpdateRollNo',
             templateUrl: './UpdateRollNo.component.html'
         }),
-        __param(1, core_1.Inject('BASE_URL'))
+        __param(2, core_1.Inject('BASE_URL'))
     ], UpdateRollNoComponent);
     return UpdateRollNoComponent;
 }());
