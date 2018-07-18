@@ -245,7 +245,16 @@
                                     </ul>
                                 </li>
                                 <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/s']"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu"> Subjects </span></a></li>
-                                <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/l']"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu"> Lesson Planning </span></a></li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu">Time Table</span></a>
+
+                                    <ul aria-expanded="false" class="collapse  first-level">
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/createTimeTable']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Set TimeTable </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/atimeTable']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Active TimeTable </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/btimeTable']"><i class="" aria-hidden="true"></i><span class="hide-menu"> View Batch TimeTable </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/ttimeTable']"><i class="" aria-hidden="true"></i><span class="hide-menu"> View Teacher TimeTable</span></a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
 

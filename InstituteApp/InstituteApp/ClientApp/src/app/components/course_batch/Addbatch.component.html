@@ -41,12 +41,13 @@
                                 <label class="control-label col-md-12">Start Date</label>
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                  
-                                        <input type="date"   formControlName="SatrtDate" class="form-control datepicker" placeholder="mm/dd/yyyy"
-                                               [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}">
+                                      
+                                        <input type="text" readonly="readonly"  formControlName="SatrtDate" class="form-control" placeholder="mm/dd/yyyy"
+                                               [ngClass]="{'is-valid': formDir.submitted && SatrtDate.valid || SatrtDate.touched && SatrtDate.valid || SatrtDate.dirty && SatrtDate.valid, 'is-invalid' :formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid}"
+                                               [bsConfig]="bsConfig" bsDatepicker>
 
                                         <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                           <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                         </div>
                                         <span class="invalid-feedback" *ngIf="formDir.submitted && !SatrtDate.valid || SatrtDate.touched && !SatrtDate.valid || SatrtDate.dirty  && !SatrtDate.valid">
                                             Start Date is required.
@@ -63,10 +64,12 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <!--bootstrapDatepicker  #date2="bootstrap-datepicker"-->
-                                        <input type="date"   formControlName="EndDate" class="form-control datepicker" placeholder="mm/dd/yyyy"
-                                               [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}">
+                                        <input type="text" readonly="readonly"  formControlName="EndDate" class="form-control" placeholder="mm/dd/yyyy"
+                                               [ngClass]="{'is-valid': formDir.submitted && EndDate.valid || EndDate.touched && EndDate.valid || EndDate.dirty && EndDate.valid, 'is-invalid' :formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid}"
+                                               [bsConfig]="bsConfig" bsDatepicker>
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                           
                                         </div>
                                         <span class="invalid-feedback" *ngIf="formDir.submitted && !EndDate.valid || EndDate.touched && !EndDate.valid || EndDate.dirty  && !EndDate.valid">
                                             End Date is required.

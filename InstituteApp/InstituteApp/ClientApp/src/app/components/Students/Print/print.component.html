@@ -5,7 +5,8 @@
             <h2>Print Students</h2>
             <!--<a [routerLink]="['/add-student']" class="btn btn-success">Create New</a>-->
         </div>
-        <form [formGroup]="studentForm" (ngsubmit)="print()" #f="ngForm" novalidate>
+        <!-- (ngsubmit)="print()"-->
+        <form [formGroup]="studentForm" #f="ngForm" novalidate>
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -36,7 +37,7 @@
                     <th>Course</th>
                     <th>Batch </th>
                     <th>RollNo</th>
-                 
+
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +49,7 @@
                     <td>{{stu.course}}</td>
                     <td>{{stu.batch}}</td>
                     <td>{{stu.rollNo}}</td>
-                    
+
                 </tr>
             </tbody>
         </table>

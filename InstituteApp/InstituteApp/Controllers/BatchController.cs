@@ -30,7 +30,12 @@ namespace InstituteApp.Controllers
         [Route("api/Batch/Details/{id}")]
         public Batch Details(int id)
         {
-            return _unitOfWork.Batch.GetBatchData(id);
+            var batch = _unitOfWork.Batch.GetBatchData(id);
+            string newDate = batch.SatrtDate.ToShortDateString();
+            batch.SatrtDate = Convert.ToDateTime(newDate);
+            string newDate1 = batch.EndDate.ToShortDateString();
+            batch.EndDate = Convert.ToDateTime(newDate1);
+            return batch;
         }
 
         //POST: api/Batch/Create
@@ -45,6 +50,10 @@ namespace InstituteApp.Controllers
         [Route("api/Batch/Edit")]
         public int Edit([FromBody]Batch batch)
         {
+            string newDate = batch.SatrtDate.ToShortDateString();
+            batch.SatrtDate = Convert.ToDateTime(newDate);
+            string newDate1 = batch.EndDate.ToShortDateString();
+            batch.EndDate = Convert.ToDateTime(newDate1);
             return _unitOfWork.Batch.UpdateBatch(batch);
         }
         //DELETE: api/Batch/Delete/1

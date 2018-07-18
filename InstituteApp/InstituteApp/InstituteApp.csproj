@@ -105,9 +105,13 @@
     <None Remove="ClientApp\src\app\components\Students\student.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\StudentIDCard\studentIDCard.component.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\AddSubjects.component.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\subjects.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
+    <None Remove="ClientApp\src\app\components\TimeTable\AddTimeTable.component.ts" />
+    <None Remove="ClientApp\src\app\components\TimeTable\timeTable.component.ts" />
     <None Remove="ClientApp\src\app\components\UserTypes\userType.component.ts" />
     <None Remove="ClientApp\src\app\directives\dt-datepicker.directive.ts" />
     <None Remove="ClientApp\src\app\services\acadamic.service.ts" />
@@ -124,7 +128,9 @@
     <None Remove="ClientApp\src\app\services\student\service.attendance.ts" />
     <None Remove="ClientApp\src\app\services\student\service.student.ts" />
     <None Remove="ClientApp\src\app\services\student\service.studentCategory.ts" />
+    <None Remove="ClientApp\src\app\services\subjects\subject.service.ts" />
     <None Remove="ClientApp\src\app\services\Syllabus.service.ts" />
+    <None Remove="ClientApp\src\app\services\timetable\timetable.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -172,9 +178,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\student.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\StudentIDCard\studentIDCard.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\AddSubjects.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\subjects.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\Syllabus.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\TimeTable\AddTimeTable.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\TimeTable\timeTable.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\UserTypes\userType.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\directives\dt-datepicker.directive.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\acadamic.service.ts" />
@@ -191,7 +201,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\student\service.attendance.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\student\service.student.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\student\service.studentCategory.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\subjects\subject.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\timetable\timetable.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

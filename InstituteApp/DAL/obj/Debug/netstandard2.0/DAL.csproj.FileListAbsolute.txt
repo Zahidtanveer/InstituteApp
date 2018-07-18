@@ -14,4 +14,3 @@ C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstand
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.dll
 C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.pdb
-C:\Users\shoaib.TRIBECH0\source\InstituteApp\InstituteApp\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache

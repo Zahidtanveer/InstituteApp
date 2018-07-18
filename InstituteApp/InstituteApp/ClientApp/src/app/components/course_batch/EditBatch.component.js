@@ -38,6 +38,12 @@ var editBatch = /** @class */ (function () {
             this._batchService.getBatchById(this.id)
                 .subscribe(function (resp) { return _this.batchForm.setValue(resp); }, function (error) { return _this.errorMessage = error; });
         }
+        //console.log(this.batchForm.controls['satrtDate'].value);
+        //var startDate = Utilities.parseDate(this.batchForm.controls['satrtDate'].value);
+        //var endDate = Utilities.parseDate(this.batchForm.controls['endDate'].value);
+        //console.log("Start :" + startDate + "| End :" + endDate);
+    };
+    editBatch.prototype.ngAfterViewInit = function () {
     };
     editBatch.prototype.getCourses = function () {
         var _this = this;

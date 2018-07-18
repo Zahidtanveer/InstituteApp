@@ -40,7 +40,9 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="satrtDate">Start Date</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && satrtDate.valid || satrtDate.touched && satrtDate.valid || satrtDate.dirty && satrtDate.valid, 'is-invalid' :formDir.submitted && !satrtDate.valid || satrtDate.touched && !satrtDate.valid || satrtDate.dirty  && !satrtDate.valid}" type="text" formControlName="satrtDate">
+                                    <input class="form-control" type="text" readonly="readonly" 
+                                           [ngClass]="{'is-valid': formDir.submitted && satrtDate.valid || satrtDate.touched && satrtDate.valid || satrtDate.dirty && satrtDate.valid, 'is-invalid' :formDir.submitted && !satrtDate.valid || satrtDate.touched && !satrtDate.valid || satrtDate.dirty  && !satrtDate.valid}"
+                                          formControlName="satrtDate"  [bsConfig]="{showWeekNumbers: false,containerClass: 'theme-blue' }" bsDatepicker>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !satrtDate.valid || satrtDate.touched && !satrtDate.valid || satrtDate.dirty  && !satrtDate.valid">
                                         Start Date is required.
                                     </span>
@@ -52,7 +54,8 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="endDate">EndDate</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" [ngClass]="{'is-valid': formDir.submitted && endDate.valid || endDate.touched && endDate.valid || endDate.dirty && endDate.valid, 'is-invalid' :formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid}" formControlName="endDate">
+                                    <input class="form-control" type="text" readonly="readonly" [ngClass]="{'is-valid': formDir.submitted && endDate.valid || endDate.touched && endDate.valid || endDate.dirty && endDate.valid, 'is-invalid' :formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid}"
+                                           formControlName="endDate"  [bsConfig]="{showWeekNumbers: false, containerClass: 'theme-blue' }" bsDatepicker>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !endDate.valid || endDate.touched && !endDate.valid || endDate.dirty  && !endDate.valid">
                                         <span *ngIf="endDate.errors.required">  End Date is required.</span>
                                         <span *ngIf="endDate.errors.pattern">End Date not valid.</span>

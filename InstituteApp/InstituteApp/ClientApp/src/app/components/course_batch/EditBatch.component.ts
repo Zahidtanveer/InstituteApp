@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl, NgControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import { CourseService } from '../../services/CourseAndBatch/course.service'
+import { Utilities } from '../../services/utilities';
 import * as $ from 'jquery';
 @Component({
     selector: 'editBatch',
@@ -15,7 +16,7 @@ export class editBatch implements OnInit {
     title: string = "Edit";
     id: number;
     errorMessage: any;
-
+    
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _batchService: BatchService, private _courseService: CourseService, private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
@@ -35,13 +36,22 @@ export class editBatch implements OnInit {
         this.getCourses();
     }
     ngOnInit() {
-
+      
         if (this.id > 0) {
             this.title = "Edit";
             this._batchService.getBatchById(this.id)
                 .subscribe(resp => this.batchForm.setValue(resp)
                     , error => this.errorMessage = error);
         }
+        //console.log(this.batchForm.controls['satrtDate'].value);
+        //var startDate = Utilities.parseDate(this.batchForm.controls['satrtDate'].value);
+        //var endDate = Utilities.parseDate(this.batchForm.controls['endDate'].value);
+
+        //console.log("Start :" + startDate + "| End :" + endDate);
+       
+    }
+    ngAfterViewInit() {
+       
     }
     getCourses() {
         this._courseService.getCourse()

@@ -14,6 +14,7 @@ import { HttpModule } from '@angular/http';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastyModule } from 'ng2-toasty';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { PopoverModule } from "ngx-bootstrap/popover";
@@ -46,9 +47,6 @@ import { GroupByPipe } from './pipes/group-by.pipe';
 import { AppComponent } from "./components/app.component";
 import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
-import { CustomersComponent } from "./components/customers/customers.component";
-import { ProductsComponent } from "./components/products/products.component";
-import { OrdersComponent } from "./components/orders/orders.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
@@ -63,8 +61,7 @@ import { UserPreferencesComponent } from "./components/controls/user-preferences
 import { UsersManagementComponent } from "./components/controls/users-management.component";
 import { RolesManagementComponent } from "./components/controls/roles-management.component";
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
-import { HeaderComponent } from "./components/header/header.component";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
+
 import { InstituteService } from "./services/institute.service";
 import { createInstitute } from "./components/Institute/AddInstitute.component";
 import { InstituteComponent } from "./components/Institute/Institute.componet";
@@ -140,7 +137,6 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
 
 
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -161,6 +157,7 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         BsDropdownModule.forRoot(),
         CarouselModule.forRoot(),
         ModalModule.forRoot(),
+        BsDatepickerModule.forRoot(),
         ChartsModule,
         ReactiveFormsModule,
         HttpModule
@@ -171,9 +168,6 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         AppComponent,
         LoginComponent,
         HomeComponent,
-        CustomersComponent,
-        ProductsComponent,
-        OrdersComponent,
         SettingsComponent,
         UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
         RolesManagementComponent, RoleEditorComponent,
@@ -190,8 +184,7 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         BootstrapSelectDirective,
         BootstrapDatepickerDirective,
         GroupByPipe,
-        HeaderComponent,
-        SidebarComponent,
+     
         createInstitute, InstituteComponent, editInstitute,
         AcadamicComponent, createAcadamic, editAcadamic,
         CRIndexComponent, CasteComponent, ReligionComponent,

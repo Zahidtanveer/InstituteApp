@@ -27,6 +27,7 @@ require("../../../node_modules/datatables.net-buttons/js/buttons.print.min.js");
 require("../../../node_modules/datatables.net-buttons/js/buttons.html5.min.js");
 
 
+
 @Component({
   selector: "app-root",
   templateUrl: './app.component.html',
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   appTitle = "InstituteApp";
     appLogo = require("../assets/images/logo-icon.png");
     appLogoText = require("../assets/images/logo-text.png");
-    
+  
   stickyToasties: number[] = [];
 
   dataLoadingConsecutiveFailurs = 0;
@@ -129,7 +130,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
     ngOnInit() {
-   
+      
       this.isUserLoggedIn = this.authService.isLoggedIn;
     // 1 sec to ensure all the effort to get the css animation working is appreciated :|, Preboot screen is removed .5 sec later
       
