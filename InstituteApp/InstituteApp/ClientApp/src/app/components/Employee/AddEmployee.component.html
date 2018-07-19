@@ -1,4 +1,4 @@
-<form [formGroup]="employeeForm" (ngsubmit)="save()" #f="ngForm" novalidate>
+<form [formGroup]="employeeForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
     <div class="container-fluid">
         <div class="card">
             <h1 class="card-header">Employee Registration</h1>
@@ -6,45 +6,91 @@
                 <div class="card">
                     <h5 class="card-header"> Employee Details</h5>
                     <div class="card-body">
-
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="EmployeeCode">Employee Code</label>
-                                <input type="text" class="form-control" formControlName="EmployeeCode">
+                                <input type="text" class="form-control"
+                                       [ngClass]="{'is-valid': formDir.submitted && EmployeeCode.valid || EmployeeCode.touched && EmployeeCode.valid || EmployeeCode.dirty && EmployeeCode.valid, 'is-invalid' :formDir.submitted && !EmployeeCode.valid || EmployeeCode.touched && !EmployeeCode.valid || EmployeeCode.dirty  && !EmployeeCode.valid}"
+                                       formControlName="EmployeeCode">
+                                <span class="invalid-feedback" *ngIf="!EmployeeCode.valid && formDir.submitted || EmployeeCode.touched && !EmployeeCode.valid || EmployeeCode.dirty  && !EmployeeCode.valid">
+                                    EmployeeCode is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="EmployeeCode.valid && formDir.submitted || EmployeeCode.touched && EmployeeCode.valid || EmployeeCode.dirty && EmployeeCode.valid">
+                                    Woohoo!
+                                </span>
                             </div>
+
                             <div class="form-group col-md-4">
                                 <label for="JoiningDate">Joining Date</label>
-                                <input type="date" class="form-control" formControlName="JoiningDate">
+                                <input type="date" class="form-control"
+                                       [ngClass]="{'is-valid': formDir.submitted && JoiningDate.valid || JoiningDate.touched && JoiningDate.valid || JoiningDate.dirty && JoiningDate.valid, 'is-invalid' :formDir.submitted && !JoiningDate.valid || JoiningDate.touched && !JoiningDate.valid || JoiningDate.dirty  && !JoiningDate.valid}"
+                                       formControlName="JoiningDate">
+                                <span class="invalid-feedback" *ngIf="!JoiningDate.valid && formDir.submitted || JoiningDate.touched && !JoiningDate.valid || JoiningDate.dirty  && !JoiningDate.valid">
+                                    JoiningDate is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="JoiningDate.valid && formDir.submitted || JoiningDate.touched && JoiningDate.valid || JoiningDate.dirty && JoiningDate.valid">
+                                    Woohoo!
+                                </span>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="Department">Department</label>
-                                <select formControlName="Department" class="form-control">
+                                <select formControlName="Department" class="form-control"
+                                        [ngClass]="{'is-valid': formDir.submitted && Department.valid || Department.touched && Department.valid || Department.dirty && Department.valid, 'is-invalid' :formDir.submitted && !Department.valid || Department.touched && !Department.valid || Department.dirty  && !Department.valid}">
                                     <option value="">Choose...</option>
                                     <option *ngFor="let dep of departmentList" [value]="dep.name">{{dep.name}}</option>
                                 </select>
+                                <span class="invalid-feedback" *ngIf="!Department.valid && formDir.submitted || Department.touched && !Department.valid || Department.dirty  && !Department.valid">
+                                    Department is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="Department.valid && formDir.submitted || Department.touched && Department.valid || Department.dirty && Department.valid">
+                                    Woohoo!
+                                </span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="Designation">Designation</label>
-                                <select formControlName="Designation" class="form-control">
+                                <select formControlName="Designation" class="form-control"
+                                        [ngClass]="{'is-valid': formDir.submitted && Designation.valid || Designation.touched && Designation.valid || Designation.dirty && Designation.valid, 'is-invalid' :formDir.submitted && !Designation.valid || Designation.touched && !Designation.valid || Designation.dirty  && !Designation.valid}">
                                     <option value="">Choose...</option>
                                     <option *ngFor="let des of designationList" [value]="des.name">{{des.name}}</option>
                                 </select>
+                                <span class="invalid-feedback" *ngIf="!Designation.valid && formDir.submitted || Designation.touched && !Designation.valid || Designation.dirty  && !Designation.valid">
+                                    Designation is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="Designation.valid && formDir.submitted || Designation.touched && Designation.valid || Designation.dirty && Designation.valid">
+                                    Woohoo!
+                                </span>
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label for="Qualification">Qualification</label>
-                                <input type="text" class="form-control" formControlName="Qualification">
+                                <input type="text" class="form-control" formControlName="Qualification"
+                                       [ngClass]="{'is-valid': formDir.submitted && Qualification.valid || Qualification.touched && Qualification.valid || Qualification.dirty && Qualification.valid, 'is-invalid' :formDir.submitted && !Qualification.valid || Qualification.touched && !Qualification.valid || Qualification.dirty  && !Qualification.valid}">
+
+                                <span class="invalid-feedback" *ngIf="!Qualification.valid && formDir.submitted || Qualification.touched && !Qualification.valid || Qualification.dirty  && !Qualification.valid">
+                                    Qualification is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="Qualification.valid && formDir.submitted || Qualification.touched && Qualification.valid || Qualification.dirty && Qualification.valid">
+                                    Woohoo!
+                                </span>
+
                             </div>
-
-
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="TotalExperience">Total Experience</label>
-                                <input type="text" class="form-control" formControlName="TotalExperience">
+                                <input type="text" class="form-control" formControlName="TotalExperience"
+                                       [ngClass]="{'is-valid': formDir.submitted && TotalExperience.valid || TotalExperience.touched && TotalExperience.valid || TotalExperience.dirty && TotalExperience.valid, 'is-invalid' :formDir.submitted && !TotalExperience.valid || TotalExperience.touched && !TotalExperience.valid || TotalExperience.dirty  && !TotalExperience.valid}">
+                                <span class="invalid-feedback" *ngIf="!TotalExperience.valid && formDir.submitted || TotalExperience.touched && !TotalExperience.valid || TotalExperience.dirty  && !TotalExperience.valid">
+                                    TotalExperience is required.
+                                </span>
+                                <span class="valid-feedback" *ngIf="TotalExperience.valid && formDir.submitted || TotalExperience.touched && TotalExperience.valid || TotalExperience.dirty && TotalExperience.valid">
+                                    Woohoo!
+                                </span>
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label for="UserType">User Type</label>
                                 <select id="UserType" class="form-control">
@@ -63,35 +109,70 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="FirstName">First Name</label>
-                                    <input type="text" class="form-control" formControlName="personalDetails_FirstName">
+                                    <input type="text" class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && personalDetails_FirstName.valid || personalDetails_FirstName.touched && personalDetails_FirstName.valid || personalDetails_FirstName.dirty && personalDetails_FirstName.valid, 'is-invalid' :formDir.submitted && !personalDetails_FirstName.valid || personalDetails_FirstName.touched && !personalDetails_FirstName.valid || personalDetails_FirstName.dirty  && !personalDetails_FirstName.valid}"
+                                           formControlName="personalDetails_FirstName">
+                                    <span class="invalid-feedback" *ngIf="!personalDetails_FirstName.valid && formDir.submitted || personalDetails_FirstName.touched && !personalDetails_FirstName.valid || personalDetails_FirstName.dirty  && !personalDetails_FirstName.valid">
+                                        FirstName is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="personalDetails_FirstName.valid && formDir.submitted || personalDetails_FirstName.touched && personalDetails_FirstName.valid || personalDetails_FirstName.dirty && personalDetails_FirstName.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="MiddleName">Middle Name</label>
                                     <input type="text" class="form-control" formControlName="personalDetails_MiddleName">
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="LastName">Last Name</label>
-                                    <input type="text" class="form-control" formControlName="personalDetails_LastName">
+                                    <input type="text" class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && personalDetails_LastName.valid || personalDetails_LastName.touched && personalDetails_LastName.valid || personalDetails_LastName.dirty && personalDetails_LastName.valid, 'is-invalid' :formDir.submitted && !personalDetails_LastName.valid || personalDetails_LastName.touched && !personalDetails_LastName.valid || personalDetails_LastName.dirty  && !personalDetails_LastName.valid}"
+                                           formControlName="personalDetails_LastName">
+                                    <span class="invalid-feedback" *ngIf="!personalDetails_LastName.valid && formDir.submitted || personalDetails_LastName.touched && !personalDetails_LastName.valid || personalDetails_LastName.dirty  && !personalDetails_LastName.valid">
+                                        LastName is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="personalDetails_LastName.valid && formDir.submitted || personalDetails_LastName.touched && personalDetails_LastName.valid || personalDetails_LastName.dirty && personalDetails_LastName.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label for="DateOfBirth">Date of Birth</label>
-                                    <input type="date" class="form-control" formControlName="personalDetails_DateOfBirth">
+                                    <label for="DateOfBirth">DateOfBirth</label>
+                                    <input type="text" class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.touched && personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.dirty && personalDetails_DateOfBirth.valid, 'is-invalid' :formDir.submitted && !personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.touched && !personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.dirty  && !personalDetails_DateOfBirth.valid}"
+                                           formControlName="personalDetails_DateOfBirth">
+                                    <span class="invalid-feedback" *ngIf="!personalDetails_DateOfBirth.valid && formDir.submitted || personalDetails_DateOfBirth.touched && !personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.dirty  && !personalDetails_DateOfBirth.valid">
+                                        DateOfBirth is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="personalDetails_DateOfBirth.valid && formDir.submitted || personalDetails_DateOfBirth.touched && personalDetails_DateOfBirth.valid || personalDetails_DateOfBirth.dirty && personalDetails_DateOfBirth.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="Gender">Gender</label>
-                                    <select formControlName="personalDetails_Gender" class="form-control">
+                                    <select formControlName="personalDetails_Gender" class="form-control"
+                                            [ngClass]="{'is-valid': formDir.submitted && personalDetails_Gender.valid || personalDetails_Gender.touched && personalDetails_Gender.valid || personalDetails_Gender.dirty && personalDetails_Gender.valid, 'is-invalid' :formDir.submitted && !personalDetails_Gender.valid || personalDetails_Gender.touched && !personalDetails_Gender.valid || personalDetails_Gender.dirty  && !personalDetails_Gender.valid}">
                                         <option value="">Choose...</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
+                                    <span class="invalid-feedback" *ngIf="!personalDetails_Gender.valid && formDir.submitted || personalDetails_Gender.touched && !personalDetails_Gender.valid || personalDetails_Gender.dirty  && !personalDetails_Gender.valid">
+                                        Gender is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="personalDetails_Gender.valid && formDir.submitted || personalDetails_Gender.touched && personalDetails_Gender.valid || personalDetails_Gender.dirty && personalDetails_Gender.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="CNIC">CNIC Number</label>
                                     <input type="text" class="form-control" formControlName="personalDetails_CNIC">
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="card">
@@ -99,57 +180,129 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="PresentAddress">Present Address</label>
-                                    <input type="text" class="form-control" formControlName="contactDetails_PresentAddress">
+                                    <input type="text" class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.touched && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty && contactDetails_PresentAddress.valid, 'is-invalid' :formDir.submitted && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.touched && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty  && !contactDetails_PresentAddress.valid}"
+                                           formControlName="contactDetails_PresentAddress">
+                                    <span class="invalid-feedback" *ngIf="!contactDetails_PresentAddress.valid && formDir.submitted || contactDetails_PresentAddress.touched && !contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty  && !contactDetails_PresentAddress.valid">
+                                        PresentAddress is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="contactDetails_PresentAddress.valid && formDir.submitted || contactDetails_PresentAddress.touched && contactDetails_PresentAddress.valid || contactDetails_PresentAddress.dirty && contactDetails_PresentAddress.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="PermanentAddress">Permanent Address</label>
                                     <input type="text" class="form-control" formControlName="contactDetails_PermanentAddress">
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="City">City</label>
-                                        <input type="text" class="form-control" formControlName="contactDetails_City">
+                                        <input type="text" class="form-control"
+                                               [ngClass]="{'is-valid': formDir.submitted && contactDetails_City.valid || contactDetails_City.touched && contactDetails_City.valid || contactDetails_City.dirty && contactDetails_City.valid, 'is-invalid' :formDir.submitted && !contactDetails_City.valid || contactDetails_City.touched && !contactDetails_City.valid || contactDetails_City.dirty  && !contactDetails_City.valid}"
+                                               formControlName="contactDetails_City">
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_City.valid && formDir.submitted || contactDetails_City.touched && !contactDetails_City.valid || contactDetails_City.dirty  && !contactDetails_City.valid">
+                                            City is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_City.valid && formDir.submitted || contactDetails_City.touched && contactDetails_City.valid || contactDetails_City.dirty && contactDetails_City.valid">
+                                            Woohoo!
+                                        </span>
+
                                     </div>
+
                                     <div class="form-group col-md-6">
                                         <label for="PostalCode">Postal Code</label>
-                                        <input type="text" class="form-control" formControlName="contactDetails_PostalCode">
+                                        <input type="text" class="form-control"
+                                               [ngClass]="{'is-valid': formDir.submitted && contactDetails_PostalCode.valid || contactDetails_PostalCode.touched && contactDetails_PostalCode.valid || contactDetails_PostalCode.dirty && contactDetails_PostalCode.valid, 'is-invalid' :formDir.submitted && !contactDetails_PostalCode.valid || contactDetails_PostalCode.touched && !contactDetails_PostalCode.valid || contactDetails_PostalCode.dirty  && !contactDetails_PostalCode.valid}"
+                                               formControlName="contactDetails_PostalCode">
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_PostalCode.valid && formDir.submitted || contactDetails_PostalCode.touched && !contactDetails_PostalCode.valid || contactDetails_PostalCode.dirty  && !contactDetails_PostalCode.valid">
+                                            PostalCode is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_PostalCode.valid && formDir.submitted || contactDetails_PostalCode.touched && contactDetails_PostalCode.valid || contactDetails_PostalCode.dirty && contactDetails_PostalCode.valid">
+                                            Woohoo!
+                                        </span>
+
                                     </div>
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="contactDetails_Country">Country</label>
-                                        <select class="form-control" (change)="OnCountrySelection($event)" formControlName="contactDetails_Country">
+                                        <select class="form-control" (change)="OnCountrySelection($event)"
+                                                [ngClass]="{'is-valid': formDir.submitted && contactDetails_Country.valid || contactDetails_Country.touched && contactDetails_Country.valid || contactDetails_Country.dirty && contactDetails_Country.valid, 'is-invalid' :formDir.submitted && !contactDetails_Country.valid || contactDetails_Country.touched && !contactDetails_Country.valid || contactDetails_Country.dirty  && !contactDetails_Country.valid}"
+                                                formControlName="contactDetails_Country">
                                             <option value="">Choose...</option>
                                             <option *ngFor="let c of countryList" [value]="c.id">{{c.name}}</option>
                                         </select>
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_Country.valid && formDir.submitted || contactDetails_Country.touched && !contactDetails_Country.valid || contactDetails_Country.dirty  && !contactDetails_Country.valid">
+                                            Country is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_Country.valid && formDir.submitted || contactDetails_Country.touched && contactDetails_Country.valid || contactDetails_Country.dirty && contactDetails_Country.valid">
+                                            Woohoo!
+                                        </span>
                                     </div>
+
                                     <div class="form-group col-md-6">
                                         <label for="contactDetails_State">State</label>
-                                        <select class="form-control" formControlName="contactDetails_State">
+                                        <select class="form-control" formControlName="contactDetails_State"
+                                                [ngClass]="{'is-valid': formDir.submitted && contactDetails_State.valid || contactDetails_State.touched && contactDetails_State.valid || contactDetails_State.dirty && contactDetails_State.valid, 'is-invalid' :formDir.submitted && !contactDetails_State.valid || contactDetails_State.touched && !contactDetails_State.valid || contactDetails_State.dirty  && !contactDetails_State.valid}">
                                             <option value="">Choose...</option>
                                             <option *ngFor="let s of subStateList" [value]="s.id">{{s.name}}</option>
                                         </select>
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_State.valid && formDir.submitted || contactDetails_State.touched && !contactDetails_State.valid || contactDetails_State.dirty  && !contactDetails_State.valid">
+                                            State is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_State.valid && formDir.submitted || contactDetails_State.touched && contactDetails_State.valid || contactDetails_State.dirty && contactDetails_State.valid">
+                                            Woohoo!
+                                        </span>
                                     </div>
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="contactDetails_Phone">Phone</label>
-                                        <input type="text" class="form-control" formControlName="contactDetails_Phone">
+                                        <input type="text" class="form-control"
+                                               [ngClass]="{'is-valid': formDir.submitted && contactDetails_Phone.valid || contactDetails_Phone.touched && contactDetails_Phone.valid || contactDetails_Phone.dirty && contactDetails_Phone.valid, 'is-invalid' :formDir.submitted && !contactDetails_Phone.valid || contactDetails_Phone.touched && !contactDetails_Phone.valid || contactDetails_Phone.dirty  && !contactDetails_Phone.valid}"
+                                               formControlName="contactDetails_Phone">
+
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_Phone.valid && formDir.submitted || contactDetails_Phone.touched && !contactDetails_Phone.valid || contactDetails_Phone.dirty  && !contactDetails_Phone.valid">
+                                            Phone is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_Phone.valid && formDir.submitted || contactDetails_Phone.touched && contactDetails_Phone.valid || contactDetails_Phone.dirty && contactDetails_Phone.valid">
+                                            Woohoo!
+                                        </span>
                                     </div>
+
                                     <div class="form-group col-md-6">
                                         <label for="contactDetails_Mobile">Mobile</label>
-                                        <input type="text" class="form-control" formControlName="contactDetails_Mobile">
+                                        <input type="text" class="form-control"
+                                               [ngClass]="{'is-valid': formDir.submitted && contactDetails_Mobile.valid || contactDetails_Mobile.touched && contactDetails_Mobile.valid || contactDetails_Mobile.dirty && contactDetails_Mobile.valid, 'is-invalid' :formDir.submitted && !contactDetails_Mobile.valid || contactDetails_Mobile.touched && !contactDetails_Mobile.valid || contactDetails_Mobile.dirty  && !contactDetails_Mobile.valid}"
+                                               formControlName="contactDetails_Mobile">
+                                        <span class="invalid-feedback" *ngIf="!contactDetails_Mobile.valid && formDir.submitted || contactDetails_Mobile.touched && !contactDetails_Mobile.valid || contactDetails_Mobile.dirty  && !contactDetails_Mobile.valid">
+                                            Mobile is required.
+                                        </span>
+                                        <span class="valid-feedback" *ngIf="contactDetails_Mobile.valid && formDir.submitted || contactDetails_Mobile.touched && contactDetails_Mobile.valid || contactDetails_Mobile.dirty && contactDetails_Mobile.valid">
+                                            Woohoo!
+                                        </span>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <label for="contactDetails_Email">Email</label>
-                                    <input type="Email" class="form-control" formControlName="contactDetails_Email">
+                                    <input type="Email" class="form-control"
+                                           [ngClass]="{'is-valid': formDir.submitted && contactDetails_Email.valid || contactDetails_Email.touched && contactDetails_Email.valid || contactDetails_Email.dirty && contactDetails_Email.valid, 'is-invalid' :formDir.submitted && !contactDetails_Email.valid || contactDetails_Email.touched && !contactDetails_Email.valid || contactDetails_Email.dirty  && !contactDetails_Email.valid}"
+                                           formControlName="contactDetails_Email">
+                                    <span class="invalid-feedback" *ngIf="!contactDetails_Email.valid && formDir.submitted || contactDetails_Email.touched && !contactDetails_Email.valid || contactDetails_Email.dirty  && !contactDetails_Email.valid">
+                                        Email is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="contactDetails_Email.valid && formDir.submitted || contactDetails_Email.touched && contactDetails_Email.valid || contactDetails_Email.dirty && contactDetails_Email.valid">
+                                        Woohoo!
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="border-top">
                     <div class="card-body float-right">

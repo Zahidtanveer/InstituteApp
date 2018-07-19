@@ -6,6 +6,7 @@ import { AllocateBatchTeacherService } from '../../services/AllocatedBatchTeache
 import { CourseService } from '../../services/CourseAndBatch/course.service'
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import * as $ from 'jquery';
+import { EmployeeData, EmployeeService } from '../../services/employee/service.employee';
 @Component({
     selector: 'editAllocateBatchTeacher',
     templateUrl: './EditAllocateBatchTeacher.component.html'
@@ -13,13 +14,16 @@ import * as $ from 'jquery';
 export class editAllocateBatchTeacher implements OnInit {
     public courseList: CourseData[];
     public batchList: BatchData[];
+    public subbatchList: BatchData[];
+    public employeeList: EmployeeData[];
     allocateBatchTeacherForm: FormGroup;
     title: string = "Edit";
     id: number;
     errorMessage: any;
-
+    IsCourseSelected: boolean;
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _allocateBatchTeacherService: AllocateBatchTeacherService, private _batchService: BatchService, private _courseService: CourseService, private _router: Router) {
+        private _allocateBatchTeacherService: AllocateBatchTeacherService,
+        private _batchService: BatchService, private _courseService: CourseService, private _employeeService: EmployeeService,private _router: Router) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 
@@ -32,6 +36,7 @@ export class editAllocateBatchTeacher implements OnInit {
             course:[''],
             batches:['']
         })
+        this.getEmployees();
         this.getCourses();
         this.getBatchs();
     }
@@ -42,7 +47,27 @@ export class editAllocateBatchTeacher implements OnInit {
             this._allocateBatchTeacherService.getAllocateBatchTeacherById(this.id)
                 .subscribe(resp => this.allocateBatchTeacherForm.setValue(resp)
                     , error => this.errorMessage = error);
+          
         }
+        
+    }
+    OnCourseSelection($event: any) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["courseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(x => x.courseId == courseSelectedValue && x !== null);
+            this.IsCourseSelected = true;
+        }
+    }
+    OnBatchSelection($event:any) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["courseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(x => x.courseId == courseSelectedValue && x !== null);
+            this.IsCourseSelected = true;
+        }
+    }
+    getEmployees() {
+        this._employeeService.getEmployee()
+            .subscribe(data => { this.employeeList = data });
     }
     getCourses() {
         this._courseService.getCourse()

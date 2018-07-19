@@ -7,6 +7,7 @@ import { CourseService } from '../../services/CourseAndBatch/course.service'
 import { BatchService } from '../../services/CourseAndBatch/batch.service'
 import * as $ from 'jquery';
 import { AlertService, MessageSeverity } from '../../services/alert.service';
+import { EmployeeService, EmployeeData } from '../../services/employee/service.employee';
 @Component({
     selector: 'createAllocateBatchTeacher',
     templateUrl: './AddAllocateBatchTeacher.component.html'
@@ -14,14 +15,17 @@ import { AlertService, MessageSeverity } from '../../services/alert.service';
 export class createAllocateBatchTeacher {
     public courseList: CourseData[];
     public batchList: BatchData[];
+    public subbatchList: BatchData[];
+    public employeeList: EmployeeData[];
     allocateBatchTeacherForm: FormGroup;
     title: string = "Create";
     id: number;
     errorMessage: any;
 
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
-        private _allocateBatchTeacherService: AllocateBatchTeacherService, private _batchService: BatchService, private _courseService: CourseService,
-        private _router: Router, private _alertService: AlertService) {
+        private _allocateBatchTeacherService: AllocateBatchTeacherService,
+        private _batchService: BatchService, private _courseService: CourseService,
+        private _router: Router, private _alertService: AlertService, private _employeeService: EmployeeService) {
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
 
@@ -31,12 +35,22 @@ export class createAllocateBatchTeacher {
             BatchId: ['', [Validators.required]],
             CourseId: ['', [Validators.required]],
             TeacherId: ['', [Validators.required]],
-            
+
         })
         this.getCourses();
         this.getBatchs();
+        this.getEmployees();
     }
-   
+    OnCourseSelection($event: any) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["CourseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(x => x.courseId == courseSelectedValue && x !== null);
+        }
+    }
+    getEmployees() {
+        this._employeeService.getEmployee()
+            .subscribe(data => { this.employeeList = data });
+    }
     getCourses() {
         this._courseService.getCourse()
             .subscribe(data => { this.courseList = data });

@@ -21,12 +21,12 @@ export class createStudent {
     public religionList: ReligionData[];
     public batchList: BatchData[];
     public courseList: CourseData[];
-    title:"Create"
+    title: "Create"
     studentForm: FormGroup;
     id: number;
     errorMessage: any;
 
-   
+
     constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
         private _router: Router, private _studentService: StudentService, private _dataService: DataService) {
         if (this._avRoute.snapshot.params["Id"]) {
@@ -37,29 +37,29 @@ export class createStudent {
             id: 0,
             //Official Detail
             AcadamicYear: ['', [Validators.required]],
-            RegisterNumber: [''],
-            JoiningDate: [''],
-            Course: [''],
-            Batch: [''],
+            RegisterNumber: ['', [Validators.required]],
+            JoiningDate: ['', [Validators.required]],
+            Course: ['', [Validators.required]],
+            Batch: ['', [Validators.required]],
             RollNo: [''],
-         
-            personalDetails_FirstName: [''],
+
+            personalDetails_FirstName: ['', [Validators.required]],
             personalDetails_MiddleName: [''],
             personalDetails_LastName: [''],
-            personalDetails_DateOfBirth: [''],
-            personalDetails_Gender: [''],
+            personalDetails_DateOfBirth: ['', [Validators.required]],
+            personalDetails_Gender: ['', [Validators.required]],
             personalDetails_CNIC: [''],
             personalDetails_MotherTongue: [''],
-            personalDetails_Category: [''],
+            personalDetails_Category: ['', [Validators.required]],
             personalDetails_BirthPlace: [''],
             personalDetails_Nationality: [''],
             personalDetails_BloodGroup: [''],
             personalDetails_Religion: [''],
-            personalDetails_Caste:[''],
+            personalDetails_Caste: [''],
 
-       
+
             contactDetails_PresentAddress: [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)])],
-            contactDetails_PermanentAddress: [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)])],
+            contactDetails_PermanentAddress: [''],
             contactDetails_City: [''],
             contactDetails_PostalCode: [''],
             contactDetails_Country: [''],
@@ -72,16 +72,16 @@ export class createStudent {
             FatherJob: [''],
             FatherMobile: [''],
             FatherCNIC: [''],
-        
+
             MotherName: [''],
             MotherJob: [''],
             MotherMobile: [''],
             MotherCNIC: [''],
-        
-            g_Name: ['',[Validators.required]],
-            g_Relation:[''],
+
+            g_Name: ['', [Validators.required]],
+            g_Relation: [''],
             g_Education: [''],
-            g_Occuption: ['',[Validators.required]],
+            g_Occuption: ['', [Validators.required]],
             g_Income: [''],
             g_contactDetails_Address: [''],
             g_contactDetails_City: [''],
@@ -89,9 +89,9 @@ export class createStudent {
             g_contactDetails_Country: [''],
             g_contactDetails_State: [''],
             g_contactDetails_Phone: [''],
-            g_contactDetails_Mobile: [''],
-            g_contactDetails_Email: [''],
-		
+            g_contactDetails_Mobile: ['', [Validators.required]],
+            g_contactDetails_Email: ['', [Validators.required]],
+
             SchoolName: [''],
             SchoolAddress: [''],
             Qualification: ['']
@@ -144,7 +144,7 @@ export class createStudent {
 
 
     save() {
-        
+
         if (!this.studentForm.valid) {
             return;
         }
@@ -155,7 +155,7 @@ export class createStudent {
                 this._router.navigate(['/students']
                 );
             }, error => this.errorMessage = error)
-       
+
 
     }
     cancel() {
@@ -211,21 +211,21 @@ export class createStudent {
 
     get g_Name() { return this.studentForm.get('g_Name'); }
     get g_Relation() { return this.studentForm.get('g_Relation'); }
-    get g_Education(){ return this.studentForm.get('g_Education'); }
-    get g_Income(){ return this.studentForm.get('g_Income'); }
+    get g_Education() { return this.studentForm.get('g_Education'); }
+    get g_Income() { return this.studentForm.get('g_Income'); }
     get g_Occuption() { return this.studentForm.get('g_Occuption'); }
     get g_contactDetails_Address() { return this.studentForm.get('g_contactDetails_Address'); }
-    get g_contactDetails_City(){ return this.studentForm.get('g_contactDetails_City'); }
-    get g_contactDetails_PostalCode(){ return this.studentForm.get('g_contactDetails_PostalCode'); }
-    get g_contactDetails_Country(){ return this.studentForm.get('g_contactDetails_Country'); }
-    get g_contactDetails_State(){ return this.studentForm.get('g_contactDetails_State'); }
-    get g_contactDetails_Phone(){ return this.studentForm.get('g_contactDetails_Phone'); }
-    get g_contactDetails_Mobile(){ return this.studentForm.get('g_contactDetails_Mobile'); }
-    get g_contactDetails_Email(){ return this.studentForm.get('g_contactDetails_Email'); }
+    get g_contactDetails_City() { return this.studentForm.get('g_contactDetails_City'); }
+    get g_contactDetails_PostalCode() { return this.studentForm.get('g_contactDetails_PostalCode'); }
+    get g_contactDetails_Country() { return this.studentForm.get('g_contactDetails_Country'); }
+    get g_contactDetails_State() { return this.studentForm.get('g_contactDetails_State'); }
+    get g_contactDetails_Phone() { return this.studentForm.get('g_contactDetails_Phone'); }
+    get g_contactDetails_Mobile() { return this.studentForm.get('g_contactDetails_Mobile'); }
+    get g_contactDetails_Email() { return this.studentForm.get('g_contactDetails_Email'); }
 
-    get SchoolName(){ return this.studentForm.get('SchoolName'); }
-    get SchoolAddress(){ return this.studentForm.get('SchoolAddress'); }
-    get Qualification(){ return this.studentForm.get('Qualification'); }
+    get SchoolName() { return this.studentForm.get('SchoolName'); }
+    get SchoolAddress() { return this.studentForm.get('SchoolAddress'); }
+    get Qualification() { return this.studentForm.get('Qualification'); }
 
 
 }

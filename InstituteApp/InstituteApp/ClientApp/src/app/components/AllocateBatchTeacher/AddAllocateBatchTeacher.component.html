@@ -13,7 +13,7 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="CourseId">Course</label>
                                 <div class="col-md-12">
-                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && CourseId.valid || CourseId.touched && CourseId.valid || CourseId.dirty && CourseId.valid, 'is-invalid' :formDir.submitted && !CourseId.valid || CourseId.touched && !CourseId.valid || CourseId.dirty  && !CourseId.valid}" data-val="true" formControlName="CourseId">
+                                    <select class="form-control" (change)="OnCourseSelection($event)" [ngClass]="{'is-valid': formDir.submitted && CourseId.valid || CourseId.touched && CourseId.valid || CourseId.dirty && CourseId.valid, 'is-invalid' :formDir.submitted && !CourseId.valid || CourseId.touched && !CourseId.valid || CourseId.dirty  && !CourseId.valid}" data-val="true" formControlName="CourseId">
                                         <option value="">--Select Course--</option>
                                         <option *ngFor="let c of courseList" value="{{c.id}}">{{c.name}}</option>
                                     </select>
@@ -28,9 +28,9 @@
                             <div class="form-group row">
                                 <label class=" control-label col-md-12" for="BatchId">Batch</label>
                                 <div class="col-md-12">
-                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && BatchId.valid || BatchId.touched && BatchId.valid || BatchId.dirty && BatchId.valid, 'is-invalid' :formDir.submitted && !BatchId.valid || BatchId.touched && !BatchId.valid || BatchId.dirty  && !BatchId.valid}" data-val="true" formControlName="BatchId">
+                                    <select class="form-control"  [ngClass]="{'is-valid': formDir.submitted && BatchId.valid || BatchId.touched && BatchId.valid || BatchId.dirty && BatchId.valid, 'is-invalid' :formDir.submitted && !BatchId.valid || BatchId.touched && !BatchId.valid || BatchId.dirty  && !BatchId.valid}" data-val="true" formControlName="BatchId">
                                         <option value="">--Select Batch--</option>
-                                        <option *ngFor="let b of batchList" value="{{b.id}}">{{b.name}}</option>
+                                        <option *ngFor="let b of subbatchList" value="{{b.id}}">{{b.name}}</option>
                                     </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !BatchId.valid || BatchId.touched && !BatchId.valid || BatchId.dirty  && !BatchId.valid">
                                         Batch is required.
@@ -45,9 +45,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && TeacherId.valid || TeacherId.touched && TeacherId.valid || TeacherId.dirty && TeacherId.valid, 'is-invalid' :formDir.submitted && !TeacherId.valid || TeacherId.touched && !TeacherId.valid || TeacherId.dirty  && !TeacherId.valid}" data-val="true" formControlName="TeacherId">
                                         <option value="">--Select Teacher--</option>
-                                        <option value="1">Teacher 1</option>
-                                        <option value="2">Teacher 2</option>
-                                        <option value="3">Teacher 3</option>
+                                        <option *ngFor="let e of employeeList" [value]="e.id">{{e.personalDetails.firstName}} {{e.personalDetails.lastName}}</option>
                                     </select>
                                     <span class="invalid-feedback" *ngIf="formDir.submitted && !TeacherId.valid || TeacherId.touched && !TeacherId.valid || TeacherId.dirty  && !TeacherId.valid">
                                         Teacher is required.

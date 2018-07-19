@@ -10,7 +10,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var alert_service_1 = require("../../services/alert.service");
 var createAllocateBatchTeacher = /** @class */ (function () {
-    function createAllocateBatchTeacher(_fb, _avRoute, _allocateBatchTeacherService, _batchService, _courseService, _router, _alertService) {
+    function createAllocateBatchTeacher(_fb, _avRoute, _allocateBatchTeacherService, _batchService, _courseService, _router, _alertService, _employeeService) {
         this._fb = _fb;
         this._avRoute = _avRoute;
         this._allocateBatchTeacherService = _allocateBatchTeacherService;
@@ -18,6 +18,7 @@ var createAllocateBatchTeacher = /** @class */ (function () {
         this._courseService = _courseService;
         this._router = _router;
         this._alertService = _alertService;
+        this._employeeService = _employeeService;
         this.title = "Create";
         if (this._avRoute.snapshot.params["Id"]) {
             this.id = this._avRoute.snapshot.params["Id"];
@@ -30,7 +31,19 @@ var createAllocateBatchTeacher = /** @class */ (function () {
         });
         this.getCourses();
         this.getBatchs();
+        this.getEmployees();
     }
+    createAllocateBatchTeacher.prototype.OnCourseSelection = function ($event) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["CourseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(function (x) { return x.courseId == courseSelectedValue && x !== null; });
+        }
+    };
+    createAllocateBatchTeacher.prototype.getEmployees = function () {
+        var _this = this;
+        this._employeeService.getEmployee()
+            .subscribe(function (data) { _this.employeeList = data; });
+    };
     createAllocateBatchTeacher.prototype.getCourses = function () {
         var _this = this;
         this._courseService.getCourse()

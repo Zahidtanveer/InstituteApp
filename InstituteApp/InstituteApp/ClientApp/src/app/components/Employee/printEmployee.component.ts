@@ -28,8 +28,7 @@ export class PrintEmployeeComponent {
     employeeForm: FormGroup;
     public IsDepartmentWise: boolean;
     public IsDesignationWise: boolean;
-    IsInitialized: boolean = false;
-    
+  
     constructor(private _fb: FormBuilder,http: Http, private _dataService: DataService, private _employeeService: EmployeeService, private alertService: AlertService, private chRef: ChangeDetectorRef) {
         this.employeeForm = this._fb.group({
             IsDepOrDes: [''],
@@ -37,7 +36,7 @@ export class PrintEmployeeComponent {
             Designation: ['']
         })
 
-        //this.getEmployees;
+        
         this.getDepartment();
         this.getDesignation();
         
@@ -51,10 +50,7 @@ export class PrintEmployeeComponent {
         this._dataService.getDesignation()
             .subscribe(data => { this.designationList = data });
     }
-    getEmployees() {
-        this._employeeService.getEmployee()
-            .subscribe(data => { this.dList = data });
-    }
+   
     OnSelectValue($event: any) {
         var SelectedValue = this.employeeForm.controls["IsDepOrDes"].value;
         console.log(SelectedValue);
@@ -71,28 +67,26 @@ export class PrintEmployeeComponent {
             this.IsDepartmentWise = false;
         }
     }
-    OnDepartmentSelection($event:any) {
+
+    OnDepartmentSelection($event: any) {
         var depSelectedValue = this.employeeForm.controls["Department"].value;
-        this._employeeService.filterEmployee(depSelectedValue,'',0).subscribe((data) => {
-            this.dList = data;
-            if (this.IsInitialized == false) {
-                this.print();
-                this.IsInitialized = true;
-                console.log(this.IsInitialized);
-            }
-        
-           }, error => console.error(error))
+        this.RefreshTable();
+        this.getEmployees(depSelectedValue,'',0);
     }
-    OnDesignationSelection($event:any) {
+
+    OnDesignationSelection($event: any) {
         var desSelectedValue = this.employeeForm.controls["Designation"].value;
-        this._employeeService.filterEmployee('', desSelectedValue, 0).subscribe((data) => {
+        this.RefreshTable();
+        this.getEmployees('', desSelectedValue, 0);
+    }
+
+    getEmployees(department, designation, Id) {
+        this._employeeService.filterEmployee(department,designation, Id).subscribe((data) => {
             this.dList = data;
-            if (this.IsInitialized == false) {
                 this.print();
-                this.IsInitialized = true;
-            }
         }, error => console.error(error))
     }
+
     print() {
         this.chRef.detectChanges();
         const table: any = $('#dttable');
@@ -102,11 +96,15 @@ export class PrintEmployeeComponent {
             buttons: [{
                     extend: 'print',
                     text: '<i class="fa fa-print" aria-hidden="true"></i> Print',
-                    title: 'List of Employees <hr>',
+                    title: 'List of Employees ',
                     titleAttr: 'Print'
                 }
             ]
         });
+    }
+    RefreshTable() {
+        const table: any = $('#dttable');
+        table.DataTable().destroy();
     }
     get IsDepOrDes() { return this.employeeForm.get('IsDepOrDes'); }
     get Department() { return this.employeeForm.get('Department'); }

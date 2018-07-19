@@ -31,30 +31,30 @@ export class createEmployee implements OnInit {
         this.employeeForm = this._fb.group({
             id: 0,
 
-            EmployeeCode: [''],
-            JoiningDate: [''],
-            Qualification: [''],
-            Department: [''],
-            Designation: [''],
-            TotalExperience: [''],
+            EmployeeCode: ['',[Validators.required]],
+            JoiningDate: ['',[Validators.required]],
+            Department: ['',[Validators.required]],
+            Designation: ['',[Validators.required]],
+            Qualification: ['',[Validators.required]],
+            TotalExperience: ['',[Validators.required]],
 
-            personalDetails_FirstName: [''],
+            personalDetails_FirstName: ['',[Validators.required]],
             personalDetails_MiddleName: [''],
-            personalDetails_LastName: [''],
-            personalDetails_DateOfBirth: [''],
-            personalDetails_Gender: [''],
+            personalDetails_LastName: ['',[Validators.required]],
+            personalDetails_DateOfBirth: ['',[Validators.required]],
+            personalDetails_Gender: ['',[Validators.required]],
             personalDetails_CNIC: [''],
             personalDetails_EmployeeId: [''],
 
-            contactDetails_PresentAddress: [''],
+            contactDetails_PresentAddress: ['',[Validators.required]],
             contactDetails_PermanentAddress: [''],
-            contactDetails_City: [''],
-            contactDetails_PostalCode: [''],
-            contactDetails_Country: [''],
-            contactDetails_State: [''],
-            contactDetails_Phone: [''],
-            contactDetails_Mobile: [''],
-            contactDetails_Email: ['']
+            contactDetails_City: ['',[Validators.required]],
+            contactDetails_PostalCode: ['',[Validators.required]],
+            contactDetails_Country: ['',[Validators.required]],
+            contactDetails_State: ['',[Validators.required]],
+            contactDetails_Phone: ['',[Validators.required]],
+            contactDetails_Mobile: ['',[Validators.required]],
+            contactDetails_Email: ['',[Validators.required]]
 
 
 
@@ -124,7 +124,7 @@ export class createEmployee implements OnInit {
     get personalDetails_FirstName() { return this.employeeForm.get('personalDetails_FirstName'); }
     get personalDetails_MiddleName() { return this.employeeForm.get('personalDetails_MiddleName'); }
     get personalDetails_LastName() { return this.employeeForm.get('personalDetails_LastName'); }
-    get personalDetails_DateOfBirth() { return this.employeeForm.get(' personalDetails_DateOfBirth'); }
+    get personalDetails_DateOfBirth() { return this.employeeForm.get('personalDetails_DateOfBirth'); }
     get personalDetails_Gender() { return this.employeeForm.get('personalDetails_Gender'); }
     get personalDetails_CNIC() { return this.employeeForm.get('personalDetails_CNIC'); }
     get personalDetails_EmployeeId() { return this.employeeForm.get('personalDetails_EmployeeId'); }

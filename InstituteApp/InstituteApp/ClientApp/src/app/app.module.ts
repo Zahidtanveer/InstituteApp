@@ -136,7 +136,6 @@ import { StudentIDCardComponent } from "./components/Students/StudentIDCard/stud
 import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/UpdateRollNo.component";
 
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -161,7 +160,7 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         ChartsModule,
         ReactiveFormsModule,
         HttpModule
-       
+    
      
     ],
     declarations: [

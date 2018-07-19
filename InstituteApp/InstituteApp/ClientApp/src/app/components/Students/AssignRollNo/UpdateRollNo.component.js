@@ -5,37 +5,62 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var $ = require("jquery");
 require("datatables.net");
 require("datatables.net-bs4");
 var UpdateRollNoComponent = /** @class */ (function () {
-    function UpdateRollNoComponent(_router, http, baseUrl, _studentService, alertService, chRef) {
-        var _this = this;
+    function UpdateRollNoComponent(_router, _fb, _dataService, _studentService, alertService, chRef) {
         this._router = _router;
+        this._fb = _fb;
+        this._dataService = _dataService;
         this._studentService = _studentService;
         this.alertService = alertService;
         this.chRef = chRef;
-        http.get(baseUrl + 'api/Student/Index').subscribe(function (result) {
-            _this.dList = result.json();
-            _this.chRef.detectChanges();
-            var table = $('#dttable');
-            _this.dataTable = table.DataTable({
-                "displayLength": 5,
-                ordering: false,
-                "pagingType": "full_numbers",
-            });
-        }, function (error) { return console.error(error); });
-        this.getStudents;
+        this.studentForm = this._fb.group({
+            Course: [''],
+            Batch: ['']
+        });
+        this.getCourse();
+        this.getBatch();
     }
-    UpdateRollNoComponent.prototype.getStudents = function () {
+    UpdateRollNoComponent.prototype.getBatch = function () {
         var _this = this;
-        this._studentService.getStudent()
-            .subscribe(function (data) { _this.dList = data; });
+        this._dataService.getBatch()
+            .subscribe(function (data) { _this.batchList = data; });
+    };
+    UpdateRollNoComponent.prototype.getCourse = function () {
+        var _this = this;
+        this._dataService.getCourse()
+            .subscribe(function (data) { _this.courseList = data; });
+    };
+    UpdateRollNoComponent.prototype.OnCourseSelection = function ($event) {
+        var courseName = this.studentForm.controls["Course"].value;
+        this.IsCourseSelected = false;
+        if (courseName) {
+            var courseID = this.courseList.filter(function (c) { return c.name == courseName && c != null; });
+            console.log(courseID);
+            if (courseID) {
+                this.subBatchList = this.batchList.filter(function (x) { return x.courseId == courseID[0].id && x !== null; });
+            }
+            this.IsCourseSelected = true;
+        }
+        this.studentForm.controls["Batch"].setValue("");
+    };
+    UpdateRollNoComponent.prototype.OnBatchChange = function ($event) {
+        var CourseSelectedValue = this.studentForm.controls["Course"].value;
+        var batchSelectedValue = this.studentForm.controls["Batch"].value;
+        if (batchSelectedValue) {
+            this.getStudents(CourseSelectedValue, batchSelectedValue, '');
+        }
+    };
+    UpdateRollNoComponent.prototype.getStudents = function (course, batch, date) {
+        var _this = this;
+        this._studentService.filterStudent(course, batch, date)
+            .subscribe(function (data) {
+            _this.dList = data;
+        });
     };
     UpdateRollNoComponent.prototype.SaveData = function () {
         var dictRollNo = [];
@@ -62,8 +87,7 @@ var UpdateRollNoComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'Student-UpdateRollNo',
             templateUrl: './UpdateRollNo.component.html'
-        }),
-        __param(2, core_1.Inject('BASE_URL'))
+        })
     ], UpdateRollNoComponent);
     return UpdateRollNoComponent;
 }());

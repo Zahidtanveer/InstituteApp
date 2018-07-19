@@ -9,12 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var editAllocateBatchTeacher = /** @class */ (function () {
-    function editAllocateBatchTeacher(_fb, _avRoute, _allocateBatchTeacherService, _batchService, _courseService, _router) {
+    function editAllocateBatchTeacher(_fb, _avRoute, _allocateBatchTeacherService, _batchService, _courseService, _employeeService, _router) {
         this._fb = _fb;
         this._avRoute = _avRoute;
         this._allocateBatchTeacherService = _allocateBatchTeacherService;
         this._batchService = _batchService;
         this._courseService = _courseService;
+        this._employeeService = _employeeService;
         this._router = _router;
         this.title = "Edit";
         if (this._avRoute.snapshot.params["Id"]) {
@@ -28,6 +29,7 @@ var editAllocateBatchTeacher = /** @class */ (function () {
             course: [''],
             batches: ['']
         });
+        this.getEmployees();
         this.getCourses();
         this.getBatchs();
     }
@@ -38,6 +40,25 @@ var editAllocateBatchTeacher = /** @class */ (function () {
             this._allocateBatchTeacherService.getAllocateBatchTeacherById(this.id)
                 .subscribe(function (resp) { return _this.allocateBatchTeacherForm.setValue(resp); }, function (error) { return _this.errorMessage = error; });
         }
+    };
+    editAllocateBatchTeacher.prototype.OnCourseSelection = function ($event) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["courseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(function (x) { return x.courseId == courseSelectedValue && x !== null; });
+            this.IsCourseSelected = true;
+        }
+    };
+    editAllocateBatchTeacher.prototype.OnBatchSelection = function ($event) {
+        var courseSelectedValue = this.allocateBatchTeacherForm.controls["courseId"].value;
+        if (courseSelectedValue) {
+            this.subbatchList = this.batchList.filter(function (x) { return x.courseId == courseSelectedValue && x !== null; });
+            this.IsCourseSelected = true;
+        }
+    };
+    editAllocateBatchTeacher.prototype.getEmployees = function () {
+        var _this = this;
+        this._employeeService.getEmployee()
+            .subscribe(function (data) { _this.employeeList = data; });
     };
     editAllocateBatchTeacher.prototype.getCourses = function () {
         var _this = this;

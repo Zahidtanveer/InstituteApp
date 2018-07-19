@@ -5,7 +5,7 @@
         <div class="card-title">
             <h2>Student Attendance</h2>
         </div>
-        <!--(ngsubmit)="filter()"-->
+    
         <form [formGroup]="studentForm" #f="ngForm" novalidate>
 
             <div class="form-row">
@@ -31,7 +31,7 @@
 
         </form>
 
-        <p *ngIf="!dList"><em>No Record found...</em></p>
+        <p *ngIf="!dList"><b><em>Select Course and Batch...</em></b></p>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
                 <tr>

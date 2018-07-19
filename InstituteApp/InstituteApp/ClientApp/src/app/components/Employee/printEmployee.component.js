@@ -17,13 +17,11 @@ var PrintEmployeeComponent = /** @class */ (function () {
         this._employeeService = _employeeService;
         this.alertService = alertService;
         this.chRef = chRef;
-        this.IsInitialized = false;
         this.employeeForm = this._fb.group({
             IsDepOrDes: [''],
             Department: [''],
             Designation: ['']
         });
-        //this.getEmployees;
         this.getDepartment();
         this.getDesignation();
     }
@@ -36,11 +34,6 @@ var PrintEmployeeComponent = /** @class */ (function () {
         var _this = this;
         this._dataService.getDesignation()
             .subscribe(function (data) { _this.designationList = data; });
-    };
-    PrintEmployeeComponent.prototype.getEmployees = function () {
-        var _this = this;
-        this._employeeService.getEmployee()
-            .subscribe(function (data) { _this.dList = data; });
     };
     PrintEmployeeComponent.prototype.OnSelectValue = function ($event) {
         var SelectedValue = this.employeeForm.controls["IsDepOrDes"].value;
@@ -59,26 +52,20 @@ var PrintEmployeeComponent = /** @class */ (function () {
         }
     };
     PrintEmployeeComponent.prototype.OnDepartmentSelection = function ($event) {
-        var _this = this;
         var depSelectedValue = this.employeeForm.controls["Department"].value;
-        this._employeeService.filterEmployee(depSelectedValue, '', 0).subscribe(function (data) {
-            _this.dList = data;
-            if (_this.IsInitialized == false) {
-                _this.print();
-                _this.IsInitialized = true;
-                console.log(_this.IsInitialized);
-            }
-        }, function (error) { return console.error(error); });
+        this.RefreshTable();
+        this.getEmployees(depSelectedValue, '', 0);
     };
     PrintEmployeeComponent.prototype.OnDesignationSelection = function ($event) {
-        var _this = this;
         var desSelectedValue = this.employeeForm.controls["Designation"].value;
-        this._employeeService.filterEmployee('', desSelectedValue, 0).subscribe(function (data) {
+        this.RefreshTable();
+        this.getEmployees('', desSelectedValue, 0);
+    };
+    PrintEmployeeComponent.prototype.getEmployees = function (department, designation, Id) {
+        var _this = this;
+        this._employeeService.filterEmployee(department, designation, Id).subscribe(function (data) {
             _this.dList = data;
-            if (_this.IsInitialized == false) {
-                _this.print();
-                _this.IsInitialized = true;
-            }
+            _this.print();
         }, function (error) { return console.error(error); });
     };
     PrintEmployeeComponent.prototype.print = function () {
@@ -90,11 +77,15 @@ var PrintEmployeeComponent = /** @class */ (function () {
             buttons: [{
                     extend: 'print',
                     text: '<i class="fa fa-print" aria-hidden="true"></i> Print',
-                    title: 'List of Employees <hr>',
+                    title: 'List of Employees ',
                     titleAttr: 'Print'
                 }
             ]
         });
+    };
+    PrintEmployeeComponent.prototype.RefreshTable = function () {
+        var table = $('#dttable');
+        table.DataTable().destroy();
     };
     Object.defineProperty(PrintEmployeeComponent.prototype, "IsDepOrDes", {
         get: function () { return this.employeeForm.get('IsDepOrDes'); },

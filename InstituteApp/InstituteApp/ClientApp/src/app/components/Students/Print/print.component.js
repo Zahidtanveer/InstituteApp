@@ -17,7 +17,6 @@ var PrintStudentComponent = /** @class */ (function () {
         this.alertService = alertService;
         this.chRef = chRef;
         this._dataService = _dataService;
-        this.IsInitialized = false;
         this.studentForm = this._fb.group({
             Course: [''],
             Batch: ['']
@@ -46,39 +45,46 @@ var PrintStudentComponent = /** @class */ (function () {
             }
             this.IsCourseSelected = true;
         }
-        this.getStudents('', '', '');
+        this.studentForm.controls["Batch"].setValue("");
     };
     PrintStudentComponent.prototype.OnBatchChange = function ($event) {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
-        this.getStudents(CourseSelectedValue, batchSelectedValue, '');
-        if (this.IsInitialized == false) {
-            console.log('Before: ' + this.IsInitialized);
-            this.print();
-            this.IsInitialized = true;
-            console.log('After: ' + this.IsInitialized);
+        if (batchSelectedValue) {
+            this.RefreshTable();
+            this.getStudents(CourseSelectedValue, batchSelectedValue, '');
         }
     };
     PrintStudentComponent.prototype.getStudents = function (course, batch, date) {
         var _this = this;
         this._studentService.filterStudent(course, batch, date)
-            .subscribe(function (data) { _this.dList = data; });
+            .subscribe(function (data) {
+            _this.dList = data;
+            _this.print();
+        });
     };
     PrintStudentComponent.prototype.print = function () {
         this.chRef.detectChanges();
         var table = $('#dttable');
         this.dataTable = table.DataTable({
-            paging: false,
+            "paging": false,
+            "ordering": false,
+            "searching": false,
+            "bInfo": false,
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'print',
                     text: '<i class="fa fa-print" aria-hidden="true"></i> Print',
-                    title: 'List of Employees <hr>',
+                    title: 'List of Students',
                     titleAttr: 'Print',
                     className: 'btn btn-danger'
                 }
             ]
         });
+    };
+    PrintStudentComponent.prototype.RefreshTable = function () {
+        var table = $('#dttable');
+        table.DataTable().destroy();
     };
     Object.defineProperty(PrintStudentComponent.prototype, "Course", {
         get: function () { return this.studentForm.get('Course'); },

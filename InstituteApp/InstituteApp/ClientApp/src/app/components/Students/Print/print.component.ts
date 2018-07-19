@@ -24,8 +24,8 @@ export class PrintStudentComponent {
     studentForm: FormGroup;
     errorMessage: any;
     dataTable: any;
-    public IsInitialized: boolean = false;
     public IsCourseSelected: boolean;
+
     constructor(private _fb: FormBuilder, http: Http,
         private _studentService: StudentService, private alertService: AlertService,
         private chRef: ChangeDetectorRef, private _dataService: DataService) {
@@ -36,10 +36,12 @@ export class PrintStudentComponent {
         this.getCourse();
         this.getBatch();
     }
+
     getBatch() {
         this._dataService.getBatch()
             .subscribe(data => { this.batchList = data });
     }
+
     getCourse() {
         this._dataService.getCourse()
             .subscribe(data => { this.courseList = data });
@@ -58,43 +60,52 @@ export class PrintStudentComponent {
             this.IsCourseSelected = true;
 
         }
-        this.getStudents('', '', '');
+        this.studentForm.controls["Batch"].setValue("");
     }
+
     OnBatchChange($event: any) {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
-        this.getStudents(CourseSelectedValue, batchSelectedValue, '');
-        if (this.IsInitialized == false) {
-            console.log('Before: '+ this.IsInitialized);
-            this.print();
-            this.IsInitialized = true;
-            console.log('After: ' +this.IsInitialized);
-
+        if (batchSelectedValue) {
+            this.RefreshTable();
+            this.getStudents(CourseSelectedValue, batchSelectedValue, '');
         }
 
     }
 
     getStudents(course, batch, date) {
         this._studentService.filterStudent(course, batch, date)
-            .subscribe(data => { this.dList = data });
-       
+            .subscribe(data => {
+                this.dList = data
+                    this.print();
+            });
+        
         }
+
     print() {
         this.chRef.detectChanges();
         const table: any = $('#dttable');
         this.dataTable = table.DataTable({
-            paging: false,
+            "paging": false,
+            "ordering": false,
+            "searching": false,
+            "bInfo": false,
             dom: 'Bfrtip',
             buttons: [{
                 extend: 'print',
                 text: '<i class="fa fa-print" aria-hidden="true"></i> Print',
-                title: 'List of Employees <hr>',
+                title: 'List of Students',
                 titleAttr: 'Print',
                 className: 'btn btn-danger'
             }
             ]
         });
     }
+    RefreshTable() {
+        const table: any = $('#dttable');
+        table.DataTable().destroy();
+    }
+   
     get Course() { return this.studentForm.get('Course'); }
     get Batch() { return this.studentForm.get('Batch'); }
 

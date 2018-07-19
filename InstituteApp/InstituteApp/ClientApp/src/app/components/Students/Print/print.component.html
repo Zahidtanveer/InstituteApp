@@ -5,7 +5,7 @@
             <h2>Print Students</h2>
             <!--<a [routerLink]="['/add-student']" class="btn btn-success">Create New</a>-->
         </div>
-        <!-- (ngsubmit)="print()"-->
+      
         <form [formGroup]="studentForm" #f="ngForm" novalidate>
 
             <div class="form-row">
@@ -26,6 +26,7 @@
             </div>
 
         </form>
+        <p *ngIf="!dList"><b><em>Select Course and Batch...</em></b></p>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
 

@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var createEmployee = /** @class */ (function () {
     function createEmployee(_fb, _avRoute, _employeeService, _dataService, _router) {
         this._fb = _fb;
@@ -20,28 +21,28 @@ var createEmployee = /** @class */ (function () {
         }
         this.employeeForm = this._fb.group({
             id: 0,
-            EmployeeCode: [''],
-            JoiningDate: [''],
-            Qualification: [''],
-            Department: [''],
-            Designation: [''],
-            TotalExperience: [''],
-            personalDetails_FirstName: [''],
+            EmployeeCode: ['', [forms_1.Validators.required]],
+            JoiningDate: ['', [forms_1.Validators.required]],
+            Department: ['', [forms_1.Validators.required]],
+            Designation: ['', [forms_1.Validators.required]],
+            Qualification: ['', [forms_1.Validators.required]],
+            TotalExperience: ['', [forms_1.Validators.required]],
+            personalDetails_FirstName: ['', [forms_1.Validators.required]],
             personalDetails_MiddleName: [''],
-            personalDetails_LastName: [''],
-            personalDetails_DateOfBirth: [''],
-            personalDetails_Gender: [''],
+            personalDetails_LastName: ['', [forms_1.Validators.required]],
+            personalDetails_DateOfBirth: ['', [forms_1.Validators.required]],
+            personalDetails_Gender: ['', [forms_1.Validators.required]],
             personalDetails_CNIC: [''],
             personalDetails_EmployeeId: [''],
-            contactDetails_PresentAddress: [''],
+            contactDetails_PresentAddress: ['', [forms_1.Validators.required]],
             contactDetails_PermanentAddress: [''],
-            contactDetails_City: [''],
-            contactDetails_PostalCode: [''],
-            contactDetails_Country: [''],
-            contactDetails_State: [''],
-            contactDetails_Phone: [''],
-            contactDetails_Mobile: [''],
-            contactDetails_Email: ['']
+            contactDetails_City: ['', [forms_1.Validators.required]],
+            contactDetails_PostalCode: ['', [forms_1.Validators.required]],
+            contactDetails_Country: ['', [forms_1.Validators.required]],
+            contactDetails_State: ['', [forms_1.Validators.required]],
+            contactDetails_Phone: ['', [forms_1.Validators.required]],
+            contactDetails_Mobile: ['', [forms_1.Validators.required]],
+            contactDetails_Email: ['', [forms_1.Validators.required]]
         });
         this.getDepartment();
         this.getDesignation();
@@ -143,7 +144,7 @@ var createEmployee = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(createEmployee.prototype, "personalDetails_DateOfBirth", {
-        get: function () { return this.employeeForm.get(' personalDetails_DateOfBirth'); },
+        get: function () { return this.employeeForm.get('personalDetails_DateOfBirth'); },
         enumerable: true,
         configurable: true
     });
