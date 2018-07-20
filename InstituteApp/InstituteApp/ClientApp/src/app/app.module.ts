@@ -134,6 +134,11 @@ import { GuardianComponent } from "./components/Students/Guardians/guardian.comp
 import { editStudent } from "./components/Students/EditStudent.component";
 import { StudentIDCardComponent } from "./components/Students/StudentIDCard/studentIDCard.component";
 import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/UpdateRollNo.component";
+import { createSubjects } from "./components/Subjects/AddSubjects.component";
+import { SubjectService } from "./services/subjects/subject.service";
+import { SubjectComponent } from "./components/Subjects/subjects.component";
+import { editSubject } from "./components/Subjects/EditSubject.component";
+
 
 
 @NgModule({
@@ -197,7 +202,7 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
         createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
         StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent,
-        editStudent, StudentIDCardComponent, UpdateRollNoComponent
+        editStudent, StudentIDCardComponent, UpdateRollNoComponent, createSubjects, SubjectComponent, editSubject
 
     ],
     providers: [
@@ -221,6 +226,7 @@ import { UpdateRollNoComponent } from "./components/Students/AssignRollNo/Update
         EmployeeService, DataService, EmployeeAttendanceService
         , LeaveCategoryService, LeaveService,
         StudentCategoryService, StudentService, StudentAttendanceService
+        , SubjectService
     ],
     bootstrap: [AppComponent]
 })

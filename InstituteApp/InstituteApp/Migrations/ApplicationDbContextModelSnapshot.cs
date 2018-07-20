@@ -171,6 +171,28 @@ namespace InstituteApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("DAL.Models.AssignedSubjects", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BatchId");
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("SubjectId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("assignedSubject");
+                });
+
             modelBuilder.Entity("DAL.Models.Batch", b =>
                 {
                     b.Property<int>("Id")
@@ -323,6 +345,32 @@ namespace InstituteApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("designations");
+                });
+
+            modelBuilder.Entity("DAL.Models.ElectiveSubject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BatchId");
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("StudentId");
+
+                    b.Property<int>("SubjectId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("electiveSubjects");
                 });
 
             modelBuilder.Entity("DAL.Models.Employee", b =>
@@ -665,6 +713,52 @@ namespace InstituteApp.Migrations
                     b.ToTable("studentCategories");
                 });
 
+            modelBuilder.Entity("DAL.Models.SubjectAllocation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BatchId");
+
+                    b.Property<int>("CourseId");
+
+                    b.Property<int>("DepartmentId");
+
+                    b.Property<int>("SubjectId");
+
+                    b.Property<int>("TeacherId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("subjectAllocation");
+                });
+
+            modelBuilder.Entity("DAL.Models.Subjects", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("subjects");
+                });
+
             modelBuilder.Entity("DAL.Models.Syllabus", b =>
                 {
                     b.Property<int>("Id")
@@ -926,6 +1020,24 @@ namespace InstituteApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("DAL.Models.AssignedSubjects", b =>
+                {
+                    b.HasOne("DAL.Models.Batch", "batch")
+                        .WithMany("assignedSubjects")
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Course", "course")
+                        .WithMany("assignedSubjects")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Subjects", "subject")
+                        .WithMany("assignedSubjects")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("DAL.Models.Batch", b =>
                 {
                     b.HasOne("DAL.Models.Course", "course")
@@ -954,6 +1066,29 @@ namespace InstituteApp.Migrations
                     b.HasOne("DAL.Models.Syllabus", "syllabus")
                         .WithMany("courses")
                         .HasForeignKey("SyllabusName")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DAL.Models.ElectiveSubject", b =>
+                {
+                    b.HasOne("DAL.Models.Batch", "batch")
+                        .WithMany()
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Course", "course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Student", "student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Subjects", "subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1030,6 +1165,34 @@ namespace InstituteApp.Migrations
                     b.HasOne("DAL.Models.Student", "student")
                         .WithMany("studentAttendances")
                         .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DAL.Models.SubjectAllocation", b =>
+                {
+                    b.HasOne("DAL.Models.Batch", "batch")
+                        .WithMany()
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Course", "course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Department", "department")
+                        .WithMany("subjectAllocations")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Subjects", "subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DAL.Models.Employee", "employee")
+                        .WithMany("subjectAllocations")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

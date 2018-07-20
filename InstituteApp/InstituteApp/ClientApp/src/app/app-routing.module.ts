@@ -69,6 +69,9 @@ import { GuardianComponent } from './components/Students/Guardians/guardian.comp
 import { editStudent } from './components/Students/EditStudent.component';
 import { UpdateRollNoComponent } from './components/Students/AssignRollNo/UpdateRollNo.component';
 import { StudentIDCardComponent } from './components/Students/StudentIDCard/studentIDCard.component';
+import { createSubjects } from './components/Subjects/AddSubjects.component';
+import { SubjectComponent } from './components/Subjects/subjects.component';
+import { editSubject } from './components/Subjects/EditSubject.component';
 
 
 
@@ -135,6 +138,9 @@ import { StudentIDCardComponent } from './components/Students/StudentIDCard/stud
             { path: "student/edit/:Id", component: editStudent, canActivate: [AuthGuard], data: { title: "Edit Student" } },
             { path: "student-rollno", component: UpdateRollNoComponent, canActivate: [AuthGuard], data: { title: "Assign/Update Student Roll No" } },
             { path: "student-idcard", component: StudentIDCardComponent, canActivate: [AuthGuard], data: { title: "Student ID Card" } },
+            { path: "add-subject", component: createSubjects, canActivate: [AuthGuard], data: { title: "Add Subjects" } },
+            { path: "subjects", component: SubjectComponent, canActivate: [AuthGuard], data: { title: "Subjects" } },
+            { path: "subject/edit/:Id", component: editSubject, canActivate: [AuthGuard], data: { title: "Edit Subject" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

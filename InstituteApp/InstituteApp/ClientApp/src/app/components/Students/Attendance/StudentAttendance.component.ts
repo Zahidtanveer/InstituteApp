@@ -76,17 +76,17 @@ export class StudentAttendanceComponent {
         if (batchSelectedValue) {
             this.IsBatchSelected = true;
         }
-        this.Data();
+        this.getData();
         $('.checkAll').prop('checked', false);
     }
 
     OnDateChange($event: any) {
 
-        this.Data();
+        this.getData();
         $('.checkAll').prop('checked', false);
     }
 
-    Data() {
+    getData() {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
         var DateSelectedValue = this.studentForm.controls["Date"].value;
@@ -161,6 +161,7 @@ export class StudentAttendanceComponent {
                 );
             });
     }
+
     get Course() { return this.studentForm.get('Course'); }
     get Batch() { return this.studentForm.get('Batch'); }
     get Date() { return this.studentForm.get('Date'); }

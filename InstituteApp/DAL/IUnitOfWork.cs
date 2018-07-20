@@ -25,7 +25,7 @@ namespace DAL
         ICountryRepository Countries { get; }
         ILeaveRepository Leave { get; }
         IStudentRepository Student { get; }
-
+        ISubjectRepository Subject { get; }
         int SaveChanges();
     }
 }

@@ -106,6 +106,10 @@
     <None Remove="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <None Remove="ClientApp\src\app\components\Students\StudentIDCard\studentIDCard.component.ts" />
     <None Remove="ClientApp\src\app\components\Subjects\AddSubjects.component.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\Assign\AddAssign.compoment.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\Assign\AssignSubject.component.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\Assign\EditAssign.component.ts" />
+    <None Remove="ClientApp\src\app\components\Subjects\EditSubject.component.ts" />
     <None Remove="ClientApp\src\app\components\Subjects\subjects.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <None Remove="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
@@ -179,6 +183,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\studentCategory.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Students\StudentIDCard\studentIDCard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\AddSubjects.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\Assign\AddAssign.compoment.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\Assign\AssignSubject.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\Assign\EditAssign.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\EditSubject.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Subjects\subjects.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\AddSyllabus.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\Syllabus\EditSyllabus.Component.ts" />
@@ -204,6 +212,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\subjects\subject.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Syllabus.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\timetable\timetable.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\components\Subjects\Allocation\" />
+    <Folder Include="ClientApp\src\app\components\Subjects\Electives\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -28,6 +28,8 @@ namespace DAL
         ICountryRepository _countryRepository;
         ILeaveRepository _leaveRepository;
         IStudentRepository _studentRepository;
+        ISubjectRepository _subjectRepository;
+
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
@@ -181,6 +183,15 @@ namespace DAL
                 return _studentRepository;
             }
         }
+
+        public ISubjectRepository Subject {
+             get
+            {
+                if (_subjectRepository == null)
+                    _subjectRepository = new SubjectRepository(_context);
+                return _subjectRepository;
+            }
+        } 
 
         public int SaveChanges()
         {

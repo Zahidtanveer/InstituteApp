@@ -19,7 +19,7 @@ namespace DAL.Models
         public virtual Syllabus syllabus { get; set; } 
         public virtual ICollection<Batch> batches { get; set; }
         public virtual ICollection<AllocatedBatchTeacher> batchTeacher { get; set; }
-
+        public virtual ICollection<AssignedSubjects> assignedSubjects { get; set; }
 
     }
 }

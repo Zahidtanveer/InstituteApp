@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL;
 using DAL.Models;
+using InstituteApp.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +23,23 @@ namespace InstituteApp.Controllers
         //GET: api/EmployeeAttendance/Index
         [HttpGet]
         [Route("api/EmployeeAttendance/Index")]
-        public IEnumerable<EmployeeAttendance> Index()
+        public IEnumerable<EmployeeAttendance> Index(string department,DateTime date)
         {
-            return _unitOfWork.Employee.DailyEmployeeAttedance();
+            return _unitOfWork.Employee.GetEmployeeAttendances(department,date);
+        }
+
+        [HttpPost]
+        [Route("api/EmployeeAttendance/MarkAttendance")]
+        public int MarkAttendance([FromBody]IEnumerable<AttendaceViewModel> empVM)
+        {
+            Dictionary<int, bool> employeeDict = new Dictionary<int, bool>();
+
+            foreach (var item in empVM)
+            {
+                employeeDict.Add(item.key, item.value);
+            }
+
+            return _unitOfWork.Employee.MarkDailyEmployeeAttedance(employeeDict);
         }
         //GET: api/EmployeeAttendance/Details/1
         [HttpGet()]

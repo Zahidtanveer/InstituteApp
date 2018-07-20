@@ -14,7 +14,7 @@ namespace DAL
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public string CurrentUserId { get; set; }
-       
+
         public DbSet<Institute> Institutes { get; set; }
         public DbSet<Acadamic> Acadamics { get; set; }
         public DbSet<Caste> Castes { get; set; }
@@ -39,7 +39,12 @@ namespace DAL
         public DbSet<LeaveCategory> leaveCategories { get; set; }
         public DbSet<ContactDetails> contactDetails { get; set; }
         public DbSet<PersonalDetails> personalDetails { get; set; }
-        public DbSet<AllocatedBatchTeacher> allocatedBatchTeachers {get; set;}
+        public DbSet<AllocatedBatchTeacher> allocatedBatchTeachers { get; set; }
+        //Subjects
+        public DbSet<Subjects> subjects { get; set; }
+        public DbSet<AssignedSubjects> assignedSubject { get; set; }
+        public DbSet<SubjectAllocation> subjectAllocation { get; set; }
+        public DbSet<ElectiveSubject> electiveSubjects { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
@@ -55,57 +60,32 @@ namespace DAL
             builder.Entity<ApplicationRole>().HasMany(r => r.Claims).WithOne().HasForeignKey(c => c.RoleId).IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.Entity<ApplicationRole>().HasMany(r => r.Users).WithOne().HasForeignKey(r => r.RoleId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 
-     
-           builder.Entity<Institute>().ToTable($"App{nameof(this.Institutes)}");
+
+            builder.Entity<Institute>().ToTable($"App{nameof(this.Institutes)}");
             builder.Entity<Acadamic>().ToTable($"App{nameof(this.Acadamics)}");
             builder.Entity<Caste>().ToTable("caste");
             builder.Entity<Religion>().ToTable("religion");
-            builder.Entity<Batch>()
-                .HasOne<Course>(c => c.course)
-                .WithMany(b => b.batches)
-                .HasForeignKey(c => c.CourseId);
 
-            builder.Entity<Course>()
-             .HasOne(c => c.syllabus)
-             .WithMany(b => b.courses)
-             .HasForeignKey(c => c.SyllabusName);
+            builder.Entity<State>().HasOne(s => s.country).WithMany(c => c.states).HasForeignKey(s => s.CountryId);
+            builder.Entity<Batch>() .HasOne(c => c.course).WithMany(b => b.batches).HasForeignKey(c => c.CourseId);
+            builder.Entity<Course>().HasOne(c => c.syllabus).WithMany(b => b.courses).HasForeignKey(c => c.SyllabusName);
 
-            builder.Entity<AllocatedBatchTeacher>()
-             .HasOne(c => c.course)
-             .WithMany(b => b.batchTeacher)
-             .HasForeignKey(c => c.CourseId);
+            builder.Entity<AllocatedBatchTeacher>().HasOne(c => c.course).WithMany(b => b.batchTeacher).HasForeignKey(c => c.CourseId);
+            builder.Entity<AllocatedBatchTeacher>().HasOne(c => c.batches).WithMany(b => b.batchTeachers).HasForeignKey(c => c.BatchId);
 
-            builder.Entity<AllocatedBatchTeacher>()
-             .HasOne(c => c.batches)
-             .WithMany(b => b.batchTeachers)
-             .HasForeignKey(c => c.BatchId);
 
-            builder.Entity<State>()
-                .HasOne(s => s.country)
-                .WithMany(c => c.states)
-                .HasForeignKey(s=>s.CountryId);
+            builder.Entity<PersonalDetails>().HasOne(e => e.employee).WithOne(p => p.personalDetails).IsRequired(false);
+            builder.Entity<PersonalDetails>().HasOne(e => e.student).WithOne(p => p.personalDetails).IsRequired(false);
 
-            builder.Entity<PersonalDetails>()
-                .HasOne(e => e.employee)
-                .WithOne(p => p.personalDetails)
-                .IsRequired(false);
-            builder.Entity<PersonalDetails>()
-              .HasOne(e => e.student)
-              .WithOne(p => p.personalDetails)
-              .IsRequired(false);
-            builder.Entity<ContactDetails>()
-             .HasOne(e => e.student)
-             .WithOne(c => c.contactDetails)
-             .IsRequired(false);
-            builder.Entity<ContactDetails>()
-             .HasOne(e => e.employee)
-             .WithOne(c => c.contactDetails)
-             .IsRequired(false);
-            builder.Entity<ContactDetails>()
-             .HasOne(e => e.guardian)
-             .WithOne(c => c.ContactDetails)
-             .IsRequired(false);
-          
+            builder.Entity<ContactDetails>().HasOne(e => e.student).WithOne(c => c.contactDetails).IsRequired(false);
+            builder.Entity<ContactDetails>().HasOne(e => e.employee).WithOne(c => c.contactDetails).IsRequired(false);
+            builder.Entity<ContactDetails>().HasOne(e => e.guardian).WithOne(c => c.ContactDetails).IsRequired(false);
+
+            //builder.Entity<AssignedSubjects>().HasOne(b => b.batch).WithMany(x => x.assignedSubjects).IsRequired(false);
+            //builder.Entity<AssignedSubjects>().HasOne(c => c.course).WithMany(x => x.assignedSubjects).IsRequired(false);
+            //builder.Entity<AssignedSubjects>().HasOne(s => s.subject).WithMany(x => x.assignedSubjects).IsRequired(false);
+
+            
 
         }
 

@@ -309,6 +309,42 @@ namespace DAL.Repositories
                 .Include(e => e.employee).ToList();
             return employeeAttendace;
         }
+
+
+        public IEnumerable<EmployeeAttendance> GetEmployeeAttendances(string department,DateTime date)
+        {
+            DailyEmployeeAttedance();
+            var employeeAttendace = _appContext.employeeAttendances
+              .Include(e => e.employee).ToList();
+
+            if(!string.IsNullOrEmpty(department) && date!=null)
+            {
+                employeeAttendace = employeeAttendace.Where(x => (x.AttendanceDate == date)&&(x.employee.Department==department)).ToList();
+                return employeeAttendace;
+            }
+
+            return null;
+        }
+        public int MarkDailyEmployeeAttedance(Dictionary<int, bool> employeeDict)
+        {
+            try
+            {
+                foreach (var item in employeeDict)
+                {
+                    var dbemployeeAttendance = _appContext.employeeAttendances.SingleOrDefault(x => x.Id == item.Key);
+                    dbemployeeAttendance.IsPresent = item.Value;
+                    _appContext.Entry(dbemployeeAttendance).State = EntityState.Modified;
+                    _appContext.SaveChanges();
+
+                }
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
 
 

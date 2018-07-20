@@ -1,0 +1,35 @@
+<br />
+<div class="card">
+    <div class="card-body">
+        <p *ngIf="!dList"><em>Loading...</em></p>
+        <div class="card-title">
+            <h2>List of Subjects</h2>
+            <a [routerLink]="['/add-subject']" class="btn btn-success">Create New</a>
+        </div>
+
+        <table class='table table-bordered' *ngIf="dList" id="dttable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subject of dList">
+                    <td>{{subject.id}}</td>
+                    <td>{{subject.name}}</td>
+                    <td>{{subject.code}}</td>
+                    <td>{{subject.description}}</td>
+                    <td>
+                        <a [routerLink]="['/subject/edit/',subject.id]" class="btn btn-default">Edit</a>
+                        <a [routerLink]="" (click)="delete(subject.id)" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

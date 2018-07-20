@@ -17,6 +17,8 @@ namespace DAL.Models
         [ForeignKey("CourseId")]
         public virtual Course course { get; set; }
         public virtual ICollection<AllocatedBatchTeacher> batchTeachers { get; set; }
+
+        public virtual ICollection<AssignedSubjects> assignedSubjects { get; set; }
       
 
     }

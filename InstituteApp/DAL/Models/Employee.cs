@@ -21,5 +21,8 @@ namespace DAL.Models
         public virtual ContactDetails contactDetails { get; set; }
 
         public virtual ICollection<EmployeeAttendance> employeeAttendances { get; set; }
+
+        public virtual ICollection<SubjectAllocation> subjectAllocations { get; set; }
+
     }
 }

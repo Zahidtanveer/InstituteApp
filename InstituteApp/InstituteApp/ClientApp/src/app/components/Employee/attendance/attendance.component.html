@@ -1,19 +1,35 @@
 <br />
 <div class="card">
     <div class="card-body">
-        <p *ngIf="!dList"><em>Loading...</em></p>
         <div class="card-title">
             <h2>Employee Attendance</h2>
         </div>
 
+        <form [formGroup]="employeeForm" #f="ngForm" novalidate>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Department">Department</label>
+                    <select formControlName="Department" class="form-control" (change)="OnDepartmentSelection($event)">
+                        <option value="">Choose...</option>
+                        <option *ngFor="let d of departmentList" [value]="d.name">{{d.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4" *ngIf="IsDepartmentSelected">
+                    <label for="Date">Date</label>
+                    <input formControlName="Date" type="date" (change)="OnDateChange($event)" class="form-control">
+                </div>
+            </div>
+
+        </form>
+        <p *ngIf="!dList"><b><em>Select Department and Date</em></b></p>
         <table class='table table-bordered' *ngIf="dList" id="dttable">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>AttendanceDate</th>
                     <th>EmployeeCode</th>
-                    <th>IsPresent</th>
-
+                    <th>Check All &nbsp;<input type="checkbox" (click)="CheckAll()" class="checkAll"></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,11 +37,10 @@
                     <td>{{attendance.id}}</td>
                     <td>{{attendance.attendanceDate | date:'dd-MM-yyyy'}}</td>
                     <td>{{attendance.employee.employeeCode}}</td>
-                    <td><input type="checkbox" id="isPresent_{{attendance.id}}" value="{{attendance.isPresent}}"></td>
-
-
+                    <td *ngIf="attendance.isPresent"><input type="checkbox" class="isPresent" id="isPresent_{{attendance.id}}" checked></td>
+                    <td *ngIf="!attendance.isPresent"><input type="checkbox" class="isPresent" id="isPresent_{{attendance.id}}"></td>
+                   
                 </tr>
-
             </tbody>
         </table>
         <div class="border-top" *ngIf="dList">

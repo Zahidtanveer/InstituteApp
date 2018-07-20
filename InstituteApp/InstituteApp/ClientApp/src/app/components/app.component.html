@@ -244,7 +244,17 @@
                                         <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/batchteacherallocation']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Class Teacher Allocation </span></a></li>
                                     </ul>
                                 </li>
-                                <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/s']"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu"> Subjects </span></a></li>
+
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu">Subjects</span></a>
+
+                                    <ul aria-expanded="false" class="collapse  first-level">
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/subjects']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Subject </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/as']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Assign Subject </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/sa']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Subject Allocation </span></a></li>
+                                        <li class="sidebar-item" [routerLinkActive]="['link-active']"><a class="sidebar-link" [routerLink]="['/Es']"><i class="" aria-hidden="true"></i><span class="hide-menu"> Elective Subjects</span></a></li>
+                                    </ul>
+                                </li>
                                 <li class="sidebar-item">
                                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:;"><i class="far fa-dot-circle" aria-hidden="true"></i><span class="hide-menu">Time Table</span></a>
 

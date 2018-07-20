@@ -22,5 +22,7 @@ namespace DAL.Repositories.Interfaces
         IEnumerable<EmployeeAttendance> GetAllEmployeeAttendanceData();
         EmployeeAttendance GetEmployeeAttendanceData(int id);
         int DeleteEmployeeAttendance(int id);
+        IEnumerable<EmployeeAttendance> GetEmployeeAttendances(string department, DateTime date);
+        int MarkDailyEmployeeAttedance(Dictionary<int, bool> employeeDict);
     }
 }

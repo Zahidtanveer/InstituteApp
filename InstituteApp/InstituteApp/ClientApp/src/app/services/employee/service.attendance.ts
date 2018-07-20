@@ -14,8 +14,8 @@ export class EmployeeAttendanceService {
     constructor(private _http: Http, @Inject('BASE_URL') baseUrl: string) {
         this.myAppUrl = baseUrl;
     }
-    getEmployeeAttendance() {
-        return this._http.get(this.myAppUrl + 'api/EmployeeAttendance/Index')
+    getEmployeeAttendance(department, date) {
+        return this._http.get(this.myAppUrl + 'api/EmployeeAttendance/Index' + "?department=" + department + "&&date=" + date)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
@@ -25,7 +25,7 @@ export class EmployeeAttendanceService {
             .catch(this.errorHandler)
     }
     saveEmployeeAttendance(employeeAttendance) {
-        return this._http.post(this.myAppUrl + 'api/EmployeeAttendance/Create', employeeAttendance)
+        return this._http.post(this.myAppUrl + 'api/EmployeeAttendance/MarkAttendance', employeeAttendance)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
@@ -44,6 +44,10 @@ export class EmployeeAttendanceService {
         console.log(error);
         return Observable.throw(error);
     }
+}
+export interface UpdateAttendance {
+    key: number;
+    value: boolean;
 }
 export interface EmployeeAttendanceData {
     Id: number;

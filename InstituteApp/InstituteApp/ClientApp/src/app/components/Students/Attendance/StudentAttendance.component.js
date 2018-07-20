@@ -59,14 +59,14 @@ var StudentAttendanceComponent = /** @class */ (function () {
         if (batchSelectedValue) {
             this.IsBatchSelected = true;
         }
-        this.Data();
+        this.getData();
         $('.checkAll').prop('checked', false);
     };
     StudentAttendanceComponent.prototype.OnDateChange = function ($event) {
-        this.Data();
+        this.getData();
         $('.checkAll').prop('checked', false);
     };
-    StudentAttendanceComponent.prototype.Data = function () {
+    StudentAttendanceComponent.prototype.getData = function () {
         var CourseSelectedValue = this.studentForm.controls["Course"].value;
         var batchSelectedValue = this.studentForm.controls["Batch"].value;
         var DateSelectedValue = this.studentForm.controls["Date"].value;

@@ -368,7 +368,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
         public int MarkDailyStudentAttedance(Dictionary<int, bool> studentDict)
         {
             try
@@ -389,7 +388,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
         public IEnumerable<StudentAttendance> DailyStudentAttedance()
         {
             try
@@ -448,7 +446,6 @@ namespace DAL.Repositories
             studentAttendace =studentAttendace.Where(x => (x.BatchId ==Convert.ToInt32(batch)) && (x.CourseId== Convert.ToInt32(course)) && (x.AttendanceDate == date)).ToList();
             return studentAttendace;
         }
-
         public int UpdateStudentRollNo(Dictionary<int, string> studentDict)
         {
             try
@@ -468,8 +465,6 @@ namespace DAL.Repositories
                 throw ex;
             }
         }
-
-
         #endregion
     }
 }

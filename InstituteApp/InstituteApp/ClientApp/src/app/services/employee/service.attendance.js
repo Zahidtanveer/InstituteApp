@@ -20,8 +20,8 @@ var EmployeeAttendanceService = /** @class */ (function () {
         this.myAppUrl = "";
         this.myAppUrl = baseUrl;
     }
-    EmployeeAttendanceService.prototype.getEmployeeAttendance = function () {
-        return this._http.get(this.myAppUrl + 'api/EmployeeAttendance/Index')
+    EmployeeAttendanceService.prototype.getEmployeeAttendance = function (department, date) {
+        return this._http.get(this.myAppUrl + 'api/EmployeeAttendance/Index' + "?department=" + department + "&&date=" + date)
             .map(function (response) { return response.json(); })
             .catch(this.errorHandler);
     };
@@ -31,7 +31,7 @@ var EmployeeAttendanceService = /** @class */ (function () {
             .catch(this.errorHandler);
     };
     EmployeeAttendanceService.prototype.saveEmployeeAttendance = function (employeeAttendance) {
-        return this._http.post(this.myAppUrl + 'api/EmployeeAttendance/Create', employeeAttendance)
+        return this._http.post(this.myAppUrl + 'api/EmployeeAttendance/MarkAttendance', employeeAttendance)
             .map(function (response) { return response.json(); })
             .catch(this.errorHandler);
     };
