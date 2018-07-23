@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1>Elective Subject Allocation</h1>
+                </div>
+                <form [formGroup]="subjectForm" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+
+                          <div class="form-group row">
+                                <label class=" control-label col-md-12" for="CourseId">Course</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && CourseId.valid || CourseId.touched && CourseId.valid || CourseId.dirty && CourseId.valid, 'is-invalid' :formDir.submitted && !CourseId.valid || CourseId.touched && !CourseId.valid || CourseId.dirty  && !CourseId.valid}" (change)="OnCourseSelection($event)" formControlName="CourseId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let c of courseList" [value]="c.id">{{c.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!CourseId.valid && formDir.submitted || CourseId.touched && !CourseId.valid || CourseId.dirty  && !CourseId.valid">
+                                        Course is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="CourseId.valid && formDir.submitted || CourseId.touched && CourseId.valid || CourseId.dirty && CourseId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="BatchId">Batch</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && BatchId.valid || BatchId.touched && BatchId.valid || BatchId.dirty && BatchId.valid, 'is-invalid' :formDir.submitted && !BatchId.valid || BatchId.touched && !BatchId.valid || BatchId.dirty  && !BatchId.valid}" type="text" formControlName="BatchId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let b of subBatchList" [value]="b.id">{{b.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!BatchId.valid && formDir.submitted || BatchId.touched && !BatchId.valid || BatchId.dirty  && !BatchId.valid">
+                                        Batch is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="BatchId.valid && formDir.submitted || BatchId.touched && BatchId.valid || BatchId.dirty && BatchId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="SubjectId">Subject</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && SubjectId.valid || SubjectId.touched && SubjectId.valid || SubjectId.dirty && SubjectId.valid, 'is-invalid' :formDir.submitted && !SubjectId.valid || SubjectId.touched && !SubjectId.valid || SubjectId.dirty  && !SubjectId.valid}" type="text" formControlName="SubjectId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let s of subjectList" [value]="s.id">{{s.name}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!SubjectId.valid && formDir.submitted || SubjectId.touched && !SubjectId.valid || SubjectId.dirty  && !SubjectId.valid">
+                                       Subject is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="SubjectId.valid && formDir.submitted || SubjectId.touched && SubjectId.valid || SubjectId.dirty && SubjectId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class=" control-label col-md-12" for="StudentId">Student</label>
+                                <div class="col-md-12">
+                                    <select class="form-control" [ngClass]="{'is-valid': formDir.submitted && StudentId.valid || StudentId.touched && StudentId.valid || StudentId.dirty && StudentId.valid, 'is-invalid' :formDir.submitted && !StudentId.valid || StudentId.touched && !StudentId.valid || StudentId.dirty  && !StudentId.valid}" formControlName="StudentId">
+                                        <option value="">Choose...</option>
+                                        <option *ngFor="let stu of studentList" [value]="stu.id">{{stu.personalDetails.firstName}} {{stu.personalDetails.lastName}}</option>
+                                    </select>
+                                    <span class="invalid-feedback" *ngIf="!StudentId.valid && formDir.submitted || StudentId.touched && !StudentId.valid || StudentId.dirty  && !StudentId.valid">
+                                        Student is required.
+                                    </span>
+                                    <span class="valid-feedback" *ngIf="StudentId.valid && formDir.submitted || StudentId.touched && StudentId.valid || StudentId.dirty && StudentId.valid">
+                                        Woohoo!
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                            <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

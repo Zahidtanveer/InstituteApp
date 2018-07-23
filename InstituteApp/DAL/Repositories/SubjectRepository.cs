@@ -12,7 +12,6 @@ namespace DAL.Repositories
     {
         public SubjectRepository(ApplicationDbContext context) : base(context) { }
 
-
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
 
         #region Subjects
@@ -86,7 +85,6 @@ namespace DAL.Repositories
         #endregion
 
         #region Assign Subject
-
         public int AddAssignSubject(AssignedSubjects subject)
         {
             try
@@ -105,7 +103,10 @@ namespace DAL.Repositories
         {
             try
             {
-                return _appContext.assignedSubject.ToList();
+                return _appContext.assignedSubject
+                    .Include(c=>c.course)
+                    .Include(b=>b.batch)
+                    .Include(s=>s.subject).ToList();
             }
             catch (Exception ex)
             {
@@ -156,5 +157,155 @@ namespace DAL.Repositories
         }
         #endregion
 
+        #region Subject Allocation
+        public int AddSubjectAllocation(SubjectAllocation subjectAllocation)
+        {
+            try
+            {
+                _appContext.subjectAllocation.Add(subjectAllocation);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<SubjectAllocation> GetAllSubjectAllocationData()
+        {
+            try
+            {
+                return _appContext.subjectAllocation
+                    .Include(x=>x.department)
+                    .Include(x=>x.employee)
+                    .Include(c => c.course)
+                    .Include(b => b.batch)
+                    .Include(s => s.subject)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public SubjectAllocation GetSubjectAllocationData(int id)
+        {
+            try
+            {
+                SubjectAllocation subjectAllocation = _appContext.subjectAllocation.Find(id);
+                return subjectAllocation;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int UpdateSubjectAllocation(SubjectAllocation subjectAllocation)
+        {
+            try
+            {
+                _appContext.Entry(subjectAllocation).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int DeleteSubjectAllocation(int id)
+        {
+            try
+            {
+                SubjectAllocation subjectAllocation = _appContext.subjectAllocation.Find(id);
+                _appContext.subjectAllocation.Remove(subjectAllocation);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Elective Subject 
+        public int AddElectiveSubject(ElectiveSubject electiveSubject)
+        {
+            try
+            {
+                _appContext.electiveSubjects.Add(electiveSubject);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public IEnumerable<ElectiveSubject> GetAllElectiveSubjectData()
+        {
+            try
+            {
+                return _appContext.electiveSubjects
+                    .Include(c => c.course)
+                    .Include(b => b.batch)
+                    .Include(s => s.subject)
+                    .Include(x => x.student)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ElectiveSubject GetElectiveSubjectData(int id)
+        {
+            try
+            {
+                ElectiveSubject electiveSubject = _appContext.electiveSubjects.Find(id);
+                return electiveSubject;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int UpdateElectiveSubject(ElectiveSubject ElectiveSubject)
+        {
+            try
+            {
+                _appContext.Entry(ElectiveSubject).State = EntityState.Modified;
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int DeleteElectiveSubject(int id)
+        {
+            try
+            {
+                ElectiveSubject electiveSubject = _appContext.electiveSubjects.Find(id);
+                _appContext.electiveSubjects.Remove(electiveSubject);
+                _appContext.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

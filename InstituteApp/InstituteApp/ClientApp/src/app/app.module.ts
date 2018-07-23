@@ -138,6 +138,19 @@ import { createSubjects } from "./components/Subjects/AddSubjects.component";
 import { SubjectService } from "./services/subjects/subject.service";
 import { SubjectComponent } from "./components/Subjects/subjects.component";
 import { editSubject } from "./components/Subjects/EditSubject.component";
+import { createAssignSubject } from "./components/Subjects/Assign/AddAssign.compoment";
+import { AssignSubjectComponent } from "./components/Subjects/Assign/AssignSubject.component";
+import { AssignSubjectService } from "./services/subjects/AssignSubject.service";
+import { SubjectAllocationService } from "./services/subjects/SubjectAllocation.service";
+import { ElectiveSubjectService } from "./services/subjects/ElectiveSubject.service";
+import { createSubjectAllocation } from "./components/Subjects/Allocation/AddSubjectAllocation.component";
+import { SubjectAllocationComponent } from "./components/Subjects/Allocation/SubjectAllocation.component";
+import { createElectiveSubject } from "./components/Subjects/Electives/AddElectiveSubject.component";
+import { ElectiveSubjectComponent } from "./components/Subjects/Electives/ElectiveSubject.component";
+import { editAssignSubject } from "./components/Subjects/Assign/EditAssign.component";
+import { editElectiveSubject } from "./components/Subjects/Electives/EditElectiveSubject.component";
+import { editSubjectAllocation } from "./components/Subjects/Allocation/EditSubjectAllocation.component";
+import { createTimeTable } from "./components/TimeTable/AddTimeTable.component";
 
 
 
@@ -202,7 +215,10 @@ import { editSubject } from "./components/Subjects/EditSubject.component";
         createLeaveCategory, LeaveCategoryComponent, createLeave, LeaveComponent, editLeaveCategory,
         createLeaveApplication, createStudentCategory, editStudentCategory, StudentCategoryComponent,
         StudentComponent, createStudent, StudentAttendanceComponent, PrintStudentComponent, GuardianComponent,
-        editStudent, StudentIDCardComponent, UpdateRollNoComponent, createSubjects, SubjectComponent, editSubject
+        editStudent, StudentIDCardComponent, UpdateRollNoComponent, createSubjects, SubjectComponent, editSubject,
+        createAssignSubject, AssignSubjectComponent, createSubjectAllocation, SubjectAllocationComponent,
+        createElectiveSubject, ElectiveSubjectComponent, editAssignSubject, editElectiveSubject, editSubjectAllocation,
+        createTimeTable
 
     ],
     providers: [
@@ -226,7 +242,8 @@ import { editSubject } from "./components/Subjects/EditSubject.component";
         EmployeeService, DataService, EmployeeAttendanceService
         , LeaveCategoryService, LeaveService,
         StudentCategoryService, StudentService, StudentAttendanceService
-        , SubjectService
+        , SubjectService, AssignSubjectService, SubjectAllocationService
+        , ElectiveSubjectService
     ],
     bootstrap: [AppComponent]
 })

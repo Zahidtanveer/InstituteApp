@@ -65,6 +65,11 @@ var DataService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(this.errorHandler);
     };
+    DataService.prototype.getSubject = function () {
+        return this._http.get(this.myAppUrl + 'api/Subject/Index')
+            .map(function (response) { return response.json(); })
+            .catch(this.errorHandler);
+    };
     DataService.prototype.errorHandler = function (error) {
         console.log(error);
         return Observable_1.Observable.throw(error);

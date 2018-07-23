@@ -72,6 +72,16 @@ import { StudentIDCardComponent } from './components/Students/StudentIDCard/stud
 import { createSubjects } from './components/Subjects/AddSubjects.component';
 import { SubjectComponent } from './components/Subjects/subjects.component';
 import { editSubject } from './components/Subjects/EditSubject.component';
+import { createAssignSubject } from './components/Subjects/Assign/AddAssign.compoment';
+import { AssignSubjectComponent } from './components/Subjects/Assign/AssignSubject.component';
+import { SubjectAllocationComponent } from './components/Subjects/Allocation/SubjectAllocation.component';
+import { createSubjectAllocation } from './components/Subjects/Allocation/AddSubjectAllocation.component';
+import { ElectiveSubjectComponent } from './components/Subjects/Electives/ElectiveSubject.component';
+import { createElectiveSubject } from './components/Subjects/Electives/AddElectiveSubject.component';
+import { editElectiveSubject } from './components/Subjects/Electives/EditElectiveSubject.component';
+import { editAssignSubject } from './components/Subjects/Assign/EditAssign.component';
+import { editSubjectAllocation } from './components/Subjects/Allocation/EditSubjectAllocation.component';
+import { createTimeTable } from './components/TimeTable/AddTimeTable.component';
 
 
 
@@ -141,6 +151,16 @@ import { editSubject } from './components/Subjects/EditSubject.component';
             { path: "add-subject", component: createSubjects, canActivate: [AuthGuard], data: { title: "Add Subjects" } },
             { path: "subjects", component: SubjectComponent, canActivate: [AuthGuard], data: { title: "Subjects" } },
             { path: "subject/edit/:Id", component: editSubject, canActivate: [AuthGuard], data: { title: "Edit Subject" } },
+            { path: "add-assginsubject", component: createAssignSubject, canActivate: [AuthGuard], data: { title: "Add Assign Subject" } },
+            { path: "assginsubject", component: AssignSubjectComponent, canActivate: [AuthGuard], data: { title: "Assign Subject" } },
+            { path: "assignsubject/edit/:Id", component: editAssignSubject, canActivate: [AuthGuard], data: { title: "Edit Assign Subject" } },
+            { path: "add-subjectallocation", component: createSubjectAllocation, canActivate: [AuthGuard], data: { title: "Add Subject Allocation" } },
+            { path: "subjectallocation", component: SubjectAllocationComponent, canActivate: [AuthGuard], data: { title: "Subject Allocation" } },
+            { path: "subjectallocation/edit/:Id", component: editSubjectAllocation, canActivate: [AuthGuard], data: { title: "Edit Subject Allocation" } },
+            { path: "add-electivesubject", component: createElectiveSubject, canActivate: [AuthGuard], data: { title: "Add Subject Allocation" } },
+            { path: "electivesubject", component: ElectiveSubjectComponent, canActivate: [AuthGuard], data: { title: "Subject Allocation" } },
+            { path: "electivesubject/edit/:Id", component: editElectiveSubject, canActivate: [AuthGuard], data: { title: "Edit Subject Allocation" } },
+            { path: "add-timetable", component: createTimeTable, canActivate: [AuthGuard], data: { title: "Create Time Table" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },
         ])

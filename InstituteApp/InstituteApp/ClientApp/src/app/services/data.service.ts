@@ -58,6 +58,11 @@ export class DataService {
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
+    getSubject() {
+        return this._http.get(this.myAppUrl + 'api/Subject/Index')
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
     errorHandler(error: Response) {
         console.log(error);
         return Observable.throw(error);
@@ -66,7 +71,12 @@ export class DataService {
 
 
 
+export interface SubjectData {
+    id: number,
+    name: string,
+    code: string
 
+}
 
 export interface CountryData {
     id: number;
