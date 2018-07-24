@@ -2,15 +2,12 @@
 
 </div>
 <div class="card">
+    <h2 class="card-header">Create Time Table</h2>
     <div class="container-fluid">
         <div class="card-body">
-            <div class="card-title">
-                <h1>Create TimeTable</h1>
-            </div>
-            <form [formGroup]=" timeTableForm" class="" (ngsubmit)="save()" #formDir="ngForm" novalidate>
+            <form [formGroup]=" timeTableForm" #formDir="ngForm" novalidate>
                 <div>
-                    <div class="form-row">
-
+                    <div class="form-row align-items-center">
 
                         <div class="form-group col-md-3">
                             <label class=" control-label col-md-12" for="CourseId">Course</label>
@@ -23,7 +20,7 @@
                                     Course is required.
                                 </span>
                                 <span class="valid-feedback" *ngIf="CourseId.valid && formDir.submitted || CourseId.touched && CourseId.valid || CourseId.dirty && CourseId.valid">
-                                    Woohoo!
+                                   
                                 </span>
                             </div>
                         </div>
@@ -39,7 +36,7 @@
                                     Batch is required.
                                 </span>
                                 <span class="valid-feedback" *ngIf="BatchId.valid && formDir.submitted || BatchId.touched && BatchId.valid || BatchId.dirty && BatchId.valid">
-                                    Woohoo!
+                                   
                                 </span>
                             </div>
                         </div>
@@ -52,27 +49,73 @@
                                     Name is required.
                                 </span>
                                 <span class="valid-feedback" *ngIf="Name.valid && formDir.submitted || Name.touched && Name.valid || Name.dirty && Name.valid">
-                                    Woohoo!
+                                   
                                 </span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-outline-primary" type="button" (click)="SetWeekDays()">Set Week Days</button>
-
+                        </div>
                         </div>
 
-                    </div>
 
-                    <!--<div class="form-group col-md-12">
-        <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-        <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
-    </div>-->
                 </div>
+
+                <div class="card" *ngIf="daysList">
+                    <h5 class="card-header">Time Table</h5>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="container-fluid">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let day of daysList" data-id="{{day}}">
+                                            <td>
+                                                {{day}}<br />
+                                                <a href="javascript:;" (click)="ShowPeriodModel(day)">Assign</a>
+                                            </td>
+                                            <ng-container *ngFor="let slot of periodList">
+                                                <td *ngIf="slot.day==day">
+
+                                                    {{slot.startTime}}-{{slot.endTime}}<br />
+                                                    <b>
+                                                        {{slot.name}}
+                                                        <br />
+                                                        <span *ngIf="!slot.teacher">
+                                                            <a href="javascript:;" (click)="onFacultyModel(slot.ID)">Select Faculty</a>
+                                                        </span>
+                                                        <span *ngIf="slot.teacher">
+                                                            {{slot.teacher}}
+                                                        </span>
+                                                    </b>
+
+                                                </td>
+                                            </ng-container>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top">
+                        <div class="card-body float-right">
+                            <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
 </div>
-<div class="modal fade" bsModal #weekDayModal="bs-modal" (onHidden)="onModalHidden()" [config]="{backdrop: 'static'}" tabindex="-1">
+
+
+
+<!--Model Add Week Days-->
+<div class="modal fade" bsModal #weekDayModal="bs-modal" (onHidden)="onDaysModalHidden()" [config]="{backdrop: 'static'}" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -82,6 +125,7 @@
                 </button>
             </div>
             <div class="modal-body">
+
                 <form>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="Monday">
@@ -125,9 +169,104 @@
                             Sunday
                         </label>
                     </div>
+                    <br />
+                    <div class="border-top">
+                        <div class="card-body float-right">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+                        </div>
+                    </div>
 
 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!--Model Add Period-->
+<div class="modal fade" bsModal #periodModal="bs-modal" (onHidden)="onPeriodModalHidden()" [config]="{backdrop: 'static'}" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Create Period Timings for {{DayName}}</h4>
+                <button type="button" class="close pull-right" title="Close" (click)="periodModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="periodForm">
+                    <div class="form-row align-items-center">
+                        <div class="form-group col-md-3">
+                            <label for="Name"></label>
+                            <select class="form-control" data-val="true" id="Name">
+                                <option value="">--Select--</option>
+                                <option value="Break">Break</option>
+                                <option value="English">English</option>
+                                <option value="Mathematics">Mathematics</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="StartTime"></label>
+                            <input class="form-control" type="time" id="StartTime">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="EndTime"></label>
+                            <input class="form-control" type="time" id="EndTime">
+                        </div>
+                        <button type="submit" class="btn btn-primary" (click)="AddPeriod()">Add Period</button>
+                    </div>
+
+                </form>
+                <div class="table-responsive">
+                    <table *ngIf="daysList" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>StartTime</th>
+                                <th>EndTime</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of newList">
+                                <td>{{p.name}}</td>
+                                <td>{{p.startTime}}</td>
+                                <td>{{p.endTime}}</td>
+                                <td><a href="javascript:;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="border-top">
+                    <div class="card-body float-right">
+                        <button type="submit" class="btn btn-primary" (click)="CreateTimeTable()">Create TimeTable</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Model Assign Teacher-->
+<div class="modal fade" bsModal #selectFacultyModal="bs-modal" (onHidden)="onFacultyModalHidden()" [config]="{backdrop: 'static'}" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Assign Faculty</h4>
+                <button type="button" class="close pull-right" title="Close" (click)="selectFacultyModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Teacher"></label>
+                        <select id="Teacher" class="form-control">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let t of teacherList" [value]="t.employeeCode">{{t.personalDetails.firstName}} {{t.personalDetails.lastName}}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success" (click)="AssignFaculty()">Assign</button>
                 </form>
             </div>
         </div>
