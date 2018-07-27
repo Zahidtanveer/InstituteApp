@@ -151,6 +151,7 @@ import { editAssignSubject } from "./components/Subjects/Assign/EditAssign.compo
 import { editElectiveSubject } from "./components/Subjects/Electives/EditElectiveSubject.component";
 import { editSubjectAllocation } from "./components/Subjects/Allocation/EditSubjectAllocation.component";
 import { createTimeTable } from "./components/TimeTable/AddTimeTable.component";
+import { TimeTableService } from "./services/timetable/timetable.service";
 
 
 
@@ -240,10 +241,10 @@ import { createTimeTable } from "./components/TimeTable/AddTimeTable.component";
         BatchService, CourseService, AllocateBatchTeacherService,
         SyllabusService, DepartmentService, DesignationService,
         EmployeeService, DataService, EmployeeAttendanceService
-        , LeaveCategoryService, LeaveService,
-        StudentCategoryService, StudentService, StudentAttendanceService
-        , SubjectService, AssignSubjectService, SubjectAllocationService
-        , ElectiveSubjectService
+        ,LeaveCategoryService, LeaveService,
+         StudentCategoryService, StudentService, StudentAttendanceService
+        ,SubjectService, AssignSubjectService, SubjectAllocationService
+        ,ElectiveSubjectService,TimeTableService
     ],
     bootstrap: [AppComponent]
 })

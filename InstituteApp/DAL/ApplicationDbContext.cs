@@ -40,11 +40,14 @@ namespace DAL
         public DbSet<ContactDetails> contactDetails { get; set; }
         public DbSet<PersonalDetails> personalDetails { get; set; }
         public DbSet<AllocatedBatchTeacher> allocatedBatchTeachers { get; set; }
+        public DbSet<TimeTable> timeTables { get; set; }
+
         //Subjects
         public DbSet<Subjects> subjects { get; set; }
         public DbSet<AssignedSubjects> assignedSubject { get; set; }
         public DbSet<SubjectAllocation> subjectAllocation { get; set; }
         public DbSet<ElectiveSubject> electiveSubjects { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         { }
@@ -73,7 +76,6 @@ namespace DAL
             builder.Entity<AllocatedBatchTeacher>().HasOne(c => c.course).WithMany(b => b.batchTeacher).HasForeignKey(c => c.CourseId);
             builder.Entity<AllocatedBatchTeacher>().HasOne(c => c.batches).WithMany(b => b.batchTeachers).HasForeignKey(c => c.BatchId);
 
-
             builder.Entity<PersonalDetails>().HasOne(e => e.employee).WithOne(p => p.personalDetails).IsRequired(false);
             builder.Entity<PersonalDetails>().HasOne(e => e.student).WithOne(p => p.personalDetails).IsRequired(false);
 
@@ -81,11 +83,11 @@ namespace DAL
             builder.Entity<ContactDetails>().HasOne(e => e.employee).WithOne(c => c.contactDetails).IsRequired(false);
             builder.Entity<ContactDetails>().HasOne(e => e.guardian).WithOne(c => c.ContactDetails).IsRequired(false);
 
-            //builder.Entity<AssignedSubjects>().HasOne(b => b.batch).WithMany(x => x.assignedSubjects).IsRequired(false);
-            //builder.Entity<AssignedSubjects>().HasOne(c => c.course).WithMany(x => x.assignedSubjects).IsRequired(false);
-            //builder.Entity<AssignedSubjects>().HasOne(s => s.subject).WithMany(x => x.assignedSubjects).IsRequired(false);
+            builder.Entity<TimeTable>().HasOne(e => e.employee).WithMany(c => c.timeTable).IsRequired(false);
+            builder.Entity<TimeTable>().HasOne(e => e.subject).WithMany(c => c.timeTable).IsRequired(false);
+           
 
-            
+
 
         }
 

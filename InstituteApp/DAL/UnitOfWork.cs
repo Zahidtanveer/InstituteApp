@@ -12,7 +12,7 @@ namespace DAL
     {
         readonly ApplicationDbContext _context;
 
-      
+
         IInstituteRepository _institute;
         IAcadamicRepository _acadamic;
         ICasteRepository _caste;
@@ -29,6 +29,7 @@ namespace DAL
         ILeaveRepository _leaveRepository;
         IStudentRepository _studentRepository;
         ISubjectRepository _subjectRepository;
+        ITimeTableRepository _timeTableRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -54,9 +55,10 @@ namespace DAL
                 return _acadamic;
             }
         }
-      
 
-        public ICasteRepository Caste {
+
+        public ICasteRepository Caste
+        {
             get
             {
                 if (_caste == null)
@@ -65,7 +67,8 @@ namespace DAL
             }
         }
 
-        public IReligionRepository Religion {
+        public IReligionRepository Religion
+        {
 
             get
             {
@@ -96,7 +99,8 @@ namespace DAL
 
         }
 
-        public ISyllabusRepository Syllabus {
+        public ISyllabusRepository Syllabus
+        {
 
             get
             {
@@ -105,11 +109,12 @@ namespace DAL
                 return _syllabus;
             }
         }
-        public IAllocatedBatchTeacherRepository AllocatedBatchTeacher {
+        public IAllocatedBatchTeacherRepository AllocatedBatchTeacher
+        {
             get
             {
                 if (_allocatedBatchTeacherRepository == null)
-                    _allocatedBatchTeacherRepository= new AllocatedBatchTeacherRepository(_context);
+                    _allocatedBatchTeacherRepository = new AllocatedBatchTeacherRepository(_context);
                 return _allocatedBatchTeacherRepository;
             }
         }
@@ -139,7 +144,7 @@ namespace DAL
             get
             {
                 if (_designationRepository == null)
-                   _designationRepository = new DesignationRepository(_context);
+                    _designationRepository = new DesignationRepository(_context);
                 return _designationRepository;
             }
         }
@@ -184,14 +189,26 @@ namespace DAL
             }
         }
 
-        public ISubjectRepository Subject {
-             get
+        public ISubjectRepository Subject
+        {
+            get
             {
                 if (_subjectRepository == null)
                     _subjectRepository = new SubjectRepository(_context);
                 return _subjectRepository;
             }
-        } 
+        }
+
+        public ITimeTableRepository TimeTable
+        {
+            get
+            {
+                if (_timeTableRepository == null)
+                    _timeTableRepository = new TimeTableRepository(_context);
+                return _timeTableRepository;
+            }
+
+        }
 
         public int SaveChanges()
         {

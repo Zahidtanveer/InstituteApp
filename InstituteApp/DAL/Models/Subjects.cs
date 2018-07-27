@@ -12,6 +12,6 @@ namespace DAL.Models
         public string Description { get; set; }
 
         public virtual ICollection<AssignedSubjects> assignedSubjects { get; set; }
-
+        public virtual ICollection<TimeTable> timeTable { get; set; }
     }
 }

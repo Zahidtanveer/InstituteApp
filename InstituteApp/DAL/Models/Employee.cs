@@ -19,10 +19,8 @@ namespace DAL.Models
 
         public virtual PersonalDetails personalDetails { get; set; }
         public virtual ContactDetails contactDetails { get; set; }
-
         public virtual ICollection<EmployeeAttendance> employeeAttendances { get; set; }
-
         public virtual ICollection<SubjectAllocation> subjectAllocations { get; set; }
-
+        public virtual ICollection<TimeTable> timeTable { get; set; }
     }
 }

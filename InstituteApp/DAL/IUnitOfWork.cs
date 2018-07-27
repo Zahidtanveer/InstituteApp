@@ -26,6 +26,7 @@ namespace DAL
         ILeaveRepository Leave { get; }
         IStudentRepository Student { get; }
         ISubjectRepository Subject { get; }
+        ITimeTableRepository TimeTable { get; }
         int SaveChanges();
     }
 }

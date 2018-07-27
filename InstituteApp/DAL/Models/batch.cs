@@ -19,7 +19,7 @@ namespace DAL.Models
         public virtual ICollection<AllocatedBatchTeacher> batchTeachers { get; set; }
 
         public virtual ICollection<AssignedSubjects> assignedSubjects { get; set; }
-      
+        public virtual ICollection<TimeTable> timeTable { get; set; }
 
     }
 }
